@@ -19,6 +19,18 @@
 \BOOKMARK [2][-]{subsection.7.1}{Generic Sessions}{section.7}% 19
 \BOOKMARK [2][-]{subsection.7.2}{Local Analysis}{section.7}% 20
 \BOOKMARK [2][-]{subsection.7.3}{Patterns of Interruptions}{section.7}% 21
-\BOOKMARK [1][-]{section.8}{Threats to Validity}{}% 22
-\BOOKMARK [1][-]{section.9}{Conclusions and Future Work}{}% 23
-\BOOKMARK [1][-]{section*.1}{References}{}% 24
+\BOOKMARK [1][-]{section.8}{Usage Data Collector}{}% 22
+\BOOKMARK [2][-]{subsection.8.1}{Data description}{section.8}% 23
+\BOOKMARK [2][-]{subsection.8.2}{Selection and transformation}{section.8}% 24
+\BOOKMARK [2][-]{subsection.8.3}{Classification of events}{section.8}% 25
+\BOOKMARK [1][-]{section.9}{Comparison of results with Mylyn and UDC}{}% 26
+\BOOKMARK [2][-]{subsection.9.1}{RQ1: Relationship between interruptions and productivity}{section.9}% 27
+\BOOKMARK [2][-]{subsection.9.2}{RQ2: Relationship between duration of interruptions and productivity}{section.9}% 28
+\BOOKMARK [2][-]{subsection.9.3}{RQ3: Local relationships between interruptions and productivity}{section.9}% 29
+\BOOKMARK [1][-]{section.10}{RQ4: Recovery time after an interruption}{}% 30
+\BOOKMARK [2][-]{subsection.10.1}{Edition and selections during recovery time}{section.10}% 31
+\BOOKMARK [2][-]{subsection.10.2}{Recovery time after positive and negative interruptions}{section.10}% 32
+\BOOKMARK [1][-]{section.11}{RQ5: Common events during recovery time}{}% 33
+\BOOKMARK [1][-]{section.12}{Threats to Validity}{}% 34
+\BOOKMARK [1][-]{section.13}{Conclusions and Future Work}{}% 35
+\BOOKMARK [1][-]{section*.1}{References}{}% 36
