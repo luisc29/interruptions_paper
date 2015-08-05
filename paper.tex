@@ -869,26 +869,26 @@ datetime & Date and time in UNIX format\\
 \end{table}
 
 \subsection{Selection and transformation}
-Due to the magnitude of the dataset we only worked on a fragment of it. By doing a random selection of 1,000 users we obtained a good representation of it all and is actually bigger and richer that the dataset we had from Mylyn.
+Due to the magnitude of the dataset we only worked on a fragment of it. By doing a random selection of 1,000 users we obtained a good representation of it all, which is actually bigger and richer that the dataset we had from Mylyn.
 
 We obtained this version of the data from a project published on Google BigQuery by Emerson Murphy-Hill [ref]. It is the same data but cleaned and preprocessed so the transformation phase is simple and focused on our needs.
 
 The first step was to query the dataset to get the data from 1,000 random users. We delimited the query to obtain only those events dispatched by the user, ignoring system events. We also ignored the bundle version and formatted the UNIX date into a more legible datetime format. From this query we extracted 4,321,349 unique events, which is around $0.18\%$ of the whole dataset.
 
-After obtaining the data, the next step was to add the attributes required to match it to the data on Mylyn to every row such as the type of the event, the duration and an ID to identify the different sessions on the data. For the latter, we sorted the data by \textit{userId} and by \textit{datetime} afterwards. This was required because by default the user's data is mixed and we needed it not only chronologically correct but also sorted by users to tag the sessions of every user without interferences. 
+After obtaining the data, the next step was to add the attributes required by every event to match it to the data on Mylyn, such is the type of the event, the duration and an ID to identify the different sessions present on the data. For the latter, we sorted the data by \textit{userId} and by \textit{datetime} afterwards. This was required because by default the user's data is mixed and we needed it not only chronologically correct but also sorted by users to tag the sessions of every user without interferences. 
 
-This dataset doesn't have an attribute to show the time the events ended so we added an interval time in seconds that depends on the next event executed.
+With Mylyn we have information about the end time of an event. The UDC dataset doesn't have an attribute to show this information, so we added an interval time in seconds that depends on the next event executed. This is important to identify those events that represent an interruption or the end of a session. 
 
-Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We obtained a total of 28,989 different sessions but after a filter to keep only those sessions with at least 30 minutes of productive time we ended up with 15,825.
+Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We did this splitting the data by users to avoid a conflict between the last event of a user and the first one of the next. After this, we obtained a total of 28,989 different sessions, but after a filter to keep only those with at least 30 minutes of productive time we ended up with 15,825 useful sessions, in contrast with 4,284 we had from Mylyn.
 
 \subsection{Classification of events}
 To select the type, we made a thorough analysis of the different events to classify them where they better fit. In comparison with Mylyn we didn't have a classification by default but the attributes can give us a very good approximation.
 
 We took into consideration the attributes \textit{what}, \textit{kind} and \textit{description} to choose the best classification for every event. Starting by the kind attribute, some events are labeled as \textit{view} which are precisely those that open, activate or close a view such as the console, the package explorer or the variables view. Therefore, the events of the kind \textit{view} were classified as selection.
 
-The classification for the rest of the events is more complex because we needed to check directly the description and bundle. We could label as edition all those commands with the attributes \textit{command} and \textit{executed}, and the majority of them are in fact of that type, but some commands executed also open a view, navigate through the text or to another class. For this reason we took a closer look into the bundle and what the description can tell us about the events.
+The classification for the rest of the events is more complex because we needed to check directly the description and bundle. We could label as edition all those commands with the attributes \textit{command} and \textit{executed}, and the majority of them are in fact of that type, but some commands executed also can open a view, navigate through the text or go to another class. For this reason we took a closer look into the bundle and what the description can tell us about the events.
 
-To differentiate the rest of edition and selection events we take a look at the description. By default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thoroughly analysis to identify those that are actually selection events. This way we categorized as selection all the events that we can tell on the description if they have the purpose to navigate to another window, open a perspective, find and replace words, search, window management and debug. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the table \ref{tbl:prop_events_udc}.
+By default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thoroughly analysis to identify those that are actually selection events. This way we categorized as selection all the events that we can tell on the description if they have the purpose to navigate to another window, open a perspective, find and replace words, search, window management and debug. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the table \ref{tbl:prop_events_udc}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -909,15 +909,17 @@ control & $0.8\%$  \\
 
 \end{table}
 
-The edition and selection types are of the same nature as with Mylyn. The system classification is composed of the events that activate and deactivate the workspace of Eclipse. It is difficult to determine when and why this events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear) so we decided to establish this special classification for them. The events of the type control are those for the control version of files. 
+The edition and selection types are of the same nature as with Mylyn. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; It is difficult to determine when and why this events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear) so we decided to establish this special classification for them. Finally, the events of the type control are those for the control version of files. 
 
 \section{Comparison of results with Mylyn and UDC}
+Once the UDC data was similar to the format of the Mylyn data we executed the same methods to have an answer to the proposed research questions with this new dataset.
+
 \subsection{RQ1: Relationship between interruptions and productivity}
-We show that the hypothesis holds with this data by using the same metrics as with Mylyn. In this case we had a different classification because of a change of thresholds used to group sessions based on the number of interruptions. Then new thresholds are shown in the table \ref{tbl:quartil_int_udc}.
+We used the same metrics to prove if the hypothesis hold with this data. To analyze the effects of interruptions on productivity we divided the sessions according to the number of interruptions they hold. This threw different results to Mylyn and consequently we changed the thresholds used to classify the sessions by the number of interruptions. The new thresholds are shown in the Table \ref{tbl:quartil_int_udc}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
-\caption{Thresholds used to group sessions based on their number of interruptions} %separate the data in four percentages groups regarding the number of interruptions in each trace.}
+\caption{Thresholds used to group sessions based on their number of interruptions for the UDC data} %separate the data in four percentages groups regarding the number of interruptions in each trace.}
 \label{tbl:quartil_int_udc}
 \centering
 \begin{tabular}{l | p{0.6cm} | p{0.6cm} | p{0.6cm}} 
@@ -927,23 +929,23 @@ We show that the hypothesis holds with this data by using the same metrics as wi
 \end{tabular}
 \end{table}
 
-The graphs (Figure \ref{fig:box_int_events_udc}) show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and the more interruptions the lesser are those metrics.
+For every session, we calculated the number of editions and selections per minute, and the edit ratio. The boxplots on the Figure \ref{fig:box_int_events_udc} show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and the more interruptions the lesser are those metrics.
 
-The edit ratio also behaves on a similar manner in comparison with the Mylyn data but the effect is less pronounced and with more variation on the boxes. Still, the median changes accordingly with the number of interruptions decreasing when there are more in a session.
+The edit ratio also behaves on a similar manner in comparison with the Mylyn data but the effect is less pronounced and we can see more variation on the boxes. Still, the median changes accordingly with the number of interruptions, decreasing when there are more and reaching the maximum when there are none.
 
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
 \includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_edit}  \\
 \includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_ratio} \\
+\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_ratio} \\
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selection events per minute, the edit ratio, and the number of interruptions. }
 \label{fig:box_int_events_udc}
 \end{figure}
 
 \subsection{RQ2: Relationship between duration of interruptions and productivity}
-The next analysis is on the size of the interruptions, considering short and prolonged interruptions.
+The next analysis is on the effects of the size of the interruptions, considering short and prolonged interruptions.
 \begin{itemize}
 \item \textit{short}: as with Mylyn we considered those interruptions that only have short sessions ($<$ 12 minutes of duration). They are the 18\% of the total.
 \item \textit{prolonged}: this group of sessions have at least one prolonged interruption ($\geq$ 12 minutes of duration). They constitute 80\% of the total.
@@ -960,11 +962,10 @@ The next analysis is on the size of the interruptions, considering short and pro
 \label{fig:box_dur_events_udc}
 \end{figure}
 
-Again the hypothesis holds as with Mylyn. We can see on the Figure \ref{fig:box_int_events_udc} that with short interruptions the metrics are greater than when facing a prolonged one, for more time is needed to recover after a long interruption. 
+Again the hypothesis holds as with Mylyn. We can see on the Figure \ref{fig:box_dur_events_udc} that with short interruptions the metrics are greater than when facing a prolonged one, for more time is needed to recover after a long interruption. 
 
 \subsection{RQ3: Local relationships between interruptions and productivity}
-The sessions with UDC went through the same process of transformation into 10 chunks of equal time as with Mylyn. The median of edit and selections are grater in sessions without interruptions, and the editions are more common than selections. When facing at least one prolonged interruption we can see the metrics drop in comparison with short interruptions and the selections are now more frequent than the editions events. This agrees with the results with Mylyn on this point and in the fact that during the beginning and the end of a session both metrics are lower than when in the middle of the session, but in this case the effect is less pronounced. 
-
+The sessions with UDC went through the same process of transformation into 10 chunks of equal time. The results on the Figure \ref{fig:bins_int_udc} show the same productivity pattern that we saw before with Mylyn.
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
@@ -975,6 +976,8 @@ The sessions with UDC went through the same process of transformation into 10 ch
 \caption{Global representation of a session with: no interruptions (top); only short interruptions (middle); and at least one prolonged interruption (bottom). }
 \label{fig:bins_int_udc}
 \end{figure}
+ 
+The median of editions and selections per minute are grater in sessions without interruptions, and the editions are more common than selections. When facing at least one prolonged interruption we can see the metrics drop in comparison with short interruptions and the selections are now more frequent than the editions events. This agrees with the results with Mylyn on this point and in the fact that during the beginning and the end of a session both metrics are lower than when in the middle of the session, but in this case the effect is less pronounced. 
 
 On a local analysis around the interruptions, we can see  interesting behaviors of the edition and selections metrics in a similar manner as with Mylyn. In the Figure \ref{fig:all_ints_udc} we show the frequency of editions and selections around the interruptions, specifically 30 minutes before and after. We can see that close to the interruption the frequency of editions and selections drastically drop, and in a radius of around 10 minutes both metrics are below the overall median. This phenomenon is also visible on the same version of this plot with Mylyn, agreeing that the activity of programming gradually decreases before the interruption and takes 5 minutes or more after it to restore the intensity of work above the median.
 
@@ -996,11 +999,11 @@ After this, we separated the interruptions in three categories: those with posit
 \begin{tabular}{p{4cm} | c}
 effect & pattern \\
 \hline
-\textit{negative} (45\%): when the frequency of edit events decreases after the interruption
+\textit{negative} (44\%): when the frequency of edit events decreases after the interruption
 	& \includegraphics[valign=m,scale=0.3]{figures/udc_neg_ints} \\
 \textit{positive} (44\%): when the frequency of edit events increases after the interruption 
 	& \includegraphics[valign=m,scale=0.3]{figures/udc_pos_ints} \\
-\textit{neutral} (11\%): when there is no well defined effect before or after the interruption 
+\textit{neutral} (12\%): when there is no well defined effect before or after the interruption 
 	& \includegraphics[valign=m,scale=0.3]{figures/udc_neu_ints} 
 \end{tabular}
 \end{table}
@@ -1015,9 +1018,9 @@ We established the recovery time as a 15 minute period after an interruption, wi
 
 It was required to make a selection of those interruptions which has a period afterwards of at least 15 minutes before another interruption. After this query we obtained 5,684 valid interruptions out of a total 110,077.
 
-From those valid interruptions, we split the time after the recovery into two phases: the first 15 minutes labeled as “recovery time” and the rest as “after recovery time”. We calculated the metrics of every recovery and after recovery time, the former divided into three chunks of five minutes to better visualize the evolution of the metrics.
+From those valid interruptions, we split the time after the recovery into two phases: the first 15 minutes labeled as \textit{recovery time} and the rest as \textit{after recovery time}. We calculated the metrics of every of both phases, after diving the recovery time into chinks of five minutes to better visualize the evolution of the metrics.
 
-Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it's common to have a reduction of both editions and selections per minute. Therefore, the after recovery time was split into two phases: one that takes the time where the metrics drop which happens 10 minutes before it (labeled as  "before interruption"), and the rest is the peak of productivity after the recovery time. We can see on the figure \ref{fig:box_recovery_udc} the evolution of the metrics through the recovery and after recovery phases.
+Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it's common to have a reduction of both editions and selections per minute. Therefore, the \textit{after recovery} time was split into two phases: one that takes the time where the metrics drop which happens 10 minutes before it (labeled as  \textit{before interruption}), and the rest is the peak of the session after the recovery time. The duration of the phase \textit{before interruption} was chosen with the conclusions after the local analysis around the interruptions.  We can see on the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through the phases.
 
 \begin{figure}[!ht]
 \centering
@@ -1029,10 +1032,11 @@ Considering the results obtained on the local analysis of an interruption, we ca
 \caption{Boxplots showing the detailed evolution of editions, selections and edit ratio during recovery time and after recovery time. }
 \label{fig:box_recovery_udc}
 \end{figure}
-\subsection{Recovery time after positive and negative interruptions}
-We take a closer look into the recovery time by splitting it into interruptions of positive and negative events. As expected the edit ratio is higher during recovery time after a positive interruption and the contrary is seen after a negative interruption.  The figure \ref{fig:box_recovery_effect_udc} show the evolution of the edit ratio during the recovery time, comparing the effects of a positive interruption against a negative one, and the behavior of the edit ratio considering all interruptions.
 
-We can see that after a positive interruption the edit ratio during recovery time is much higher than after a negative interruption, which agrees with the results on the local analysis of interruptions and the effects on the metrics.
+The three metrics show a tendency to increase and reach a maximum between the last phase of the \textit{recovery time} and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption.
+
+\subsection{Recovery time after positive and negative interruptions}
+We take a closer look into the recovery time by splitting it into interruptions of positive and negative events. As expected the edit ratio is higher during recovery time after a positive interruption and the contrary is seen after a negative interruption.  The Figure \ref{fig:box_recovery_effect_udc} show a comparison of both effects and the overall edit ratio considering all interruptions.
 
 \begin{figure}[!ht]
 \centering
@@ -1043,8 +1047,10 @@ We can see that after a positive interruption the edit ratio during recovery tim
 \label{fig:box_recovery_effect_udc}
 \end{figure}
 
+We can see that after a positive interruption the edit ratio during recovery time is much higher than after a negative interruption, which agrees with the results on the local analysis of interruptions and the effects on the metrics. The reason of this change is probably due to the difference on the activities performed after the interruption according to the effect
+
 \section{RQ5: Common events during recovery time}
-For this we created a new classification of events on a lower level to better identify those that are more frequent during recovery time and according to the nature of the interruption. The new classification contains the categories described on the table \ref{tbl:new_events_udc}.
+To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described on the Table \ref{tbl:new_events_udc}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -1072,7 +1078,7 @@ text-nav & Navigation on the current text \\
 \end{tabular}
 \end{table}
 
-We calculated a weighted average of every event based on the average frequency of execution during the first phase of recovery time after a positive or negative interruption, multiplied by the percentage of users that make use of that event. The same calculation was made using statistics considering all the phases (recovery and non-recovery time). Then we compared the weighted average changes to have evidence of what kind of events are executed after an interruption depending on its effect. The statistics can be found on the table \ref{tbl:stats_events}.
+We calculated a weighted average of every event based on the average frequency of execution during the first phase of recovery time after a positive or negative interruption, multiplied by the percentage of users that make use of that event. The same calculation was made using statistics considering all the times with no distinction. Then we compared the weighted average changes to have evidence of what kind of events are executed after an interruption depending on its effect. The statistics can be found on the Table \ref{tbl:stats_events}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -1099,9 +1105,9 @@ control & 0.58 & 0.89 & \textbf{0.90} \\
 \end{tabular}
 \end{table}
 
-After a positive interruption we can see that the editions of text, refactoring and file management are more common and to a lesser extent navigation through the text. On the other hand the navigation around classes, find and replace, searches, debug, clean and build are actions more common after a negative.
+After a positive interruption we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation through the text. On the other hand the navigation around classes, find and replace, searches, debug, clean and build are actions more common after a negative.
 
-We can see that after a positive interruption there are more assertive actions with an intention like refactoring a class or saving all changes. And after a negative interruption there are more uncertainty like debugging, searching for text or navigating around classes.
+We can conclude that after a positive interruption there are more assertive actions with a clear intention like refactoring a class or saving all changes. And after a negative interruption there are more uncertainty and doubt judging by the activities performed like debugging, searching for text or navigating around classes.
 
 It is noticeable the relation between type of events. For example is natural to think that if there is a lot of debugging events there is also a lot of clean and build events as they are necessary to begin a debugging session. There is also a link between high level navigation and debugging because navigating into a method may take you to another class.
 
