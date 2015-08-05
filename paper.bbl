@@ -127,6 +127,39 @@ M.~B. Zanjani, G.~Swartzendruber, and H.~H. Kagdi, ``Impact analysis of change
   requests on source code based on interaction and commit histories,'' in
   \emph{Proceedings of {MSR} 2014}, 2014, pp. 162--171.
 
+\bibitem{MPB12}
+E.~Murphy-Hill, C.~Parnin, and A.~P. Black, ``How we refactor, and how we know
+  it,'' \emph{Software Engineering, IEEE Transactions on}, vol.~38, no.~1, pp.
+  5--18, 2012.
+
+\bibitem{LGN12}
+H.~Liu, Y.~Gao, and Z.~Niu, ``An initial study on refactoring tactics,'' in
+  \emph{Computer Software and Applications Conference (COMPSAC), 2012 IEEE 36th
+  Annual}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2012, pp. 213--218.
+
+\bibitem{SPC14}
+C.~Sahin, L.~Pollock, and J.~Clause, ``How do code refactorings affect energy
+  usage?'' in \emph{Proceedings of the 8th ACM/IEEE International Symposium on
+  Empirical Software Engineering and Measurement}.\hskip 1em plus 0.5em minus
+  0.4em\relax ACM, 2014, p.~36.
+
+\bibitem{MJM12}
+E.~Murphy-Hill, R.~Jiresal, and G.~C. Murphy, ``Improving software developers'
+  fluency by recommending development environment commands,'' in
+  \emph{Proceedings of the ACM SIGSOFT 20th International Symposium on the
+  Foundations of Software Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax
+  ACM, 2012, p.~42.
+
+\bibitem{YM11}
+Y.~Yoon and B.~A. Myers, ``Capturing and analyzing low-level events from the
+  code editor,'' in \emph{Proceedings of the 3rd ACM SIGPLAN workshop on
+  Evaluation and usability of programming languages and tools}.\hskip 1em plus
+  0.5em minus 0.4em\relax ACM, 2011, pp. 25--30.
+
+\bibitem{KG14}
+G.~Khodabandelou, ``Mining intentional process models,'' Ph.D. dissertation,
+  University of Paris-Est, 2014.
+
 \bibitem{MFR14}
 W.~Maalej, T.~Fritz, and R.~Robbes, ``Collecting and processing interaction
   data for recommendation systems,'' in \emph{Recommendation Systems in

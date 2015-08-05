@@ -33,41 +33,6 @@
 
 
 \usepackage{array}
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-
-\newcommand{\etal}{\textit{et al.}\xspace}
-
-
-
-% *** GRAPHICS RELATED PACKAGES ***
-%
-\ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
-\else
-  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
-  % will default to the driver specified in the system graphics.cfg if no
-  % driver is specified.
-  % \usepackage[dvips]{graphicx}
-  % declare the path(s) where your graphic files are
-  % \graphicspath{{../eps/}}
-  % and their extensions so you won't have to specify these with
-  % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.eps}
-\fi
-% graphicx was written by David Carlisle and Sebastian Rahtz. It is
-% required if you want graphics, photos, etc. graphicx.sty is already
-% installed on most LaTeX systems. The latest version and documentation can
-% be obtained at: 
-% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
-% Another good source of documentation is "Using Imported Graphics in
-% LaTeX2e" by Keith Reckdahl which can be found as epslatex.ps or
-% epslatex.pdf at: http://www.ctan.org/tex-archive/info/
-%
 
 
 % correct bad hyphenation here
@@ -114,7 +79,7 @@ Instituto Tecnologico Autonomo de Mexico, Mexico}
 
 \begin{abstract}
 %\boldmath
-Information workers and software developers are exposed to work fragmentation, an interleaving of activities and interruptions during their normal work day. Small-scale observational studies have shown that this can be detrimental to their work. In this paper, we perform a large-scale study of this phenomenon for the particular case of software developers performing software evolution tasks. Our study is based on several thousands interaction traces collected by Mylyn, for dozens of developers. We observe that work fragmentation is correlated to lower observed productivity at both the macro level (for entire sessions), and at the micro level (around markers of work fragmentation); further, longer activity switches seem to strengthen the effect. These observations are basis for subsequent studies investigating the phenomenon of work fragmentation.
+Information workers and software developers are exposed to work fragmentation, an interleaving of activities and interruptions during their normal work day. Small-scale observational studies have shown that this can be detrimental to their work. In this paper, we perform a large-scale study of this phenomenon for the particular case of software developers performing software evolution tasks. Our study is based on several thousands interaction traces collected by Mylyn and Usage Data Collector. We observe that work fragmentation is correlated to lower observed productivity at both the macro level (for entire sessions), and at the micro level (around markers of work fragmentation); further, longer activity switches seem to strengthen the effect. These observations are basis for subsequent studies investigating the phenomenon of work fragmentation.
 \end{abstract}
 
 
@@ -154,16 +119,22 @@ If the literature contains extensive studies of interaction workers, it lacks in
 
 Work fragmentation is indeed an important phenomenon within the context of modern software development, and the impact there may be even worse since developers build and maintain complex mental models of the software they are working on---these models may be more sensible to interruptions, and costly to rebuild. %; and 2) development is more often distributed, which may vary the nature of interruptions (trading high-bandwidth meetings for low-bandwidth electronic messages). Achieving flow in these conditions may be challenging.
 
-In this paper, we present a study addressing these issues by (1) being focused on software developers, and (2) using MSR techniques to base its conclusions on a much larger amount of data (specifically, thousands of development sessions recorded by Mylyn). The downside is that the data exploited, being operational data \cite{M14}, is of lower quality than data extracted from a full-fledged observational study. Trading quality for quantity allows us to explore different aspects of the problem, and to generate hypotheses for subsequent studies of work fragmentation and interruptions in software development. We address the following three research questions:
+In this paper, we present a study addressing these issues by (1) being focused on software developers, and (2) using MSR techniques to base its conclusions on a much larger amount of data (specifically, thousands of development sessions recorded by Mylyn). The downside is that the data exploited, being operational data \cite{M14}, is of lower quality than data extracted from a full-fledged observational study. Trading quality for quantity allows us to explore different aspects of the problem, and to generate hypotheses for subsequent studies of work fragmentation and interruptions in software development. We address the following three questions:
 \begin{itemize}
 \item \textbf{RQ1:} What is the relationship between the observed interruptions and the observed developer productivity? 
 \item \textbf{RQ2:} Is the observed relationship more pronounced in the presence of prolonged interruptions?
 \item \textbf{RQ3:}  What is the observed relationship in the vicinity of interruptions?
 \end{itemize}
 
+Additionally, the Eclipse Usage Data Collector (UDC) interaction data allows us to dig further into more specific subjects resulting in the following complementary research questions:
+\begin{itemize}
+\item \textbf{RQ4:} How is the developer's performance during the recovery time after an interruption? 
+\item \textbf{RQ4:} What events are more common during recovery time?
+\end{itemize}
+
 \emph{A note on terminology}: in this paper we (ab)use the word \emph{interruption} to refer to a \emph{gap of activity} observed in IDE activity. We do not presume that all of these activity gaps are actual interruptions (our results lead us to believe otherwise); rather, we assume they are indicators of work fragmentation in general (that is, a programmer switching contexts to perform other activities while developing, such as answering email, looking for the solution of a problem on the Internet, etc). Of note, work by Zou and Godfrey \cite{ZG06} found that interruptions were a common cause for a lack of observed activity, and classified periods of inactivity as interruptions. %programmer feedback
 
-\textbf{Structure of the paper.} We start with a literature review of studies of work fragmentation in Section 2. This section also contains a review of studies performed with the Mylyn dataset that we use. In Section 3, we describe the Mylyn dataset in further detail, highlighting potential issues in the operational data that we use in the analysis. In Section 4, we describe the measurements used in this study, and detail the processing of the data that is applied to alleviate the issues described in Section 3. The same section shows how we convert interaction traces to multivariate time series representing development sessions, and present the metrics in the analysis. In Section 5, we answer our first research question: we find an inverse relationship between number of interruptions and our three productivity indicators. In Section 6, we answer our second research question, finding that this relationship is more pronounced for development sessions with at least one longer interruption. Finally in Section 7 we answer our last research question and find that our productivity indicators are indeed lower in the vicinity of interruptions; we further find three patterns of interruptions with different characteristics. We close the paper by discussing the threats to validity of this study in Section 8, before concluding in Section 9.
+\textbf{Structure of the paper.} We start with a literature review of studies of work fragmentation in Section 2. This section also contains a review of studies performed with the Mylyn dataset that we use. In Section 3, we describe the Mylyn dataset in further detail, highlighting potential issues in the operational data that we use in the analysis. In Section 4, we describe the measurements used in this study, and detail the processing of the data that is applied to alleviate the issues described in Section 3. The same section shows how we convert interaction traces to multivariate time series representing development sessions, and present the metrics in the analysis. In Section 5, we answer our first research question: we find an inverse relationship between number of interruptions and our three productivity indicators. In Section 6, we answer our second research question, finding that this relationship is more pronounced for development sessions with at least one longer interruption. In Section 7 we answer our third research question and find that our productivity indicators are indeed lower in the vicinity of interruptions; we further find three patterns of interruptions with different characteristics. In Section 8 we describe the Usage Data Collector dataset and give detail on the selection and transformation procedures. In Section 9, we compare the Mylyn data with Usage Data Collector by executing the same processes to obtain the above results and we find that all of the previous conclusions agree with this new data. In Section 10 we answer our fourth research question, finding a positive evolution of productivity during the recovery time and a relation with the effect of the interruption. In Section 11, we answer our fifth research question finding differences on the activities performed after a positive or negative interruption, judging by the type of events executed. We close the paper by discussing the threats to validity of this study in Section 12, before concluding in Section 13.
 
 %present the results of the study, first as a global analysis where the unit of study is the development session. We find that development sessions with indicators of work fragmentation have lower productivity than the ones who have not; further, longer switches away from development have a more pronounced effect, as was shown in other studies (ref victor). We also perform additional analysis at the finer-grained level of individual work fragmentation rather than whole sessions, finding that there are several categories of interruptions. In section 6, we detail the potential threats to validity of this study, before concluding in Section 7.
 
@@ -172,7 +143,7 @@ In this paper, we present a study addressing these issues by (1) being focused o
 \subsection{Empirical Studies of Work Fragmentation}
 
 \paragraph{Studies of information workers}
-In the modern workplace, people routinely multitask and shift their attention to multiple areas, projects and activities. An observational study by Gonzalez and Mark found that information workers experience high level of multitasking, averaging 3 minutes on a task before switching to another task \cite{GM04}. This often results in work fragmentation and interruptions which some studies found has detrimental effects to knowledge workers, such as stress and frustration \cite{MGK08}. Work fragmentation as result of interruptions usually demands extra effort to recover and resume pending activities: a study of 24 information workers found that a worker needs on average 25 minutes to get back on an interrupted task \cite{MGH05}. Similarly, Iqbal and Horvitz \cite{IH07} found that people experience disorientation and loss of context when multitasking. Czerwinsky \etal found that after experiencing work fragmentation people found it more difficult to perform interrupted tasks and took longer to complete them \cite{CHW04}. % Many other studies contribute either with anecdotical or experimental evidence of the detrimental effects of interruptions and work fragmentation. Most of them are based on retrospective assessment of the effects (not real time) by studies ́ subjects and without referring to aspects related to human cognitive activity such as attention, focus, or concentration.
+In the modern workplace, people routinely multitask and shift their attention to multiple areas, projects and activities. An observational study by Gonzalez and Mark found that information workers experience high level of multitasking, averaging 3 minutes on a task before switching to another task \cite{GM04}. This often results in work fragmentation and interruptions which some studies found has detrimental effects to knowledge workers, such as stress and frustration \cite{MGK08}. Work fragmentation as result of interruptions usually demands extra effort to recover and resume pending activities: a study of 24 information workers found that a worker needs on average 25 minutes to get back on an interrupted task \cite{MGH05}. Similarly, Iqbal and Horvitz \cite{IH07} found that people experience disorientation and loss of context when multitasking. Czerwinsky """""" found that after experiencing work fragmentation people found it more difficult to perform interrupted tasks and took longer to complete them \cite{CHW04}. % Many other studies contribute either with anecdotical or experimental evidence of the detrimental effects of interruptions and work fragmentation. Most of them are based on retrospective assessment of the effects (not real time) by studies ́ subjects and without referring to aspects related to human cognitive activity such as attention, focus, or concentration.
 
 While these studies already show the effect of work fragmentation is hurtful, they are mostly observational studies over a limited time, and do not address specifically the sub-population of programmers.
 
@@ -201,6 +172,12 @@ Several studies mining interaction data have been presented. Kersten and Murphy 
 
 The Mylyn data available in the Eclipse issue tracking system was used in several studies. Ying and Robillard characterized the edit strategies of developers in the Mylyn dataset, finding three: edit-first, edit-last, and edit-throughout \cite{YR11}. Lee et al. developed Micro Interaction Metrics in order to enhance defect prediction models \cite{LJD11}. We investigated whether the duration of a task could be used to evaluate the accuracy of expertise metrics, with promising early results \cite{RD13}. Soh et al. studied the exploration patterns in the developer sessions of the Mylyn datasets, and classified their exploration strategies as referenced or unreferenced exploration; they find that unreferenced exploration were less time consuming \cite{SKGAA13}. Soh et al. conducted another study of this dataset, finding that the effort spent by a developer in a patch is not correlated with the implementation complexity of the patch \cite{SKGA13}. Bantelay et al. improved the accuracy of evolutionary couplings metrics for change prediction (usually computed with commit data); by adding interaction data, recall increased by 13\%, with a 2\% drop in precision \cite{BZK13}. Zanjani et al. integrated this approach with information retrieval techniques to support impact analysis based on textual descriptions of change requests \cite{ZSK14}.
 
+\subsection{Empirical Studies with Usage Data Collector}
+The Usage Data Collector dataset is a large collection of information about interaction data of Eclipse's users. It is publicly available and has been used on many subjects around mining interaction data. On refactoring activities, Murphy-Hll et al. used this data to understand how programmers are using refactoring tools analyzing patterns on refactoring practices, finding that most programmers don't make deep use of this tools, leaving untouched most of the configuration parameters and performing manually most of the refactoring  \cite{MPB12}. Liu et al. identified refactoring tactics of the type data floss and root canal, finding that the majority of them are floss refactoring and detecting differences on activities performed depending on the type of the refactoring \cite{LGN12}. Sahin et al. analyzed the energy usage changes after refactoring and used the UDC data to identify the most common refactoring events and selected those that fulfill the requirements of being common and cause structural changes \cite{SPC14}. 
+
+On coding tools and strategies, Murphy-Hill et al. investigated on command recommendation for software developers depending on past history of command usage and tested a set of algorithms using UDC data to obtain CVS and editing commands, getting positive feedback on a live evaluation with users \cite{MJM12}. Yoon et al. uses UDC data to compare the results obtained from a proposed plug-in for the capture of low-level events, finding a very similar report on command distribution from both tools \cite{YM11}.
+
+And on a different note, Khodabandelou used the UDC data to prove a proposed model for mining user's intentions and strategies from recorder user's traces, resulting on a model for UDC developers activities and the construction of a map followed by them \cite{KG14}.
 % other interaction data
 %Other studies were performed on additional datasets. Navtracks recommend source code files based on loops in the interaction data [Singer 2005], while DeLine et al. presented a similar approach, with the addition of sharing among a team [DeLine 2005]. Parnin et al. proposed to complement interaction histories with interaction logs, and showed initial results [Parnin 2005]. Later, Parning and Rugaber evidenced the presence of an edit lag in the majority of a large sample of development session spanning several datasets, hence showing that developers need time to resume work after an interruption [Parnin 2011]. They also evaluated several cues to help programmers resume work after interruptions forcing them to multitask [Parnin 2010].
 
@@ -518,7 +495,7 @@ More importantly, we used \textit{Cohen's d} to measure the practical significan
 \caption{Effect size and significance of the relationship between number of edit per minute, selection per minute, edit ratio, and number of interruptions} 
 \label{tbl:p_value}
 \centering
-\begin{tabular}{l | C{0.75cm} | C{0.85cm} | C{0.85cm} | C{0.85cm} |p{0.75cm}} 
+\begin{tabular}{l | p{0.75cm} | p{0.85cm} | p{0.85cm} | p{0.85cm} |p{0.75cm}} 
 
    & none & $\leq 3$ & $[4 - 5]$ & $[6 - 10]$ & $\geq 11$  \\  
   \hline
@@ -621,7 +598,7 @@ As in the previous case, the differences are significant, and we used \textit{Co
 \caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions} %, and editions and selections.}
 \label{tbl:p_value2}
 \centering
-\begin{tabular}{l | p{0.7cm} | C{1.9cm} | C{1.9cm} } 
+\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
    & none & short &  prolonged  \\  
   \hline
   \multicolumn{4}{c}{\textbf{Edits}} \\
@@ -758,7 +735,7 @@ We investigated whether the drop in activity local to interruptions was also acc
 \caption{Effect size of the ratio of edits around the interruption.}
 \label{tbl:ratio_all}
 \centering
-\begin{tabular}{l | p{0.7cm} | C{1.9cm} | C{1.9cm} } 
+\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
    & [1-5] & [5-10] & [11-15] \\  
   \hline
   \multicolumn{4}{c}{\textbf{before}} \\
