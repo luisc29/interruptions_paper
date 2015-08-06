@@ -143,7 +143,7 @@ Additionally, the Eclipse Usage Data Collector (UDC) interaction data allows us 
 \subsection{Empirical Studies of Work Fragmentation}
 
 \paragraph{Studies of information workers}
-In the modern workplace, people routinely multitask and shift their attention to multiple areas, projects and activities. An observational study by Gonzalez and Mark found that information workers experience high level of multitasking, averaging 3 minutes on a task before switching to another task \cite{GM04}. This often results in work fragmentation and interruptions which some studies found has detrimental effects to knowledge workers, such as stress and frustration \cite{MGK08}. Work fragmentation as result of interruptions usually demands extra effort to recover and resume pending activities: a study of 24 information workers found that a worker needs on average 25 minutes to get back on an interrupted task \cite{MGH05}. Similarly, Iqbal and Horvitz \cite{IH07} found that people experience disorientation and loss of context when multitasking. Czerwinsky """""" found that after experiencing work fragmentation people found it more difficult to perform interrupted tasks and took longer to complete them \cite{CHW04}. % Many other studies contribute either with anecdotical or experimental evidence of the detrimental effects of interruptions and work fragmentation. Most of them are based on retrospective assessment of the effects (not real time) by studies ́ subjects and without referring to aspects related to human cognitive activity such as attention, focus, or concentration.
+In the modern workplace, people routinely multitask and shift their attention to multiple areas, projects and activities. An observational study by Gonzalez and Mark found that information workers experience high level of multitasking, averaging 3 minutes on a task before switching to another task \cite{GM04}. This often results in work fragmentation and interruptions which some studies found has detrimental effects to knowledge workers, such as stress and frustration \cite{MGK08}. Work fragmentation as result of interruptions usually demands extra effort to recover and resume pending activities: a study of 24 information workers found that a worker needs on average 25 minutes to get back on an interrupted task \cite{MGH05}. Similarly, Iqbal and Horvitz \cite{IH07} found that people experience disorientation and loss of context when multitasking. Czerwinsky et al. found that after experiencing work fragmentation people found it more difficult to perform interrupted tasks and took longer to complete them \cite{CHW04}. % Many other studies contribute either with anecdotical or experimental evidence of the detrimental effects of interruptions and work fragmentation. Most of them are based on retrospective assessment of the effects (not real time) by studies ́ subjects and without referring to aspects related to human cognitive activity such as attention, focus, or concentration.
 
 While these studies already show the effect of work fragmentation is hurtful, they are mostly observational studies over a limited time, and do not address specifically the sub-population of programmers.
 
@@ -908,7 +908,55 @@ We used the same metrics to prove if the hypothesis hold with this data. To anal
 
 For every session, we calculated the number of editions and selections per minute, and the edit ratio. The boxplots on the Figure \ref{fig:box_int_events_udc} show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and the more interruptions the lesser are those metrics.
 
-The edit ratio also behaves on a similar manner in comparison with the Mylyn data but the effect is less pronounced and we can see more variation on the boxes. Still, the median changes accordingly with the number of interruptions, decreasing when there are more and reaching the maximum when there are none.
+\begin{table}[ht!]
+\renewcommand{\arraystretch}{1.3}
+\caption{Effect size and significance of the relationship between number of edit per minute, selection per minute, edit ratio, and number of interruptions on UDC data} 
+\label{tbl:p_value_udc}
+\centering
+\begin{tabular}{l | p{0.75cm} | p{1cm} | p{1cm} | p{1cm} |p{1cm}} 
+
+   & none & $\leq 2$ & $[3 - 4]$ & $[5 - 7]$ & $\geq 7$  \\  
+  \hline
+  \multicolumn{6}{c}{\textbf{Edits}} \\
+  \hline
+  mean & 3.97 &	2.18 & 1.82 & 1.70 & 1.59 \\ 
+  % \cline{3-6} 
+  %t.test & $\hookrightarrow$& \multicolumn{4}{c}{$<$ 2.2e-16} \\
+   \cline{3-6} 
+  U-test & $\hookrightarrow$ & \multicolumn{4}{c}{$<$ 2.2e-16} \\
+  \cline{3-6} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.58} & \textbf{0.88} & \textbf{1.05} & \textbf{1.35}    \\
+  \hline
+  
+  
+  \multicolumn{6}{c}{\textbf{Selections}} \\
+  \hline 
+  mean & 3.10 &	2.93 & 1.80 & 1.77 & 1.63  \\ 
+    % \cline{3-6} 
+    %t.test & $\hookrightarrow$& 6.258e-08 & 1.623e-12 & 4.87e-16 & $<$ 2.2e-16 \\
+     \cline{3-6} 
+    U-test & $\hookrightarrow$ & \multicolumn{4}{c}{$<$ 2.2e-16} \\
+    
+  \cline{3-6} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.44} & \textbf{0.66} & \textbf{0.81} & \textbf{0.85} \\  
+\hline
+
+
+  \multicolumn{6}{c}{\textbf{Edit ratio}} \\
+  \hline 
+  mean & 0.68 & 0.56 & 0.55 & 0.54 & 0.57 \\ 
+  \cline{3-6} 
+%    t.test & $\hookrightarrow$& 1.62E-13 & \multicolumn{3}{c}{$<$ 2.2e-16} \\
+     \cline{3-6} 
+    U-test & $\hookrightarrow$ & $<$6.9e-06 & $<$3.6e-09 & $<$5.1e-11 & $<$5.1e-09  \\
+    \cline{3-6} 
+    Cohen's $d$ & $\hookrightarrow$ & \textbf{0.37} & \textbf{0.46} & \textbf{0.49} & \textbf{0.55} \\ 
+\hline
+
+\end{tabular}
+\end{table}
+
+The edit ratio behaves on a similar manner in comparison with the data on Mylyn, where the median changes accordingly with the number of interruptions, decreasing when there are more and reaching the maximum when there are none. An important difference is that the effect overall is much less pronounced in UDC and we can see it on the effect size tests shown in the Table \ref{tbl:p_value_udc}. The numbers represent the difference on the effect and support our previous judgment. 
 
 \begin{figure}[!ht]
 \centering
@@ -940,6 +988,55 @@ The next analysis is on the effects of the size of the interruptions, considerin
 \end{figure}
 
 Again the hypothesis holds as with Mylyn. We can see on the Figure \ref{fig:box_dur_events_udc} that with short interruptions the metrics are greater than when facing a prolonged one, for more time is needed to recover after a long interruption. 
+
+
+\begin{table}[ht!]
+\renewcommand{\arraystretch}{1.3}
+\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions on UDC data} %, and editions and selections.}
+\label{tbl:p_value2_udc}
+\centering
+\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
+   & none & short &  prolonged  \\  
+  \hline
+  \multicolumn{4}{c}{\textbf{Edits}} \\
+  \hline
+  mean & 3.97 &	2.75 & 1.79 \\ 
+  % \cline{3-4} 
+  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
+   \cline{3-4} 
+  U-test & $\hookrightarrow$ &  $<$ 2.6e-12 & $<$ 2.2e-16  \\
+
+  \cline{3-4} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.48} & \textbf{0.89}   \\
+  \hline
+  
+  
+  \multicolumn{4}{c}{\textbf{Selections}} \\
+  \hline 
+  mean & 3.10 &	2.37 & 1.78 \\ 
+  % \cline{3-4} 
+  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+   \cline{3-4} 
+  U-test & $\hookrightarrow$ & $<$ 4.3e-07& $<$ 2.2e-16  \\
+  
+  \cline{3-4} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.34} & \textbf{0.68}  \\  
+  \hline
+  \multicolumn{4}{c}{\textbf{Edit ratio}} \\
+  \hline 
+  mean & 0.68 & 0.63 & 0.56\\ 
+%   \cline{3-4} 
+%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+   \cline{3-4} 
+  U-test & $\hookrightarrow$ & 0.01003 & $<$ 4.019e-09  \\
+  \cline{3-4} 
+  Cohen's $d$ & $\hookrightarrow$ & \textit{0.21} & \textit{0.44}\\
+\hline
+
+\end{tabular}
+\end{table}
+
+The effect size test results on the Table \ref{tbl:p_value2_udc} matches the previous observations on a less pronounced effect. The Cohen's \textit{d} test results tell us that we can label the effect from medium to large and the mean values act accordingly to our hypothesis and conclusions with Mylyn.
 
 \subsection{RQ3: Local relationships between interruptions and productivity}
 The sessions with UDC went through the same process of transformation into 10 chunks of equal time. The results on the Figure \ref{fig:bins_int_udc} show the same productivity pattern that we saw before with Mylyn.
@@ -987,17 +1084,17 @@ effect & pattern \\
 
 The table \ref{tbl:local_effect_udc} show a similar pattern on negative, positive and neutral interruptions in comparison with the results on Mylyn. After a positive interruption both metrics tend to increase at a high rhythm. In contrast, when facing the effects of a negative interruption the metrics take longer to reach the median.
 
-\section{RQ4: Recovery time after an interruption}
+\section{RQ4: Recovery Time after an Interruption}
 \subsection{Edition and selections during recovery time}
 The amount of information we have with Usage Data Collector allows to analyze more specific sections on a programming session. We further investigated the immediate activities after an interruption that we name the recovery time, which is a time period taken by the programmer to resume the interrupted work. 
 
-We established the recovery time as a 15 minute period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by [ref].
+We established the Recovery Time as a 15 minute period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}.
 
 It was required to make a selection of those interruptions which has a period afterwards of at least 15 minutes before another interruption. After this query we obtained 5,684 valid interruptions out of a total 110,077.
 
-From those valid interruptions, we split the time after the recovery into two phases: the first 15 minutes labeled as \textit{recovery time} and the rest as \textit{after recovery time}. We calculated the metrics of every of both phases, after diving the recovery time into chinks of five minutes to better visualize the evolution of the metrics.
+From those valid interruptions, we split the time after the interruption event into two phases: the first 15 minutes labeled as \textit{Recovery Time} and the rest as \textit{After Recovery Time}. We calculated the metrics of every of both phases, after diving the Recovery Time into chinks of five minutes to better visualize the evolution of the metrics.
 
-Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it's common to have a reduction of both editions and selections per minute. Therefore, the \textit{after recovery} time was split into two phases: one that takes the time where the metrics drop which happens 10 minutes before it (labeled as  \textit{before interruption}), and the rest is the peak of the session after the recovery time. The duration of the phase \textit{before interruption} was chosen with the conclusions after the local analysis around the interruptions.  We can see on the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through the phases.
+Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it's common to have a reduction of both editions and selections per minute. Therefore, the \textit{After Recovery Time} time was split into two phases as well: one that takes the time where the metrics drop which happens 10 minutes before the next interruption (labeled as  \textit{Before Interruption}), and the rest is the peak of the session after the Recovery Time. The duration of the phase \textit{Before Interruption} was chosen with the conclusions after the local analysis around the interruptions.  We can see on the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through the phases.
 
 \begin{figure}[!ht]
 \centering
@@ -1010,10 +1107,10 @@ Considering the results obtained on the local analysis of an interruption, we ca
 \label{fig:box_recovery_udc}
 \end{figure}
 
-The three metrics show a tendency to increase and reach a maximum between the last phase of the \textit{recovery time} and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption.
+The three metrics show a tendency to increase and reach a maximum between the last phase of the \textit{Recovery Time} and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption.
 
 \subsection{Recovery time after positive and negative interruptions}
-We take a closer look into the recovery time by splitting it into interruptions of positive and negative events. As expected the edit ratio is higher during recovery time after a positive interruption and the contrary is seen after a negative interruption.  The Figure \ref{fig:box_recovery_effect_udc} show a comparison of both effects and the overall edit ratio considering all interruptions.
+We take a closer look into the Recovery Time by splitting it into interruptions of positive and negative events. As expected the edit ratio is higher during recovery time after a positive interruption and the contrary is seen after a negative interruption.  The Figure \ref{fig:box_recovery_effect_udc} show a comparison of both effects and the overall edit ratio considering all interruptions.
 
 \begin{figure}[!ht]
 \centering
@@ -1026,8 +1123,8 @@ We take a closer look into the recovery time by splitting it into interruptions 
 
 We can see that after a positive interruption the edit ratio during recovery time is much higher than after a negative interruption, which agrees with the results on the local analysis of interruptions and the effects on the metrics. The reason of this change is probably due to the difference on the activities performed after the interruption according to the effect
 
-\section{RQ5: Common events during recovery time}
-To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described on the Table \ref{tbl:new_events_udc}.
+\section{RQ5: Common events during Recovery Time}
+To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during Recovery Time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described on the Table \ref{tbl:new_events_udc}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -1055,7 +1152,7 @@ text-nav & Navigation on the current text \\
 \end{tabular}
 \end{table}
 
-We calculated a weighted average of every event based on the average frequency of execution during the first phase of recovery time after a positive or negative interruption, multiplied by the percentage of users that make use of that event. The same calculation was made using statistics considering all the times with no distinction. Then we compared the weighted average changes to have evidence of what kind of events are executed after an interruption depending on its effect. The statistics can be found on the Table \ref{tbl:stats_events}.
+We calculated a weighted average of every event based on the average frequency of execution during the first phase of Recovery Time after a positive or negative interruption, multiplied by the percentage of users that make use of that event. The same calculation was made using statistics considering all the times with no distinction. Then we compared the weighted average changes to have evidence of what kind of events are executed after an interruption depending on its effect. The statistics can be found on the Table \ref{tbl:stats_events}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}

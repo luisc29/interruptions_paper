@@ -192,6 +192,10 @@ P.~J. Rousseeuw, ``Silhouettes: a graphical aid to the interpretation and
 E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
   Information Systems}, vol.~7, pp. 358--386, 2005.
 
+\bibitem{SBV98}
+R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
+  never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
+
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
   \emph{Autom. Softw. Eng.}, vol.~17, no.~2, pp. 181--212, 2010.
