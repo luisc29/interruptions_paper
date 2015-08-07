@@ -1,21 +1,4 @@
-%% bare_jrnl.tex
-%% V1.3
-%% 2007/01/11
-%% by Michael Shell
-%% see http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.7 or later) with an IEEE journal paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
-%% and
-%% http://www.ieee.org/
-
-
-\documentclass[conference]{IEEEtran}
+\documentclass[times]{smrauth}
 
 
 \usepackage{graphics}
@@ -34,47 +17,36 @@
 
 \usepackage{array}
 
+\def\volumeyear{2016}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
-\IEEEoverridecommandlockouts
 
 \begin{document}
 %
+\runningheads{H. Sanchez, R. Robbes, L. Cruz, V. Gonzalez}{Work Fragmentation in Developer Interaction Data}
+
+
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{An Empirical Study of Work Fragmentation in Software Evolution Tasks}
-%
-%
-% author names and IEEE memberships
-% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
-% a structure at a ~ so this keeps an author's name from being broken across
-% two lines.
-% use \thanks{} to gain access to the first footnote area
-% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
-% was not built to handle multiple paragraphs
-%
+\title{ Work Fragmentation in Developer Interaction Data}
 
-\author{
-\IEEEauthorblockN{Heider Sanchez$^*$, Romain Robbes$^{\dagger}$} 
-\IEEEauthorblockA{
-Computer Science Department (DCC) \\
-University of Chile, Chile
-}
+\author{Heider Sanchez$^{\ddagger}$, Romain Robbes$^{\ddagger}$, Luis Carlos Cruz$^{\S}$, Victor M. Gonzalez$^{\S}$}
 
-\and
-\IEEEauthorblockN{Victor M. Gonzalez$^{\dagger}$}
-\IEEEauthorblockA{Department of Computer Science \\ 
-Instituto Tecnologico Autonomo de Mexico, Mexico}
-\thanks{$^*$ supported by a research grant from CONICYT-Chile}
-\thanks{$^{\dagger}$ supported by LACCIR Project RFP1212LAC004}
-}
+\address{$^{\ddagger}$: Computer Science Department (DCC), University of Chile, Chile;
+$^{\S}$: Instituto Tecnologico Autonomo de Mexico, Mexico}
 
+\corraddr{Romain Robbes (rrobbes@dcc.uchile.cl)}
+
+\maketitle
+
+\footnotetext[2]{All the authors are supported by LACCIR Project RFP2012LAC004\\
+H. Sanchez is supported by a research grant from CONICYT-Chile\\
+R. Robbes is supported by FONDECYT project \#1151195}
 
 
 % make the title area
-\maketitle
 
 
 \begin{abstract}
@@ -84,14 +56,8 @@ Information workers and software developers are exposed to work fragmentation, a
 
 
 % Note that keywords are not normally used for peerreview papers.
-\begin{IEEEkeywords}
-Work fragmentation, interruptions, interaction data %empirical software engineering, mining software repositories
-\end{IEEEkeywords}
+\keywords{Work fragmentation, interruptions, interaction data} %empirical software engineering, mining software repositories
 
-
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
-\IEEEpeerreviewmaketitle
 
 
 
@@ -1238,10 +1204,6 @@ We also analyzed the Recovery Time on detail, finding a higher productivity when
 Moreover, we found that after a positive interruption the most common events during the first minutes of the Recovery Time are those with an assertive intention like edition, refactoring and saving a file. In contrast, after a negative interruption the most common events are debugging, searching and navigation around classes, which tell us about a doubtful and uncertain behavior from the programmer.
 
 
-
-\ifCLASSOPTIONcaptionsoff
-  \newpage
-\fi
 
 
 
