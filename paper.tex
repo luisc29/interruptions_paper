@@ -888,7 +888,7 @@ control & $0.8\%$  \\
 
 The edition and selection types are of the same nature as with Mylyn. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; It is difficult to determine when and why this events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear) so we decided to establish this special classification for them. Finally, the events of the type control are those for the control version of files. 
 
-\section{Comparison of results with Mylyn and UDC}
+\section{Comparison of results with UDC}
 Once the UDC data was similar to the format of the Mylyn data we executed the same methods to have an answer to the proposed research questions with this new dataset.
 
 \subsection{RQ1: Relationship between interruptions and productivity}
@@ -1124,6 +1124,7 @@ We take a closer look into the Recovery Time by splitting it into interruptions 
 We can see that after a positive interruption the edit ratio during recovery time is much higher than after a negative interruption, which agrees with the results on the local analysis of interruptions and the effects on the metrics. The reason of this change is probably due to the difference on the activities performed after the interruption according to the effect
 
 \section{RQ5: Common events during Recovery Time}
+
 To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during Recovery Time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described on the Table \ref{tbl:new_events_udc}.
 
 \begin{table}[ht!]
@@ -1184,6 +1185,14 @@ After a positive interruption we can see that the more common activities are tex
 We can conclude that after a positive interruption there are more assertive actions with a clear intention like refactoring a class or saving all changes. And after a negative interruption there are more uncertainty and doubt judging by the activities performed like debugging, searching for text or navigating around classes.
 
 It is noticeable the relation between type of events. For example is natural to think that if there is a lot of debugging events there is also a lot of clean and build events as they are necessary to begin a debugging session. There is also a link between high level navigation and debugging because navigating into a method may take you to another class.
+\section{Discussion}
+Although they represent the same kind of information both Mylyn and UDC datasets have some peculiarities that make them unique and require different treatments. 
+
+On one side we have Mylyn a low level monitor to capture interaction data to better fix bugs for Eclipse projects. And in the other hand Usage Data Collector, a low level events monitor as well but with a more general approach. As the latter was installed by default on all the Eclipse distributions from 2008 to 2010, the size of the information collected is several times bigger than Mylyn. This makes of the UDC data a better source of information to analyze phenomenons on a wide scale, in comparison with Mylyn. For example, with UDC we can have interaction data from Java, Web, and mobile developers, and more specific roles like back-end developers, testers and C++ users. We can also have more details about every event which allows us to imply more things well beyond the role or language of preference of the programmer.
+
+Begin installed by default is also a disadvantage for UDC as many of the data is actually garbage. For example, there are a lot of users that have only a few events registered, or the work sessions tell us very little about the actual coding tendencies of the programmer. With Mylyn we can be sure that most of the data was captured under the assertiveness of having interaction data logged for further analysis.
+
+On this particular scenario, an advantage of Mylyn is that we had a predefined classification of the events and saved this process made with UDC. But if we expect to do a low level classification like the one on the analysis of common events during Recovery Time, then UDC is a better option. This is probably one of the causes in the difference of effects on the results (more pronounced with Mylyn) because we used a different criteria to chose between Edition and Selection when classifying the events.
 
 \section{Threats to Validity}
 The main threats to the validity of our study are construct validity threats due to the operational nature of the data recorded by Mylyn \cite{M14}. Most of them are mentioned above but recalled here for convenience.
@@ -1208,6 +1217,12 @@ This study also has threats to external validity. The gathered data corresponds 
 
 %which adapted their development tasks to the platform features: Eclipse IDE $+$ Mylyn Tool. However, the bug reports did not all have associated traces and the programmers did not all submit a trace. Moreover, we used approximate measures over a sample of these data that could be analyzed. Another threat regarding data are detailed in \cite{YR11}.  The biased information that we have analyzed also is a threat to our research results. 
 
+The same threats about the metrics, implications and statistical conclusions apply on the results with UDC. Additionally, we define as a thread the classification of events for it was based on our own criteria of what should be an Edition and Selection event. We took this liberty due to the extra information we had, in comparison with Mylyn, and the actual lack of a pre classification. We had special care when choosing the proper classification but it depends on the definition on what is Edition and Selection for it is a factor that can alter the final results. However, we had a very clear boundary between both types and were consistent on our judgments. 
+
+Similar to the above, we faced a problem when dealing with the workbench activation and deactivation events for they can me executed under many circumstances. We performed live test to understand how this events work and after that we had some assurances about their operation, for example they mark when the user leaves and returns to Eclipse, but we had more uncertainty on other scenarios. Therefore, we decided to exclude them from the results and only us them to define an interruption or the end of a session.
+
+Another thread is the random selection of users to get their data. Although a posterior filter allows us to manage with only valid sessions, we understand that this kind of data selection might be irresponsible. For future work we'll have another approach and be more selective on the information we work.
+
 
 \section{Conclusions and Future Work}
 This paper presented an empirical study on the prevalence of work fragmentation in software evolution tasks, and its relationship to developer productivity. The study was based on the Mylyn dataset of software evolution tasks, where work fragmentation is indicated by gaps of activity (interruptions) in the IDE, and productivity is measured in terms of the number of edits, selections, and the edit ratio.
@@ -1215,6 +1230,13 @@ This paper presented an empirical study on the prevalence of work fragmentation 
 We analyzed several thousands software evolution tasks, originating from several dozens of developers. Our global analysis found an inverse relationship between number and duration of interruptions and all three of our productivity indicators. These findings agree with the literature on information workers and software developers. 
 
 A subsequent local analysis around interruptions comforted these results as the activity around interruptions was found to be lower than average. This analysis also found two well-defined patterns around interruptions: interruptions yielding a negative effects (consistent with a real-life interruption involving an expensive context switch), and interruptions with positive effects (consistent with information-seeking behavior). Further studies are necessary to expand on these findings.
+
+With the Usage Data Collector dataset, we performed the same methods to compare the results obtained with Mylyn. We found the same observations on the effect of interruptions on productivity, and even though the effect is less marked we can reach the same conclusions.
+
+We also analyzed the Recovery Time on detail, finding a higher productivity when the interruption is positive and we identified a positive evolution of the metrics as the programmer advances through this stage, reaching a peak of productivity between the last minutes of the Recovery Time and 10 minutes before the next interruption happens.  
+
+Moreover, we found that after a positive interruption the most common events during the first minutes of the Recovery Time are those with an assertive intention like edition, refactoring and saving a file. In contrast, after a negative interruption the most common events are debugging, searching and navigation around classes, which tell us about a doubtful and uncertain behavior from the programmer.
+
 
 
 \ifCLASSOPTIONcaptionsoff
