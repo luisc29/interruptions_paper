@@ -3,7 +3,7 @@
 \BOOKMARK [2][-]{subsection.2.1}{Empirical Studies of Work Fragmentation}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Empirical Studies on Mylyn Data}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{Empirical Studies with Usage Data Collector}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{Data Description}{}% 6
+\BOOKMARK [1][-]{section.3}{Mylyn Data Description}{}% 6
 \BOOKMARK [2][-]{subsection.3.1}{Mylyn Data}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.2}{Interaction History Format}{section.3}% 8
 \BOOKMARK [2][-]{subsection.3.3}{Special Characteristics of Mylyn Data}{section.3}% 9
@@ -20,11 +20,11 @@
 \BOOKMARK [2][-]{subsection.7.1}{Generic Sessions}{section.7}% 20
 \BOOKMARK [2][-]{subsection.7.2}{Local Analysis}{section.7}% 21
 \BOOKMARK [2][-]{subsection.7.3}{Patterns of Interruptions}{section.7}% 22
-\BOOKMARK [1][-]{section.8}{Usage Data Collector}{}% 23
-\BOOKMARK [2][-]{subsection.8.1}{Data description}{section.8}% 24
+\BOOKMARK [1][-]{section.8}{Eclipse Usage Data Collector Data Description}{}% 23
+\BOOKMARK [2][-]{subsection.8.1}{The Eclipse UDC}{section.8}% 24
 \BOOKMARK [2][-]{subsection.8.2}{Selection and transformation}{section.8}% 25
 \BOOKMARK [2][-]{subsection.8.3}{Classification of events}{section.8}% 26
-\BOOKMARK [1][-]{section.9}{Comparison of results with UDC}{}% 27
+\BOOKMARK [1][-]{section.9}{Results of RQ1, RQ2, and RQ3 on UDC}{}% 27
 \BOOKMARK [2][-]{subsection.9.1}{RQ1: Relationship between interruptions and productivity}{section.9}% 28
 \BOOKMARK [2][-]{subsection.9.2}{RQ2: Relationship between duration of interruptions and productivity}{section.9}% 29
 \BOOKMARK [2][-]{subsection.9.3}{RQ3: Local relationships between interruptions and productivity}{section.9}% 30
