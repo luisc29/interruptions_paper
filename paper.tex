@@ -1022,7 +1022,7 @@ The median of editions and selections per minute are greater in sessions without
 
 As for the observation that activity was overall higher in the middle of the session we do see this for sessions without interruptions. For sessions with interruptions, selection activity appears to be constant over time, while edit activity appears to rise over time with a slight drop at the end.
 
-On a local analysis around the interruptions, we can see a similar interesting behavior of the edition and selections metrics as we observed with Mylyn. In the Figure \ref{fig:all_ints_udc} we show the frequency of editions and selections around the interruptions, specifically 30 minutes before and after. We can see that close to the interruption the frequency of editions and selections drastically drop, and in a radius of around 10 minutes both metrics are below the overall median. This phenomenon is also visible on the same version of this plot with Mylyn, agreeing that the activity of programming gradually decreases before the interruption and takes several minutes to restore the intensity of work above the median. We also see that the edit activity in UDC data is \emph{more} affected by interruptions compared to selection activity: the edits pass below the selections events near the interruption. In contrast to the overall trend, the overall effect appears to be more drastic for UDC data this time.
+On a local analysis around the interruptions, we can see a similar interesting behavior of the edition and selections metrics as we observed with Mylyn. In the Figure \ref{fig:all_ints_udc} we show the frequency of editions and selections around the interruptions, specifically 30 minutes before and after. We can see that close to the interruption the frequency of editions and selections drastically drop, and in a radius of around 10 minutes both metrics are below the overall median. This phenomenon is also visible on the same version of this plot with Mylyn, agreeing that the activity of programming gradually decreases before the interruption and takes several minutes to restore the intensity of work above the median. Similarly than for Mylyn, we can see that the edits pass below the selections events near the interruption. %In contrast to the overall trend, the overall effect appears to be more drastic for UDC data this time.
 
 \begin{figure}[!ht]
 \centering
@@ -1156,13 +1156,37 @@ We can conclude that after a positive interruption there are more assertive acti
 It is noticeable the relation between type of events. For example is natural to think that if there is a lot of debugging events there is also a lot of clean and build events as they are necessary to begin a debugging session. There is also a link between high level navigation and debugging because navigating into a method may take you to another class.
 
 \section{Discussion}
-Although they represent the same kind of information both Mylyn and UDC datasets have some peculiarities that make them unique and require different treatments. 
 
-On one side we have Mylyn a low level monitor to capture interaction data to better fix bugs for Eclipse projects. And in the other hand Usage Data Collector, a low level events monitor as well but with a more general approach. As the latter was installed by default on all the Eclipse distributions from 2008 to 2010, the size of the information collected is several times bigger than Mylyn. This makes of the UDC data a better source of information to analyze phenomenons on a wide scale, in comparison with Mylyn. For example, with UDC we can have interaction data from Java, Web, and mobile developers, and more specific roles like back-end developers, testers and C++ users. We can also have more details about every event which allows us to imply more things well beyond the role or language of preference of the programmer.
+\paragraph{Comparison of the datasets}
+Although they represent the same kind of information both Mylyn and UDC datasets have some peculiarities that make them unique that we discuss here.
 
-Begin installed by default is also a disadvantage for UDC as many of the data is actually garbage. For example, there are a lot of users that have only a few events registered, or the work sessions tell us very little about the actual coding tendencies of the programmer. With Mylyn we can be sure that most of the data was captured under the assertiveness of having interaction data logged for further analysis.
+The interaction data recorded by Mylyn is the basis for a recommendation tool, and is focused on Java projects. On the other hand, the interaction data recorded by the UDC is only used for diagnostic purposes, and is much more generic. For instance, the UDC has interaction data from Java, Web, and mobile developers, and more specific roles like back-end developers, testers and C++ or PHP users. 
 
-On this particular scenario, an advantage of Mylyn is that we had a predefined classification of the events and saved this process made with UDC. But if we expect to do a low level classification like the one on the analysis of common events during Recovery Time, then UDC is a better option. This is probably one of the causes in the difference of effects on the results (more pronounced with Mylyn) because we used a different criteria to chose between Edition and Selection when classifying the events.
+As the UDC was installed by default on all the Eclipse distributions from 2008 to 2010, the size of the information collected is several orders of magnitude larger than the Mylyn dataset, which was collected since on a few dozen of developers who installed it voluntarily and contributed to the Mylyn and Eclipse projects. This makes of the UDC data a better source of information to analyze phenomenons on a wide scale.
+
+The UDC and Mylyn also offer different level of details: while the UDC records fine-grained type of events, Mylyn records the entity that were affected by the events (Java packages, classes, and methods). On the other hand, Mylyn has essentially two types of events of interest (edits and selections), while the UDC has no information on the entities that were affected.
+
+%We can also have more details about every event which allows us to imply more things well beyond the role or language of preference of the programmer.
+
+%On one side we have Mylyn a low level monitor to capture interaction data to better fix bugs for Eclipse projects. And in the other hand Usage Data Collector, a low level events monitor as well but with a more general approach. 
+
+
+%Begin installed by default is also a disadvantage for UDC as many of the data is actually garbage. For example, there are a lot of users that have only a few events registered, or the work sessions tell us very little about the actual coding tendencies of the programmer. With Mylyn we can be sure that most of the data was captured under the assertiveness of having interaction data logged for further analysis.
+
+%On this particular scenario, an advantage of Mylyn is that we had a predefined classification of the events and saved this process made with UDC. But if we expect to do a low level classification like the one on the analysis of common events during Recovery Time, then UDC is a better option. This is probably one of the causes in the difference of effects on the results (more pronounced with Mylyn) because we used a different criteria to chose between Edition and Selection when classifying the events.
+
+\paragraph{Comparison of the results}
+
+We conducted a replication of the results of RQ1, RQ2 and RQ3 with the additional dataset. If we noted similarities in the observations accross both datasets, it is important to discuss the differences in the size of the effects that were observed: the overall effects observed were larger for the Mylyn dataset than for the UDC dataset.
+
+The fact that all the observations go in the same direction lends us more confidence in our conclusions. However, the reduced magnitude of the effect gave us pause. We can think of several reasons for this behavior:
+
+\begin{itemize}
+\item The models are not directly comparable: Mylyn records edition and selection events directly, while the UDC records a broader array of user activity. As such, our classification of UDC events as edits, selections, or other, does not exactly replicate the way the Mylyn model operates. It is possible that some events are more frequent in the UDC than in Mylyn, for instance. We debated several ways to fine-tune our model of the UDC data, including weighting some UDC events more than others, but ultimately decided against doing so. As the models are not directly comparable, we primarily focus on intra-model comparisons.
+\item The (comparatively) small size of the Mylyn dataset may have favored outliers: since there is data from dozens of developers only in the Mylyn dataset, a few outliers may have affected the results. The UDC model is however based on 1,000 UDC users.
+\item Non-java users in the UDC: A small portion of UDC users were not primarily programming in Java; some were using C++, PHP, web frameworks, or a report generation plugin known as BIRT. These may have had an impact on the results.
+\end{itemize}
+
 
 \section{Threats to Validity}
 The main threats to the validity of our study are construct validity threats due to the operational nature of the data recorded by Mylyn and the UDC \cite{M14}. Most of them are mentioned above but recalled here for convenience.
