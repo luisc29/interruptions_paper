@@ -280,7 +280,7 @@ It could be possible that these traces we discarded were biased in one way or an
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=1.0\linewidth,clip=, angle=0]{figures/hist_rejected} 
+\includegraphics[width=0.5\linewidth,clip=, angle=0]{figures/hist_rejected} 
 \end{tabular}
 \caption{Grouping by date all the traces, with aggregate information (light gray) and without aggregate information (dark gray).}
 \label{fig:hist_rejected}
@@ -302,7 +302,7 @@ After filtering out traces, we describe the final processing steps that yield th
 \begin{figure}[t]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=0.75\linewidth,clip=, angle=0]{figures/mass_event} 
+\includegraphics[width=0.5\linewidth,clip=, angle=0]{figures/mass_event} 
 \end{tabular}
 \caption{Replacing five massive events with only two events.}
 \label{fig:mass_event}
@@ -348,7 +348,7 @@ We identified that 98\% of sessions had at least one gap of activity. Moreover, 
 \caption{prevalence of interruptions according to their duration time. }
 \label{tbl:by_duration}
 \centering
-\begin{tabular}{p{2.1cm}|p{0.8cm}|p{3.4cm}} 
+\begin{tabular}{p{3cm}|p{0.8cm}|p{4cm}} 
 duration & ratio & examples  \\
   \hline   
 $[3  - 12 min \rangle$ & 69\% & short pause, answer a question, thinking, looking for interruption  \\ 
@@ -389,7 +389,7 @@ Metrics characterizing productivity and activity:
 \begin{figure}[t]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.95\linewidth,clip=, angle=0]{figures/trans} 
+\includegraphics[width=.5\linewidth,clip=, angle=0]{figures/trans} 
 \end{tabular}
 \caption{Example of how to compress a time series. }
 \label{fig:trans}
@@ -443,13 +443,20 @@ We split the data in five groups: The first group contain all the sessions witho
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_int_events_edit}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_int_events_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_int_ratio} \\
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_edit}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_sel}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_ratio} 
+\endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selection events per minute, the edit ratio, and the number of interruptions. }
 \label{fig:box_int_events}
 \end{figure}
+
 
 Beyond visual inspection, we also quantify the statistical and the practical significance of these observations. First, all the differences observed are statistically significant with very low p-values (see Table~\ref{tbl:p_value}) according to the Mann-Whitney U-test. This is not surprising, given the shape of the boxplots and the size of the samples.
 
@@ -463,7 +470,7 @@ More importantly, we used \textit{Cohen's d} to measure the practical significan
 \caption{Effect size and significance of the relationship between number of edit per minute, selection per minute, edit ratio, and number of interruptions} 
 \label{tbl:p_value}
 \centering
-\begin{tabular}{l | p{0.75cm} | p{0.85cm} | p{0.85cm} | p{0.85cm} |p{0.75cm}} 
+\begin{tabular}{l | p{0.75cm} | p{1.2cm} | p{1.2cm} | p{1.2cm} |p{1.2cm}} 
 
    & none & $\leq 3$ & $[4 - 5]$ & $[6 - 10]$ & $\geq 11$  \\  
   \hline
@@ -542,13 +549,20 @@ As in the previous case, the differences are significant, and we used \textit{Co
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_plot_range_edit}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_plot_range_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/box_dur_ratio}
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_edit}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_sel}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_dur_ratio}
+\endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration}
 \label{fig:box_dur_events}
 \end{figure}
+
 
 %\begin{figure}[!ht]
 %\centering
@@ -650,13 +664,20 @@ These results support our previous observations at a finer level, an corroborate
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/without_int_med} \\
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/with_int1_med} \\
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/with_int2_med} 
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/without_int_med} 
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/with_int1_med} 
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/with_int2_med} 
+\endminipage\hfill
 \end{tabular}
 \caption{Global representation of a session with: no interruptions (top); only short interruptions (middle); and at least one prolonged interruption (bottom). }
 \label{fig:bins_int}
 \end{figure}
+
 
 
 \subsection{Local Analysis}
@@ -680,7 +701,7 @@ Below we describe some observations:
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=0.9\linewidth,clip=, angle=0]{figures/all_ints} 
+\includegraphics[width=0.5\linewidth,clip=, angle=0]{figures/all_ints} 
 \end{tabular}
 \caption{Local effect of an interruption in the user activity.}
 \label{fig:all_ints}
@@ -692,11 +713,12 @@ We investigated whether the drop in activity local to interruptions was also acc
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=0.9\linewidth,clip=, angle=0]{figures/ratio_all} 
+\includegraphics[width=0.5\linewidth,clip=, angle=0]{figures/ratio_all} 
 \end{tabular}
 \caption{Ratio of edits around the interruption. }
 \label{fig:ratio_all}
 \end{figure}
+
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -775,11 +797,20 @@ effect & pattern \\
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-Positive Effect \\
-\includegraphics[width=0.9\linewidth,clip=, angle=0]{figures/ratio_pos} \\ 
-\\
-Negative Effect \\
-\includegraphics[width=0.9\linewidth,clip=, angle=0]{figures/ratio_neg} \\
+\minipage{0.5\textwidth}
+\begin{center}
+{Positive Effect}
+\end{center} 
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/ratio_pos} \\ 
+
+\endminipage\hfill
+\minipage{0.5\textwidth}
+\begin{center}
+Negative Effect
+\end{center}
+
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/ratio_neg} \\
+\endminipage\hfill
 \end{tabular}
 \caption{Ratio of edits for positive and negative local effect. }
 \label{fig:ratio_rest}
@@ -797,7 +828,7 @@ The Usage Data Collector (UDC) dataset is a large compendium of information abou
 \caption{Attributes in UDC data. }
 \label{tbl:att_udc}
 \centering
-\begin{tabular}{|p{1.7cm}|p{3.5cm}|} 
+\begin{tabular}{|p{2.5cm}|p{7cm}|} 
   \hline 
 attribute & description \\  
   \hline 
@@ -834,7 +865,7 @@ We took into consideration the attributes \textit{what}, \textit{kind} and \text
 The classification for the rest of the events is more complex: we needed to check directly the command description and the bundle name it belongs to in order to precisely infer its meaning (e.g., . We could label as edition all those commands with the attributes \textit{command} and \textit{executed}. The majority of them are in fact of that type, but some commands executed also can open a view, navigate through the text or go to another class. For this reason we took a closer look into the bundle name and what the description can tell us about the events.
 
 Thus, by default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thorough analysis to identify those that are actually selection events.  This way we categorized as selection all the events where we could tell based on the description if they have the purpose to, for instance, navigate to another window, open a perspective, find and replace words, search code, debug code, or perform window management. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the table \ref{tbl:prop_events_udc}.
-We used an iterative process involving two of the authors of the paper to arrive to this result; the process was iterative, until we reached consensus.
+We used an iterative process involving two of the authors of the paper to arrive to this result; the process was iterative, until we reached consensus. A sample of the classification can be seen on the Table \ref{tbl:ej_events_udc}.
 
 \begin{table}[ht!]
 \renewcommand{\arraystretch}{1.3}
@@ -852,7 +883,28 @@ system & $31.5\%$  \\
 control & $0.8\%$  \\
 \hline
 \end{tabular}
+\end{table}
 
+\begin{table}[ht!]
+\renewcommand{\arraystretch}{1.3}
+\caption{Sample of classified events. }
+\label{tbl:ej_events_udc}
+\centering
+\begin{tabular}{|p{7.5cm}| p{2 cm} |} 
+  \hline 
+description & type \\  
+  \hline 
+    \hline 
+org.eclipse.ui.edit.delete & edition \\
+org.eclipse.ui.file.save & edition \\
+org.eclipse.ui.edit.undo & edition \\
+org.eclipse.jdt.ui.CompilationUnitEditor & selection \\
+org.eclipse.ui.console.ConsoleView & selection \\
+org.eclipse.debug.ui.commands.StepOver & selection \\ 
+org.eclipse.ui.workbench & system \\
+org.eclipse.team.sync.views.SynchronizeView & control \\
+\hline
+\end{tabular}
 \end{table}
 
 The edition and selection types the ones we are interested in for the study. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; it is difficult to determine when and why this events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear) so we decided to establish this particular classification for them. Finally, the events of the type control are those related to the version control system. 
@@ -931,9 +983,15 @@ The edit ratio behaves on a similar manner in comparison with the data on Mylyn,
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_edit}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_int_events_ratio} \\
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_edit}  \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_sel}  \\
+\endminipage\hfil
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_ratio} \\
+\endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selection events per minute, the edit ratio, and the number of interruptions. }
 \label{fig:box_int_events_udc}
@@ -949,9 +1007,15 @@ The next analysis is on the effects of the size of the interruptions, considerin
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio}
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit}  \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel}  \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio} \\
+\endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration}
 \label{fig:box_dur_events_udc}
@@ -1007,12 +1071,19 @@ The effect size test results on the Table \ref{tbl:p_value2_udc} matches the pre
 
 \subsection{RQ3: Local relationships between interruptions and productivity}
 The sessions with UDC went through the same process of transformation into 10 chunks of equal time. The results on the Figure \ref{fig:bins_int_udc} shows similar, but not identical patterns compared to the ones we observed in Mylyn.
+
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/udc_without_int_med} \\
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/udc_with_int1_med} \\
-\includegraphics[width=.80\linewidth,clip=, angle=0]{figures/udc_with_int2_med} 
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_without_int_med} \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_with_int1_med} \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_with_int2_med} \\
+\endminipage\hfill
 \end{tabular}
 \caption{Global representation of a session with: no interruptions (top); only short interruptions (middle); and at least one prolonged interruption (bottom). }
 \label{fig:bins_int_udc}
@@ -1027,7 +1098,7 @@ On a local analysis around the interruptions, we can see a similar interesting b
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=0.9\linewidth,clip=, angle=0]{figures/udc_all_ints} 
+\includegraphics[width=0.5\linewidth,clip=, angle=0]{figures/udc_all_ints} 
 \end{tabular}
 \caption{Local effect of an interruption in the user activity.}
 \label{fig:all_ints_udc}
@@ -1068,9 +1139,15 @@ Considering the results obtained on the local analysis of an interruption, we ca
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_recovery_edit}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_recovery_sel}  \\
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_recovery_ratio} \\
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_recovery_edit}  \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_recovery_sel}  \\
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_recovery_ratio} \\
+\endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the detailed evolution of editions, selections and edit ratio during recovery time and after recovery time. }
 \label{fig:box_recovery_udc}
@@ -1084,7 +1161,7 @@ We take a closer look into the Recovery Time by splitting it into interruptions 
 \begin{figure}[!ht]
 \centering
 \begin{tabular}{c}
-\includegraphics[width=.8\linewidth,clip=, angle=0]{figures/udc_box_recovery_pos_ratio} \\
+\includegraphics[width=.5\linewidth,clip=, angle=0]{figures/udc_box_recovery_pos_ratio} \\
 \end{tabular}
 \caption{Boxplot of the edit ratio during recovery time after a positive or negative interruption, compared to the edit ratio overall. }
 \label{fig:box_recovery_effect_udc}
@@ -1101,7 +1178,7 @@ To better understand the reasons of the difference between positive and negative
 \caption{New category of events. }
 \label{tbl:new_events_udc}
 \centering
-\begin{tabular}{|p{1.7cm}|p{4 cm}|} 
+\begin{tabular}{|p{2.5cm}|p{9 cm}|} 
   \hline 
 category & description \\  
   \hline 
@@ -1129,7 +1206,7 @@ We calculated a weighted average of every event based on the average frequency o
 \caption{Comparison of execution after positive or negative interruptions. }
 \label{tbl:stats_events}
 \centering
-\begin{tabular}{|p{1.7cm}|p{1cm} |p{1cm}|p{1cm}|} 
+\begin{tabular}{|p{3cm}|p{1cm} |p{1cm}|p{1cm}|} 
   \hline 
 category & positive & negative & all \\  
   \hline 
