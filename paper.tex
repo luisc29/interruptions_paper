@@ -188,6 +188,7 @@ In Table \ref{tbl:kind_event} we show the different kinds of events and their de
 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Kinds of interaction events~\cite{KM06}. }
 \label{tbl:kind_event}
@@ -210,6 +211,7 @@ prediction & indirect & Capture of potential future interaction events \\
 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{ Example of interaction history. }
 \label{tbl:sample_event}
@@ -315,6 +317,7 @@ After filtering out traces, we describe the final processing steps that yield th
  Table \ref{tbl:mass_events} shows the ratio of variation of the number of events after preprocessing.
  
  \begin{table}[hb!]
+ \tiny
  \renewcommand{\arraystretch}{1.3}
  \caption{Number of events after preprocessing.}
  \label{tbl:mass_events}
@@ -344,6 +347,7 @@ We define empirically an interruption as a pause of programming of duration $\ge
 We identified that 98\% of sessions had at least one gap of activity. Moreover, we observe that the short interruptions predominate over the prolonged interruptions (Table \ref{tbl:by_duration}). This first result tells us that work fragmentation is extremely prevalent in our dataset.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{prevalence of interruptions according to their duration time. }
 \label{tbl:by_duration}
@@ -427,6 +431,7 @@ As mentioned above, we use the metrics of edit, selection, and edit ratio as ind
 We split the data in five groups: The first group contain all the sessions without interruptions (\textit{none}). For the others groups, we have considered four ranges of number of interruptions delimited by their quartiles (Table \ref{tbl:quartil_int}). Then, for each group, we display the distribution of events per minute and edit ratio via boxplots (Figure \ref{fig:box_int_events}). We observe a large difference between the sessions without interruptions and the ones who do. Further, we observe that the rate of events per minute decreases slightly when the session has more interruptions. Therefore, we can intuit that the relationship between number of interruptions and the productivity indicators that are edits and selections, tends to be inversely proportional. 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Thresholds used to group sessions based on their number of interruptions} %separate the data in four percentages groups regarding the number of interruptions in each trace.}
 \label{tbl:quartil_int}
@@ -466,6 +471,7 @@ More importantly, we used \textit{Cohen's d} to measure the practical significan
 %We conclude that the user productivity could be adversely affected by increased interruptions.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Effect size and significance of the relationship between number of edit per minute, selection per minute, edit ratio, and number of interruptions} 
 \label{tbl:p_value}
@@ -576,6 +582,7 @@ As in the previous case, the differences are significant, and we used \textit{Co
 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions} %, and editions and selections.}
 \label{tbl:p_value2}
@@ -721,6 +728,7 @@ We investigated whether the drop in activity local to interruptions was also acc
 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Effect size of the ratio of edits around the interruption.}
 \label{tbl:ratio_all}
@@ -824,6 +832,7 @@ The Usage Data Collector (UDC) dataset is a large compendium of information abou
 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Attributes in UDC data. }
 \label{tbl:att_udc}
@@ -868,6 +877,7 @@ Thus, by default, all events of the attributes \textit{command} and \textit{exec
 We used an iterative process involving two of the authors of the paper to arrive to this result; the process was iterative, until we reached consensus. A sample of the classification can be seen on the Table \ref{tbl:ej_events_udc}.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Proportion of events. }
 \label{tbl:prop_events_udc}
@@ -886,11 +896,12 @@ control & $0.8\%$  \\
 \end{table}
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Sample of classified events. }
 \label{tbl:ej_events_udc}
 \centering
-\begin{tabular}{|p{7.5cm}| p{2 cm} |} 
+\begin{tabular}{|p{5.5cm}| p{2 cm} |} 
   \hline 
 description & type \\  
   \hline 
@@ -917,6 +928,7 @@ After processing the data, we were able to reuse the same data analysis pipeline
 We used the same metrics to investigate whether we could observe a similar behavior with the new dataset. To analyze the effects of interruptions on productivity we divided the sessions in quantiles according to the number of interruptions they hold. We obtained slightly different results to Mylyn, and consequently we changed the thresholds used to classify the sessions by the number of interruptions. The new thresholds are shown in the Table \ref{tbl:quartil_int_udc}.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Thresholds used to group sessions based on their number of interruptions for the UDC data} %separate the data in four percentages groups regarding the number of interruptions in each trace.}
 \label{tbl:quartil_int_udc}
@@ -931,6 +943,7 @@ We used the same metrics to investigate whether we could observe a similar behav
 For every session, we calculated the number of editions and selections per minute, and the edit ratio. The boxplots on the Figure \ref{fig:box_int_events_udc} show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and the more interruptions the lesser are those metrics.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Effect size and significance of the relationship between number of edit per minute, selection per minute, edit ratio, and number of interruptions on UDC data} 
 \label{tbl:p_value_udc}
@@ -1023,6 +1036,7 @@ The next analysis is on the effects of the size of the interruptions, considerin
 
 Again the hypothesis holds on UDC data as it did with Mylyn. We can see on the Figure \ref{fig:box_dur_events_udc} that with short interruptions the metrics are greater than when facing a prolonged one, for more time is needed to recover after a long interruption. 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions on UDC data} %, and editions and selections.}
 \label{tbl:p_value2_udc}
@@ -1174,11 +1188,12 @@ We can see that after a positive interruption the edit ratio during recovery tim
 To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during Recovery Time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described on the Table \ref{tbl:new_events_udc}. Similarly to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. 
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{New category of events. }
 \label{tbl:new_events_udc}
 \centering
-\begin{tabular}{|p{2.5cm}|p{9 cm}|} 
+\begin{tabular}{|p{2.5cm}|p{7 cm}|} 
   \hline 
 category & description \\  
   \hline 
@@ -1202,11 +1217,12 @@ text-nav & Low-level text navigation \\
 We calculated a weighted average of every event based on the average frequency of execution during the first phase of Recovery Time after a positive or negative interruption, weighted by the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. Table \ref{tbl:stats_events} shows the results.
 
 \begin{table}[ht!]
+\tiny
 \renewcommand{\arraystretch}{1.3}
 \caption{Comparison of execution after positive or negative interruptions. }
 \label{tbl:stats_events}
 \centering
-\begin{tabular}{|p{3cm}|p{1cm} |p{1cm}|p{1cm}|} 
+\begin{tabular}{|p{2cm}|p{1cm} |p{1cm}|p{1cm}|} 
   \hline 
 category & positive & negative & all \\  
   \hline 

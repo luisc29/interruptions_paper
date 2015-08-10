@@ -192,6 +192,12 @@ P.~J. Rousseeuw, ``Silhouettes: a graphical aid to the interpretation and
 E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
   Information Systems}, vol.~7, pp. 358--386, 2005.
 
+\bibitem{SnipesETALASD}
+W.~Snipes, E.~Murphy-Hill, T.~Fritz, M.~Vakilian, K.~Damevski, A.~R. Nair, and
+  D.~Shepherd, \emph{Analyzing Software Data}.\hskip 1em plus 0.5em minus
+  0.4em\relax Morgan Kaufmann, 2015, ch. A Practical Guide to Analyzing IDE
+  Usage Data.
+
 \bibitem{SBV98}
 R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
   never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
