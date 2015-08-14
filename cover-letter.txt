@@ -1,0 +1,16 @@
+Dear Editor and Reviewers,
+
+Please find attached our submission to the Journal of Software: Evolution and Process, entitled "Work Fragmentation in Developer Interaction Data". With respect to the original article published at SANER 2015 (title:  An empirical study of work fragmentation in software evolution tasks), this article contains the following additions: 
+
+- A replication of the study on another dataset, namely the Eclipse Usage Data Collector dataset (UDC), to complement the original study on the Mylyn dataset. The new dataset if both larger, and richer.
+
+- Two additional research questions made possible by the additional information contained in the UDC. This raises the amount of research questions from 3 to 5.
+
+- An expansion of the related work to contain studies related to the UDC.
+
+- A discussion of the similarities and the differences between the two datasets and the observed differences in the results.
+
+We are looking forward to your comments on our submission.
+
+Best regards,
+Romain Robbes, Heider Sanchez, Luis Carlos Cruz, and Victor Gonzalez
