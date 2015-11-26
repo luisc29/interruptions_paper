@@ -1,0 +1,26 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Empirical Studies of Work Fragmentation}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Empirical Studies on Mylyn Data}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Data Description}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Mylyn Data}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Interaction History Format}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Special Characteristics of Mylyn Data}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Preview Phases for Knowledge Discovery}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Selection}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Preprocessing}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Transformation}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Metrics Used in This Study}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{RQ1: Relationship between Interruptions and Productivity}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Relation between Interruptions, and Edits and Selections}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Effect on the Edit Ratio}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{RQ2: Relationship between Duration of Interruptions and Productivity}{}% 17
+\BOOKMARK [1][-]{section.7}{RQ3: Local Relationships between Interruptions and Productivity}{}% 18
+\BOOKMARK [2][-]{subsection.7.1}{Generic Sessions}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.2}{Local Analysis}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.3}{Patterns of Interruptions}{section.7}% 21
+\BOOKMARK [1][-]{section.8}{Usage Data Collector}{}% 22
+\BOOKMARK [2][-]{subsection.8.1}{Data description}{section.8}% 23
+\BOOKMARK [1][-]{section.9}{Threats to Validity}{}% 24
+\BOOKMARK [1][-]{section.10}{Conclusions and Future Work}{}% 25
+\BOOKMARK [1][-]{section*.1}{References}{}% 26
