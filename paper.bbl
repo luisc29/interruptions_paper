@@ -174,9 +174,23 @@ U.~M. Fayyad, G.~Piatetsky-shapiro, and P.~Smyth, ``{From Data Mining to
 R.~Robbes and M.~Lanza, ``Characterizing and understanding development
   sessions,'' in \emph{Proceedings of ICPC 2007}, 2007, pp. 155--166.
 
+\bibitem{KaptelininN07}
+\BIBentryALTinterwordspacing
+V.~Kaptelinin and B.~A. Nardi, ``Acting with technology: Activity theory and
+  interaction design,'' \emph{First Monday}, vol.~12, no.~4, 2007. [Online].
+  Available:
+  \url{http://firstmonday.org/htbin/cgiwrap/bin/ojs/index.php/fm/article/view/1772}
+\BIBentrySTDinterwordspacing
+
 \bibitem{C94}
 J.~Cohen, ``The earth is round (p $<$ 0.5),'' \emph{American Psychologist},
   vol.~49, no.~12, pp. 997--1003, 1994.
+
+\bibitem{LVD06}
+T.~D. LaToza, G.~Venolia, and R.~DeLine, ``Maintaining mental models: a study
+  of developer work habits,'' in \emph{Proceedings of the 28th international
+  conference on Software engineering}.\hskip 1em plus 0.5em minus 0.4em\relax
+  ACM, 2006, pp. 492--501.
 
 \bibitem{AMP97}
 A.~Struyf, M.~Hubert, and P.~Rousseeuw, ``Clustering in an object-oriented
