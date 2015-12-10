@@ -92,7 +92,7 @@ In this paper, we present a study addressing these issues by (1) being focused o
 \item \textbf{RQ3:}  What is the observed relationship in the vicinity of interruptions?
 \end{itemize}
 
-Additionally, the Eclipse Usage Data Collector (UDC) interaction data allows us to dig further into more specific aspects, resulting in the following two complementary research questions:
+This work is an extension to the a published paper on 22nd IEEE International Conference on Software Analysis, Evolution, and Reengineering. Now, this improved version includes the same analysis previously made with a new dataset, the Eclipse Usage Data Collector (UDC) interaction data, which allows us to dig further into more specific aspects, resulting in the following two complementary research questions:
 \begin{itemize}
 \item \textbf{RQ4:} How is the developer's performance during the recovery time after an interruption? 
 \item \textbf{RQ5:} What events are more common during recovery time?
@@ -272,7 +272,7 @@ Our purpose is the analysis of work fragmentation and interruptions in software 
 
 First, we have kept only the edit and selection events that are associated to a program element. These type of events are distributed in 8058 traces. On the other hand, edit-type events also occur when the programmer double clicks on a file. In these events the starting time and ending time are the same~\cite{LJD11}. We consider that the double-clicking actions form part of the user navigation, therefore these events are transformed into selection events.  
 
-Second, we have kept all traces without aggregate information. Unfortunately, we cannot know the distribution in time of the actions that have been aggregated in a single event: without additional information, an aggregation of 15 events over one hour is as likely every 4 minutes than to have 10 events in the first 5 minutes and 5 more in the last 10 minutes. Therefore, designing a correct disaggregation task to this traces is very difficult, if not impossible.
+Second, we have kept all traces without aggregate information. Unfortunately, we cannot know the distribution in time of the actions that have been aggregated in a single event: without additional information, an aggregation of 15 events over one hour is as likely every 4 minutes as it is to have 10 events in the first 5 minutes and 5 more in the last 10 minutes. Therefore, designing a correct disaggregation task to this traces is very difficult, if not impossible.
 
 In order to keep as many traces as possible, we have also kept a little group of traces with aggregate information where the aggregate events have a maximum duration time of five minutes (to minimize uncertainty) or have only two aggregate actions (since the actual event timestamps are known in this case). Thus, we were left with 6260 traces.
 
@@ -314,7 +314,7 @@ After filtering out traces, we describe the final processing steps that yield th
 
 \textbf{Disaggregation.} We disaggregate all the actions associated with each remaining aggregate event with equidistant separation, as was done by Ying and Robillard \cite{YR11}. Due to the filtering above, this was only applied on traces that had aggregate events of short duration ($\leq$ 5 minutes).
 
-\textbf{Event splitting.} Finally, we split all the long duration events. A normal event does not generally have duration (EndTime is null). However, 12\% of normal events  had a duration $> 0$ seconds and 3\% $\geq$ 1 hour, these events are outliers. Therefore, we split each long event in two events: one at the start and the other at the end of the interval. This is the same criteria applied for massive and aggregate events.
+\textbf{Event splitting.} Finally, we split all the long duration events to better fit a time series model, which is composed of a series of actions in specific times with intervals of the same duration. A normal event does not generally have duration (EndTime is null). However, 12\% of normal events  had a duration $> 0$ seconds and 3\% $\geq$ 1 hour, these events are outliers. Therefore, we split each long event in two events: one at the start and the other at the end of the interval. This is the same criteria applied for massive and aggregate events.
 
  Table \ref{tbl:mass_events} shows the ratio of variation of the number of events after preprocessing.
  
@@ -667,7 +667,7 @@ We also notice that the time series without interruptions have much more edits i
 
 
 
-These results support our previous observations at a finer level, an corroborate the literature saying that time is needed to start or get back on task.
+These results support our previous observations at a finer level, and corroborate the literature saying that time is needed to start or get back on task.
 
 %Therefore, with this result, we also infer that the presence of interruptions in a programming task could reduce the user interaction with the program. \\
 
@@ -1142,7 +1142,11 @@ effect & pattern \\
 \end{tabular}
 \end{table}
 
-The table \ref{tbl:local_effect_udc} show a similar pattern on negative, positive and neutral interruptions in comparison with the results on Mylyn. After a positive interruption both metrics tend to increase at a high rhythm. In contrast, when facing the effects of a negative interruption the metrics take longer to reach the median. We can see that once separated in categories, the effect appear to be even more drastic on UDC data than they appear on Mylyn data.
+The Table \ref{tbl:local_effect_udc} shows a similar pattern on negative, positive and neutral interruptions in comparison with the results with Mylyn. After a positive interruption both metrics tend to increase at a high rhythm until reaching the global average value. The editions per minute recover quickly, approximately 5 minutes after the interruption, but the selections per minute take a little longer to reach the global average and this metric tend to be below the average for an extended period. It is important to notice that before the interruption happens the editions per minute metric is below the average for approximately 16 minutes prior to the interruption.
+
+In contrast, when facing the effects of a negative interruption the metrics take longer to reach the median. On the contrary to facing a positive interruption, the editions per minute metric is below the selections per minute, and the former takes longer than the latter to reach the average value. Also, the editions per minute metric is above the average for the 30 minutes before the interruption. 
+
+In general, the effect of positive and negative interruptions is the inverse. The editions per minute describes better the effect and the selections do not show a major change. There is not a clear pattern during a neutral interruption.
 
 \section{RQ4: Recovery Time after an Interruption}
 \subsection{Edition and selections during recovery time}
@@ -1325,7 +1329,7 @@ The UDC and Mylyn also offer different levels of details: while the UDC records 
 
 \paragraph{Comparison of the results}
 
-We conducted a replication of the results of RQ1, RQ2 and RQ3 with the additional dataset. If we noted similarities in the observations accross both datasets, it is important to discuss the differences in the size of the effects that were observed: the overall effects observed were larger for the Mylyn dataset than for the UDC dataset.
+We conducted a replication of the results of RQ1, RQ2 and RQ3 with the additional dataset. If we noted similarities in the observations across both datasets, it is important to discuss the differences in the size of the effects that were observed: the overall effects observed were larger for the Mylyn dataset than for the UDC dataset.
 
 The fact that all the observations go in the same direction lends us more confidence in our conclusions. However, the reduced magnitude of the effect gave us pause. We can think of several reasons for this behavior:
 
@@ -1334,6 +1338,11 @@ The fact that all the observations go in the same direction lends us more confid
 \item The (comparatively) small size of the Mylyn dataset may have favored outliers: since there is data from dozens of developers only in the Mylyn dataset, a few outliers may have affected the results. The UDC model is however based on 1,000 UDC users.
 \item Non-java users in the UDC: A small portion of UDC users were not primarily programming in Java; some were using C++, PHP, web frameworks, or a report generation plugin known as BIRT. These may have had an impact on the results.
 \end{itemize}
+
+Certainly, work fragmentation is not a synonym of lower productivity rates. Multitasking can allow the worker to use dead periods of the project where there is a decrease of the required activities and do tasks related to other projects, increasing the efficiency and productivity \cite{ABV12}. At some level, switching between tasks can provide the needed arousal and alertness to improve the productivity, but higher levels of multitasking can be detrimental and cause a negative effect. Moreover, as the number of switches between tasks increases, the effectiveness degrades in a linear fashion \cite{AB12}. 
+
+Furthermore, the results indicate a clear diminish of productivity when facing interruptions, but with a high number of interruptions the change of productivity stops decreasing. This could be reflecting what observational studies tell us about multitasking, which is that with higher number of interruptions (increased multitasking) the productivity stops being affected and might increase. The latter actually occurs in the results but the effect is too subtle. 
+We intend to reflect the effects of work fragmentation by classifying the interruptions into negative or positive, and in the results we can see a difference in productivity and the kind of activities performed.
 
 
 \section{Threats to Validity}

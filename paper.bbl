@@ -216,6 +216,16 @@ W.~Snipes, E.~Murphy-Hill, T.~Fritz, M.~Vakilian, K.~Damevski, A.~R. Nair, and
 R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
   never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
 
+\bibitem{AB12}
+R.~F. Adler and R.~Benbunan-Fich, ``Juggling on a high wire: Multitasking
+  effects on performance,'' \emph{International Journal of Human-Computer
+  Studies}, vol.~70, no.~2, pp. 156--168, 2012.
+
+\bibitem{ABV12}
+S.~Aral, E.~Brynjolfsson, and M.~Van~Alstyne, ``Information, technology, and
+  information worker productivity,'' \emph{Information Systems Research},
+  vol.~23, no. 3-part-2, pp. 849--867, 2012.
+
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
   \emph{Autom. Softw. Eng.}, vol.~17, no.~2, pp. 181--212, 2010.
