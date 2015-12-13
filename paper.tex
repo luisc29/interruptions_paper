@@ -656,7 +656,15 @@ These findings seem to indicate that the inverse relationship between productivi
 
 \section{RQ3: Local Relationships between Interruptions and Productivity}
 
+The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On one hand, after an interruption the programmer carry out activities meant to recover the lost mental model, like reading the code, debugging, reading notes and cues, and more resumption strategies \cite{PR11}.
+
+On the other hand, before the interruption there is a preparation phase when the it is imminent or expected. On this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer, usually he tries to solve it by reading the code, using the debugger or reading comments in the control version tool; after this resources are depleted, the next option is to ask to teammates or other external resources. The latest activities can represent an interruption of work.
+
+In this research question we expect to see the effects on productivity around an interruption due to the activities previously described.
+
+
 \subsection{Generic Sessions}
+
 In order to better understand the relationship between work fragmentation and productivity, we need to delve deeper and perform local analyses of the development sessions. In the first step, we wanted to summarize how the activity of users is distributed over time in sessions which have no interruptions, short interruptions, and prolonged interruptions. 
 
 To summarize the development sessions, we have resized each time series to a single $size$, using local means. We have used $size = 10$, that is, dividing each session in 10 chunks of equal time, since because it yielded better global visualization (better uniformity) of the user interaction along a session. For each chunk, we choose the median value of edits and selections for each group, and compose one summary time series for each group; these are the time series displayed in Figure \ref{fig:bins_int}.
@@ -1027,13 +1035,13 @@ The next analysis is on the effects of the size of the interruptions, considerin
 \centering
 \begin{tabular}{c}
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit}  \\
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit_2}  \\
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel}  \\
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel_2}  \\
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio} \\
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio_2} \\
 \endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration}
@@ -1339,11 +1347,20 @@ The fact that all the observations go in the same direction lends us more confid
 \item Non-java users in the UDC: A small portion of UDC users were not primarily programming in Java; some were using C++, PHP, web frameworks, or a report generation plugin known as BIRT. These may have had an impact on the results.
 \end{itemize}
 
+\paragraph{The effects of multitasking}
 Certainly, work fragmentation is not a synonym of lower productivity rates. Multitasking can allow the worker to use dead periods of the project where there is a decrease of the required activities and do tasks related to other projects, increasing the efficiency and productivity \cite{ABV12}. At some level, switching between tasks can provide the needed arousal and alertness to improve the productivity, but higher levels of multitasking can be detrimental and cause a negative effect. Moreover, as the number of switches between tasks increases, the effectiveness degrades in a linear fashion \cite{AB12}. 
 
 Furthermore, the results indicate a clear diminish of productivity when facing interruptions, but with a high number of interruptions the change of productivity stops decreasing. This could be reflecting what observational studies tell us about multitasking, which is that with higher number of interruptions (increased multitasking) the productivity stops being affected and might increase. The latter actually occurs in the results but the effect is too subtle. 
 We intend to reflect the effects of work fragmentation by classifying the interruptions into negative or positive, and in the results we can see a difference in productivity and the kind of activities performed.
 
+\paragraph{Comparison with observational studies}
+Our results and theoretical foundations are based on observational studies performed on information workers' development environments \cite{MGH05, IH07, LVD06, PD10}. These findings helped us understand the response to work fragmentation according to the recorded user activity, and it was possible to made a relation between the user's data and the phenomena that occur on the working places describe on the studies.
+
+Observing the user actvivity throughout a working session might be the best way to understand the effect of events that occur on the working place, like work fragmentation. However, implementing a study of this kind can be very expensive, for the time and material need. For example, to have the same amount of information we have with UDC it would require to monitor the user activity for a year or two and have a record of all the activities performed, like the number and duration of the interruptions. Moreover, this studies require on-site studies, exhaustive monitoring and interviews, which in some cases could be expensive or difficult to perform.
+
+On the other hand, analyzing interaction data is a convenient way to understand almost the same kind of events on the environment. Usage data describes the history of activities of the programmer and it is possible to analyze the effect of events, as shown in this work. The problem with this is the lack of context of the events and, in our case, the lack of information of the programmers to enrich the results. Hence, we can not guarantee that an interruption was an actual interruption of work; due to the definition of an interruption, it could also be a change to a Web design tool, server configuration tool or the browser, which are common activities in Web developers and not necessarily detrimental to productivity.
+
+The best might be to find a middle ground between observational activities and analysis of usage data. It is helpful to enhance the results using information provided directly by the participants via interviews, like in \cite{FMH07}.
 
 \section{Threats to Validity}
 The main threats to the validity of our study are construct validity threats due to the operational nature of the data recorded by Mylyn and the UDC \cite{M14}. Most of them are mentioned above but recalled here for convenience.
