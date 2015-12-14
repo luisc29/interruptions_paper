@@ -335,7 +335,7 @@ After filtering out traces, we describe the final processing steps that yield th
  \end{table}
 
 \subsection{Transformation}
-Our goal is to build compact and representative models from each session. In this sense, we used aggregation of events to generate a multivariate time series (MTS). An MTS is a sequence of multivariate observations taken at continuous time intervals coming from a same phenomenon. We build the MTS with edit and navigation variables; the time unit is the minute, and the amplitude is the sum of all the events that occurred in this minute. We selected the minute as unit time because it seemed to be an appropriate and minimal representation of the user interaction in a programming task---obviously a subjective decision. 
+Our goal is to build compact and representative models from each session. In this sense, we used aggregation of events to generate a multivariate time series (MTS). An MTS is a sequence of multivariate observations taken at continuous time intervals coming from a same phenomenon. We build the MTS with edit and navigation variables; the time unit is the minute, and the amplitude is the sum of all the events that occurred in this minute. We selected the minute as unit time because it seemed to be an appropriate and minimal representation of the user interaction in a programming task---obviously a subjective decision. Multivariate time series is a useful way of representing temporal data because they allow us to apply clustering techniques and find recurrent patterns. Additionally, the partition of the data into sessions do not alter the results since we are interested in the values by minute, so having longer sessions do not necessarily increase the number of events per minute.
 
 
 Mylyn data has another characteristic which is unusual for time series: the time of occurrence of the events is not periodic (see column \textit{StartTime} in Table \ref{tbl:sample_event}). That is to say, events occur with non-equidistant separation gaps between them. However, in a time series, the values must be evenly spaced and chronologically sorted. For this reason, we compressed the size of the multivariate time series, pulling apart all the interruptions as a new time series variable. Then, each time series value represents the interruption duration in this minute (Figure \ref{fig:trans}). 
@@ -518,7 +518,7 @@ More importantly, we used \textit{Cohen's d} to measure the practical significan
      \cline{3-6} 
     U-test & $\hookrightarrow$ & 4.2e-14 & \multicolumn{3}{c}{$<$ 2.2e-16} \\
     \cline{3-6} 
-    Cohen's $d$ & $\hookrightarrow$ & \textbf{0.84} & \textit{1.33} & \textit{1.48} & \textit{2.12} \\ 
+    Cohen's $d$ & $\hookrightarrow$ & \textbf{0.84} & \textbf{1.33} & \textbf{1.48} & \textbf{2.12} \\ 
 \hline
 
 \end{tabular}
@@ -527,7 +527,7 @@ More importantly, we used \textit{Cohen's d} to measure the practical significan
 \subsection{Effect on the Edit Ratio}
 Finally, we want to know the effect the interruptions over the ratio of edits in each session, as this is the often seen as a better indicator of productivity than raw activity, since the programmer spends less time navigating the source code in search of information, and more time actively editing it \cite{KM06}.
 
-We first analyze the relationship between edit ratio and number of interruptions (Figure \ref{fig:box_int_events}, bottom). We observe that the edit ratio decreases when the session has more interruptions: the effect is pronounced between session that do not have interruptions and ones that do, and is more subtle as the number of interruption grows. A look at the practical and statistical significance of these results (Table \ref{tbl:p_value}, bottom) show that the results are (unsurprisingly) statistically significant, and that the observed effect sizes are large to very large.
+We first analyze the relationship between edit ratio and number of interruptions (Figure \ref{fig:box_int_events}). We observe that the edit ratio decreases when the session has more interruptions: the effect is pronounced between session that do not have interruptions and ones that do, and is more subtle as the number of interruption grows. A look at the practical and statistical significance of these results (Table \ref{tbl:p_value}, bottom) show that the results are (unsurprisingly) statistically significant, and that the observed effect sizes are large to very large.
 
 Adding this to our previous result, we observe that both the user activity (in terms of raw quantity of edits and selections per minute) and the user productivity (in terms of edit ratio), both follow an inverse relationship with the number of interruptions. This finding agrees with the previous literature on the harmfulness of multitasking, work fragmentation, and interruptions. Furthermore, the effect sizes are very large.
 
@@ -627,7 +627,7 @@ As in the previous case, the differences are significant, and we used \textit{Co
    \cline{3-4} 
   U-test & $\hookrightarrow$ & 3.72e-14 & $<$ 2.2e-16  \\
   \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$ & \textit{0.86} & \textit{1.32}\\
+  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.86} & \textbf{1.32}\\
 \hline
 
 \end{tabular}
@@ -650,7 +650,7 @@ As in the previous case, the differences are significant, and we used \textit{Co
 
 
 
-Similar results occurs when we look at the edit ratio (Figure \ref{fig:box_dur_events}, bottom): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of Table \ref{tbl:p_value2}, we show the statistical and practical significance of these results. As before, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
+Similar results occurs when we look at the edit ratio (Figure \ref{fig:box_dur_events}): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of Table \ref{tbl:p_value2}, we show the statistical and practical significance of these results. As before, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
 
 These findings seem to indicate that the inverse relationship between productivity and time of duration is more pronounced in session with at least one longer interruption. This agrees with the literature for information workers.
 
@@ -747,7 +747,7 @@ We investigated whether the drop in activity local to interruptions was also acc
 \label{tbl:ratio_all}
 \centering
 \begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
-   & [1-5] & [5-10] & [11-15] \\  
+   & [1-5] & [6-10] & [11-15] \\  
   \hline
   \multicolumn{4}{c}{\textbf{before}} \\
   \hline
@@ -764,7 +764,7 @@ We investigated whether the drop in activity local to interruptions was also acc
   \hline 
   mean & 0.34 &	0.37 &	0.39 \\ 
    \cline{3-4} 
-  U-test & $\hookrightarrow$ & 5.67E-16 & $<$ 2.2e-16 \\  
+  U-test & $\hookrightarrow$ & 5.67e-16 & $<$ 2.2e-16 \\  
   \cline{3-4} 
   Cohen's $d$ & $\hookrightarrow$	& \textbf{0.14} & \textbf{0.22}  \\  
 \end{tabular}
@@ -1256,18 +1256,17 @@ To better understand the reasons of the difference between positive and negative
 category & description & usage (\%)\\  
   \hline 
     \hline 
-clean-build &  Events related to the build system (clean, build or run a project) & 2.3\\
-control & Source control events & 7.6 \\
-debug & Events executed during debugging sessions & 11.7 \\
-edit-text & Text edition events & 19.7 \\
-file & Management of files (saving, closing, opening, etc.) &	8.9 \\
-find-replace & Search and replacement of text or code entities & 2.5 \\
-high-nav & High-level navigation through classes, windows and artifacts & 25.9 \\
-perspective & Change of perspectives in Eclipse & 4.1  \\
-refactoring & Refactoring events & 5.1\\
-search & Text or code search & 2.8 \\
-text-nav & Low-level text navigation & 9.4 \\
-
+    high-nav & High-level navigation through classes, windows and artifacts & 25.9 \\
+    edit-text & Text edition events & 19.7 \\
+    debug & Events executed during debugging sessions & 11.7 \\
+    text-nav & Low-level text navigation & 9.4 \\
+    file & Management of files (saving, closing, opening, etc.) &	8.9 \\
+    control & Source control events & 7.6 \\
+    refactoring & Refactoring events & 5.1\\
+    perspective & Change of perspectives in Eclipse & 4.1  \\
+    search & Text or code search & 2.8 \\
+    find-replace & Search and replacement of text or code entities & 2.5 \\
+    clean-build &  Events related to the build system (clean, build or run a project) & 2.3\\
 \hline
 \end{tabular}
 \end{table}
