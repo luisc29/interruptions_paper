@@ -841,7 +841,7 @@ Negative Effect
 \section{Eclipse Usage Data Collector Data Description}
 
 \subsection{The Eclipse UDC}
-The Usage Data Collector (UDC) dataset is a large compendium of information about interaction data from users of Eclipse, collected from December 2008 to August 2010, with the intention to keep track of how programmers are using the IDE. The framework listens to the events triggered by the user or the system, such as: edition and navigation commands; the startup of a plug in; or the closing of the platform. More specifically, UDC collects information about loaded bundles, commands accessed via keyboard shortcuts, actions invoked via menu or tool-bars, perspective changes, view usage and editor usage. The UDC is a large dataset that contains information of around 1,800,000 users, and has a total of 2,323,233,101 unique rows with 5 attributes each. Table \ref{tbl:att_udc} show a description of the attributes.
+The Usage Data Collector (UDC) dataset is a large compendium of information about interaction data from users of Eclipse, collected from December 2008 to August 2010, with the intention to keep track of how programmers are using the IDE. The framework listens to the events triggered by the user or the system, such as: edition and navigation commands; the startup of a plug in; or the closing of the platform. To be more specific, UDC collects information about loaded bundles, commands accessed via keyboard shortcuts, actions invoked via menu or tool-bars, perspective changes, view usage and editor usage. The UDC is a large dataset that contains information of around 1,800,000 users, and has a total of 2,323,233,101 unique rows with 5 attributes each. Table \ref{tbl:att_udc} shows a description of the attributes.
 
 
 \begin{table}[ht!]
@@ -868,25 +868,56 @@ datetime & Date and time in UNIX format\\
 \end{table}
 
 \subsection{Selection and transformation}
-We used the data pre-processed by Murphy-Hill, that is published on Google BigQuery \cite{SnipesETALASD}. This is an alternative version of the original UDC dataset, that is cleaned and preprocessed, so that the transformation phase is simple and focused on our needs. Due to the magnitude of the dataset we only worked on a fragment of it. We took a random sample of 1,000 users that is larger than the dataset we were able to obtain for the Mylyn study.
+We used the pre-processed data by Murphy-Hill, that is published on Google BigQuery \cite{SnipesETALASD}. This is an alternative version of the original UDC dataset, that is cleaned and preprocessed, so that the transformation phase is simple and focused on our needs. Due to the magnitude of the dataset we only worked on a fragment of it. We took a random sample of 1,000 users that is larger than the dataset we were able to obtain for the Mylyn study.
 
-The first step was to query the dataset to get the data from 1,000 random users. We delimited the query to obtain only those events dispatched by the user, ignoring system events. We also ignored the bundle version and formatted the UNIX date into a more legible datetime format. From this query we extracted 4,321,349 unique events, which is around $0.18\%$ of the whole dataset.
+The first step was to query the dataset to get the data from 1,000 random users. We delimited the query to obtain only those events dispatched by the user, ignoring system events. We also ignored the bundle version and transformed the UNIX date into a more legible datetime format. From this query we extracted 4,321,349 unique events, which are around $0.18\%$ of the whole dataset.
 
-After obtaining the data, the next step was to add the attributes required by every event in order to match as closely as possible the format of the Mylyn data; this allowed us to reuse a part of our analysis. We hence added fields corresponding to the type of the event (edition or selection), its duration (time elapsing between this event and the next event, used to determine where interruptions take place and sessions end) and an ID to identify the different sessions present on the data. For the latter, we sorted the data by \textit{userId} and by \textit{datetime} afterwards. This was required because by default the user's data is mixed and we needed it not only chronologically correct but also sorted by users to tag the sessions of every user without interferences. 
+After obtaining the data, the next step was to add the attributes required by every event in order to match as closely as possible the format of the Mylyn data; this allowed us to reuse a part of our analysis. Hence, we added fields corresponding to the type of the event (edition or selection), its duration (time elapsing between one event and the next one, used to determine where interruptions take place and sessions end) and an ID to identify the different working sessions present on the data. For the latter, we sorted the data by \textit{userId} and \textit{datetime}. This was required because by default the user's data is mixed and we need it not only chronologically correct but also sorted by users to tag the working sessions of every user without interferences. 
 
 %With Mylyn we have information about the end time of an event. The UDC dataset doesn't have an attribute to show this information, so we added an interval time in seconds that depends on the next event executed. This is important to identify those events that represent an interruption or the end of a session. 
 
-Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We did this splitting the data by users to avoid a conflict between the last event of a user and the first one of the next. After this, we obtained a total of 28,989 different sessions; after a filter to keep only those with at least 30 minutes of productive time (as we did with the Mylyn dataset), we ended up with 15,825 useful sessions, in contrast with the 4,284 we had from Mylyn.
+Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We split the data by users to avoid a conflict between the last event of a user and the first one of another. After this, we obtained a total of 28,989 different sessions; but after a filter to keep only those with at least 30 minutes of productive time (as we did with the Mylyn dataset), we ended up with 15,825 useful sessions, in contrast with the 4,284 we had from Mylyn. Some statistics about the sessions can be seen in the Table \ref{tbl:stats_sessions_udc}, and a histogram of the duration of the sessions on UDC is shown in the Figure \ref{fig:hist_session_duration_udc}, which ignores outliers by setting a threshold of three times the standard deviation.
+
+\begin{table}[ht!]
+	\small
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Statistics about the sessions in UDC. }
+	\label{tbl:stats_sessions_udc}
+	\centering
+	\begin{tabular}{| p{3cm} |p{3cm} |} 
+		\hline 
+		stat & value \\  
+		\hline 
+		\hline 
+		total & 15,825 \\
+		average duration & 256 min \\
+		max duration & 3,607 min \\
+		min duration & 30 min \\
+		std. deviation & 229 min \\
+		\hline
+		
+	\end{tabular}
+\end{table}
+
+
+\begin{figure}[t]
+	\centering
+	\begin{tabular}{c}
+		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/hist_session_duration_udc} 
+	\end{tabular}
+	\caption{Histogram of the duration of the sessions in UDC.}
+	\label{fig:hist_session_duration_udc}
+\end{figure}
 
 \subsection{Classification of events}
-Mylyn events belonged to two principal categories: edition and selection. The UDC data doesn't have this, so we inferred a classification manually. Note that we reuse the same term of selection in the following text, as it was used in Mylyn data. Strictly speaking, the word "navigation" would be better suited to the variety of events present in the UDC data, but we keep the old term for consistency.
+Mylyn events belong to two main categories: edition and selection. The UDC data doesn't have this, so we inferred a classification manually. Note that we reuse the same term of selection in the following text, as it was used in Mylyn data. Strictly speaking, the word "navigation" would be better suited to the variety of events present in the UDC data, but we keep the old term for consistency.
 %To select the event type, we made a thorough analysis of the different events to classify them where they better fit. In comparison with Mylyn we didn't have a classification by default but the attributes can give us a very good approximation.
 
 We took into consideration the attributes \textit{what}, \textit{kind} and \textit{description} to choose the best classification for every event. Starting by the kind attribute, some events are labeled as \textit{view} which are precisely those that open, activate or close a view such as the console, the package explorer or the variables view. Therefore, the events of the kind \textit{view} were classified as selection-type events.
 
-The classification for the rest of the events is more complex: we needed to check directly the command description and the bundle name it belongs to in order to precisely infer its meaning (e.g., . We could label as edition all those commands with the attributes \textit{command} and \textit{executed}. The majority of them are in fact of that type, but some commands executed also can open a view, navigate through the text or go to another class. For this reason we took a closer look into the bundle name and what the description can tell us about the events.
+The classification for the rest of the events is more complex: we needed to check directly the command description and the bundle it belongs to in order to precisely infer its meaning (e.g., We could label as edition all those commands with the attributes \textit{command} and \textit{executed}). The majority of them are in fact of that type edition, but some executed commands also can open a view, navigate through the text or go to another class. For this reason we took a closer look into the bundle name and what the description can tell us about the events.
 
-Thus, by default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thorough analysis to identify those that are actually selection events.  This way we categorized as selection all the events where we could tell based on the description if they have the purpose to, for instance, navigate to another window, open a perspective, find and replace words, search code, debug code, or perform window management. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the table \ref{tbl:prop_events_udc}.
+Thus, by default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thorough analysis to identify those that are actually selection events.  This way we categorized as selection all the events where we could tell (based on the description) if they have the purpose to, for instance, navigate to another window, open a perspective, find and replace words, search code, debugging, or perform window management. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the Table \ref{tbl:prop_events_udc}.
 We used an iterative process involving two of the authors of the paper to arrive to this result; the process was iterative, until we reached consensus. A sample of the classification can be seen in the Table \ref{tbl:ej_events_udc}.
 
 \begin{table}[ht!]
@@ -931,7 +962,7 @@ org.eclipse.team.sync.views.SynchronizeView & control \\
 \end{tabular}
 \end{table}
 
-The edition and selection types are the ones we are interested in for the study. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; it is difficult to determine when and why this events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear) so we decided to establish this particular classification for them. Finally, the events of the type control are those related to the version control system. 
+The edition and selection types are the ones we are interested for this study. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; it is difficult to determine when and why these events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear), so we decided to establish this particular classification for them. Finally, the events of the type control are those related to the version control system. 
 
 After processing the data, we were able to reuse the same data analysis pipeline we used for Mylyn, in order to verify whether the results hold with this other dataset.
 
@@ -953,7 +984,7 @@ We used the same metrics to investigate whether we could observe a similar behav
 \end{tabular}
 \end{table}
 
-For every session, we calculated the number of editions and selections per minute, and the edit ratio. The boxplots on the Figure \ref{fig:box_int_events_udc} show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and as more interruptions occur this metrics gradually decrease.
+For every session, we calculated the number of editions and selections per minute, and the edit ratio. The boxplots in the Figure \ref{fig:box_int_events_udc} show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and as more interruptions occur this metrics gradually decrease.
 
 \begin{table}[ht!]
 \tiny
@@ -1048,7 +1079,7 @@ The next analysis is on the effects of the size of the interruptions, considerin
 \label{fig:box_dur_events_udc}
 \end{figure}
 
-Again the hypothesis holds on UDC data as it did with Mylyn. We can see on the Figure \ref{fig:box_dur_events_udc} that with short interruptions the metrics are greater than when facing at least a prolonged one, for more time is needed to recover after a long interruption. 
+Again the hypothesis holds on UDC data as it did with Mylyn. We can see in the Figure \ref{fig:box_dur_events_udc} that with short interruptions the metrics are greater than when facing at least a prolonged one, for more time is needed to recover after a long interruption. 
 \begin{table}[ht!]
 \tiny
 \renewcommand{\arraystretch}{1.3}
@@ -1098,7 +1129,7 @@ Again the hypothesis holds on UDC data as it did with Mylyn. We can see on the F
 The effect size test results in the Table \ref{tbl:p_value2_udc} matches the previous observations on a less pronounced effect compared to the Mylyn dataset. The Cohen's \textit{d} test results tell us that we can label the effect from medium to large and the median values act accordingly to our hypothesis and conclusions with Mylyn.
 
 \subsection{RQ3: Local relationships between interruptions and productivity}
-The sessions with UDC went through the same process of transformation into 10 chunks of equal time. The results on the Figure \ref{fig:bins_int_udc} shows similar (but not identical) patterns compared to the ones we observed in Mylyn.
+The sessions with UDC went through the same process of transformation into 10 chunks of equal time. The results in the Figure \ref{fig:bins_int_udc} shows similar (but not identical) patterns compared to the ones we observed in Mylyn.
 
 \begin{figure}[!ht]
 \centering
@@ -1167,15 +1198,15 @@ It was required to make a selection of those interruptions which had a period af
 From those valid interruptions, we split the time after the interruption occurred into two phases: 
 
 \begin{itemize}
-	\item \textit{recovery time}: the period after the interruption of 15 minutes in length.
-	\item \textit{after recovery time}: the period after the recovery time until the next interruption.
+	\item \textit{Recovery time}: the period after the interruption of 15 minutes in length.
+	\item \textit{After recovery time}: the period after the recovery time until the next interruption.
 \end{itemize} 
 
 The recovery time was split in three phases of 5 minutes each, and the after recovery time into the following phases:
 
 \begin{itemize}
-	\item \textit{before interruption}: the period of 10 minutes before the next interruption.
-	\item \textit{peak}: the time between the recovery time and the before interruption phase.
+	\item \textit{Before interruption}: the period of 10 minutes before the next interruption.
+	\item \textit{Peak}: the time between the recovery time and the before interruption phase.
 \end{itemize}
 
 Splitting the recovery phase into three phases allows us to analyze in detail the evolution of productivity and identify the immediate activities after the interruption, which will be helpful later. On the other hand, the before interruption phase represents the time where the productivity drops just before the next interruption, as seen in the results of the last research question. The peak phase is where the productivity should be reaching its maximum, as the programmers are not taking actions to retake the lost mental model or preparing for an interruption. The Figure \ref{fig:recovery_afterRecovery} shows how the time after the interruption was split into phases.
@@ -1243,42 +1274,69 @@ We can see that after a positive interruption the edit ratio during recovery tim
 
 \section{RQ5: Common events during Recovery Time}
 
-To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc}. Similarly to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. 
+To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc} and the frequency per minute of the more frequent event on that category. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. 
+
+%\begin{table}[ht!]
+%\tiny
+%\renewcommand{\arraystretch}{1.3}
+%\caption{New category of events. }
+%\label{tbl:new_events_udc}
+%\centering
+%\begin{tabular}{|p{2.5cm}|p{6 cm}| p{1cm} |}
+%  \hline 
+%category & description & usage (\%)\\  
+%  \hline 
+%    \hline 
+%    high-nav & High-level navigation through classes, windows and artifacts & 25.9 \\
+%    edit-text & Text edition events & 19.7 \\
+%    debug & Events executed during debugging sessions & 11.7 \\
+%    text-nav & Low-level text navigation & 9.4 \\
+%    file & Management of files (saving, closing, opening, etc.) &	8.9 \\
+%    control & Source control events & 7.6 \\
+%    refactoring & Refactoring events & 5.1\\
+%    perspective & Change of perspectives in Eclipse & 4.1  \\
+%    search & Text or code search & 2.8 \\
+%    find-replace & Search and replacement of text or code entities & 2.5 \\
+%    clean-build &  Events related to the build system (clean, build or run a project) & 2.3\\
+%\hline
+%\end{tabular}
+%\end{table}
 
 \begin{table}[ht!]
-\tiny
-\renewcommand{\arraystretch}{1.3}
-\caption{New category of events. }
-\label{tbl:new_events_udc}
-\centering
-\begin{tabular}{|p{2.5cm}|p{6 cm}| p{1cm} |}
-  \hline 
-category & description & usage (\%)\\  
-  \hline 
-    \hline 
-    high-nav & High-level navigation through classes, windows and artifacts & 25.9 \\
-    edit-text & Text edition events & 19.7 \\
-    debug & Events executed during debugging sessions & 11.7 \\
-    text-nav & Low-level text navigation & 9.4 \\
-    file & Management of files (saving, closing, opening, etc.) &	8.9 \\
-    control & Source control events & 7.6 \\
-    refactoring & Refactoring events & 5.1\\
-    perspective & Change of perspectives in Eclipse & 4.1  \\
-    search & Text or code search & 2.8 \\
-    find-replace & Search and replacement of text or code entities & 2.5 \\
-    clean-build &  Events related to the build system (clean, build or run a project) & 2.3\\
-\hline
-\end{tabular}
+	\tiny
+	\renewcommand{\arraystretch}{1.3}
+	\caption{New category of events. }
+	\label{tbl:new_events_udc}
+	\centering
+	\begin{tabular}{|p{2.5cm}|p{6 cm}| p{1cm} |}
+		\hline 
+		category & description & frequency \\  
+		\hline 
+		\hline 
+		high-nav & High-level navigation through classes, windows and artifacts & 9.1 \\
+		file & Management of files (saving, closing, opening, etc.) &	8.9 \\
+		edit-text & Text edition events & 8.1 \\
+		debug & Events executed during debugging sessions & 3.3 \\
+		text-nav & Low-level text navigation & 3.1 \\
+		search & Text or code search & 0.6 \\
+		find-replace & Search and replacement of text or code entities & 0.6 \\
+		perspective & Change of perspectives in Eclipse & 0.5  \\
+		control & Source control events & 0.4 \\
+		refactoring & Refactoring events & 0.3\\
+		clean-build &  Events related to the build system (clean, build or run a project) & 0.2\\
+		\hline
+	\end{tabular}
 \end{table}
 
-We calculated the weighted average of every event based on the frequency of execution during the first phase of Recovery Time after a positive or negative interruption and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as $\bar{x} = \sum_{i=1}^{n}w_ix_i / \sum_{i=1}^{n}w_i$, where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of use. This balances the average of execution for events frequently used by a small number of users, for example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them.
+
+We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as $\bar{x} = \sum_{i=1}^{n}w_ix_i / \sum_{i=1}^{n}w_i$, where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of users that execute the event. This balances the average of execution for events used by a small number of users. For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them.
 
 To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. Table \ref{tbl:stats_events} shows the results.
 
 \begin{table}[ht!]
 \tiny
 \renewcommand{\arraystretch}{1.3}
-\caption{Comparison of execution after positive or negative interruptions. }
+\caption{Weighted frequency of execution after positive or negative interruptions. }
 \label{tbl:stats_events}
 \centering
 \begin{tabular}{|p{2cm}|p{1cm} |p{1cm}|p{1cm}|} 
@@ -1308,11 +1366,11 @@ control & 1.21 & 1.75 & \textbf{1.82} \\
 \end{tabular}
 \end{table}
 
-After a positive interruption we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation through the text. On the other hand the navigation around classes, find and replace, searches, debug, clean and build are actions more common after a negative. The navigation on the code and control version activities are more common after the Recovery Time.
+After a positive interruption we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation through the text. On the other hand the navigation around classes, find and replace, searches, debug, clean and build are actions more common after a negative. The navigation in the code and control version activities are more common after the Recovery Time.
 
-We can conclude that after a positive interruption there are more assertive actions with a clear intention like refactoring a class or saving all changes; activities related to program edition. After a negative interruption there are more uncertainty and doubt judging by the activities performed like debugging, searching for text or navigating around classes; activities related to program comprehension. These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking, while negative interruptions are related to actual task switches where context needs to be rebuilt afterwards.
+We can conclude that after a positive interruption there are more assertive actions with a clear intention like refactoring a class or saving all changes; activities related to program edition. After a negative interruption there are more uncertainty and doubt judging by the activities performed like debugging, searching for text or navigating around classes; activities related to program comprehension. These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking \cite{PR11, LVD06}, while negative interruptions are related to actual task switches where context needs to be rebuilt afterwards.
 
-It is noticeable the relation between type of events. For example is natural to think that if there is a lot of debugging events there is also a lot of clean and build events as they are necessary to begin a debugging session. There is also a link between high level navigation and debugging because navigating into a method may take you to another class.
+It is noticeable the relation between type of events. For example, it is natural to think that if there are many debugging events there are also a lot of clean and build events, as they are necessary to begin a debugging session and in most cases it is automatically performed by the IDE. There is also a link between high level navigation and debugging because navigating into a method may take the programmer to another class.
 
 \section{Discussion}
 
@@ -1323,7 +1381,7 @@ The interaction data recorded by Mylyn is the basis for a recommendation tool, a
 
 As the UDC was installed by default on all the Eclipse distributions from 2008 to 2010, the size of the information collected is several orders of magnitude larger than the Mylyn dataset, which was collected since then on a few dozen of developers who installed it voluntarily and contributed to the Mylyn and Eclipse projects. This makes of the UDC data a better source of information to analyze phenomenons on a wide scale.
 
-The UDC and Mylyn also offer different levels of details: while the UDC records fine-grained type of events, Mylyn records the entity that were affected by the events (Java packages, classes, and methods). On the other hand, Mylyn has essentially two types of events of interest (edits and selections), while the UDC has no information on the entities that were affected.
+The UDC and Mylyn also offer different levels of details: while the UDC records fine-grained type of events, Mylyn records the entity that were affected by the events (Java packages, classes, and methods). On the other hand, Mylyn has essentially two types of events of interest (edits and selections), while the UDC has no information about the entities that were affected.
 
 %We can also have more details about every event which allows us to imply more things well beyond the role or language of preference of the programmer.
 
