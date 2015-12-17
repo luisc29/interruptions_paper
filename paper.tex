@@ -371,6 +371,42 @@ $[2 hr - 8 hr \rangle$ & 4\% & extended meeting \\
 \end{tabular}
 \end{table}
 
+After the transformation phase, we had the sessions in a proper format to take on the analysis. Some statistics about the sessions in Mylyn can be seen in the Table \ref{tbl:stats_sessions_mylyn}, and the distribution of the productive time of this sessions is shown in the Figure \ref{fig:mylyn_trace_duration}. Both the Table and Figure consider the productive time of the session, that is the total time without considering the time consumed by interruptions. Also, the outliers are ignored by setting a threshold of three times the standard deviation. This filter is used only to show the distribution, to avoid a very long tail provoked by unusually long sessions.
+
+\begin{table}[ht!]
+	\tiny
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Statistics about the sessions in Mylyn. }
+	\label{tbl:stats_sessions_mylyn}
+	\centering
+	\begin{tabular}{| p{3cm} |p{3cm} |} 
+		\hline 
+		stat & value \\  
+		\hline 
+		\hline 
+		total & 4,284 \\
+		min. & 2 min \\
+		1st Qu. & 18 min\\
+		median & 35 min \\
+		mean & 48.91 min \\
+		3rd Qu. & 62 min \\
+		max. & 535 min\\
+		\hline
+		
+	\end{tabular}
+\end{table}
+
+
+\begin{figure}[t]
+	\centering
+	\begin{tabular}{c}
+		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/udc_trace_duration} 
+	\end{tabular}
+	\caption{Histogram of the duration of the sessions in Mylyn.}
+	\label{fig:mylyn_trace_duration}
+\end{figure}
+
+
 \subsection{Metrics Used in This Study}
 We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session:
 
@@ -388,7 +424,7 @@ Metrics characterizing productivity and activity:
 	 \item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
 	\end{itemize} 
 
-
+We measure the effects on productivity using the edits and selections per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will perform more coding activities than selections or navigations. However, this is not always the case.
 
 %Completed this process, we obtained a set of multivariate time series models to be used in different mining tasks.
 
@@ -775,7 +811,7 @@ Given the overall activity pattern we noticed in the local analysis, we hypothes
 
 We hence looked for patterns in the interruptions.  After applying clustering techniques over all the subsequences, we always found the formation of three recurrent patterns that show different effects of the interruption: neutral, positive and negative. The clustering was performed with the  K-Mediods~\cite{AMP97} technique, the Silhouette metric~\cite{RP87} to interpret and evaluate the results, the Dynamic Time Warping~\cite{KE05} as distance measure, and feature extraction techniques to reduce the dimensionality.  For this reason, we classified empirically each interruption by its local effect. 
 
-We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
+We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis. The rest 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
 Table \ref{tbl:local_effect} shows the applied thresholds and the results, accompanied with a typical example of an interruption in each category. This local analysis shows that there are indeed three well-defined groups of interruptions, with the two largest of them having clear effects on the activity in the session.
 
 Finally, we briefly report on the edit ratios for positive and negative interruptions (see Figure~\ref{fig:ratio_rest}). We see distinct patterns as well: positive interruptions have a higher edit ratio after the interruption (in accordance with the hypothesis of a more efficient activity after having looked for missing information), while negative interruptions have a lower edit ratio after the interruption (in accordance with the hypothesis that the programmer may be rebuilding his context after an unwanted task switch).
@@ -879,21 +915,24 @@ After obtaining the data, the next step was to add the attributes required by ev
 Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We split the data by users to avoid a conflict between the last event of a user and the first one of another. After this, we obtained a total of 28,989 different sessions; but after a filter to keep only those with at least 30 minutes of productive time (as we did with the Mylyn dataset), we ended up with 15,825 useful sessions, in contrast with the 4,284 we had from Mylyn. Some statistics about the sessions can be seen in the Table \ref{tbl:stats_sessions_udc}, and a histogram of the duration of the sessions on UDC is shown in the Figure \ref{fig:hist_session_duration_udc}, which ignores outliers by setting a threshold of three times the standard deviation.
 
 \begin{table}[ht!]
-	\small
+	\tiny
 	\renewcommand{\arraystretch}{1.3}
 	\caption{Statistics about the sessions in UDC. }
 	\label{tbl:stats_sessions_udc}
 	\centering
-	\begin{tabular}{| p{3cm} |p{3cm} |} 
+	\begin{tabular}{| p{2cm} |p{2cm} |} 
 		\hline 
 		stat & value \\  
 		\hline 
 		\hline 
+		
 		total & 15,825 \\
-		average duration & 256 min \\
-		max duration & 3,607 min \\
-		min duration & 30 min \\
-		std. deviation & 229 min \\
+		min. & 2 min \\
+		1st Qu. & 11 min \\
+		median & 22 min \\
+		mean & 31.09 min \\
+		3rd Qu. & 45 min \\
+		max. & 131 min \\
 		\hline
 		
 	\end{tabular}
@@ -903,7 +942,7 @@ Once the events were classified and sorted, we split the dataset into sessions, 
 \begin{figure}[t]
 	\centering
 	\begin{tabular}{c}
-		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/hist_session_duration_udc} 
+		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/udc_trace_duration} 
 	\end{tabular}
 	\caption{Histogram of the duration of the sessions in UDC.}
 	\label{fig:hist_session_duration_udc}
@@ -1173,11 +1212,11 @@ After this, we separated the interruptions in three categories: those with posit
 effect & pattern \\
 \hline
 \textit{negative} (44\%): when the frequency of edit events decreases after the interruption
-	& \includegraphics[valign=m,scale=0.25]{figures/udc_neg_ints} \\
+	& \includegraphics[valign=m,scale=0.25]{figures/udc_neg_ints_2} \\
 \textit{positive} (44\%): when the frequency of edit events increases after the interruption 
-	& \includegraphics[valign=m,scale=0.25]{figures/udc_pos_ints} \\
+	& \includegraphics[valign=m,scale=0.25]{figures/udc_pos_ints_2} \\
 \textit{neutral} (12\%): when there is no well defined effect before or after the interruption 
-	& \includegraphics[valign=m,scale=0.25]{figures/udc_neu_ints} 
+	& \includegraphics[valign=m,scale=0.25]{figures/udc_neu_ints_2} 
 \end{tabular}
 \end{table}
 
@@ -1257,22 +1296,18 @@ the phases. The three metrics show a tendency to increase and reach a maximum be
 \label{fig:box_recovery_udc}
 \end{figure}
 
+\section{RQ5: Common events during Recovery Time}
 
-\subsection{Recovery time after positive and negative interruptions}
-We take a closer look into the recovery time by splitting it into interruptions of positive and negative events. As expected the edit ratio is higher during recovery time after a positive interruption and the contrary is seen after a negative interruption. The Figure \ref{fig:box_recovery_effect_udc} show a comparison of both effects and the overall edit ratio considering all interruptions.
+We saw in RQ3 different patterns of activity around interruptions when they had positive or negative effects; the edits per minute are higher after a positive interruption and the contrary after a negative one. The effect is more marked in the immediate minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
 
 \begin{figure}[!ht]
-\centering
-\begin{tabular}{c}
-\includegraphics[width=.5\linewidth,clip=, angle=0]{figures/udc_box_recovery_pos_ratio} \\
-\end{tabular}
-\caption{Boxplot of the edit ratio during recovery time after a positive or negative interruption, compared to the edit ratio overall. }
-\label{fig:box_recovery_effect_udc}
+	\centering
+	\begin{tabular}{c}
+		\includegraphics[width=.5\linewidth,clip=, angle=0]{figures/udc_box_recovery_pos_ratio} \\
+	\end{tabular}
+	\caption{Boxplot of the edit ratio during recovery time after a positive or negative interruption, compared to the edit ratio overall. }
+	\label{fig:box_recovery_effect_udc}
 \end{figure}
-
-We can see that after a positive interruption the edit ratio during recovery time is much higher than after a negative interruption, which agrees with the results of the local analysis of interruptions and the observed effects on the metrics. %The reason of this change is probably due to the difference on the activities performed after the interruption according to the effect
-
-\section{RQ5: Common events during Recovery Time}
 
 To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc} and the frequency per minute of the more frequent event on that category. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. 
 
