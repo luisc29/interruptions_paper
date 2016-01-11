@@ -32,7 +32,7 @@
 % can use linebreaks \\ within to get better formatting as desired
 \title{ Work Fragmentation in Developer Interaction Data}
 
-\author{Heider Sanchez$^{\ddagger}$, Romain Robbes$^{\ddagger}$, Luis Carlos Cruz$^{\S}$, Victor M. Gonzalez$^{\S}$}
+\author{Heider Sanchez$^{\ddagger}$, Romain Robbes$^{\ddagger}$, Luis C. Cruz$^{\S}$, Victor M. Gonzalez$^{\S}$}
 
 \address{$^{\ddagger}$: Computer Science Department (DCC), University of Chile, Chile;
 $^{\S}$: Instituto Tecnologico Autonomo de Mexico, Mexico}
@@ -467,7 +467,7 @@ We took into consideration the attributes \textit{what}, \textit{kind} and \text
 
 The classification for the rest of the events is more complex: we needed to check directly the command description and the bundle it belongs to in order to precisely infer its meaning (e.g., We could label as edition all those commands with the attributes \textit{command} and \textit{executed}). The majority of them are in fact of that type edition, but some executed commands also can open a view, navigate through the text or go to another class. For this reason we took a closer look into the bundle name and what the description can tell us about the events.
 
-Thus, by default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thorough analysis to identify those that are actually selection events.  This way we categorized as selection all the events where we could tell (based on the description) if they have the purpose to, for instance, navigate to another window, open a perspective, find and replace words, search code, debugging, or perform window management. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the Table \ref{tbl:prop_events_udc}.
+Thus, by default, all events of the attributes \textit{command} and \textit{executed} were classified as edition and afterwards we did a thorough analysis to identify those that are actually selection events. This way we categorized as selection all the events where we could tell (based on the description) if they have the purpose to, for instance, navigate to another window, open a perspective, find and replace words, search code, debugging, or perform window management. The description contains the whole path from the top package to the class that implements the event, so we look for key words to apply the classification. The proportion of events after the classification is shown in the Table \ref{tbl:prop_events_udc}.
 We used an iterative process involving two of the authors of the paper to arrive to this result; the process was iterative, until we reached consensus. A sample of the classification can be seen in the Table \ref{tbl:ej_events_udc}.
 
 \begin{table}[ht!]
@@ -529,14 +529,17 @@ Once the events were classified and sorted, we split the dataset into sessions, 
 		\hline 
 		\hline 
 		total & 15,825 \\
-		average duration & 256 min \\
-		max duration & 3,607 min \\
-		min duration & 30 min \\
-		std. deviation & 229 min \\
+		min. & 2 min \\
+		1st Qu. & 11 min\\
+		median & 23 min \\
+		mean & 35.87 min \\
+		3rd Qu. & 47 min \\
+		max. & 1,345 min\\
 		\hline
 		
 	\end{tabular}
 \end{table}
+
 
 
 \begin{figure}[t]
@@ -569,6 +572,7 @@ Once the events were classified and sorted, we split the dataset into sessions, 
 \section{RQ1: Relationship between Interruptions and Productivity}
 
 \subsection{Metrics Used in This Study}
+
 Before introducing the results about the first research question, it is convenient to present the metrics used in this study.
 We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
 \\
@@ -581,7 +585,7 @@ Metrics characterizing interruptions:
 
 Metrics characterizing productivity and activity:
 \begin{itemize}
-	\item \textit{Productive work time:} the duration of a development session, substracting the duration of all the interruptions present in the session, to control for inactivity.
+	\item \textit{Productive work time:} the duration of a development session, subtracting the duration of all the interruptions present in the session, to control for inactivity.
 	\item \textit{Number of edits per minute:} the total number of edits events, divided by the productive work time to control for length of the session. This is an indicator of user activity during the session.
 	\item \textit{Number of selections per minute:} is the total number of selection events, divided by the productive work time. Also an indicator of activity.
 	\item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
@@ -948,7 +952,7 @@ The effect size test results in the Table \ref{tbl:p_value2_udc} correspond to t
 \end{tabular}
 \end{table}
 
-Similar results occurs when we look at the edit ratio (Figures \ref{fig:box_dur_events} and \ref{fig:box_dur_events_udc}): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of the effect size Tables (\ref{tbl:p_value2} and \ref{tbl:p_value2_udc}), we show the statistical and practical significance of these results. In Mylyn, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
+Similar results occur when we look at the edit ratio (Figures \ref{fig:box_dur_events} and \ref{fig:box_dur_events_udc}): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of the effect size (Tables \ref{tbl:p_value2} and \ref{tbl:p_value2_udc}), we show the statistical and practical significance of these results. In Mylyn, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
 
 These findings seem to indicate that the inverse relationship between productivity and time of duration is more pronounced in session with at least one longer interruption. This agrees with the literature for information workers.
 
