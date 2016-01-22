@@ -8,8 +8,8 @@
 \usepackage{theorem}
 \usepackage{verbatim} % comentarios
 \usepackage{amsmath}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
 \usepackage{mwe}
 \usepackage{hyperref}
 \usepackage{xspace}
@@ -17,6 +17,7 @@
 
 
 \usepackage{array}
+\newcommand\RR[1]{\textbf{Romain}{#1}}
 
 \def\volumeyear{2016}
 
@@ -93,11 +94,14 @@ In this paper, we present a study addressing these issues by (1) being focused o
 \item \textbf{RQ3:}  What is the observed relationship in the vicinity of interruptions?
 \end{itemize}
 
-This work is an extension to the a published paper on 22nd IEEE International Conference on Software Analysis, Evolution, and Reengineering. Now, this improved version includes the same analysis previously made with a new dataset, the Eclipse Usage Data Collector (UDC) interaction data, which allows us to dig further into more specific aspects, resulting in the following two complementary research questions:
+This work is an extension to a published paper in the 22nd IEEE International Conference on Software Analysis, Evolution, and Reengineering. This improved version includes the same analysis previously made with a new dataset, the Eclipse Usage Data Collector (UDC) interaction data, which allows us to dig further into more specific aspects, resulting in the following two complementary research questions:
 \begin{itemize}
 \item \textbf{RQ4:} How is the developer's performance during the recovery time after an interruption? 
 \item \textbf{RQ5:} What events are more common during recovery time?
 \end{itemize}
+
+\RR{For each research question, add a sentence explaining why we look into it}
+
 
 \emph{A note on terminology}: in this paper we (ab)use the word \emph{interruption} to refer to a \emph{gap of activity} observed in IDE activity. We do not presume that all of these activity gaps are actual interruptions (our results lead us to believe otherwise); rather, we assume they are indicators of work fragmentation in general (that is, a programmer switching contexts to perform other activities while developing, such as answering email, looking for the solution of a problem on the Internet, etc). 
 There also actions taking place outside of the computer, such as taking phone calls, interacting with people or leaving one's desk. 
@@ -117,6 +121,9 @@ Of note, work by Zou and Godfrey \cite{ZG06} found that interruptions were a com
 In the modern workplace, people routinely multitask and shift their attention to multiple areas, projects and activities. An observational study by Gonzalez and Mark found that information workers experience high level of multitasking, averaging 3 minutes on a task before switching to another task \cite{GM04}. This often results in work fragmentation and interruptions which some studies found has detrimental effects to knowledge workers, such as stress and frustration \cite{MGK08}. Work fragmentation as result of interruptions usually demands extra effort to recover and resume pending activities: a study of 24 information workers found that a worker needs on average 25 minutes to get back on an interrupted task \cite{MGH05}. Similarly, Iqbal and Horvitz \cite{IH07} found that people experience disorientation and loss of context when multitasking. Czerwinsky et al. found that after experiencing work fragmentation people found it more difficult to perform interrupted tasks and took longer to complete them \cite{CHW04}. % Many other studies contribute either with anecdotical or experimental evidence of the detrimental effects of interruptions and work fragmentation. Most of them are based on retrospective assessment of the effects (not real time) by studies ́ subjects and without referring to aspects related to human cognitive activity such as attention, focus, or concentration.
 
 While these studies already show the effect of work fragmentation is hurtful, they are mostly observational studies over a limited time, and do not address specifically the sub-population of programmers.
+\RR{Some rationale as to why this population is specific enough to be studied in isolation. For instance, that programmers have to maintain very complicated mental contexts (e.g. understanding complex programs). Perhaps Parnin has something about it (Memery failure paper?)}
+
+\RR{Make sure the new papers asked by Reviewer 1 are also mentioned in the related work}
 
 \paragraph{Studies specific to programmers}
 
@@ -253,6 +260,7 @@ For example, Table \ref{tbl:sample_event} shows an aggregate edit event in row 7
 
 For example, massive events are produced when we select an entire group of classes from the navigation tree panel in Eclipse. In  Table \ref{tbl:sample_event} we show a massive selection on the methods m1, m2 and m3  in rows 4, 5 and 6. This massive selection produces three consecutive events with a time gap of not more than 0.1 seconds. These events overstate the activity of developers as each of these does not correspond to an individual developer action; rather, the entire sequence is.
 
+\RR{Perhaps another example here: it was not clear for one of the reviewer why this was necessary. E.g.: if I scroll down in the outline view with the keyboard I will be generating many selection events. Check other characteristics too (agregate, long).}
 
 \textbf{Very long events. } These events have a duration time ($|EndTime - StartTime|$) much larger than the mean. This mainly occurs in aggregate events. We believe that this issue is due to factors related to Mylyn, since it can register the end time of an event when the task is resumed after a long downtime. Another cause of these events is when one selects a code fragment and maintains this action for a long time. 
  
@@ -339,6 +347,7 @@ Our goal is to build compact and representative models from each session. In thi
 
 Multivariate time series is a useful way of representing temporal data because they allow us to apply clustering techniques and find recurrent patterns. Additionally, the partition of the data into sessions do not alter the results since we are interested in the values by minute, so having longer sessions do not necessarily increase the number of events per minute.
 
+\RR{motivate more the time series stuff}
 
 Mylyn data has another characteristic which is unusual for time series: the time of occurrence of the events is not periodic (see column \textit{StartTime} in Table \ref{tbl:sample_event}). That is to say, events occur with non-equidistant separation gaps between them. However, in a time series, the values must be evenly spaced and chronologically sorted. For this reason, we compressed the size of the multivariate time series, pulling apart all the interruptions as a new time series variable. Then, each time series value represents the interruption duration in this minute (Figure \ref{fig:trans}). 
 
@@ -350,6 +359,8 @@ We define empirically an interruption as a pause of programming of duration $\ge
 This is based on previous work where we observed that short interruptions lasted usually this long \cite{GM04}. 
 Based on additional observations from this work, we defined a prolonged interruption as one lasting for more than 12 minutes. 
 These thresholds are also supported by the Activity Theory models of Kaptelinin and Nardi \cite{KaptelininN07}. This study presented work fragmentation at two different levels: actions and activities. Interruptions originated after a period of around three minutes of sustained attention to the previous action were considered when people were switching at the level of interactions with artifacts of people. Interruptions originated after a period of twelve minutes of sustained attention to a previous activity where considered when people were switching at the level of interactions with projects or topics.  
+
+\RR{Add emphasis to the paragraph above since reviewers missed it (asking for motivation for the thresholds)}
 
 We identified that 98\% of sessions had at least one gap of activity. Moreover, we observe that the short interruptions predominate over the prolonged interruptions (Table \ref{tbl:by_duration}). This first result tells us that work fragmentation is extremely prevalent in our dataset.
 
@@ -451,7 +462,7 @@ The Usage Data Collector (UDC) dataset is a large compendium of information abou
 \end{table}
 
 \subsection{Selection}
-We used the pre-processed version of the data that is published on Google BigQuery, by Murphy-Hill \cite{SnipesETALASD}. This is an alternative version of the original UDC dataset, which is cleaned and preprocessed, so that the transformation phase is simple and focused on our needs. Due to the magnitude of the dataset we only worked on a fragment of it. We took a random sample of 1,000 users that is larger than the dataset we were able to obtain for the Mylyn study.
+We used the pre-processed version of the data that is published on Google BigQuery, by Murphy-Hill et al. \cite{SnipesETALASD}. This is an alternative version of the original UDC dataset, which is cleaned and preprocessed, so that the transformation phase is simple and focused on our needs. Due to the magnitude of the dataset we only worked on a fragment of it. We took a random sample of 1,000 users that is larger than the dataset we were able to obtain for the Mylyn study.
 
 The first step was to query the dataset to get the data from 1,000 random users. We delimited the query to obtain only those events dispatched by the user, ignoring system events. We also ignored the bundle version and transformed the UNIX date into a more legible datetime format. From this query we extracted 4,321,349 unique events, which are around $0.18\%$ of the whole dataset.
 
@@ -577,7 +588,7 @@ At this point, we had the same format of sessions with both datasets. Some stati
 \section{RQ1: Relationship between Interruptions and Productivity}
 
 \subsection{Metrics Used in This Study}
-
+\RR{consider moving subsection out of RQ1}
 Before introducing the results about the first research question, it is convenient to present the metrics used in this study.
 We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
 \\
@@ -598,6 +609,7 @@ Metrics characterizing productivity and activity:
 
 We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool.
 
+\RR{motivate more edit ratio, and add here the correlation analysis}
 
 
 %\subsection{Effect in the productive work time}
@@ -965,6 +977,7 @@ These findings seem to indicate that the inverse relationship between productivi
 
 The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On one hand, after an interruption the programmer carry out activities meant to recover the lost mental model, like reading the code, debugging, reading notes and cues, and more resumption strategies \cite{PR11}.
 
+\RR{expand this paragraph, since a reviewer asks explicitely for that}
 On the other hand, before the interruption there is a preparation phase when the interruption is imminent or expected. In this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer, usually he tries to solve it by reading the code, using the debugger or reading comments in the control version tool; after this resources are depleted, the next option is to ask to teammates or other external resources \cite{LVD06}. The latest activities can represent an interruption of work.
 
 In this research question we expect to see the effects on productivity around an interruption due to the activities previously described.
@@ -1055,7 +1068,7 @@ Below we describe some observations:
 \item \textit{On the right,} the trend of the time series increases steadily. We hypothesize that the programmer is immersing again into the programming task, increasing progressively the activity as represented by the number of edits and selections. In Mylyn it reaches the median activity (in average) 12 to 18 minutes after the interruption, while in UDC it is around 6 to 12 minutes. It then rises further than the session median, which is not surprising, as we expect higher than median activity further away from interruptions.
 
 %We called \textit{recuperation time} the first intersect point between edition and navigation. In this sense, the  average recuperation time of an interruption occurs in the minute 12. 
-\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This is might be because of two reasons: the programmer could have found a problem while coding, who at first will try to solve it by reading the code, switching out from the IDE, navigating the call stack and debugging, before going to ask another teammate according to LaToza et al. \cite{LVD06}; this set of actions end up with an interruption and reduce the observed activity within the IDE. Also, when the interruption is imminent or expected, the programmer make use of different suspension strategies like writing physical notes, making a mental note or leaving a reminder cue on the code or window, as mentioned by Parnin and DeLine \cite{PD10}. These activities reduce the activity before the gap and they are seen in the interaction data mostly as selection events. The latest can be better visualized in Figure \ref{fig:all_ints} with the UDC data as a significant decrease of edit events, being below the selection events approximately 10 minutes before the interruption.
+\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This might be because of two reasons: the programmer could have found a problem while coding, who at first will try to solve it by reading the code, switching out from the IDE, navigating the call stack and debugging, before going to ask another teammate according to LaToza et al. \cite{LVD06}; this set of actions end up with an interruption and reduce the observed activity within the IDE. Also, when the interruption is imminent or expected, the programmer make use of different suspension strategies like writing physical notes, making a mental note or leaving a reminder cue on the code or window, as mentioned by Parnin and DeLine \cite{PD10}. These activities reduce the activity before the gap and they are seen in the interaction data mostly as selection events. The latest can be better visualized in Figure \ref{fig:all_ints} with the UDC data as a significant decrease of edit events, being below the selection events approximately 10 minutes before the interruption.
 %\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This is because work fragmentation is not only due to interruptions: programmers may for instance switch away from the IDE to look up information on the web or request it from other programmers. They are likely to do so because they are stuck, which would manifest itself by lower activity before the activity gap. We investigate this further below.
 
 %This is more surprising, as we expected the activity to drop mostly after the interruption rather than before. A possible explanation is that their are several causes for inactivity
@@ -1129,7 +1142,7 @@ Given the overall activity pattern we noticed in the local analysis, we hypothes
 
 We hence looked for patterns in the interruptions.  After applying clustering techniques over all the subsequences, we always found the formation of three recurrent patterns that show different effects of the interruption: neutral, positive and negative. The clustering was performed with the  K-Mediods~\cite{AMP97} technique, the Silhouette metric~\cite{RP87} to interpret and evaluate the results, the Dynamic Time Warping~\cite{KE05} as distance measure, and feature extraction techniques to reduce the dimensionality.  For this reason, we classified empirically each interruption by its local effect. 
 
-We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The rest 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
+We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
 Table \ref{tbl:local_effect} shows the applied thresholds and the results, accompanied with a typical example of an interruption in each category. This local analysis shows that there are indeed three well-defined groups of interruptions, with the two largest of them having clear effects on the activity in the session.
 
 
@@ -1349,6 +1362,7 @@ Negative Effect
 The amount of information we have in Usage Data Collector allows us to analyze more specific sections on a programming session. We further investigated the immediate activities after an interruption that we name the \textit{recovery time}, which is a time period taken by the programmer to resume the interrupted work. We could not do this with Mylyn data, since the process involves a lot of filtering of interruptions, which left us with too few data points to analyze.
 
 We established the recovery time as the 15 minute period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}.
+\RR{Add details of that paper to better justify}
 
 It was required to make a selection of those interruptions which had a period afterwards of at least 15 minutes before another interruption. After this query we obtained 5,684 valid interruptions from a total of 110,077.
 
@@ -1377,7 +1391,7 @@ Splitting the recovery phase into three phases allows us to analyze in detail th
 	\label{fig:recovery_afterRecovery}
 \end{figure}
 
-The duration of the peak varies among the also called working spheres, as mentioned by Gonzalez and Mark \cite{MGH05}. On average, the peak lasts for 12 minutes, while the maximum registered is of 145 minutes. The distribution of duration of the peaks is reported in Table \ref{tbl:dist_peaks}.
+The duration of the peak varies among the also called working spheres \RR{add details}, as mentioned by Gonzalez and Mark \cite{MGH05}. On average, the peak lasts for 12 minutes, while the maximum registered is of 145 minutes. The distribution of duration of the peaks is reported in Table \ref{tbl:dist_peaks}.
 
 \begin{table}[ht!]
 	\small
@@ -1567,7 +1581,7 @@ We intend to reflect the effects of work fragmentation by classifying the interr
 \paragraph{Comparison with observational studies}
 Our theoretical foundations are based on observational studies performed on information workers' development environments \cite{MGH05, IH07, LVD06, PD10}. These findings helped us understand the response to work fragmentation according to the recorded user activity, and it was possible to made a relation between the user's data and the phenomena that occur on the working places describe on the studies.
 
-Observing the user actvivity throughout a working session might be the best way to understand the effect of events that occur on the working place, like work fragmentation. However, implementing a study of this kind can be very expensive, for the time and material need. For example, to have the same amount of information we have with UDC it would require to monitor the user activity for a year or two and have a record of all the activities performed, like the number and duration of the interruptions. Moreover, this kind of research require on-site studies, exhaustive monitoring and interviews, which in some cases could be expensive or difficult to perform.
+Observing the user activity throughout a working session might be the best way to understand the effect of events that occur on the working place, like work fragmentation. However, implementing a study of this kind can be very expensive, for the time and material need. For example, to have the same amount of information we have with UDC it would require to monitor the user activity for a year or two and have a record of all the activities performed, like the number and duration of the interruptions. Moreover, this kind of research require on-site studies, exhaustive monitoring and interviews, which in some cases could be expensive or difficult to perform.
 
 On the other hand, analyzing interaction data is a convenient way to understand almost the same kind of events on the environment. Usage data describes the history of activities of the programmer and it is possible to analyze the effect of events, as shown in this work. The problem with this is the lack of context of the events and, in our case, the lack of information of the programmers to enrich the results. Hence, we can not guarantee that an interruption was an actual interruption of work; due to the definition of an interruption, it could also be a change to a Web design tool, server configuration tool or the browser, which are common activities in Web developers and not necessarily detrimental to productivity.
 
@@ -1578,7 +1592,8 @@ The main threats to the validity of our study are construct validity threats due
 
 For the Mylyn dataset, the main threat to validity is due to the exclusion of development session with aggregated information. We deemed that disaggregating the data as was done in other work~\cite{YR11}  was not appropriate as we do not know the exact distribution of aggregated events in time, which is very important for this study. We thus elected to filter out part of the data. We have not found evidence of bias due to this but it may still be present.
 
-Another threat comes from the metrics we use. Our choices are limited by the data recorded by Mylyn. We believe our three indicator (edits per minute, selections per minute, and edit ratio) provide a reasonable measure of productivity (especially with the addition of edit ratio, used in other work \cite{KM06}). However we can not exclude that other indicators of productivity (such as actual changes~\cite{RL10}) may yield different results.
+Another threat comes from the metrics we use. Our choices are limited by the data recorded by Mylyn. We believe our three indicator (edits per minute, selections per minute, and edit ratio) provide a reasonable measure of productivity (especially with the addition of edit ratio, used in other work \cite{KM06}). However we can not exclude that other indicators of productivity (such as actual changes~\cite{RL10}) may yield different results. 
+\RR{add a bit stuff about edit ratio to keep one reviewer happy}
 
 We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might significantly alter the results. 
 
