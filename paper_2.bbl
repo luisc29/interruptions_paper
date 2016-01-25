@@ -53,6 +53,15 @@ S.~T. Iqbal and E.~Horvitz, ``Disruption and recovery of computing tasks: field
 M.~Czerwinski, E.~Horvitz, and S.~Wilhite, ``A diary study of task switching
   and interruptions,'' in \emph{Proceedings of {CHI} 2004}, 2004, pp. 175--182.
 
+\bibitem{PR12}
+
+
+\bibitem{MMLK14}
+R.~Minelli, A.~Mocci, M.~Lanza, and T.~Kobayashi, ``Quantifying program
+  comprehension with interaction data,'' in \emph{Quality Software (QSIC), 2014
+  14th International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
+  IEEE, 2014, pp. 276--285.
+
 \bibitem{KDV07}
 A.~J. Ko, R.~DeLine, and G.~Venolia, ``Information needs in collocated software
   development teams,'' in \emph{Proceedings of ICSE 2007}, 2007, pp. 344--353.
@@ -184,6 +193,12 @@ V.~Kaptelinin and B.~A. Nardi, ``Acting with technology: Activity theory and
   \url{http://firstmonday.org/htbin/cgiwrap/bin/ojs/index.php/fm/article/view/1772}
 \BIBentrySTDinterwordspacing
 
+\bibitem{SnipesETALASD}
+W.~Snipes, E.~Murphy-Hill, T.~Fritz, M.~Vakilian, K.~Damevski, A.~R. Nair, and
+  D.~Shepherd, \emph{Analyzing Software Data}.\hskip 1em plus 0.5em minus
+  0.4em\relax Morgan Kaufmann, 2015, ch. A Practical Guide to Analyzing IDE
+  Usage Data.
+
 \bibitem{C94}
 J.~Cohen, ``The earth is round (p $<$ 0.5),'' \emph{American Psychologist},
   vol.~49, no.~12, pp. 997--1003, 1994.
@@ -207,12 +222,6 @@ P.~J. Rousseeuw, ``Silhouettes: a graphical aid to the interpretation and
 \bibitem{KE05}
 E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
   Information Systems}, vol.~7, pp. 358--386, 2005.
-
-\bibitem{SnipesETALASD}
-W.~Snipes, E.~Murphy-Hill, T.~Fritz, M.~Vakilian, K.~Damevski, A.~R. Nair, and
-  D.~Shepherd, \emph{Analyzing Software Data}.\hskip 1em plus 0.5em minus
-  0.4em\relax Morgan Kaufmann, 2015, ch. A Practical Guide to Analyzing IDE
-  Usage Data.
 
 \bibitem{SBV98}
 R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
