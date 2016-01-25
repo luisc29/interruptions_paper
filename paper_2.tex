@@ -89,18 +89,18 @@ Work fragmentation is indeed an important phenomenon within the context of moder
 
 In this paper, we present a study addressing these issues by (1) being focused on software developers, and (2) using MSR techniques to base its conclusions on a much larger amount of data (specifically, thousands of development sessions recorded by Mylyn and the Eclipse Usage Data Collector). The downside is that the data exploited, being operational data \cite{M14}, is of lower quality than data extracted from a full-fledged observational study. Trading quality for quantity allows us to explore different aspects of the problem, and to generate hypotheses for subsequent studies of work fragmentation and interruptions in software development. We address the following three questions:
 \begin{itemize}
-\item \textbf{RQ1:} What is the relationship between the observed interruptions and the observed developer productivity? 
-\item \textbf{RQ2:} Is the observed relationship more pronounced in the presence of prolonged interruptions?
-\item \textbf{RQ3:}  What is the observed relationship in the vicinity of interruptions?
+\item \textbf{RQ1:} What is the relationship between the observed interruptions and the observed developer productivity? Every interruption requires a time to regain the lost context, so in this research question we intend to see an accumulative effect when the number of interruption increases.
+\item \textbf{RQ2:} Is the observed relationship more pronounced in the presence of prolonged interruptions? A longer interruption might be more detrimental to the productivity than several small interruptions, as it requires more time to recover from it; this research question explores that possibility.
+\item \textbf{RQ3:}  What is the observed relationship in the vicinity of interruptions? Based on the literature and observational studies, we believe that in the immediate time around an interruption the effect of it can be more palpable.
 \end{itemize}
 
 This work is an extension to a published paper in the 22nd IEEE International Conference on Software Analysis, Evolution, and Reengineering. This improved version includes the same analysis previously made with a new dataset, the Eclipse Usage Data Collector (UDC) interaction data, which allows us to dig further into more specific aspects, resulting in the following two complementary research questions:
 \begin{itemize}
-\item \textbf{RQ4:} How is the developer's performance during the recovery time after an interruption? 
-\item \textbf{RQ5:} What events are more common during recovery time?
+\item \textbf{RQ4:} How is the developer's performance during the recovery time after an interruption? Our interest is to analyze the evolution of the productivity as the programmer recovers from an interruption.
+\item \textbf{RQ5:} What events are more common during recovery time? The pattern of activities during the recovery time might change in comparison with other phases; in this research question we investigate if there is such a difference.
 \end{itemize}
 
-\RR{For each research question, add a sentence explaining why we look into it}
+%\RR{For each research question, add a sentence explaining why we look into it}
 
 
 \emph{A note on terminology}: in this paper we (ab)use the word \emph{interruption} to refer to a \emph{gap of activity} observed in IDE activity. We do not presume that all of these activity gaps are actual interruptions (our results lead us to believe otherwise); rather, we assume they are indicators of work fragmentation in general (that is, a programmer switching contexts to perform other activities while developing, such as answering email, looking for the solution of a problem on the Internet, etc). 
