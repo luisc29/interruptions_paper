@@ -351,9 +351,9 @@ Table \ref{tbl:mass_events} shows the ratio of variation of the number of events
 \subsection{Transformation}
 Our goal is to build compact and representative models from each session. In this sense, we used aggregation of events to generate a multivariate time series (MTS). An MTS is a sequence of multivariate observations taken at continuous time intervals coming from a same phenomenon. We build the MTS with edit and navigation variables; the time unit is the minute, and every observation is the sum of all the events that occurred in this minute. We selected the minute as unit time because it seemed to be an appropriate and minimal representation of the user interaction in a programming task---obviously a subjective decision. 
 
-Multivariate time series is a useful way of representing temporal data because they allow us to apply clustering techniques and find recurrent patterns. Additionally, the partition of the data into sessions do not alter the results since we are interested in the values by minute, so having longer sessions do not necessarily increase the number of events per minute.
+Creating time series is a useful way of representing temporal data because they allow us to apply clustering techniques and find recurrent patterns; in our case every minute of the time series contains different observation, which is the reason why we created multivariate time series. This way we can model a session as a MTS, where every minute contains the quantification of edition and selection events. The partition of the data into sessions do not alter the results since we are interested in the values by minute, so having longer sessions do not necessarily increase the number of events per minute.
 
-\RR{motivate more the time series stuff}
+%\RR{motivate more the time series stuff}
 
 Mylyn data has another characteristic which is unusual for time series: the time of occurrence of the events is not periodic (see column \textit{StartTime} in Table \ref{tbl:sample_event}). That is to say, events occur with non-equidistant separation gaps between them. However, in a time series, the values must be evenly spaced and chronologically sorted. For this reason, we compressed the size of the multivariate time series, pulling apart all the interruptions as a new time series variable. Then, each time series value represents the interruption duration in this minute (Figure \ref{fig:trans}). 
 
@@ -615,7 +615,9 @@ Metrics characterizing productivity and activity:
 
 We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool.
 
-\RR{motivate more edit ratio, and add here the correlation analysis}
+An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded of selections events and are common activities after an interruption, according to observational studies. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
+
+%\RR{motivate more edit ratio, and add here the correlation analysis}
 
 
 %\subsection{Effect in the productive work time}
