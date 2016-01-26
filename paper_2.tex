@@ -403,7 +403,7 @@ We identified that 98\% of sessions had at least one gap of activity. Moreover, 
 \end{figure}
 
 
-After the transformation phase, we had the sessions in a proper format to carry out the analysis. In the Figure \ref{fig:mylyn_sessions_stats} we can observe some statistics (left) about the sessions in Mylyn and the distribution (right) of the productive time. The productive time of the session is the total time without considering the time consumed by interruptions. Also, the outliers are ignored by setting a threshold of three times the standard deviation. This filter is used only to show the distribution, to avoid a very long tail provoked by unusually long sessions.
+After the transformation phase, we had the sessions in a proper format to carry out the analysis. In the Figure \ref{fig:mylyn_sessions_stats} we can observe some statistics (left) about the sessions in Mylyn and the distribution (right) of the productive time. The productive time of the session is the total time without considering the time consumed by interruptions. Also, the outliers are ignored by setting a threshold of three times the standard deviation. This filter is used only to show the distribution and avoid a very long tail provoked by unusually long sessions.
 
 
 \begin{figure}
@@ -573,7 +573,7 @@ Once the events were classified and sorted, we split the dataset into sessions, 
 
 To identify an the interruptions on every session, we considered the same definition we used with Mylyn, where an interruption is a segment of 3 minutes or more with no activity registered. 
 
-At this point, we had the same format of sessions with both datasets. In the Figure \ref{fig:udc_sessions_stats} we can see statistics about the sessions (left) and a histogram (right) of the duration of the sessions on UDC, which ignores outliers by setting a threshold of three times the standard deviation.
+At this point, we had the same format of sessions with both datasets. In the Figure \ref{fig:udc_sessions_stats} we can see statistics about the sessions (left) and a histogram (right) of the duration of the sessions in UDC, which ignores outliers by setting a threshold of three times the standard deviation.
 
 \begin{figure}
 	\centering	
@@ -1434,10 +1434,12 @@ Negative Effect
 \subsection{Edition and selections during recovery time}
 The amount of information we have in Usage Data Collector allows us to analyze more specific sections on a programming session. We further investigated the immediate activities after an interruption that we name the \textit{recovery time}, which is a time period taken by the programmer to resume the interrupted work. We could not do this with Mylyn data, since the process involves a lot of filtering of interruptions, which left us with too few data points to analyze.
 
-We established the recovery time as the 15 minute period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}.
-\RR{Add details of that paper to better justify}
+We established the recovery time as the 15 minutes period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}, who explain that although it is a variable difficult to measure, estimating 15 minutes for this phase is believed to be valid. They also consider the recovery time as the third (and last) phase of an interruption; the first one is the occurrence phase, or the start interruption, followed by the handling phase that contains all the activities required by the interruption.
 
-It was required to make a selection of those interruptions which had a period afterwards of at least 15 minutes before another interruption. After this query we obtained 5,684 valid interruptions from a total of 110,077.
+Furthermore, Iqbal and Horvitz \cite{IH07} conclude, after observations from field study, that the recovery time can last between 10 to 16 minutes, depending on the interruption. They speculate that this time is necessary to refocusing cognitive resources lost during the diversion.
+%\RR{Add details of that paper to better justify}
+
+In order to execute this analysis, it was necessary to make a selection of the interruptions that have a period after it of at least 15 minutes of recorded work, before another interruption occurs. After this query we obtained 5,684 valid interruptions from a total of 110,077.
 
 From those valid interruptions, we split the time after the interruption into two phases: 
 

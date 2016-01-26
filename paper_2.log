@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.11)  26 JAN 2016 09:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.8.11)  26 JAN 2016 10:42
 entering extended mode
 **paper_2.tex
 (paper_2.tex
@@ -1548,16 +1548,16 @@ ed-to.pdf>
 (epstopdf)                    size: 71010 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/udc_after_Interrupt
 ion-eps-converted-to.pdf figures/udc_after_Interruption.eps>
-(epstopdf)             \includegraphics on input line 1461.
+(epstopdf)             \includegraphics on input line 1463.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_after_Interruption-eps-converted-to.pdf, id=711, 761.84625pt x 166
+<figures/udc_after_Interruption-eps-converted-to.pdf, id=712, 761.84625pt x 166
 .6225pt>
 File: figures/udc_after_Interruption-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/udc_after_Interruption-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_after_Interruption-eps-converted-to.pdf us
-ed on input line 1461.
+ed on input line 1463.
 (pdftex.def)             Requested size: 367.19751pt x 80.3084pt.
 Package epstopdf Info: Source file: <figures/udc_box_recovery_edit.eps>
 (epstopdf)                    date: 2015-08-12 12:07:57
@@ -1568,19 +1568,19 @@ d-to.pdf>
 (epstopdf)                    size: 20449 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/udc_box_recovery_ed
 it-eps-converted-to.pdf figures/udc_box_recovery_edit.eps>
-(epstopdf)             \includegraphics on input line 1491.
+(epstopdf)             \includegraphics on input line 1493.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=716, 451.6875pt x 240.9
+<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=717, 451.6875pt x 240.9
 pt>
 File: figures/udc_box_recovery_edit-eps-converted-to.pdf Graphic file (type pdf
 )
  <use figures/udc_box_recovery_edit-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_edit-eps-converted-to.pdf use
-d on input line 1491.
+d on input line 1493.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1491--1492
+Underfull \hbox (badness 10000) in paragraph at lines 1493--1494
 
  []
 
@@ -1593,19 +1593,19 @@ Package epstopdf Info: Source file: <figures/udc_box_recovery_sel.eps>
 (epstopdf)                    size: 22792 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/udc_box_recovery_se
 l-eps-converted-to.pdf figures/udc_box_recovery_sel.eps>
-(epstopdf)             \includegraphics on input line 1494.
+(epstopdf)             \includegraphics on input line 1496.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=718, 451.6875pt x 240.9p
+<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=719, 451.6875pt x 240.9p
 t>
 File: figures/udc_box_recovery_sel-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/udc_box_recovery_sel-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_sel-eps-converted-to.pdf used
- on input line 1494.
+ on input line 1496.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1494--1495
+Underfull \hbox (badness 10000) in paragraph at lines 1496--1497
 
  []
 
@@ -1618,27 +1618,28 @@ ed-to.pdf>
 (epstopdf)                    size: 7165 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/udc_box_recovery_ra
 tio-eps-converted-to.pdf figures/udc_box_recovery_ratio.eps>
-(epstopdf)             \includegraphics on input line 1497.
+(epstopdf)             \includegraphics on input line 1499.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=720, 451.6875pt x 240.
+<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=721, 451.6875pt x 240.
 9pt>
 File: figures/udc_box_recovery_ratio-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/udc_box_recovery_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_ratio-eps-converted-to.pdf us
-ed on input line 1497.
+ed on input line 1499.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1497--1498
+Underfull \hbox (badness 10000) in paragraph at lines 1499--1500
 
  []
 
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 1489--1500
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 1491--1502
  [][] 
  []
 
+[22 <./figures/udc_after_Interruption-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/udc_box_recovery_pos_ratio.eps>
 (epstopdf)                    date: 2015-08-12 12:07:57
 (epstopdf)                    size: 8002 bytes
@@ -1648,45 +1649,41 @@ verted-to.pdf>
 (epstopdf)                    size: 6962 bytes
 (epstopdf)             Command: <epstopdf --outfile=figures/udc_box_recovery_po
 s_ratio-eps-converted-to.pdf figures/udc_box_recovery_pos_ratio.eps>
-(epstopdf)             \includegraphics on input line 1512.
+(epstopdf)             \includegraphics on input line 1514.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=723, 451.6875pt x 
+<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=740, 451.6875pt x 
 240.9pt>
 File: figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_pos_ratio-eps-converted-to.pd
-f used on input line 1512.
+f used on input line 1514.
 (pdftex.def)             Requested size: 204.0pt x 108.80098pt.
- [22 <./figures/udc_after_Interruption-eps-converted-to.pdf>] [23 <./figures/ud
-c_box_recovery_edit-eps-converted-to.pdf> <./figures/udc_box_recovery_sel-eps-c
-onverted-to.pdf> <./figures/udc_box_recovery_ratio-eps-converted-to.pdf> <./fig
-ures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1589.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24]
-[25] [26] [27] (paper_2.bbl
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1591.
+ [23 <./figures/udc_box_recovery_edit-eps-converted-to.pdf> <./figures/udc_box_
+recovery_sel-eps-converted-to.pdf> <./figures/udc_box_recovery_ratio-eps-conver
+ted-to.pdf> <./figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>] [24] [
+25]
+[26] [27] (paper_2.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
  []
 
 [28])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1715.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1717.
  [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1715.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1717.
  (paper_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1715.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1715.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1717.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1717.
 
 Package rerunfilecheck Info: File `paper_2.out' has not changed.
 (rerunfilecheck)             Checksum: 9EA1BFE8372F0D0706165D235528EA0F;2423.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.75pt have occurred.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1715.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1717.
  ) 
 Here is how much of TeX's memory you used:
  9440 strings out of 493698
@@ -1714,9 +1711,9 @@ ts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb
 Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/
 fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
 imes/utmri8a.pfb>
-Output written on paper_2.pdf (29 pages, 1130562 bytes).
+Output written on paper_2.pdf (29 pages, 1131037 bytes).
 PDF statistics:
- 924 PDF objects out of 1000 (max. 8388607)
+ 925 PDF objects out of 1000 (max. 8388607)
  156 named destinations out of 1000 (max. 500000)
  658 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -2,14 +2,18 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: paper_2.aux
 The style file: IEEEtran.bst
 Database file #1: IEEEabrv.bib
 Database file #2: mybib.bib
-I was expecting a `,' or a `}'---line 11 of file mybib.bib
+I was expecting a `,' or a `}'---line 20 of file mybib.bib
  :   
  :   title={Programmer information needs after memory failure},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 225 of file mybib.bib
+Repeated entry---line 234 of file mybib.bib
  : @inproceedings{FMH07
  :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 431 of file mybib.bib
+ : @inproceedings{IH07
+ :                    ,
 I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
@@ -20,4 +24,4 @@ Warning--empty booktitle in PR12
 Warning--empty year in PR12
 
 Done.
-(There were 2 error messages)
+(There were 3 error messages)

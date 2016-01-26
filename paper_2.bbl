@@ -46,12 +46,23 @@ G.~Mark, V.~M. Gonz{\'{a}}lez, and J.~Harris, ``No task left behind?: examining
 
 \bibitem{IH07}
 S.~T. Iqbal and E.~Horvitz, ``Disruption and recovery of computing tasks: field
-  study, analysis, and directions,'' in \emph{Proceedings of {CHI} 2007}, 2007,
-  pp. 677--686.
+  study, analysis, and directions,'' in \emph{Proceedings of the SIGCHI
+  conference on Human factors in computing systems}.\hskip 1em plus 0.5em minus
+  0.4em\relax ACM, 2007, pp. 677--686.
 
 \bibitem{CHW04}
 M.~Czerwinski, E.~Horvitz, and S.~Wilhite, ``A diary study of task switching
   and interruptions,'' in \emph{Proceedings of {CHI} 2004}, 2004, pp. 175--182.
+
+\bibitem{ABV12}
+S.~Aral, E.~Brynjolfsson, and M.~Van~Alstyne, ``Information, technology, and
+  information worker productivity,'' \emph{Information Systems Research},
+  vol.~23, no. 3-part-2, pp. 849--867, 2012.
+
+\bibitem{AB12}
+R.~F. Adler and R.~Benbunan-Fich, ``Juggling on a high wire: Multitasking
+  effects on performance,'' \emph{International Journal of Human-Computer
+  Studies}, vol.~70, no.~2, pp. 156--168, 2012.
 
 \bibitem{PR12}
 
@@ -226,16 +237,6 @@ E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
 \bibitem{SBV98}
 R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
   never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
-
-\bibitem{ABV12}
-S.~Aral, E.~Brynjolfsson, and M.~Van~Alstyne, ``Information, technology, and
-  information worker productivity,'' \emph{Information Systems Research},
-  vol.~23, no. 3-part-2, pp. 849--867, 2012.
-
-\bibitem{AB12}
-R.~F. Adler and R.~Benbunan-Fich, ``Juggling on a high wire: Multitasking
-  effects on performance,'' \emph{International Journal of Human-Computer
-  Studies}, vol.~70, no.~2, pp. 156--168, 2012.
 
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
