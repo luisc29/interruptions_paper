@@ -359,14 +359,17 @@ Mylyn data has another characteristic which is unusual for time series: the time
 
 
 Consequently, the temporal component represents the \textit{real working time} of a programming task, excluding inactivity. This allows us to compute our activity indicators (number of edits, selections, edit ratio) independently of the amount of inactivity in a session.
-% That is to say, each consecutive unit time corresponds to a minute of user activity, where there was at least one event of edit or selection. \\
+% That is to say, each consecutive unit time corresponds to a minute of user activity, where there was at least one event of edit or selection. 
+\paragraph{Defining an interruption.}An important task during the transformation phase is to identify the interruptions along a working session. In this study we use two kind of interruptions, and we define them as follows:
 
-We define empirically an interruption as a pause of programming of duration $\geq 3$ minutes. 
-This is based on previous work where we observed that short interruptions lasted usually this long \cite{GM04}. 
-Based on additional observations from this work, we defined a prolonged interruption as one lasting for more than 12 minutes. 
-These thresholds are also supported by the Activity Theory models of Kaptelinin and Nardi \cite{KaptelininN07}. This study presented work fragmentation at two different levels: actions and activities. Interruptions originated after a period of around three minutes of sustained attention to the previous action were considered when people were switching at the level of interactions with artifacts of people. Interruptions originated after a period of twelve minutes of sustained attention to a previous activity where considered when people were switching at the level of interactions with projects or topics.  
+\begin{itemize}
+	\item \textit{Interruption. }We define empirically an interruption as a pause of programming of duration $\geq 3$ minutes. This is based on previous work where we observed that short interruptions lasted usually this long \cite{GM04}. 
+	
+	\item \textit{Prolonged interruption. }Based on additional observations from this work, we defined a prolonged interruption as one lasting for more than 12 minutes. These thresholds are also supported by the Activity Theory models of Kaptelinin and Nardi \cite{KaptelininN07}. This study presented work fragmentation at two different levels: actions and activities. Interruptions originated after a period of around three minutes of sustained attention to the previous action were considered when people were switching at the level of interactions with artifacts of people. Interruptions originated after a period of twelve minutes of sustained attention to a previous activity where considered when people were switching at the level of interactions with projects or topics.  
+\end{itemize}
 
-\RR{Add emphasis to the paragraph above since reviewers missed it (asking for motivation for the thresholds)}
+
+%\RR{Add emphasis to the paragraph above since reviewers missed it (asking for motivation for the thresholds)}
 
 We identified that 98\% of sessions had at least one gap of activity. Moreover, we observe that the short interruptions predominate over the prolonged interruptions (Table \ref{tbl:by_duration}). This first result tells us that work fragmentation is extremely prevalent in our dataset.
 
@@ -535,7 +538,9 @@ We used an iterative process involving two of the authors of the paper to arrive
 The edition and selection types are the ones we are interested for this study. The system classification is composed of the events that activate and deactivate the workspace of Eclipse; it is difficult to determine when and why these events are executed (they can be executed either via user or system action, and the order of execution in relation with associated events is not clear), so we decided to establish this particular classification for them. Finally, the events of the type control are those related to the version control system. 
 
 \subsection{Transformation}
-Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We split the data by users to avoid a conflict between the last event of a user and the first one of another. After this, we obtained a total of 28,989 different sessions; but after a filter to keep only those with at least 30 minutes of productive time (as we did with the Mylyn dataset), we ended up with 15,825 useful sessions, in contrast with the 4,284 we had from Mylyn. On average, every session contains 154 edition and selection events, and this number is positively correlated (0.81) with the size of the session. This is an expected result, as having more time consequently increases the number of events in the session. As mentioned before, the number of events in a session do not alter the edit or selection events per minute.
+Once the events were classified and sorted, we split the dataset into sessions, defining a session as a period of registered work between interruptions of 8 hours or larger, as we did with Mylyn. We split the data by users to avoid a conflict between the last event of a user and the first one of another. After this, we obtained a total of 28,989 different sessions; but after a filter to keep only those with at least 30 minutes of productive time (as we did with the Mylyn dataset), we ended up with 15,825 useful sessions, in contrast with the 4,284 we had from Mylyn. On average, every session contains 154 edition and selection events, and this number is positively correlated (0.81) with the size of the session. This is an expected result, as having more time consequently increases the number of events in the session. Additionally, it is important to remark that the number of events in a session do not alter the edit or selection events per minute.
+
+To identify an the interruptions on every session, we considered the same definition we used with Mylyn, where an interruption is a segment of 3 minutes or more with no activity registered. 
 
 At this point, we had the same format of sessions with both datasets. Some statistics about the sessions can be seen in the Table \ref{tbl:stats_sessions_udc}, and a histogram of the duration of the sessions on UDC is shown in the Figure \ref{fig:hist_session_duration_udc}, which ignores outliers by setting a threshold of three times the standard deviation.
 
