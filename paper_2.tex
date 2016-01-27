@@ -1505,8 +1505,7 @@ the phases. The three metrics show a tendency to increase and reach a maximum be
 
 \section{RQ5: Common events during Recovery Time}
 
-
-We saw in RQ3 different patterns of activity around interruptions when they had positive or negative effects; the edits per minute are higher after a positive interruption and the contrary after a negative one. The effect is more marked in the immediate minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
+In RQ3, we saw different patterns of activity around positive and negative interruptions. In particular, the edits per minute were higher after a positive interruption; on the contrary they were lower after a negative interruption. The effect is even more marked in the immediate minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
 
 \begin{figure}[!ht]
 	\centering
@@ -1517,7 +1516,42 @@ We saw in RQ3 different patterns of activity around interruptions when they had 
 	\label{fig:box_recovery_effect_udc}
 \end{figure}
 
-To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc}. This table also contains the frequency per minute of the more frequent event on that category. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. 
+
+The presence of this pattern and the important difference observed in Figure \ref{fig:box_recovery_effect_udc} led us to investigate the effect more closely. To this aim, we performed an exploratory study of the activities performed by programmers during the recovery time of an interruption. This is possible due to the high variety of events present in the UDC dataset, which can tell us a lot more about the type of activities developers do. Indeed, the UDC records individual commands that the developers issued in the IDE. The commands are very descriptive in the kind of activity that they represent. 
+
+The goal of the exploratory study then was to better understand whether the type of activities taken after an interruption were indicative of different types of activities for each type of session, and also whether these different kinds of activities supported our earlier hypotheses explaining why the two patterns of interruptions were present. Assuming that different commands represented different types of activity, the assumption was that the frequency of a given activity---as represented by the commands used to carry it---would vary between the different types of sessions.
+
+A first challenge that we encountered was that, similarly to the earlier research questions, the high number of different commands made it hard to infer broader trends. We hence created an additional classification of the commands we encountered in the activity logs. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. Differently to the first classification, we did not limit ourselves to a restricted number of categories: rather, we let the classification emerge from the iterative process. We ended up with 11 categories, as described in Table \ref{tbl:new_events_udc}.
+
+To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc}. This table also contains the frequency per minute of the more frequent event on that category. 
+
+A more detailed description of each category follows.
+\RR{check category description, this is done from my (flaky) memory}
+
+Category \emph{high-nav} regroup events indicative of program exploration activities, such as switching between two files (usually classes), browsing a list of methods, using the outline tabs in Eclipse, etc. This category regroups most but not all usages of the views surrounding the main editor view, as well as menu items such as going to the declaration of an entity, browsing references to an entity, etc.
+
+Category \emph{file} regroup events related to file management, such as opening and saving files. \RR{more details here, not sure} This kind of activity is indicative of program editing in the sense of saving files \RR{not quite sure here}
+
+Category \emph{edit-text} regroup most commands related to text edition, such as inserting or deleting characters, words, copy and paste, etc. This category is clearly indicative of program editing activities, as it regroups events that relate to the modification of low-level source code.
+
+Category \emph{debug} is concerned with events that occurr during debugging sessions, such as setting and removing breakpoints, stepping in the source code, going backwards/forwards, stepping into the execution of a method, etc. This category is clearly related to program understanding. 
+
+Category \emph{text-nav} regroups events related to text-level navigation, such as moving the cursor left, right, to the beginning/end of lines, or up/down a line. If this category includes navigation activity, it is still related to low-level artifacts as it represents navigation over single files, and usually small distances (characters or lines). On the contrary, category \emph{high-nav}, is related to the navigation between more abstract program elements (classes, methods, packages, interfaces), rather than low-level source code. As such, \emph{text-nav} is more closely related to code editing, while \emph{high-nav} is more closely related to program understanding.
+
+Category \emph{search} and \emph{find-replace} are both concerned with search activities, although there are subtle differences. \emph{search} regroups most kinds of search tools, such as text search, or searching code entities (types, packages, methods). As such, it is more to be seen as a high-level program navigation tool (the search results may span several files and are presented in a view that allows quick access to the entities---using such a view is classified in the \emph{high-nav} category). On the other hand, \emph{find-replace} concerns commands that are usually employed for text navigation and more particularly to perform editions (systematically replacing occurences of a string with another). If the first category is related to program exploration, the second is more related to program edition. There is a caveat here, as it is possible to use \emph{find-replace} commands only to find elements, which is more indicative of program exploration; however, the UDC dataset does not allow us to distinguish these usages.
+
+Category \emph{perspective} deals with events related to perspective change in Eclipse, such as switching from the coding to the debugging perspective, or vice-versa \RR{other perspectives too}. This is more indicative of ... \RR{what?}
+
+Category \emph{control} contains events related to version control (commit code, update code, resolving conflicts). This is hence related to finishing tasks, rather than editing or understanding code.
+
+Category \emph{refactoring} regroups usage of refactorings tools (rename, move methods, extract methods, etc). This is indicative of edition activities \RR{expand}
+
+Category \emph{clean-build} regroup events related to build system usage (build the system, clean the build, run the build, the tests, etc). This is indicative of \RR{out of inspiration and time for now ...}
+
+%- clear categories have clear outcome one way or the other
+%- mixed categories have mixed outcomes
+%=> overall pretty good then!
+
 
 %\begin{table}[ht!]
 %\tiny
