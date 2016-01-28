@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  26 JAN 2016 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  28 JAN 2016 20:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1673,21 +1673,26 @@ f used on input line 1513.
  [23 <./figures/udc_box_recovery_edit-eps-converted-to.pdf> <./figures/udc_box_
 recovery_sel-eps-converted-to.pdf> <./figures/udc_box_recovery_ratio-eps-conver
 ted-to.pdf> <./figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>] [24]
+
+LaTeX Warning: Citation `XXX' on page 25 undefined on input line 1620.
+
+
+LaTeX Warning: Citation `YYY' on page 25 undefined on input line 1620.
+
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1625.
- [25]
-[26] [27] [28] (./paper_2.bbl
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1638.
+[25] [26] [27] [28] [29] (./paper_2.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 2--2
 
  []
 
-[29])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1751.
- [30]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1751.
+[30])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1764.
+ [31]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1764.
  (./paper_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1751.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1751.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1764.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1764.
 
 Package rerunfilecheck Info: File `paper_2.out' has not changed.
 (rerunfilecheck)             Checksum: 5040DA6A28745F9B4DA119EBFDC6DC20;2390.
@@ -1695,15 +1700,18 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.75pt have occurred.
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1751.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1764.
  ) 
 Here is how much of TeX's memory you used:
- 9445 strings out of 493089
- 147232 string characters out of 6134842
+ 9451 strings out of 493089
+ 147267 string characters out of 6134842
  339758 words of memory out of 5000000
- 12480 multiletter control sequences out of 15000+600000
+ 12482 multiletter control sequences out of 15000+600000
  41800 words of font info for 110 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  43i,16n,75p,1842b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1726,10 +1734,10 @@ ts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015/texmf-dist/fonts
 rw/helvetic/uhvro8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/tim
 es/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_2.pdf (30 pages, 1052584 bytes).
+Output written on paper_2.pdf (31 pages, 1055922 bytes).
 PDF statistics:
- 941 PDF objects out of 1000 (max. 8388607)
- 769 compressed objects within 8 object streams
- 157 named destinations out of 1000 (max. 500000)
+ 949 PDF objects out of 1000 (max. 8388607)
+ 776 compressed objects within 8 object streams
+ 161 named destinations out of 1000 (max. 500000)
  658 words of extra memory for PDF output out of 10000 (max. 10000000)
 
