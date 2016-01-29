@@ -1543,10 +1543,28 @@ Category \emph{perspective} deals with events related to perspective change in E
 
 Category \emph{control} contains events related to version control (commit code, update code, resolving conflicts). This is hence related to finishing tasks, rather than editing or understanding code.
 
+<<<<<<< HEAD
 Category \emph{refactoring} regroups usage of refactoring tools (rename, move methods, extract methods, etc). This is indicative of edition activities in the current piece of code, but it can also affect outer elements and require to verify the changes, implying low and high level navigation.
 
 Category \emph{clean-build} regroup events related to build system usage (build the system, clean the build, run the build, the tests, etc). This kind of events are often automatically executed as part of a grater process. For example, when beginning a debugging session, the IDE might execute a clean and build action at first. 
+=======
+Category \emph{refactoring} regroups usage of refactorings tools (rename, move methods, extract methods, etc). This is indicative of edition activities, rather than program comprehension. \RR{expand}
 
+Category \emph{clean-build} regroup events related to build system usage (build the system, clean the build, run the build, the tests, etc). This is indicative of activities in which the programmer expects the program to be in a testable state. \RR{out of inspiration and time for now ...}
+>>>>>>> origin/master
+
+With these categories described, we continue with describing the hypotheses we made earlier when we observed the positive and negative patterns, namely that:
+
+\begin{enumerate}
+\item \emph{Negative} interruptions---having higher overall activity before the interruptions rather than after it, and a lower edit ratio as well---could be indicative of actual interruptions. That is, a programmer is interrupted in his normal course of work, and needs to rebuild it's mental context after the interruption, performing additional program comprehension before resuming programming.
+\item On the other hand, \emph{Positive} interruptions---with higher activity after the interruption, and a higher edit ratio---could be indicative of information-seeking behavior. Programmers, noticing that they are encountering a problem that they are not able to fix on their own, may look for outside help (asking an expert, querying a question and answer site such as Stack Overflow, etc), and once a solution is found, resume their work in the IDE in a much more productive manner.
+\item \RR{What about debugging sessions?}
+\end{enumerate}
+
+We would then expect that certain types of interruptions would feature some events more frequently than other ones. For instance, after a negative interruption, we would expect more program navigation events (indicative of program comprehension), while after a positive interruption, we would expect more programming activity since the problem that the programmer encountered was solved. In short, we expect that for some categories of events, there will be differences between the types of events. We put this hypothesis to the test by calculating the frequency of categories of events after positive and negative interruptions, and also compared it with the overall frequencies of the events. We describe how we computed these frequencies in the following.
+% -recall hypotheses
+% - explain frequencies
+% - present results
 %- clear categories have clear outcome one way or the other
 %- mixed categories have mixed outcomes
 %=> overall pretty good then!
@@ -1604,10 +1622,11 @@ Category \emph{clean-build} regroup events related to build system usage (build 
 	\end{tabular}
 \end{table}
 
+The first thing we noticed is that while some events are used by all users, some events are used heavily by a minority of users and not by others (this matches the observation of Murphy-Hill et al., and by ourselves, that many development tools are under-used \cite{XXX, YYY}). For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them. As such, we calculated the frequency of event taking into account how commonly used they were.
 
-We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them.
+We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. 
 
-To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. The Table \ref{tbl:stats_events} shows the results.
+To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. The Table \ref{tbl:stats_events} shows the results, and is explained below.
 
 \begin{table}[ht!]
 \small
