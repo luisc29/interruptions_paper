@@ -604,6 +604,60 @@ At this point, we had the same format of sessions with both datasets. In the Fig
 	\label{fig:udc_sessions_stats}
 \end{figure}
 
+
+\subsection{Metrics Used in This Study}
+Before introducing the results about the first research question, it is convenient to present the metrics used in this study.
+We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
+\\
+
+Metrics characterizing interruptions:
+\begin{itemize}
+	\item \textit{Number of interruptions}:  counts all the interruptions that occur in a development session.
+	\item \textit{Duration of interruption}:  it is the time duration in minutes of the each interruption. 
+\end{itemize}
+
+Metrics characterizing productivity and activity:
+\begin{itemize}
+	\item \textit{Productive work time:} the duration of a development session, subtracting the duration of all the interruptions present in the session, to control for inactivity.
+	\item \textit{Number of edits per minute:} the total number of edits events, divided by the productive work time to control for length of the session. This is an indicator of user activity during the session.
+	\item \textit{Number of selections per minute:} is the total number of selection events, divided by the productive work time. Also an indicator of activity.
+	\item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
+\end{itemize} 
+
+We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool.
+
+An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded of selections events and are common activities after an interruption, according to observational studies. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
+
+We did a correlation analysis involving the three metrics used (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We find that the Edit/min and Sel/min metrics have low correlation coefficients, which is the expected result. The same happens between the Sel/min and Edit ratio metrics with the data of both kind of traces. The Edit/min and Edit ratio correlation coefficient is higher in both groups, but not high enough to not consider the latter, for it tells something different from the user activity.
+
+\begin{table}
+\small
+\renewcommand{\arraystretch}{1.3}
+\caption{Correlation analysis of the metrics used in the study.}
+\label{tbl:corr_analysis}
+\centering
+\begin{tabular}{|p{4cm}|p{2cm}|}
+	  \hline 
+	metrics & correlation \\  
+	  \hline 
+	\multicolumn{2}{c}{\textit{Traces without interruptions}} \\
+	    \hline 
+		Edit/min vs Sel/min &  0.25  \\
+		Edit/min vs Edit ratio &  0.65\\
+		Sel/min vs Edit ratio & -0.38  \\
+	    \hline 
+	\multicolumn{2}{c}{\textit{Traces with interruptions}} \\
+	    \hline 
+		Edit/min vs Sel/min &  0.35  \\
+		Edit/min vs Edit ratio &  0.60\\
+		Sel/min vs Edit ratio & -0.32  \\
+	    \hline
+\end{tabular}
+\end{table}
+
+
+%\RR{motivate more edit ratio, and add here the correlation analysis}
+
 %\begin{table}[ht!]
 %	\small
 %	\renewcommand{\arraystretch}{1.3}
@@ -658,31 +712,6 @@ At this point, we had the same format of sessions with both datasets. In the Fig
 
 \section{RQ1: Relationship between Interruptions and Productivity}
 
-\subsection{Metrics Used in This Study}
-\RR{consider moving subsection out of RQ1}
-Before introducing the results about the first research question, it is convenient to present the metrics used in this study.
-We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
-\\
-
-Metrics characterizing interruptions:
-\begin{itemize}
-	\item \textit{Number of interruptions}:  counts all the interruptions that occur in a development session.
-	\item \textit{Duration of interruption}:  it is the time duration in minutes of the each interruption. 
-\end{itemize}
-
-Metrics characterizing productivity and activity:
-\begin{itemize}
-	\item \textit{Productive work time:} the duration of a development session, subtracting the duration of all the interruptions present in the session, to control for inactivity.
-	\item \textit{Number of edits per minute:} the total number of edits events, divided by the productive work time to control for length of the session. This is an indicator of user activity during the session.
-	\item \textit{Number of selections per minute:} is the total number of selection events, divided by the productive work time. Also an indicator of activity.
-	\item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
-\end{itemize} 
-
-We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool.
-
-An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded of selections events and are common activities after an interruption, according to observational studies. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
-
-%\RR{motivate more edit ratio, and add here the correlation analysis}
 
 
 %\subsection{Effect in the productive work time}
@@ -899,152 +928,212 @@ Adding this to our previous result, we observe that both the user activity (in t
 
 \section{RQ2: Relationship between Duration of Interruptions and Productivity}
 
-In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. To substantiate this claim, we have built two groups of sessions with interruptions:
+In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously about the kind of interruptions we consider, a prolonged interruption are those whose duration is $\geq$12 minutes, and could be due to an extended interruption, a coffee break or meeting.
+
+The proportion of long interruptions is calculated as the sum of interruptions longer then 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described like the following:
+
 \begin{itemize}
-\item \textit{short}: the first group consists of sessions that only have short interruptions ($<$ 12 minutes of duration). These sessions constitute 18\% in Mylyn and 6\% in UDC, from the total of sessions in both datasets.
-\item \textit{prolonged}: the second group consists of the remaining sessions, which have at least one prolonged interruption ($\geq$ 12 minutes of duration). These session constitute 80\% in Mylyn and 93\% in UDC.
-\item \textit{none}: the sessions in this group do not contain interruptions, which are the 2\% in Mylyn and 1\% in UDC.
+\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30, which includes sessions with proportion equal to zero, that is sessions with only short interruptions. These sessions constitute 0000\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
+\item \textit{medium}: the second group consists of sessions with a proportion between 0.30 and 0.50. These sessions constitute 0000\% in Mylyn and 18.9\% in UDC.
+\item \textit{high}: the sessions in this group have a proportion $>$0.50, which are the 0000\% in Mylyn and 60.1\% in UDC.
 \end{itemize} 
 
+Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Thus, for the three metrics, we created the groups low, medium and high, and every group was split in other three groups according to the terciles of the distribution of the number on interruptions. 
 
-We then displayed the distribution of events by minutes and edit ratio of these two groups and compared them with the sessions without interruptions The Figure \ref{fig:box_dur_events} shows the results for Mylyn and the Figure \ref{fig:box_dur_events_udc} for UDC. We observe that the number of events per minute is lower in sessions with at least one prolonged interruption. 
+The results with Mylyn show...
 
-\begin{figure}[!ht]
-\centering
-\begin{tabular}{c}
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_edit}  
-\endminipage\hfill
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_sel}  
-\endminipage\hfill
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_dur_ratio}
-\endminipage\hfill
-\end{tabular}
-\caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration in Mylyn}
-\label{fig:box_dur_events}
-\end{figure}
+The Table \ref{tbl:udc_stats_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions. In this context, it is better to have a low number of interruptions (group [1-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 1 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity.
 
-\begin{figure}[!ht]
-\centering
-\begin{tabular}{c}
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit}  \\
-\endminipage\hfill
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel}  \\
-\endminipage\hfill
-\minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio} \\
-\endminipage\hfill
-\end{tabular}
-\caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration in UDC}
-\label{fig:box_dur_events_udc}
-\end{figure}
+The difference between categories seems to decrease when reaching higher values. There is a clear difference between the low and medium categories of proportions, but the difference between medium and high is minor. The same happens when comparing the categories [1-3] and [4-6] of the number of interruptions, and the categories [4-6] and $>$6. In other words, as the value of the metrics get higher, the negative effect (according to these metrics) changes at a very low rhythm.
 
-
-With Mylyn, as in the previous case, the differences are significant, and we used \textit{Cohen's d} to measure the practical significance of the means (Table \ref{tbl:p_value2}). We note that the effect size of the interruption duration over the number of edits per minute is very large. In selections, the effect is moderate for short interruptions, and large for prolonged interruptions.
-
-The effect size test results in the Table \ref{tbl:p_value2_udc} correspond to the results with UDC, and matches the previous observations (RQ1) on a less pronounced effect compared to the Mylyn dataset. The Cohen's \textit{d} test results tell us that we can label the effect from medium to large and the median values act accordingly to our observations in Mylyn. Therefore, we conclude that the relationship between user activity and interruptions could be adversely affected by interruptions of longer duration. 
-
-\begin{table}[ht!]
-\tiny
+\begin{table}
+\small
 \renewcommand{\arraystretch}{1.3}
-\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in Mylyn} %, and editions and selections.}
-\label{tbl:p_value2}
+\caption{Median for the edits per minute, selections per minute and edit ratio according to the number of interruptions and the proportion of prolonged interruptions in UDC.}
+\label{tbl:udc_stats_dur_int}
 \centering
-\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
-   & none & short &  prolonged  \\  
-  \hline
-  \multicolumn{4}{c}{\textbf{Edits}} \\
-  \hline
-  mean & 6.96 &	2.98 & 1.76 \\ 
-  % \cline{3-4} 
-  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
-
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$	& \textbf{1.23} & \textbf{2.11}   \\
-  \hline
-  
-  
-  \multicolumn{4}{c}{\textbf{Selections}} \\
-  \hline 
-  mean & 5.20 &	3.33 & 2.47 \\ 
-  % \cline{3-4} 
-  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ & 6.197e-13 & $<$ 2.2e-16 \\
-  
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.63} & \textbf{1.24}  \\  
-  \hline
-  \multicolumn{4}{c}{\textbf{Edit ratio}} \\
-  \hline 
-  mean & 0.55 & 0.40 & 0.34\\ 
-%   \cline{3-4} 
-%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ & 3.72e-14 & $<$ 2.2e-16  \\
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.86} & \textbf{1.32}\\
-\hline
-
+\begin{tabular}{|p{3cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+	  \hline 
+	  & \multicolumn{4}{c|}{Number of interruptions} \\
+	  \hline
+	Proportion of long int. & none & [1-3] & [4-6] & $>$6 \\  
+	  \hline 
+	\multicolumn{5}{c}{\textit{Edits per minute}} \\
+		\hline
+		low & 3.58 &  2.52 & 1.45 & 1.36 \\
+		\hline
+		medium & 3.58 & 1.25 & 1.15 &  1.27 \\		
+		\hline		
+		high  & 3.58 & 1.25 & 1 & 0.95   \\
+		\hline
+	\multicolumn{5}{c}{\textit{Selections per minute}} \\
+	    \hline 
+		low &  2.54& 2.15 & 1.6 & 1.44\\
+		\hline
+		medium & 2.54 & 1.5 & 1.5 & 1.41  \\
+		\hline				
+		high & 2.54&  1.55  & 1.45 & 1.36  \\
+	    \hline
+	 \multicolumn{5}{c}{\textit{Edit ratio}} \\
+	   \hline 
+		low & 0.57 & 0.54 & 0.47  & 0.46 \\
+		\hline
+		medium & 0.57 & 0.45 & 0.44 & 0.46  \\
+		\hline				
+		high & 0.57 & 0.46 & 0.42 & 0.44  \\
+	   \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[ht!]
-\tiny
-\renewcommand{\arraystretch}{1.3}
-\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC data} %, and editions and selections.}
-\label{tbl:p_value2_udc}
-\centering
-\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
-   & none & short &  prolonged  \\  
-  \hline
-  \multicolumn{4}{c}{\textbf{Edits}} \\
-  \hline
-  mean & 3.97 &	2.75 & 1.79 \\ 
-  % \cline{3-4} 
-  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ &  $<$ 2.6e-12 & $<$ 2.2e-16  \\
+The statistical tests show that...
 
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.48} & \textbf{0.89}   \\
-  \hline
-  
-  
-  \multicolumn{4}{c}{\textbf{Selections}} \\
-  \hline 
-  mean & 3.10 &	2.37 & 1.78 \\ 
-  % \cline{3-4} 
-  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ & $<$ 4.3e-07& $<$ 2.2e-16  \\
-  
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.34} & \textbf{0.68}  \\  
-  \hline
-  \multicolumn{4}{c}{\textbf{Edit ratio}} \\
-  \hline 
-  mean & 0.68 & 0.63 & 0.56\\ 
+
+%In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. To substantiate this claim, we have built two groups of sessions with interruptions:
+%\begin{itemize}
+%\item \textit{short}: the first group consists of sessions that only have short interruptions ($<$ 12 minutes of duration). These sessions constitute 18\% in Mylyn and 6\% in UDC, from the total of sessions in both datasets.
+%\item \textit{prolonged}: the second group consists of the remaining sessions, which have at least one prolonged interruption ($\geq$ 12 minutes of duration). These session constitute 80\% in Mylyn and 93\% in UDC.
+%\item \textit{none}: the sessions in this group do not contain interruptions, which are the 2\% in Mylyn and 1\% in UDC.
+%\end{itemize} 
+%
+%
+%We then displayed the distribution of events by minutes and edit ratio of these two groups and compared them with the sessions without interruptions The Figure \ref{fig:box_dur_events} shows the results for Mylyn and the Figure \ref{fig:box_dur_events_udc} for UDC. We observe that the number of events per minute is lower in sessions with at least one prolonged interruption. 
+%
+%\begin{figure}[!ht]
+%\centering
+%\begin{tabular}{c}
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_edit}  
+%\endminipage\hfill
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_plot_range_sel}  
+%\endminipage\hfill
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_dur_ratio}
+%\endminipage\hfill
+%\end{tabular}
+%\caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration in Mylyn}
+%\label{fig:box_dur_events}
+%\end{figure}
+%
+%\begin{figure}[!ht]
+%\centering
+%\begin{tabular}{c}
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_edit}  \\
+%\endminipage\hfill
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_plot_range_sel}  \\
+%\endminipage\hfill
+%\minipage{0.33\textwidth}
+%\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_dur_ratio} \\
+%\endminipage\hfill
+%\end{tabular}
+%\caption{Boxplots showing the relation between the number of edits and selections per minute, the edit ratio and interruption duration in UDC}
+%\label{fig:box_dur_events_udc}
+%\end{figure}
+%
+%
+%With Mylyn, as in the previous case, the differences are significant, and we used \textit{Cohen's d} to measure the practical significance of the means (Table \ref{tbl:p_value2}). We note that the effect size of the interruption duration over the number of edits per minute is very large. In selections, the effect is moderate for short interruptions, and large for prolonged interruptions.
+%
+%The effect size test results in the Table \ref{tbl:p_value2_udc} correspond to the results with UDC, and matches the previous observations (RQ1) on a less pronounced effect compared to the Mylyn dataset. The Cohen's \textit{d} test results tell us that we can label the effect from medium to large and the median values act accordingly to our observations in Mylyn. Therefore, we conclude that the relationship between user activity and interruptions could be adversely affected by interruptions of longer duration. 
+%
+%\begin{table}[ht!]
+%\tiny
+%\renewcommand{\arraystretch}{1.3}
+%\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in Mylyn} %, and editions and selections.}
+%\label{tbl:p_value2}
+%\centering
+%\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
+%   & none & short &  prolonged  \\  
+%  \hline
+%  \multicolumn{4}{c}{\textbf{Edits}} \\
+%  \hline
+%  mean & 6.96 &	2.98 & 1.76 \\ 
+%  % \cline{3-4} 
+%  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
 %   \cline{3-4} 
-%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
-   \cline{3-4} 
-  U-test & $\hookrightarrow$ & 0.01003 & $<$ 4.019e-09  \\
-  \cline{3-4} 
-  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.21} & \textbf{0.44}\\
-\hline
-
-\end{tabular}
-\end{table}
-
-Similar results occur when we look at the edit ratio (Figures \ref{fig:box_dur_events} and \ref{fig:box_dur_events_udc}): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of the effect size (Tables \ref{tbl:p_value2} and \ref{tbl:p_value2_udc}), we show the statistical and practical significance of these results. In Mylyn, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
-
-These findings seem to indicate that the inverse relationship between productivity and time of duration is more pronounced in session with at least one longer interruption. This agrees with the literature for information workers.
+%  U-test & $\hookrightarrow$ & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
+%
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$	& \textbf{1.23} & \textbf{2.11}   \\
+%  \hline
+%  
+%  
+%  \multicolumn{4}{c}{\textbf{Selections}} \\
+%  \hline 
+%  mean & 5.20 &	3.33 & 2.47 \\ 
+%  % \cline{3-4} 
+%  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+%   \cline{3-4} 
+%  U-test & $\hookrightarrow$ & 6.197e-13 & $<$ 2.2e-16 \\
+%  
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.63} & \textbf{1.24}  \\  
+%  \hline
+%  \multicolumn{4}{c}{\textbf{Edit ratio}} \\
+%  \hline 
+%  mean & 0.55 & 0.40 & 0.34\\ 
+%%   \cline{3-4} 
+%%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+%   \cline{3-4} 
+%  U-test & $\hookrightarrow$ & 3.72e-14 & $<$ 2.2e-16  \\
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.86} & \textbf{1.32}\\
+%\hline
+%
+%\end{tabular}
+%\end{table}
+%
+%\begin{table}[ht!]
+%\tiny
+%\renewcommand{\arraystretch}{1.3}
+%\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC data} %, and editions and selections.}
+%\label{tbl:p_value2_udc}
+%\centering
+%\begin{tabular}{l | p{0.7cm} | p{1.9cm} | p{1.9cm} } 
+%   & none & short &  prolonged  \\  
+%  \hline
+%  \multicolumn{4}{c}{\textbf{Edits}} \\
+%  \hline
+%  mean & 3.97 &	2.75 & 1.79 \\ 
+%  % \cline{3-4} 
+%  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
+%   \cline{3-4} 
+%  U-test & $\hookrightarrow$ &  $<$ 2.6e-12 & $<$ 2.2e-16  \\
+%
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.48} & \textbf{0.89}   \\
+%  \hline
+%  
+%  
+%  \multicolumn{4}{c}{\textbf{Selections}} \\
+%  \hline 
+%  mean & 3.10 &	2.37 & 1.78 \\ 
+%  % \cline{3-4} 
+%  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+%   \cline{3-4} 
+%  U-test & $\hookrightarrow$ & $<$ 4.3e-07& $<$ 2.2e-16  \\
+%  
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.34} & \textbf{0.68}  \\  
+%  \hline
+%  \multicolumn{4}{c}{\textbf{Edit ratio}} \\
+%  \hline 
+%  mean & 0.68 & 0.63 & 0.56\\ 
+%%   \cline{3-4} 
+%%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+%   \cline{3-4} 
+%  U-test & $\hookrightarrow$ & 0.01003 & $<$ 4.019e-09  \\
+%  \cline{3-4} 
+%  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.21} & \textbf{0.44}\\
+%\hline
+%
+%\end{tabular}
+%\end{table}
+%
+%Similar results occur when we look at the edit ratio (Figures \ref{fig:box_dur_events} and \ref{fig:box_dur_events_udc}): the edit ratio is smaller in sessions that have prolonged interruptions, compared to the ones that only have short interruptions. At the bottom of the effect size (Tables \ref{tbl:p_value2} and \ref{tbl:p_value2_udc}), we show the statistical and practical significance of these results. In Mylyn, we observe large effect sizes when comparing sessions who do not have interruptions with ones that do have, and larger effect sizes for sessions with at least one longer interruption.
+%
+%These findings seem to indicate that the inverse relationship between productivity and time of duration is more pronounced in session with at least one longer interruption. This agrees with the literature for information workers.
 
 \section{RQ3: Local Relationships between Interruptions and Productivity}
 
@@ -1540,7 +1629,7 @@ Category \emph{text-nav} regroups events related to text-level navigation, such 
 Category \emph{search} and \emph{find-replace} are both concerned with search activities, although there are subtle differences. \emph{search} regroups most kinds of search tools, such as text search, or searching code entities (types, packages, methods). As such, it is more to be seen as a high-level program navigation tool (the search results may span several files and are presented in a view that allows quick access to the entities---using such a view is classified in the \emph{high-nav} category). On the other hand, \emph{find-replace} concerns commands that are usually employed for text navigation and more particularly to perform editions (systematically replacing occurrences of a string with another). If the first category is related to program exploration, the second is more related to program edition. There is a caveat here, as it is possible to use \emph{find-replace} commands only to find elements, which is more indicative of program exploration; however, the UDC dataset does not allow us to distinguish these usages.
 
 Category \emph{perspective} deals with events related to perspective change in Eclipse, such as switching from the coding to the debugging perspective, or vice-versa. Eclipse allows the user to program in different environments, like enterprise, mobile and Web. It also supports activities regarding other kind of roles, like testing, design and database management. Each of this environments and roles might require to open a different perspective, so having events regarding a perspective change is an indicative of the different roles that a user has.
-As such, we have no expectation as to whether this kind of activity is more indicative of program understanding or program editing. \RR{or do we?}
+As such, we have no expectation as to whether this kind of activity is more indicative of program understanding or program editing. % \RR{or do we?}
 
 Category \emph{control} contains events related to version control (commit code, update code, comparing differences, resolving conflicts). This is hence related to finishing tasks, rather than editing or understanding code. 
 
@@ -1663,7 +1752,7 @@ After a negative interruption, the \emph{debug}, \emph{search}, \emph{high-nav},
 
 Finally, the \emph{text-nav} and \emph{control} categories are less common in both positive and negative interruptions than in the average. We were somewhat surprised that \emph{text-nav} was less common in positive interruptions than the average, as we expected it to be associated with program edition behavior. We note that it is however more frequent in positive interruptions rather than negative interuptions. Additional exploration is necessary to understand the behavior of the \emph{control} category.
 
-Summing up, we can conclude that edition-related activities are indeed more frequent after a positive interruption, while comprehension-related activities are more frequent after a negative interruption.  These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking behavior: programmers would interrupt their IDE activities when encountering a roadblock, find the information elsewhere (from the internet, an expert, etc), and return to the IDE with an increased productivity. This also agrees with the literature \cite{PR11, LVD06}. The categories common after nagative interruptions  also agree with our hypothesis that negative interruptions are related to actual task switches where context needs to be rebuilt afterwards, an activity that involves program comprehension \RR{refs here}.
+Summing up, we can conclude that edition-related activities are indeed more frequent after a positive interruption, while comprehension-related activities are more frequent after a negative interruption.  These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking behavior: programmers would interrupt their IDE activities when encountering a roadblock, find the information elsewhere (from the internet, an expert, etc), and return to the IDE with an increased productivity. This also agrees with the literature \cite{PR11, LVD06}. The categories common after nagative interruptions  also agree with our hypothesis that negative interruptions are related to actual task switches where context needs to be rebuilt afterwards, an activity that involves program comprehension \cite{MMLK14, PR12}. %\RR{refs here}.
 
 After a positive interruption, we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation around perspectives. On the other hand the navigation around classes, find and replace, searches, debug and clean and build are actions more common after a negative one. The navigation in the code and control version activities are more common after the recovery time, having a lower frequency during a positive o negative interruption. Of course, this exploratory study does not allow us to confirm these hypotheses. However, the evidence we have discovered so far does not disprove them, which means that our confidence in these hypotheses is higher as a consequence.
 
@@ -1723,8 +1812,10 @@ The main threats to the validity of our study are construct validity threats due
 
 For the Mylyn dataset, the main threat to validity is due to the exclusion of development session with aggregated information. We deemed that disaggregating the data as was done in other work~\cite{YR11}  was not appropriate as we do not know the exact distribution of aggregated events in time, which is very important for this study. We thus elected to filter out part of the data. We have not found evidence of bias due to this but it may still be present.
 
-Another threat comes from the metrics we use. Our choices are limited by the data recorded by Mylyn. We believe our three indicator (edits per minute, selections per minute, and edit ratio) provide a reasonable measure of productivity (especially with the addition of edit ratio, used in other work \cite{KM06}). However we can not exclude that other indicators of productivity (such as actual changes~\cite{RL10}) may yield different results. 
-\RR{add a bit stuff about edit ratio to keep one reviewer happy}
+Another threat comes from the metrics we use. Our choices are limited by the data recorded by Mylyn. We believe our three indicator (edits per minute, selections per minute, and edit ratio) provide a reasonable measure of productivity (especially with the addition of edit ratio, used in other work \cite{KM06}). However we can not exclude that other indicators of productivity (such as actual changes~\cite{RL10}) may yield different results.
+
+As we mentioned before, the edit ratio has been used in previous work as an indicator of productivity, but it doesn't describe well the true level of productivity of the programmer. The edit ratio is the amount of coding activities that the programmer performed in comparison with the other activities, but a productive programmer may not solely code; he could have other important tasks like managing a database, Web design and testing, which are activities that are not reflected as edit events.
+%\RR{add a bit stuff about edit ratio to keep one reviewer happy}
 
 We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might significantly alter the results. 
 
