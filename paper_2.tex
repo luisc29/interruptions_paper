@@ -930,7 +930,7 @@ Adding this to our previous result, we observe that both the user activity (in t
 
 In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously about the kind of interruptions we consider, a prolonged interruption are those whose duration is $\geq$12 minutes, and could be due to an extended interruption, a coffee break or meeting.
 
-The proportion of long interruptions is calculated as the sum of interruptions longer then 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described like the following:
+The proportion of long interruptions is calculated as the sum of interruptions longer than 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described like the following:
 
 \begin{itemize}
 \item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30, which includes sessions with proportion equal to zero, that is sessions with only short interruptions. These sessions constitute 0000\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
@@ -1137,10 +1137,10 @@ The statistical tests show that...
 
 \section{RQ3: Local Relationships between Interruptions and Productivity}
 
-The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On one hand, after an interruption the programmer carry out activities meant to recover the lost mental model, like reading the code, debugging, reading notes and cues, and more resumption strategies \cite{PR11}.
+The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On one hand, after an interruption the programmer carry out activities meant to recover the lost mental state, like reading the code, debugging, reading notes and cues, and more resumption strategies \cite{PR11}. Depending on the interruption, the recovery could last about 15 minutes, according to the reports from field studies \cite{IH07, SBV98}. In the data from UDC, the sessions with duration of at least seven hours (commonly the working time of a software developer) have 11 interruptions in average; if we consider a recovery time of 15 minutes, the total time required to recover from the interruptions can be of about two hours, which is about one quarter of the whole session.
 
-\RR{expand this paragraph, since a reviewer asks explicitely for that}
-On the other hand, before the interruption there is a preparation phase when the interruption is imminent or expected. In this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer, usually he tries to solve it by reading the code, using the debugger or reading comments in the control version tool; after this resources are depleted, the next option is to ask to teammates or other external resources \cite{LVD06}. The latest activities can represent an interruption of work.
+%\RR{expand this paragraph, since a reviewer asks explicitely for that}
+On the other hand, before the interruption there is a preparation phase when the interruption is imminent or expected, e.g. lunch time, a meeting and other scheduled events. In this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer usually he tries to solve it by reading the code, using the debugger or reading comments in the control version tool; after this resources are depleted, the next option is to ask to teammates or other external resources \cite{LVD06}, which generates an interruption of work. The activities prior to the interruption are commonly associated with selection and navigation tasks, like reading the code and navigating to another classes or files to try to find an answer to the problem. 
 
 In this research question we expect to see the effects on productivity around an interruption due to the activities previously described.
 
@@ -1555,7 +1555,7 @@ Splitting the recovery phase into three phases allows us to analyze in detail th
 	\label{fig:recovery_afterRecovery}
 \end{figure}
 
-The duration of the peak varies among the also called working spheres \RR{add details}, as mentioned by Gonzalez and Mark \cite{MGH05}. On average, the peak lasts for 12 minutes, while the maximum registered is of 145 minutes. The distribution of duration of the peaks is reported in Table \ref{tbl:dist_peaks}.
+The duration of the peak varies among the phases between interruptions. On average, the peak lasts for 12 minutes, while the maximum registered is of 145 minutes. The distribution of duration of the peaks is reported in Table \ref{tbl:dist_peaks}.
 
 \begin{table}[ht!]
 	\small
@@ -1707,7 +1707,7 @@ We would then expect that certain types of interruptions would feature some even
 	\end{tabular}
 \end{table}
 
-The first thing we noticed is that while some events are used by all users, some events are used heavily by a minority of users and not by others (this matches the observation of Murphy-Hill et al., and by ourselves, that many development tools are under-used \cite{XXX, YYY}). For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them. As such, we calculated the frequency of event taking into account how commonly used they were.
+The first thing we noticed is that while some events are used by all users, some events are used heavily by a minority of users and not by others (this matches the observation of Murphy-Hill et al., and by ourselves, that many development tools are under-used \cite{MPB12}). For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them. As such, we calculated the frequency of event taking into account how commonly used they were.
 
 We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. 
 
@@ -1814,7 +1814,7 @@ For the Mylyn dataset, the main threat to validity is due to the exclusion of de
 
 Another threat comes from the metrics we use. Our choices are limited by the data recorded by Mylyn. We believe our three indicator (edits per minute, selections per minute, and edit ratio) provide a reasonable measure of productivity (especially with the addition of edit ratio, used in other work \cite{KM06}). However we can not exclude that other indicators of productivity (such as actual changes~\cite{RL10}) may yield different results.
 
-As we mentioned before, the edit ratio has been used in previous work as an indicator of productivity, but it doesn't describe well the true level of productivity of the programmer. The edit ratio is the amount of coding activities that the programmer performed in comparison with the other activities, but a productive programmer may not solely code; he could have other important tasks like managing a database, Web design and testing, which are activities that are not reflected as edit events.
+As we mentioned before, the edit ratio has been used in previous work as an indicator of productivity, but it doesn't describe well the true level of productivity of a programmer. The edit ratio is the amount of coding activities that the programmer performed in comparison with the other activities, but a productive programmer may not solely code; he could have other important tasks like managing a database, Web design and testing, which are activities that are not reflected as edit events. This is a big problem in the UDC data, for this information was captured from people that could be Java developers, Web developers, mobile developers, students, etc., and from this roles the only one that could use well the edit ratio as an indicator of productivity is the Java developer, if his only task is to work in the IDE. The others are prone to spend time (maybe most of the time) using graphical tools like Web designers and simulators, and this events are mainly represented as selection events.
 %\RR{add a bit stuff about edit ratio to keep one reviewer happy}
 
 We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might significantly alter the results. 
