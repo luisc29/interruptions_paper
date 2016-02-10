@@ -19,7 +19,7 @@
 
 
 \usepackage{array}
-\newcommand\RR[1]{\textbf{Romain}{#1}}
+\newcommand\RR[1]{\textbf{Romain #1}}
 
 \def\volumeyear{2016}
 
@@ -743,7 +743,7 @@ As mentioned above, we use the metrics of edit, selection, and edit ratio as ind
  %we assume that the productivity is in function of the number of edit and selection events that the programmer performs in a trace. 
 
 %First, we analyzed the number of interruptions over the productivity. In this sense, 
-We split the data in five groups: The first group contains all the sessions without interruptions (\textit{none}). For the others groups, we have considered four ranges of number of interruptions delimited by their quartiles; the results differ between Mylyn and UDC, existing more interruptions per session in the former (Table \ref{tbl:quartil_int}). Then, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
+We split the data in five groups: The first group contains all the sessions without interruptions (\textit{none}). For the others groups, we have considered four ranges of number of interruptions delimited by their quartiles; the results differ between Mylyn and UDC, as there are more interruptions per session in the former (Table \ref{tbl:quartil_int}). Then, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
 
 In the results with Mylyn, we observe a large difference between the sessions without interruptions and the ones who do. Further, we observe that the rate of events per minute decreases slightly when the session has more interruptions. Therefore, we can intuit that the relationship between number of interruptions and the productivity indicators that are edits and selections, tends to be inversely proportional. 
 
@@ -933,17 +933,21 @@ Adding this to our previous result, we observe that both the user activity (in t
 
 \section{RQ2: Relationship between Duration of Interruptions and Productivity}
 
-In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously about the kind of interruptions we consider, a prolonged interruption are those whose duration is $\geq$12 minutes, and could be due to an extended interruption, a coffee break or meeting.
+In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously we consider prolonged interruption are those whose duration is $\geq$12 minutes, according to previous work \cite{GM04, KaptelininN07}. Prolonged interruptions could be due to an extended interruption, such as a coffee break or a meeting.
 
-The proportion of long interruptions is calculated as the sum of interruptions longer than 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described like the following:
+The proportion of long interruptions is calculated as the sum of interruptions longer than 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described in the following:
 
 \begin{itemize}
-\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30, which includes sessions with proportion equal to zero, that is sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
-\item \textit{medium}: the second group consists of sessions with a proportion between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
-\item \textit{high}: the sessions in this group have a proportion $>$0.50, which are the 20.5\% in Mylyn and 60.1\% in UDC.
+\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30; this includes sessions for which the proportion of long interruption is zero, that is, sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
+\item \textit{medium}: the second group consists of sessions with a higher proportion of long interruptions, between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
+\item \textit{high}: finally, more than half the sessions in the last group are pronlonger (proportion $>$0.50). This represents 20.5\% of the sessions in Mylyn and 60.1\% in UDC.
 \end{itemize} 
 
+<<<<<<< HEAD
 Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Also, we separated the sessions with one interruption into new group. Thus, for the three metrics, we created the groups low, medium and high, and every group was split in other four groups according to the terciles of the distribution of the number on interruptions. 
+=======
+Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles \RR{Why?}. Thus, for the three metrics, we created the groups low, medium and high, and every group was split three additional groups according to the terciles of the distribution of the number on interruptions. 
+>>>>>>> origin/master
 
 The Figure \ref{tbl:mylyn_stats_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{tbl:udc_stats_dur_int} with UDC. In this context, it is better to have a low number of interruptions (group [2-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 2 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity. In the Figures the color of lines represent a classification of the proportion of prolonged interruptions, being the green line the \textit{low} type, blue the \textit{medium} and red the \textit{high}.
 
@@ -1140,12 +1144,13 @@ The statistical tests in Tables \ref{tbl:effect_size_dur_mylyn} and \ref{tbl:eff
 
 \section{RQ3: Local Relationships between Interruptions and Productivity}
 
-The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On one hand, after an interruption the programmer carry out activities meant to recover the lost mental state, like reading the code, debugging, reading notes and cues, and more resumption strategies \cite{PR11}. Depending on the interruption, the recovery could last about 15 minutes, according to the reports from field studies \cite{IH07, SBV98}. In the data from UDC, the sessions with duration of at least seven hours (commonly the working time of a software developer) have 11 interruptions in average; if we consider a recovery time of 15 minutes, the total time required to recover from the interruptions can be of about two hours, which is about one quarter of the whole session.
+The impact of work fragmentation could be more noticeable in the immediate minutes before and after an interruption occurs. On the one hand, after an interruption the programmer may carry out activities meant to recover the lost mental state, such as reading the code, debugging, reading notes and cues, among other resumption strategies \cite{PR11}. Depending on the interruption, the recovery could last about 15 minutes, according to the reports from field studies \cite{IH07, SBV98}. In the data from UDC, the sessions with duration of at least seven hours (commonly the working time of a software developer) have 11 interruptions in average; if we consider a recovery time of 15 minutes, the total time required to recover from the interruptions can be of about two hours, which is about one quarter of the whole session.
 
 %\RR{expand this paragraph, since a reviewer asks explicitely for that}
-On the other hand, before the interruption there is a preparation phase when the interruption is imminent or expected, e.g. lunch time, a meeting and other scheduled events. In this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer usually he tries to solve it by reading the code, using the debugger or reading comments in the control version tool; after this resources are depleted, the next option is to ask to teammates or other external resources \cite{LVD06}, which generates an interruption of work. The activities prior to the interruption are commonly associated with selection and navigation tasks, like reading the code and navigating to another classes or files to try to find an answer to the problem. 
+On the other hand, before the interruption there is a preparation phase when the interruption is imminent or expected, e.g. lunch time, a meeting and other scheduled events. In this phase the programmer might leave notes or comments in the code to recover the context after the interruption \cite{PD10}. Also, when the interruption happened because of a problem found by the programmer, the programmer may try to solve it by reading the code, or using the debugger;%or reading comments in the control version tool
+after these resources are depleted, the next option is to ask to teammates or other external resources \cite{LVD06}, which generates an interruption in the work. The activities prior to the interruption are commonly associated with selection and navigation tasks, such as reading the code and navigating to another classes or files to try to find an answer to the problem. 
 
-In this research question we expect to see the effects on productivity around an interruption due to the activities previously described.
+In this research question we expect to see the effects on productivity around an interruption due to the activities previously described, and verify this.
 
 
 \subsection{Generic Sessions}
@@ -1174,7 +1179,7 @@ We performed this grouping in both Mylyn and UDC, obtaining the proportions show
 	\end{tabular}
 \end{table}
 
-To summarize the development sessions, we have resized each time series to a single $size$, using local means. We have used $size = 10$, that is, dividing each session in 10 chunks of equal time, since because it yielded better global visualization (better uniformity) of the user interaction along a session. For each chunk, we choose the median value of edits and selections for each group, and compose one summary time series for each group; these are the time series displayed in Figure \ref{fig:bins_int}, for Mylyn, and Figure \ref{fig:bins_int_udc}, for UDC.
+To summarize the development sessions, we have resized each time series to a single $size$, using local means. We have used $size = 10$, that is, dividing each session in 10 chunks of equal time, since this yielded better global visualization (better uniformity) of the user interaction along a session. For each chunk, we choose the median value of edits and selections for each group, and compose one summary time series for each group; these are the time series displayed in Figure \ref{fig:bins_int}, for Mylyn, and Figure \ref{fig:bins_int_udc}, for UDC.
 
 We observe that the median activity in sessions with interruptions is less than in sessions without interruptions, mainly in the edit frequency. Moreover, the edit frequency exceeds the selection frequency in sessions without interruptions. The opposite occurs in sessions with at least one interruption---and is more pronounced when there is at least one prolonged interruption---, where the code navigation tends to exceed the frequency of edits. These results agree with our earlier results. 
 
@@ -1230,10 +1235,10 @@ Below we describe some observations:
 \begin{itemize}
 \item \textit{In the center,} we find the interruption point. There is clearly a negative effect on the time series, as the area before and after the interruption is the area with the lowest activity. The activity is well below the median activity of time series with interruptions, showing that the effect is indeed more pronounced near interruptions. This happens in Mylyn and UDC.
 
-\item \textit{On the right,} the trend of the time series increases steadily. We hypothesize that the programmer is immersing again into the programming task, increasing progressively the activity as represented by the number of edits and selections. In Mylyn it reaches the median activity (in average) 12 to 18 minutes after the interruption, while in UDC it is around 6 to 12 minutes. It then rises further than the session median, which is not surprising, as we expect higher than median activity further away from interruptions.
+\item \textit{On the right,} the trend of the time series increases steadily. We hypothesize that the programmer is immersing again into the programming task, increasing progressively the activity as represented by the number of edits and selections. In Mylyn it reaches the median activity (in average) 12 to 18 minutes after the interruption, while in UDC this takes around 6 to 12 minutes. It then rises further than the session median, which is not surprising, as we expect higher than median activity further away from interruptions.
 
 %We called \textit{recuperation time} the first intersect point between edition and navigation. In this sense, the  average recuperation time of an interruption occurs in the minute 12. 
-\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This might be because of two reasons: the programmer could have found a problem while coding, who at first will try to solve it by reading the code, switching out from the IDE, navigating the call stack and debugging, before going to ask another teammate according to LaToza et al. \cite{LVD06}; this set of actions end up with an interruption and reduce the observed activity within the IDE. Also, when the interruption is imminent or expected, the programmer make use of different suspension strategies like writing physical notes, making a mental note or leaving a reminder cue on the code or window, as mentioned by Parnin and DeLine \cite{PD10}. These activities reduce the activity before the gap and they are seen in the interaction data mostly as selection events. The latest can be better visualized in Figure \ref{fig:all_ints} with the UDC data as a significant decrease of edit events, being below the selection events approximately 10 minutes before the interruption.
+\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This was more surprising at first to us. However we hypothesize that this might be because of two reasons: the programmer could have found a problem while coding, and at first would try to solve it by reading the code, switching out from the IDE, navigating the call stack and debugging, before going to ask another teammate (as documented e.g. by LaToza et al. \cite{LVD06}); this set of actions end up with an interruption and reduce the observed activity within the IDE. In the case when the interruption is imminent or expected, another possibility is that the programmer may make use of different suspension strategies such as writing physical notes, making a mental note or leaving a reminder cue on the code or window, as documented by Parnin and DeLine \cite{PD10}. These activities reduce the activity before the gap and they are seen in the interaction data mostly as selection events. The latest can be better visualized in Figure \ref{fig:all_ints}, in which the UDC data has a significant decrease of edit events, being below the selection events approximately 10 minutes before the interruption.
 %\item \textit{On the left,} we observe that the number of events near the interruption also goes down well below the median value. This is because work fragmentation is not only due to interruptions: programmers may for instance switch away from the IDE to look up information on the web or request it from other programmers. They are likely to do so because they are stuck, which would manifest itself by lower activity before the activity gap. We investigate this further below.
 
 %This is more surprising, as we expected the activity to drop mostly after the interruption rather than before. A possible explanation is that their are several causes for inactivity
@@ -1307,7 +1312,7 @@ Given the overall activity pattern we noticed in the local analysis, we hypothes
 
 We hence looked for patterns in the interruptions.  After applying clustering techniques over all the subsequences, we always found the formation of three recurrent patterns that show different effects of the interruption: neutral, positive and negative. The clustering was performed with the  K-Mediods~\cite{AMP97} technique, the Silhouette metric~\cite{RP87} to interpret and evaluate the results, the Dynamic Time Warping~\cite{KE05} as distance measure, and feature extraction techniques to reduce the dimensionality.  For this reason, we classified empirically each interruption by its local effect. 
 
-We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
+We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after the interruption. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
 Table \ref{tbl:local_effect} shows the applied thresholds and the results, accompanied with a typical example of an interruption in each category. This local analysis shows that there are indeed three well-defined groups of interruptions, with the two largest of them having clear effects on the activity in the session.
 
 
@@ -1352,11 +1357,13 @@ effect & pattern in Mylyn & pattern in UDC \\
 
 The results in UDC indicate that after a positive interruption, both metrics tend to increase at a high rhythm until reaching the global average value. The edits per minute recover quickly (approximately 5 minutes after the interruption), but the selections per minute take a little longer to reach the global average, and this metric tend to be below the average for an extended period. It is important to notice that before the interruption happens the editions per minute metric is below the average for approximately 16 minutes prior to the interruption.
 
-In contrast, when facing the effects of a negative interruption the metrics take longer to reach the median. On the contrary to facing a positive interruption, the editions per minute metric is below the selections per minute, and the former takes longer than the latter to reach the average value. Also, the editions per minute metric is above the average for the 30 minutes before the interruption. 
+In contrast, when facing the effects of a negative interruption the metrics take longer to reach the median. Contrary to when facing a positive interruption, the editions per minute metric is below the selections per minute, and the former takes longer than the latter to reach the average value. Also, the editions per minute metric is above the average for the 30 minutes before the interruption. 
 
-In general, the effect of positive and negative interruptions is the inverse. The editions per minute describes better the effect and the selections do not show a major change. There is not a clear pattern during a neutral interruption.
+In general, the effect of positive and negative interruptions is seems to be reversed. The editions per minute describes better the effect and the selections do not show a major change. There is not a clear pattern during a neutral interruption.
 
 Finally, we briefly report on the edit ratios for positive and negative interruptions (see Figure~\ref{fig:ratio_rest}). We see distinct patterns as well: positive interruptions have a higher edit ratio after the interruption (in accordance with the hypothesis of a more efficient activity after having looked for missing information), while negative interruptions have a lower edit ratio after the interruption (in accordance with the hypothesis that the programmer may be rebuilding his context after an unwanted task switch).
+
+These observations give preliminary support to our hypotheses on the distinct types of interruptions that we evoked above. In RQ5, we delve deeper in this question by performing an exploratory analysis of the finer-grained types of activity found in each kind of session.
 
 \begin{figure}[!ht]
 \centering
@@ -1526,12 +1533,12 @@ Negative Effect
 \subsection{Edition and selections during recovery time}
 The amount of information we have in Usage Data Collector allows us to analyze more specific sections on a programming session. We further investigated the immediate activities after an interruption that we name the \textit{recovery time}, which is a time period taken by the programmer to resume the interrupted work. We could not do this with Mylyn data, since the process involves a lot of filtering of interruptions, which left us with too few data points to analyze.
 
-We established the recovery time as the 15 minutes period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}, who explain that although it is a variable difficult to measure, estimating 15 minutes for this phase is believed to be valid. They also consider the recovery time as the third (and last) phase of an interruption; the first one is the occurrence phase, or the start interruption, followed by the handling phase that contains all the activities required by the interruption.
+We established the recovery time as the 15 minutes period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}, who explain that although it is a variable difficult to measure, estimating 15 minutes for this phase is believed to be valid. They also consider the recovery time as the third (and last) phase of an interruption; the first one is the occurrence phase, or the start of the interruption, followed by the handling phase that contains all the activities required by the interruption.
 
 Furthermore, Iqbal and Horvitz \cite{IH07} conclude, after observations from field study, that the recovery time can last between 10 to 16 minutes, depending on the interruption. They speculate that this time is necessary to refocusing cognitive resources lost during the diversion.
 %\RR{Add details of that paper to better justify}
 
-In order to execute this analysis, it was necessary to make a selection of the interruptions that have a period after it of at least 15 minutes of recorded work, before another interruption occurs. After this query we obtained 5,684 valid interruptions from a total of 110,077.
+In order to execute this analysis, it was necessary to select only the interruptions that have a period after them of at least 15 minutes of recorded work, before another interruption occurs (as the subsequent interruption would ``pollute'' the data for the purposes of this analysis). After this filtering we obtained 5,684 valid interruptions from a total of 110,077.
 
 From those valid interruptions, we split the time after the interruption into two phases: 
 
@@ -1544,7 +1551,7 @@ Following this procedure, the recovery time was split in three phases of five mi
 
 \begin{itemize}
 	\item \textit{Before interruption}: a period of 10 minutes before the next interruption.
-	\item \textit{Peak}: the time between the recovery time and the before interruption phase.
+	\item \textit{Peak}: the time between the recovery time and the ``before interruption'' phase.
 \end{itemize}
 
 Splitting the recovery phase into three phases allows us to analyze in detail the evolution of productivity and identify the immediate activities after the interruption, which will be helpful later. On the other hand, the before interruption phase represents the time where the productivity drops just before the next interruption, as seen in the results on RQ3. The peak phase is where the productivity should be reaching its maximum, as the programmers are not taking actions to retake the lost mental model or preparing for an interruption. The Figure \ref{fig:recovery_afterRecovery} shows how the time after the interruption was split into phases.
@@ -1554,7 +1561,7 @@ Splitting the recovery phase into three phases allows us to analyze in detail th
 	\begin{tabular}{c}
 		\includegraphics[width=.9\linewidth,clip=, angle=0]{figures/udc_after_Interruption} \\
 	\end{tabular}
-	\caption{Graphic showing how the time after an interruption was split. }
+	\caption{How we split the time after an interruption. }
 	\label{fig:recovery_afterRecovery}
 \end{figure}
 
@@ -1576,7 +1583,7 @@ The duration of the peak varies among the phases between interruptions. On avera
 %Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it is common to have a reduction of both editions and selections per minute. Therefore, the \textit{After Recovery Time} time was split into two phases as well: one that takes the time where the metrics drop which happens 10 minutes before the next interruption (labeled as  \textit{Before Interruption}), and the time before that, which is the peak of the session after the Recovery Time. The duration of the phase \textit{Before Interruption} was chosen with the conclusions after the local analysis around the interruptions. 
 
 We can see in the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through
-the phases. The three metrics show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is more favorable.
+the phases. The three metrics show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is the highest.
 
 \begin{figure}[!ht]
 \centering
