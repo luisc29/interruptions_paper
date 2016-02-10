@@ -17,7 +17,7 @@
 
 
 \usepackage{array}
-\newcommand\RR[1]{\textbf{Romain}{#1}}
+\newcommand\RR[1]{\textbf{Romain #1}}
 
 \def\volumeyear{2016}
 
@@ -741,7 +741,7 @@ As mentioned above, we use the metrics of edit, selection, and edit ratio as ind
  %we assume that the productivity is in function of the number of edit and selection events that the programmer performs in a trace. 
 
 %First, we analyzed the number of interruptions over the productivity. In this sense, 
-We split the data in five groups: The first group contains all the sessions without interruptions (\textit{none}). For the others groups, we have considered four ranges of number of interruptions delimited by their quartiles; the results differ between Mylyn and UDC, existing more interruptions per session in the former (Table \ref{tbl:quartil_int}). Then, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
+We split the data in five groups: The first group contains all the sessions without interruptions (\textit{none}). For the others groups, we have considered four ranges of number of interruptions delimited by their quartiles; the results differ between Mylyn and UDC, as there are more interruptions per session in the former (Table \ref{tbl:quartil_int}). Then, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
 
 In the results with Mylyn, we observe a large difference between the sessions without interruptions and the ones who do. Further, we observe that the rate of events per minute decreases slightly when the session has more interruptions. Therefore, we can intuit that the relationship between number of interruptions and the productivity indicators that are edits and selections, tends to be inversely proportional. 
 
@@ -931,17 +931,17 @@ Adding this to our previous result, we observe that both the user activity (in t
 
 \section{RQ2: Relationship between Duration of Interruptions and Productivity}
 
-In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously about the kind of interruptions we consider, a prolonged interruption are those whose duration is $\geq$12 minutes, and could be due to an extended interruption, a coffee break or meeting.
+In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we have built three groups of sessions based on the proportion of long interruptions. As we described previously we consider prolonged interruption are those whose duration is $\geq$12 minutes, according to previous work \cite{GM04, KaptelininN07}. Prolonged interruptions could be due to an extended interruption, such as a coffee break or a meeting.
 
-The proportion of long interruptions is calculated as the sum of interruptions longer than 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described like the following:
+The proportion of long interruptions is calculated as the sum of interruptions longer than 11 minutes, divided by the total of interruptions in that session. Then, we obtain the quantiles of the distribution of this proportion and use them to create 3 groups described in the following:
 
 \begin{itemize}
-\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30, which includes sessions with proportion equal to zero, that is sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
-\item \textit{medium}: the second group consists of sessions with a proportion between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
-\item \textit{high}: the sessions in this group have a proportion $>$0.50, which are the 20.5\% in Mylyn and 60.1\% in UDC.
+\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30; this includes sessions for which the proportion of long interruption is zero, that is, sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
+\item \textit{medium}: the second group consists of sessions with a higher proportion of long interruptions, between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
+\item \textit{high}: finally, more than half the sessions in the last group are pronlonger (proportion $>$0.50). This represents 20.5\% of the sessions in Mylyn and 60.1\% in UDC.
 \end{itemize} 
 
-Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Thus, for the three metrics, we created the groups low, medium and high, and every group was split in other three groups according to the terciles of the distribution of the number on interruptions. 
+Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles \RR{Why?}. Thus, for the three metrics, we created the groups low, medium and high, and every group was split three additional groups according to the terciles of the distribution of the number on interruptions. 
 
 
 
