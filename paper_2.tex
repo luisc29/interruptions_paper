@@ -1380,7 +1380,7 @@ Given the overall activity pattern we noticed in the local analysis, we hypothes
 
 We hence looked for patterns in the interruptions.  After applying clustering techniques over all the subsequences, we always found the formation of three recurrent patterns that show different effects of the interruption: neutral, positive and negative. The clustering was performed with the  K-Mediods~\cite{AMP97} technique, the Silhouette metric~\cite{RP87} to interpret and evaluate the results, the Dynamic Time Warping~\cite{KE05} as distance measure, and feature extraction techniques to reduce the dimensionality.  For this reason, we classified empirically each interruption by its local effect. 
 
-We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after the interruption. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption (in this, the next interruption would ``disturb'' the observation).  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
+We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after the interruption. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
 Table \ref{tbl:local_effect} shows the applied thresholds and the results, accompanied with a typical example of an interruption in each category. This local analysis shows that there are indeed three well-defined groups of interruptions, with the two largest of them having clear effects on the activity in the session.
 
 
@@ -1601,12 +1601,12 @@ Negative Effect
 \subsection{Edition and selections during recovery time}
 The amount of information we have in Usage Data Collector allows us to analyze more specific sections on a programming session. We further investigated the immediate activities after an interruption that we name the \textit{recovery time}, which is a time period taken by the programmer to resume the interrupted work. We could not do this with Mylyn data, since the process involves a lot of filtering of interruptions, which left us with too few data points to analyze.
 
-We established the recovery time as the 15 minutes period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}, who explain that although it is a variable difficult to measure, estimating 15 minutes for this phase is believed to be valid. They also consider the recovery time as the third (and last) phase of an interruption; the first one is the occurrence phase, or the start interruption, followed by the handling phase that contains all the activities required by the interruption.
+We established the recovery time as the 15 minutes period after an interruption, without considering the time consumed by the interruption itself. The length of the period was chosen according to the observations by Solingen et al. \cite{SBV98}, who explain that although it is a variable difficult to measure, estimating 15 minutes for this phase is believed to be valid. They also consider the recovery time as the third (and last) phase of an interruption; the first one is the occurrence phase, or the start of the interruption, followed by the handling phase that contains all the activities required by the interruption.
 
 Furthermore, Iqbal and Horvitz \cite{IH07} conclude, after observations from field study, that the recovery time can last between 10 to 16 minutes, depending on the interruption. They speculate that this time is necessary to refocusing cognitive resources lost during the diversion.
 %\RR{Add details of that paper to better justify}
 
-In order to execute this analysis, it was necessary to make a selection of the interruptions that have a period after it of at least 15 minutes of recorded work, before another interruption occurs. After this query we obtained 5,684 valid interruptions from a total of 110,077.
+In order to execute this analysis, it was necessary to select only the interruptions that have a period after them of at least 15 minutes of recorded work, before another interruption occurs (as the subsequent interruption would ``pollute'' the data for the purposes of this analysis). After this filtering we obtained 5,684 valid interruptions from a total of 110,077.
 
 From those valid interruptions, we split the time after the interruption into two phases: 
 
@@ -1619,7 +1619,7 @@ Following this procedure, the recovery time was split in three phases of five mi
 
 \begin{itemize}
 	\item \textit{Before interruption}: a period of 10 minutes before the next interruption.
-	\item \textit{Peak}: the time between the recovery time and the before interruption phase.
+	\item \textit{Peak}: the time between the recovery time and the ``before interruption'' phase.
 \end{itemize}
 
 Splitting the recovery phase into three phases allows us to analyze in detail the evolution of productivity and identify the immediate activities after the interruption, which will be helpful later. On the other hand, the before interruption phase represents the time where the productivity drops just before the next interruption, as seen in the results on RQ3. The peak phase is where the productivity should be reaching its maximum, as the programmers are not taking actions to retake the lost mental model or preparing for an interruption. The Figure \ref{fig:recovery_afterRecovery} shows how the time after the interruption was split into phases.
@@ -1629,7 +1629,7 @@ Splitting the recovery phase into three phases allows us to analyze in detail th
 	\begin{tabular}{c}
 		\includegraphics[width=.9\linewidth,clip=, angle=0]{figures/udc_after_Interruption} \\
 	\end{tabular}
-	\caption{Graphic showing how the time after an interruption was split. }
+	\caption{How we split the time after an interruption. }
 	\label{fig:recovery_afterRecovery}
 \end{figure}
 
@@ -1651,7 +1651,7 @@ The duration of the peak varies among the phases between interruptions. On avera
 %Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it is common to have a reduction of both editions and selections per minute. Therefore, the \textit{After Recovery Time} time was split into two phases as well: one that takes the time where the metrics drop which happens 10 minutes before the next interruption (labeled as  \textit{Before Interruption}), and the time before that, which is the peak of the session after the Recovery Time. The duration of the phase \textit{Before Interruption} was chosen with the conclusions after the local analysis around the interruptions. 
 
 We can see in the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through
-the phases. The three metrics show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is more favorable.
+the phases. The three metrics show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is the highest.
 
 \begin{figure}[!ht]
 \centering
