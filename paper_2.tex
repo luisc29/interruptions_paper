@@ -945,11 +945,11 @@ Following the conclusions on RQ1, the number of interruptions may affect the res
 
 
 
-The Figure \ref{fig:lines_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{fig:udc_lines_dur_int} with UDC. In this context, it is better to have a low number of interruptions (group [1-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 1 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity.
+The Figure \ref{fig:lines_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{fig:udc_lines_dur_int} with UDC. In this context, it is better to have a low number of interruptions (group [1-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 1 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity. In the Figures the color of lines represent a classificacion of the proportion of prolonged interruptions, being the green line the 'low' type, blue the 'medium' and red the 'high'.
 
 The difference between categories seems to decrease when reaching higher values. There is a clear difference between the low and medium categories of proportions, but the difference between medium and high is minor. The same happens when comparing the categories [1-3] and [4-6] of the number of interruptions, and the categories [4-6] and $>$6. In other words, as the value of the metrics get higher, the negative effect (according to these metrics) changes at a very low rhythm. 
 
-Comparing the results between the datasets, UDC seems to show a more defined difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified.
+Comparing the results between the datasets, UDC seems to show a more defined difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified, although when having more than 6 interruptions there is not a real difference.
 
 \begin{figure}[!ht]
 	\centering
@@ -1016,6 +1016,52 @@ Comparing the results between the datasets, UDC seems to show a more defined dif
 
 The statistical tests show that...
 
+\begin{table}[ht!]
+\tiny
+\renewcommand{\arraystretch}{1.3}
+\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC} %, and editions and selections.}
+\label{tbl:p_value2}
+\centering
+\begin{tabular}{l | p{0.7cm} | p{1cm} | p{1cm} | p{1cm} } 
+  & none & low & medium & high  \\  
+  \hline
+  \multicolumn{5}{c}{\textbf{Edits}} \\
+  \hline
+  mean & 4.01 &	2.31 & 1.94 & 2.06 \\ 
+  % \cline{3-4} 
+  %t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
+   \cline{3-5} 
+  U-test & $\hookrightarrow$ & \multicolumn{3}{c}{$<$ 2.2e-16}  \\
+
+  \cline{3-5} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.75} & \textbf{0.89} & \textbf{0.70}  \\
+  \hline
+  
+  
+  \multicolumn{5}{c}{\textbf{Selections}} \\
+  \hline 
+  mean & 2.99 &	2.08 & 1.85 & 1.97 \\ 
+  % \cline{3-4} 
+  %t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+   \cline{3-5} 
+  U-test & $\hookrightarrow$ & 8.467e-13 & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
+  
+  \cline{3-5} 
+  Cohen's $d$ & $\hookrightarrow$	& \textbf{0.53} & \textbf{0.69} & \textbf{0.49} \\  
+  \hline
+  \multicolumn{5}{c}{\textbf{Edit ratio}} \\
+  \hline 
+  mean & 0.56 & 0.49 & 0.45 & 0.44 \\ 
+%   \cline{3-4} 
+%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+   \cline{3-5} 
+  U-test & $\hookrightarrow$ & 6.467e-05 & 2.095e-08 & 1.218e-09 \\
+  \cline{3-5} 
+  Cohen's $d$ & $\hookrightarrow$ & \textbf{0.29} & \textbf{0.41} & \textbf{0.45}\\
+\hline
+
+\end{tabular}
+\end{table}
 
 %In this section we analyze whether or not the interruption duration is a factor in the relationship between interruptions and developer productivity. To substantiate this claim, we have built two groups of sessions with interruptions:
 %\begin{itemize}
