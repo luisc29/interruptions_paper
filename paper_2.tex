@@ -361,7 +361,7 @@ Mylyn data has another characteristic which is unusual for time series: the time
 
 Consequently, the temporal component represents the \textit{real working time} of a programming task, excluding inactivity. This allows us to compute our activity indicators (number of edits, selections, edit ratio) independently of the amount of inactivity in a session.
 % That is to say, each consecutive unit time corresponds to a minute of user activity, where there was at least one event of edit or selection. 
-\paragraph{Defining an interruption.} An important task during the transformation phase is to identify the interruptions along a working session. In this study we use two kind of interruptions, and we define them as follows:
+\paragraph{Defining an interruption.} An important task during the transformation phase is to identify the interruptions along a working session. In this study we use two kinds of interruptions, and we define them as follows:
 
 \begin{itemize}
 	\item \textit{Interruption.} We define empirically an interruption as a pause of programming of duration $\geq 3$ minutes. This is based on previous work where we observed that short interruptions lasted usually this long \cite{GM04}. Shorter values would risk classifying periods of inactivity (such as a programmer reading source code) as interruptions.
@@ -436,40 +436,62 @@ After the transformation phase, we had the sessions in a proper format to carry 
 	\label{fig:mylyn_sessions_stats}
 \end{figure}
 
-%\begin{table}[ht!]
-%	\small
-%	\renewcommand{\arraystretch}{1.3}
-%	\caption{Statistics about the sessions in Mylyn. }
-%	\label{tbl:stats_sessions_mylyn}
-%	\centering
-%	\begin{tabular}{| p{3cm} |p{3cm} |} 
-%		\hline 
-%		stat & value \\  
-%		\hline 
-%		\hline 
-%		total & 4,284 \\
-%		min. & 2 min \\
-%		1st Qu. & 18 min\\
-%		median & 35 min \\
-%		mean & 48.91 min \\
-%		3rd Qu. & 62 min \\
-%		max. & 535 min\\
-%		\hline
-%		
-%	\end{tabular}
-%\end{table}
-%
-%
-%\begin{figure}[t]
-%	\centering
-%	\begin{tabular}{c}
-%		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/mylyn_trace_duration} 
-%	\end{tabular}
-%	\caption{Histogram of the duration of the sessions in Mylyn.}
-%	\label{fig:mylyn_trace_duration}
-%\end{figure}
+\subsection{Metrics Used in This Study}
+We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
+\\
+
+Metrics characterizing interruptions:
+\begin{itemize}
+	\item \textit{Number of interruptions}:  counts all the interruptions that occur in a development session.
+	\item \textit{Duration of interruption}:  it is the time duration in minutes of the each interruption. 
+\end{itemize}
+
+Metrics characterizing productivity and activity:
+\begin{itemize}
+	\item \textit{Productive work time:} the duration of a development session, subtracting the duration of all the interruptions present in the session, to control for inactivity.
+	\item \textit{Number of edits per minute:} the total number of edits events, divided by the productive work time to control for length of the session. This is an indicator of user activity during the session.
+	\item \textit{Number of selections per minute:} is the total number of selection events, divided by the productive work time. Also an indicator of activity.
+	\item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
+\end{itemize} 
+
+We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool. 
+
+%\RR{is this common? didn't we filter these out?}
+%We filtered these out only in the recovery time analysis
+
+An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded with selections events and are common activities after an interruption, according to observational studies. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
+
+\paragraph{Correlation analysis of the metrics}
+%\RR{perhaps expand a bit}
+The metrics that characterize the productivity are related to the amount of activity registered and could be possible to find a correlation between them, specially with the number of edits and selections per minute, and the edit ratio. We did a correlation analysis involving these three metrics (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We find that the Edits/min and Selections/minute metrics have low correlation coefficients, which is the expected result as they explain two different kind of activities. The same happens between the Selections/minute and Edit ratio metrics with the data of both kind of traces, this time being a negative correlation which is also an expected value, as the Edit ratio should decrease when the Selections/minute increases. 
+
+The Edit/minute and Edit ratio correlation coefficient is higher in both groups, but not high enough to not consider the latter, for it tells something different from the user activity. It is normal to see these two metrics with a moderate correlation coefficient given that the Edit ratio is the proportion of edition events in a minute.
 
 
+\begin{table}
+	\small
+	\renewcommand{\arraystretch}{1.3}
+	\caption{Correlation analysis of the metrics used in the study.}
+	\label{tbl:corr_analysis}
+	\centering
+	\begin{tabular}{|p{4cm}|p{2cm}|}
+		\hline 
+		metrics & correlation \\  
+		\hline 
+		\multicolumn{2}{c}{\textit{Traces without interruptions}} \\
+		\hline 
+		Edits/min vs Sel/min &  0.25  \\
+		Edits/min vs Edit ratio &  0.65\\
+		Sel/min vs Edit ratio & -0.38  \\
+		\hline 
+		\multicolumn{2}{c}{\textit{Traces with interruptions}} \\
+		\hline 
+		Edits/min vs Sel/min &  0.35  \\
+		Edits/min vs Edit ratio &  0.60\\
+		Sel/min vs Edit ratio & -0.32  \\
+		\hline
+	\end{tabular}
+\end{table}
 
 
 
@@ -605,115 +627,6 @@ At this point, we had the same format of sessions with both datasets. In the Fig
 	\label{fig:udc_sessions_stats}
 \end{figure}
 
-
-\subsection{Metrics Used in This Study}
-Before introducing the results about the first research question, it is convenient to present the metrics used in this study.
-We use the following six metrics to measure interruptions and productivity, while controlling for the unproductive time in a session, the length of time of the session itself, and the efficiency of the development that took place during the session.
-\\
-
-Metrics characterizing interruptions:
-\begin{itemize}
-	\item \textit{Number of interruptions}:  counts all the interruptions that occur in a development session.
-	\item \textit{Duration of interruption}:  it is the time duration in minutes of the each interruption. 
-\end{itemize}
-
-Metrics characterizing productivity and activity:
-\begin{itemize}
-	\item \textit{Productive work time:} the duration of a development session, subtracting the duration of all the interruptions present in the session, to control for inactivity.
-	\item \textit{Number of edits per minute:} the total number of edits events, divided by the productive work time to control for length of the session. This is an indicator of user activity during the session.
-	\item \textit{Number of selections per minute:} is the total number of selection events, divided by the productive work time. Also an indicator of activity.
-	\item \textit{Edit ratio:} the number of edits divided by the sum of edits and selections, as used by Kersten and Murphy \cite{KM06}; an efficient developer spends less time exploring code and more time editing it.
-\end{itemize} 
-
-We measure the effects on productivity using mainly the edit and selection events per minute as indicators. The edit ratio might be also a good indicator, under the assumption that a productive programmer will execute more editing activities than selection or navigation events. However, this is not always the case, given that depending on the role of the worker, selection events can be equivalent to the usage of a designing or reporting tool. 
-
-\RR{is this common? didn't we filter these out?}
-
-An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded with selections events and are common activities after an interruption, according to observational studies. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
-
-\subsection{Correlation Analysis}
-\RR{perhaps expand a bit}
-We did a correlation analysis involving the three metrics used (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We find that the Edit/min and Sel/min metrics have low correlation coefficients, which is the expected result. The same happens between the Sel/min and Edit ratio metrics with the data of both kind of traces. The Edit/min and Edit ratio correlation coefficient is higher in both groups, but not high enough to not consider the latter, for it tells something different from the user activity.
-
-\begin{table}
-\small
-\renewcommand{\arraystretch}{1.3}
-\caption{Correlation analysis of the metrics used in the study.}
-\label{tbl:corr_analysis}
-\centering
-\begin{tabular}{|p{4cm}|p{2cm}|}
-	  \hline 
-	metrics & correlation \\  
-	  \hline 
-	\multicolumn{2}{c}{\textit{Traces without interruptions}} \\
-	    \hline 
-		Edit/min vs Sel/min &  0.25  \\
-		Edit/min vs Edit ratio &  0.65\\
-		Sel/min vs Edit ratio & -0.38  \\
-	    \hline 
-	\multicolumn{2}{c}{\textit{Traces with interruptions}} \\
-	    \hline 
-		Edit/min vs Sel/min &  0.35  \\
-		Edit/min vs Edit ratio &  0.60\\
-		Sel/min vs Edit ratio & -0.32  \\
-	    \hline
-\end{tabular}
-\end{table}
-
-
-%\RR{motivate more edit ratio, and add here the correlation analysis}
-
-%\begin{table}[ht!]
-%	\small
-%	\renewcommand{\arraystretch}{1.3}
-%	\caption{Statistics about the sessions in UDC. }
-%	\label{tbl:stats_sessions_udc}
-%	\centering
-%	\begin{tabular}{| p{3cm} |p{3cm} |} 
-%		\hline 
-%		stat & value \\  
-%		\hline 
-%		\hline 
-%		total & 15,825 \\
-%		min. & 2 min \\
-%		1st Qu. & 11 min\\
-%		median & 23 min \\
-%		mean & 35.87 min \\
-%		3rd Qu. & 47 min \\
-%		max. & 1,345 min\\
-%		\hline
-%		
-%	\end{tabular}
-%\end{table}
-%
-%
-%
-%\begin{figure}[t]
-%	\centering
-%	\begin{tabular}{c}
-%		\includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/udc_trace_duration} 
-%	\end{tabular}
-%	\caption{Histogram of the duration of the sessions in UDC.}
-%	\label{fig:hist_session_duration_udc}
-%\end{figure}
-
-%After processing the data, we were able to reuse the same data analysis pipeline we used for Mylyn, in order to verify whether the results hold with this other dataset.
-
-
-
-%\section{Preview Phases for Knowledge Discovery}
-%We used the phases of the process \textit{Knowledge Discovery in Databases (KDD~\cite{FPP96})} to discover useful knowledge from our collection of data: we first select data, then preprocess it, before transforming it to time series. We close this section by presenting the metrics we use in this study. %  (see Figure~\ref{fig:esq}). 
-%
-
-
-%Completed this process, we obtained a set of multivariate time series models to be used in different mining tasks.
-
-
-%After, we applied smoothing using local means to help us see a clearer signal (discover trends).
-
-
-%\section{Data Mining and Interpretation}
-%In this section, we analyze the effect of the interruptions and work fragmentation in software development by means of exploratory and statistical analysis. To get a better view of the data, we first start by exploring the prevalence of interruptions and their relations with the productive time, before answering our research questions.
 
 \section{RQ1: Relationship between Interruptions and Productivity}
 
@@ -940,13 +853,15 @@ The proportion of long interruptions is calculated as the sum of interruptions l
 \begin{itemize}
 \item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30; this includes sessions for which the proportion of long interruption is zero, that is, sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
 \item \textit{medium}: the second group consists of sessions with a higher proportion of long interruptions, between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
-\item \textit{high}: finally, more than half the sessions in the last group are pronlonger (proportion $>$0.50). This represents 20.5\% of the sessions in Mylyn and 60.1\% in UDC.
+\item \textit{high}: finally, more than half the sessions in the last group are prolonged (proportion $>$0.50). This represents 20.5\% of the sessions in Mylyn and 60.1\% in UDC.
 \end{itemize} 
 
 
 %Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Also, we separated the sessions with one interruption into new group. Thus, for the three metrics, we created the groups low, medium and high, and every group was split in other four groups according to the terciles of the distribution of the number on interruptions. 
 
-Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles \RR{Why?}. Thus, for the three metrics, we created the groups low, medium and high, and every group was split three additional groups according to the terciles of the distribution of the number on interruptions. 
+Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Since the results in RQ1 show that as the number of interruptions increases the difference between the groups minimizes, we believe that having four more distinctive groups instead of five is also valid. Thus, for the three metrics, we created the groups low, medium and high, and every group was split into four additional groups according to the terciles of the distribution of the number on interruptions. 
+
+One of those groups contains sessions with 1 to 3 interruptions, and we decided to split it into two groups: a group of sessions with one interruption and a second group of sessions with 2 to 3 interruptions. The intention is to see if there is a clear effect between sessions with only one interruption, when this interruption is either short or prolonged. So, we created five groups in total: the \textit{none} group of sessions without interruptions, a group of sessions with only 1 interruption, another group with 2 to 3 interruptions, a fourth group with 4 to 6 interruptions, and lastly a group of sessions with more than 6 interruptions. The value of the terciles turned out to be the same for Mylyn and UDC (30\%: 3 and 60\%: 6) so we kept the same groups in both analyses.
 
 
 The Figure \ref{tbl:mylyn_stats_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{tbl:udc_stats_dur_int} with UDC. In this context, it is better to have a low number of interruptions (group [2-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 2 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity. In the Figures the color of lines represent a classification of the proportion of prolonged interruptions, being the green line the \textit{low} type, blue the \textit{medium} and red the \textit{high}.
@@ -955,8 +870,7 @@ The difference between categories seems to decrease when reaching higher values.
 
 Sessions with only one interruption do not belong to the medium category, for they can only contain either one short interruption (low category) or one prolonged interruption (high category). So, in the Tables the medium category shows an NA in sessions with one interruption. Also, there is an important difference in this instance as the metrics show better results in sessions in the low category, which is another evidence of the detrimental effect of prolonged interruptions.
 
-%Comparing the results between the datasets, UDC seems to show a more defined difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified, although when having more than 6 interruptions there is not a real difference.
-
+Comparing the results between the datasets, UDC seems to show a more clear difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified, although when having more than 6 interruptions there is not a real difference. We observed that having a high number of prolonged interruptions is more detrimental to productivity, and we can reach the same conclusions with both datasets and with the three metrics.
 
 \begin{table}
 	\tiny
