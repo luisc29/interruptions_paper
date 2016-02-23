@@ -73,6 +73,12 @@ R.~Minelli, A.~Mocci, M.~Lanza, and T.~Kobayashi, ``Quantifying program
   14th International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2014, pp. 276--285.
 
+\bibitem{KS13}
+B.~Kankuzi and J.~Sajaniemi, ``An empirical study of spreadsheet authors'
+  mental models in explaining and debugging tasks,'' in \emph{Visual Languages
+  and Human-Centric Computing (VL/HCC), 2013 IEEE Symposium on}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2013, pp. 15--18.
+
 \bibitem{KDV07}
 A.~J. Ko, R.~DeLine, and G.~Venolia, ``Information needs in collocated software
   development teams,'' in \emph{Proceedings of ICSE 2007}, 2007, pp. 344--353.
@@ -196,6 +202,11 @@ U.~M. Fayyad, G.~Piatetsky-shapiro, and P.~Smyth, ``{From Data Mining to
 R.~Robbes and M.~Lanza, ``Characterizing and understanding development
   sessions,'' in \emph{Proceedings of ICPC 2007}, 2007, pp. 155--166.
 
+\bibitem{RHD12}
+C.~Rohrdantz, M.~C. Hao, U.~Dayal, L.-E. Haug, and D.~A. Keim, ``Feature-based
+  visual sentiment analysis of text document streams,'' \emph{ACM Transactions
+  on Intelligent Systems and Technology (TIST)}, vol.~3, no.~2, p.~26, 2012.
+
 \bibitem{KaptelininN07}
 \BIBentryALTinterwordspacing
 V.~Kaptelinin and B.~A. Nardi, ``Acting with technology: Activity theory and
@@ -213,6 +224,10 @@ W.~Snipes, E.~Murphy-Hill, T.~Fritz, M.~Vakilian, K.~Damevski, A.~R. Nair, and
 \bibitem{C94}
 J.~Cohen, ``The earth is round (p $<$ 0.5),'' \emph{American Psychologist},
   vol.~49, no.~12, pp. 997--1003, 1994.
+
+\bibitem{SBV98}
+R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
+  never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
 
 \bibitem{LVD06}
 T.~D. LaToza, G.~Venolia, and R.~DeLine, ``Maintaining mental models: a study
@@ -233,10 +248,6 @@ P.~J. Rousseeuw, ``Silhouettes: a graphical aid to the interpretation and
 \bibitem{KE05}
 E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
   Information Systems}, vol.~7, pp. 358--386, 2005.
-
-\bibitem{SBV98}
-R.~Van~Solingen, E.~Berghout, and F.~Van~Latum, ``Interrupts: just a minute
-  never is,'' \emph{IEEE software}, no.~5, pp. 97--103, 1998.
 
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
