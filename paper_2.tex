@@ -857,118 +857,62 @@ Adding this to our previous result, we observe that both the user activity (in t
 
 \section{RQ2: Relationship between Duration of Interruptions and Productivity}
 
-In this section we analyze whether or not the duration of the interruptions is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we built three groups of sessions based on the proportion of long interruptions. As we described previously we consider that prolonged interruption are those whose duration is $\geq$12 minutes, according to previous work \cite{GM04, KaptelininN07}. Prolonged interruptions could be due to an extended interruption, such as a coffee break or a meeting.
+In this section we analyze whether or not the duration of the interruptions is a factor in the relationship between interruptions and developer productivity. Under the hypothesis that prolonged interruptions require more time to recover, we built two groups of sessions based on the proportion of long interruptions. As we described previously we consider that prolonged interruption are those whose duration is $\geq$ 12 minutes, according to previous work \cite{GM04, KaptelininN07}. Prolonged interruptions could be due to an extended interruption, such as a coffee break or a meeting.
 
-For every session, we calculated the proportion of prolonged interruptions as the sum of interruptions with duration equal or greater than 12 minutes, divided by the total sum of interruptions in that session. Then, we obtained the quantiles of the distribution of the proportions and use them to create 3 groups described in the following:
+For every session, we calculated the proportion of prolonged interruptions as the sum of interruptions with duration equal or greater than 12 minutes, divided by the total sum of interruptions in that session. Then, we created 2 groups of sessions described as follows:
 
 \begin{itemize}
-\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.30; this includes sessions for which the proportion of long interruption is zero, that is, sessions with only short interruptions. These sessions constitute 47.7\% in Mylyn and 20.8\% in UDC, from the total of sessions in both datasets.
-\item \textit{medium}: the second group consists of sessions with a higher proportion of long interruptions, between 0.30 and 0.50. These sessions constitute 31.8\% in Mylyn and 18.9\% in UDC.
-\item \textit{high}: finally, more than half the sessions in the last group are prolonged (proportion $>$0.50). This represents 20.5\% of the sessions in Mylyn and 60.1\% in UDC.
+\item \textit{low}: the first group consists of sessions where the proportion of prolonged interruptions is $<$0.50; this includes sessions for which the proportion of long interruption is zero, that is, sessions with only short interruptions. These sessions constitute 66.1\% in Mylyn and 38.7\% in UDC, from the total of sessions in both datasets.
+\item \textit{high}: the second group consists of sessions where half or more of the interruptions are prolonged (proportion $\geq$0.50). This represents 31.7\% of the sessions in Mylyn and 60.1\% in UDC.
 \end{itemize} 
 
+Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution to create groups we created a group for every number of interruptions up to seven. Since the results in RQ1 show that as the number of interruptions increases the difference between the groups minimizes, we believe that having more distinctive groups instead of groups created by ranges is also valid. Thus, for the three metrics, we created the groups of sessions according to the number on interruptions, between one and seven, en then we split every group in low and high, according to the proportion of prolonged interruptions.
 
-%Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Also, we separated the sessions with one interruption into new group. Thus, for the three metrics, we created the groups low, medium and high, and every group was split in other four groups according to the terciles of the distribution of the number on interruptions. 
+The Figure \ref{fig:dur_mylyn} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{fig:dur_udc} with UDC. In this context, it is better to have a low number of interruptions and a low proportion of prolonged interruptions, and the results agree with this statement. First, we observe that (as we conclude in RQ1) when the number of interruption increases the median of the metric decreases until reaching a point (approximately four interruptions) where the change is minimal. Second, almost in every group the median of groups with low proportion of prolonged interruptions is greater than in groups with a high proportion. The latter observation is more clear in the editions per minute metric in both datasets.
 
-Following the conclusions on RQ1, the number of interruptions may affect the results if we ignore that variable. So, we split every group in accordance to the number of interruptions; this time, instead of taking the quantiles of the distribution we took the terciles. Since the results in RQ1 show that as the number of interruptions increases the difference between the groups minimizes, we believe that having four more distinctive groups instead of five is also valid. Thus, for the three metrics, we created the groups low, medium and high, and then we split every group into four additional groups according to the terciles of the distribution of the number on interruptions. 
+%For example, when having between 1 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 5 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity. In the Figures the color of lines represent a classification of the proportion of prolonged interruptions, being the green line the \textit{low} type, blue the \textit{medium} and red the \textit{high}.
 
-One of those groups originally consisted of sessions with 1 to 3 interruptions, but we decided to split it into two groups: a group of sessions with one interruption and a second group of sessions with 2 to 3 interruptions. The intention is to see if there is a clear effect between sessions with only one interruption, when this interruption is either short or prolonged. So, we created five groups in total: the \textit{none} group of sessions without interruptions, a group of sessions with only 1 interruption, another group with 2 to 3 interruptions, a fourth group with 4 to 6 interruptions, and lastly a group of sessions with more than 6 interruptions. The value of the terciles turned out to be the same for Mylyn and UDC (30\%: 3 and 60\%: 6) so we kept the same groups in both analyses.
+%The difference between categories seems to decrease when reaching higher values. There is a clear difference between the low and medium categories of proportions, but the difference between medium and high is minor. The same happens when comparing the categories [2-3] and [4-6] of the number of interruptions, and the categories [4-6] and $>$6. In other words, as the value of the metrics get higher, the negative effect (according to these metrics) changes at a very low rhythm. 
 
+%Sessions with only one interruption do not belong to the medium category, for they can only contain either one short interruption (low category) or one prolonged interruption (high category). So, in the Tables the medium category shows an NA in sessions with one interruption. Also, there is an important difference in this instance as the metrics show better results in sessions in the low category, which is another evidence of the detrimental effect of prolonged interruptions.
 
-The Figure \ref{tbl:mylyn_stats_dur_int} shows the median of the metrics when grouping the sessions by the number of interruptions and the proportion of prolonged interruptions with Mylyn, and the Figure \ref{tbl:udc_stats_dur_int} with UDC. In this context, it is better to have a low number of interruptions (group [2-3]) and a low proportion of prolonged interruptions, and the results agree with this statement. For example, when having between 2 to 3 interruptions and a low proportion the metrics show higher values when compared to having $>$ 6 interruptions and a high proportion of prolonged interruptions. Moreover, if we focus on a category we can see a gradual decrease as the number of interruptions increases, which lead us to conclude that the proportion of prolonged interruptions has an effect on the developer productivity. In the Figures the color of lines represent a classification of the proportion of prolonged interruptions, being the green line the \textit{low} type, blue the \textit{medium} and red the \textit{high}.
+%Comparing the results between the datasets, UDC seems to show a more clear difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified, although when having more than 6 interruptions there is not a real difference. We observed that having a high number of prolonged interruptions is more detrimental to productivity, and we can reach the same conclusions with both datasets and with the three metrics.
 
-The difference between categories seems to decrease when reaching higher values. There is a clear difference between the low and medium categories of proportions, but the difference between medium and high is minor. The same happens when comparing the categories [2-3] and [4-6] of the number of interruptions, and the categories [4-6] and $>$6. In other words, as the value of the metrics get higher, the negative effect (according to these metrics) changes at a very low rhythm. 
-
-Sessions with only one interruption do not belong to the medium category, for they can only contain either one short interruption (low category) or one prolonged interruption (high category). So, in the Tables the medium category shows an NA in sessions with one interruption. Also, there is an important difference in this instance as the metrics show better results in sessions in the low category, which is another evidence of the detrimental effect of prolonged interruptions.
-
-Comparing the results between the datasets, UDC seems to show a more clear difference between groups. The sessions with a low proportion of prolonged interruption has a greater difference (higher productivity) than sessions with medium proportion. In Mylyn this difference is more subtle but can be identified, although when having more than 6 interruptions there is not a real difference. We observed that having a high number of prolonged interruptions is more detrimental to productivity, and we can reach the same conclusions with both datasets and with the three metrics.
-
-\begin{table}
-	\tiny
-	\renewcommand{\arraystretch}{2.8}
-	\caption{Median for the edits per minute, selections per minute and edit ratio according to the number of interruptions and the proportion of prolonged interruptions in Mylyn.}
-	\label{tbl:mylyn_stats_dur_int}
-	\centering
-	\begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|c|}
-		
-		\hline 
-		& \multicolumn{6}{c|}{Number of interruptions} \\
-		\hline
-		Proportion of long int. & none & 1 & [2-3] & [4-6] & $>$6 & \\  
-		\hline 
-		\multicolumn{7}{c}{\textit{Edits per minute}} \\
-		\hline
-		low & 6.56 & 4.48 & 1.09 & 0.73 & 0.62 &  \multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/lines_dur_emin} } \\
-		\cline{1-6}
-		medium & 6.56 & NA & 0.84 & 0.69 &  0.59 &  \\		
-		\cline{1-6}		
-		high  & 6.56 & 1.25 & 0.66 & 0.53 & 0.60 & \\
-		\hline
-		\multicolumn{7}{c}{\textit{Selections per minute}} \\
-		\hline 
-		low &  4.56 & 3.35 & 2.13 & 1.76 & 1.34 & \newline 
-		\multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/lines_dur_smin} }\newline \\
-		\cline{1-6}
-		medium & 4.56 & NA & 1.85 & 1.52 & 1.26 &  \\
-		\cline{1-6}				
-		high & 4.56 & 2.34 &  1.55  & 1.60 & 1.26 & \\
-		\hline
-		\multicolumn{7}{c}{\textit{Edit ratio}} \\
-		\hline 
-		low & 0.56 & 0.48 & 0.36 & 0.31  & 0.32 &  \newline 
-		\multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/lines_dur_eratio} }\newline\\
-		\cline{1-6}
-		medium & 0.56 & NA & 0.34 & 0.32 & 0.32 & \\
-		\cline{1-6}				
-		high & 0.56 & 0.37 & 0.31 & 0.30 & 0.33 & \\
-		\hline
-	\end{tabular}
-\end{table}
-
-
-\begin{table}
-\tiny
-\renewcommand{\arraystretch}{2.8}
-\caption{Median for the edits per minute, selections per minute and edit ratio according to the number of interruptions and the proportion of prolonged interruptions in UDC.}
-\label{tbl:udc_stats_dur_int}
+\begin{figure}[!ht]
 \centering
-\begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|p{1cm}|c|}
-	
-	  \hline 
-	  & \multicolumn{6}{c|}{Number of interruptions} \\
-	  \hline
-	Proportion of long int. & none & 1 & [2-3] & [4-6] & $>$6 & \\  
-	  \hline 
-	\multicolumn{7}{c}{\textit{Edits per minute}} \\
-		\hline
-		low & 3.58 & 3.00 & 2.28 & 1.45 & 1.36 &  \multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/udc_lines_dur_emin} } \\
-		\cline{1-6}
-		medium & 3.58 & NA & 1.25 & 1.15 &  1.27 &  \\		
-		\cline{1-6}		
-		high  & 3.58 & 1.42& 1.13 & 1 & 0.94  & \\
-		\hline
-	\multicolumn{7}{c}{\textit{Selections per minute}} \\
-	    \hline 
-		low &  2.54 & 2.34 & 2.06 & 1.6 & 1.44 & \newline 
-		\multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/udc_lines_dur_smin} }\newline \\
-		\cline{1-6}
-		medium & 2.54 & NA & 1.5 & 1.5 & 1.41 &  \\
-		\cline{1-6}				
-		high & 2.54 & 1.64 &  1.5  & 1.45 & 1.36 & \\
-	    \hline
-	 \multicolumn{7}{c}{\textit{Edit ratio}} \\
-	   \hline 
-		low & 0.57 & 0.57 & 0.52 & 0.47  & 0.46 &  \newline 
-		\multirow{3}{*}{\includegraphics[valign=m,scale=0.23]{figures/udc_lines_dur_eratio} }\newline\\
-		\cline{1-6}
-		medium & 0.57 & NA & 0.45 & 0.44 & 0.46 & \\
-		\cline{1-6}				
-		high & 0.57 & 0.50 & 0.44 & 0.42 & 0.44 & \\
-	   \hline
+\begin{tabular}{c}
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_emin}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_smin}  
+\endminipage\hfill
+\minipage{0.33\textwidth}
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_eratio} 
+\endminipage\hfill
 \end{tabular}
-\end{table}
+\caption{Boxplots showing the relation between the number of edits and selection events per minute, the edit ratio, and the number of interruptions in Mylyn. }
+\label{fig:dur_mylyn}
+\end{figure}
 
-The statistical tests in Tables \ref{tbl:effect_size_dur_mylyn} and \ref{tbl:effect_size_dur_udc} show in general a low effect between the types of proportions of prolonged interruptions.
+\begin{figure}[!ht]
+	\centering
+	\begin{tabular}{c}
+		\minipage{0.33\textwidth}
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_emin}  \\
+		\endminipage\hfill
+		\minipage{0.33\textwidth}
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_smin}  \\
+		\endminipage\hfil
+		\minipage{0.33\textwidth}
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_eratio} \\
+		\endminipage\hfill
+	\end{tabular}
+	\caption{Boxplots showing the relation between the number of editions and selections per minute, the edit ratio, and the number of interruptions in UDC. }
+	\label{fig:dur_udc}
+\end{figure}
+
+The Tables \ref{tbl:effect_size_dur_mylyn} and \ref{tbl:effect_size_dur_udc} show a test performed in every group of interruptions, measuring the effect of sessions with low and high proportion of prolonged interruptions.
 
 \begin{table}[ht!]
 	\tiny
@@ -976,47 +920,32 @@ The statistical tests in Tables \ref{tbl:effect_size_dur_mylyn} and \ref{tbl:eff
 	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in Mylyn} %, and editions and selections.}
 	\label{tbl:effect_size_dur_mylyn}
 	\centering
-	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} } 
-		& low & medium & high  \\  
+	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
+		Group & 1 & 2 & 3 & 4 & 5 & 6 & 7  \\  
 		\hline
-		\multicolumn{4}{c}{\textbf{Edits}} \\
+		\multicolumn{8}{c}{\textbf{Edits}} \\
 		\hline
-		mean & 1.73 & 1.65 & 1.87 \\ 
-		% \cline{3-4} 
-		%t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & 3.71e-05 & 0.088  \\
-		
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.03} & \textbf{0.06} \\
+		U-test (adjusted) & 5.6e-10 & 6.5e-07 & 2.9e-04 & 7.4e-03 & 1.2e-03 & 3.2e-01 &  3.9e-01\\
+		\hline
+		Cohen's $d$ & 0.62 & 0.38 & 0.20 & 0.08 & 0.21 & 0.17 & 0.45 \\
 		\hline
 		
-		
-		\multicolumn{4}{c}{\textbf{Selections}} \\
+		\multicolumn{8}{c}{\textbf{Selections}} \\
 		\hline 
-		mean & 2.21 & 2.18 & 2.53\\ 
-		% \cline{3-4} 
-		%t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & 0.000378 & 0.2131 \\
-		
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.014} & \textbf{0.14}  \\  
+		U-test (adjusted) & 0.0004 & 0.0047 & 0.0072 & 0.003 & 0.7014 & 0.0520 & 0.1284 \\
 		\hline
-		\multicolumn{4}{c}{\textbf{Edit ratio}} \\
+		Cohen's $d$ & 0.21 & 0.16 & 0.24 & 0.16 & 0.08 & 0.26 & 0.09  \\  
+		\hline
+		
+		\multicolumn{8}{c}{\textbf{Edit ratio}} \\
 		\hline 
-		mean & 0.36 & 0.35 & 0.34 \\ 
-		%   \cline{3-4} 
-		%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & 0.2717 & 0.1955 \\
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$ & \textbf{0.04} & \textbf{0.07} \\
+		U-test (adjusted) & 2.6e-06 & 5.7e-05 & 2.3e-02 & 6.4e-01 & 2.3e-02 & 4.9e-01 & 1.5e-01 \\
+		\hline 
+		Cohen's $d$ & 0.52 & 0.40 & 0.21 & 0.06 & 0.41 & 0.04 & 0.56  \\
 		\hline
 		
 	\end{tabular}
 \end{table}
-
 
 \begin{table}[ht!]
 	\tiny
@@ -1024,46 +953,127 @@ The statistical tests in Tables \ref{tbl:effect_size_dur_mylyn} and \ref{tbl:eff
 	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC} %, and editions and selections.}
 	\label{tbl:effect_size_dur_udc}
 	\centering
-	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} } 
-		& low & medium & high  \\  
+	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
+		Group & 1 & 2 & 3 & 4 & 5 & 6 & 7  \\  
 		\hline
-		\multicolumn{4}{c}{\textbf{Edits}} \\
+		\multicolumn{8}{c}{\textbf{Edits}} \\
 		\hline
-		mean & 2.22 & 1.94 & 2.06 \\ 
-		% \cline{3-4} 
-		%t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
-		
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.12} & \textbf{0.06} \\
+		U-test (adjusted) & 1.9e-20 & 4.0e-13 & 1.1e-03 & 2.7e-02 & 7.2e-08 & 5.5e-02 & 6.5e-06\\
+		\hline
+		Cohen's $d$ & 0.28 & 0.25 & 0.09 & 0.03 & 0.11 & 0.01 & 0.15 \\
 		\hline
 		
-		
-		\multicolumn{4}{c}{\textbf{Selections}} \\
+		\multicolumn{8}{c}{\textbf{Selections}} \\
 		\hline 
-		mean & 2.03 & 1.85 & 1.97\\ 
-		% \cline{3-4} 
-		%t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & 3.05e-09 & 1.25e-07 \\
-		
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.11} & \textbf{0.03}  \\  
+		U-test (adjusted) & 2.9e-07 & 2.3e-11 & 3.2e-01 & 1.2e-01 & 4.3e-03 & 4.5e-01 & 1.2e-01 \\
 		\hline
-		\multicolumn{4}{c}{\textbf{Edit ratio}} \\
+		Cohen's $d$ & 0.23 & 0.26 & 0.01 & 0.09 & 0.09 & 0.07 & 0.06 \\  
+		\hline
+		
+		\multicolumn{8}{c}{\textbf{Edit ratio}} \\
 		\hline 
-		mean & 0.47 & 0.46 & 0.454 \\ 
-		%   \cline{3-4} 
-		%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
-		\cline{3-4} 
-		U-test & $\hookrightarrow$ & 2.57e-07 & 5.11e-14  \\
-		\cline{3-4} 
-		Cohen's $d$ & $\hookrightarrow$ & \textbf{0.11} & \textbf{0.15} \\
+		U-test (adjusted) & 3.5e-05 & 3.3e-02 & 3.3e-02 & 2.0e-01 & 4.0e-03 & 1.4e-01 & 5.9e-03 \\
+		\hline 
+		Cohen's $d$ & 0.31 & 0.13 & 0.10 & 0.06 & 0.17 & 0.09 & 0.19  \\
 		\hline
 		
 	\end{tabular}
 \end{table}
+
+%\begin{table}[ht!]
+%	\tiny
+%	\renewcommand{\arraystretch}{1.3}
+%	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in Mylyn} %, and editions and selections.}
+%	\label{tbl:effect_size_dur_mylyn}
+%	\centering
+%	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} } 
+%		& low & medium & high  \\  
+%		\hline
+%		\multicolumn{4}{c}{\textbf{Edits}} \\
+%		\hline
+%		mean & 1.73 & 1.65 & 1.87 \\ 
+%		% \cline{3-4} 
+%		%t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & 3.71e-05 & 0.088  \\
+%		
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.03} & \textbf{0.06} \\
+%		\hline
+%		
+%		
+%		\multicolumn{4}{c}{\textbf{Selections}} \\
+%		\hline 
+%		mean & 2.21 & 2.18 & 2.53\\ 
+%		% \cline{3-4} 
+%		%t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & 0.000378 & 0.2131 \\
+%		
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.014} & \textbf{0.14}  \\  
+%		\hline
+%		\multicolumn{4}{c}{\textbf{Edit ratio}} \\
+%		\hline 
+%		mean & 0.36 & 0.35 & 0.34 \\ 
+%		%   \cline{3-4} 
+%		%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & 0.2717 & 0.1955 \\
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$ & \textbf{0.04} & \textbf{0.07} \\
+%		\hline
+%		
+%	\end{tabular}
+%\end{table}
+
+
+%\begin{table}[ht!]
+%	\tiny
+%	\renewcommand{\arraystretch}{1.3}
+%	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC} %, and editions and selections.}
+%	\label{tbl:effect_size_dur_udc}
+%	\centering
+%	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} } 
+%		& low & medium & high  \\  
+%		\hline
+%		\multicolumn{4}{c}{\textbf{Edits}} \\
+%		\hline
+%		mean & 2.22 & 1.94 & 2.06 \\ 
+%		% \cline{3-4} 
+%		%t.test & $\hookrightarrow$& \multicolumn{2}{c}{$<$ 2.2e-16} \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
+%		
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.12} & \textbf{0.06} \\
+%		\hline
+%		
+%		
+%		\multicolumn{4}{c}{\textbf{Selections}} \\
+%		\hline 
+%		mean & 2.03 & 1.85 & 1.97\\ 
+%		% \cline{3-4} 
+%		%t.test & $\hookrightarrow$& 2.089e-08 & 8.175e-14 \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & 3.05e-09 & 1.25e-07 \\
+%		
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$	& \textbf{0.11} & \textbf{0.03}  \\  
+%		\hline
+%		\multicolumn{4}{c}{\textbf{Edit ratio}} \\
+%		\hline 
+%		mean & 0.47 & 0.46 & 0.454 \\ 
+%		%   \cline{3-4} 
+%		%  t.test & $\hookrightarrow$&  4.20E-12 & $<$ 2.2e-16 \\
+%		\cline{3-4} 
+%		U-test & $\hookrightarrow$ & 2.57e-07 & 5.11e-14  \\
+%		\cline{3-4} 
+%		Cohen's $d$ & $\hookrightarrow$ & \textbf{0.11} & \textbf{0.15} \\
+%		\hline
+%		
+%	\end{tabular}
+%\end{table}
 
 
 
