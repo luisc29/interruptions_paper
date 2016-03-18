@@ -46,9 +46,8 @@ G.~Mark, V.~M. Gonz{\'{a}}lez, and J.~Harris, ``No task left behind?: examining
 
 \bibitem{IH07}
 S.~T. Iqbal and E.~Horvitz, ``Disruption and recovery of computing tasks: field
-  study, analysis, and directions,'' in \emph{Proceedings of the SIGCHI
-  conference on Human factors in computing systems}.\hskip 1em plus 0.5em minus
-  0.4em\relax ACM, 2007, pp. 677--686.
+  study, analysis, and directions,'' in \emph{Proceedings of {CHI} 2007}, 2007,
+  pp. 677--686.
 
 \bibitem{CHW04}
 M.~Czerwinski, E.~Horvitz, and S.~Wilhite, ``A diary study of task switching
@@ -65,7 +64,10 @@ R.~F. Adler and R.~Benbunan-Fich, ``Juggling on a high wire: Multitasking
   Studies}, vol.~70, no.~2, pp. 156--168, 2012.
 
 \bibitem{PR12}
-
+C.~Parnin and S.~Rugaber, ``Programmer information needs after memory
+  failure,'' in \emph{Program Comprehension (ICPC), 2012 IEEE 20th
+  International Conference on}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE,
+  2012, pp. 123--132.
 
 \bibitem{MMLK14}
 R.~Minelli, A.~Mocci, M.~Lanza, and T.~Kobayashi, ``Quantifying program
@@ -106,10 +108,8 @@ M.~Kersten and G.~C. Murphy, ``{Using task context to improve programmer
 
 \bibitem{FMH07}
 T.~Fritz, G.~C. Murphy, and E.~Hill, ``Does a programmer's activity indicate
-  knowledge of code?'' in \emph{Proceedings of the the 6th joint meeting of the
-  European software engineering conference and the ACM SIGSOFT symposium on The
-  foundations of software engineering}.\hskip 1em plus 0.5em minus 0.4em\relax
-  ACM, 2007, pp. 341--350.
+  knowledge of code?'' in \emph{Proceedings of ESEC/FSE 2007}, 2007, pp.
+  341--350.
 
 \bibitem{FOMM10}
 T.~Fritz, J.~Ou, G.~C. Murphy, and E.~R. Murphy{-}Hill, ``A degree-of-knowledge
