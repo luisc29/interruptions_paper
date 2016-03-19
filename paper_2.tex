@@ -467,9 +467,11 @@ An important reason to consider the edit ratio is that having an interruption re
 
 \paragraph{Correlation analysis of the metrics}
 %\RR{perhaps expand a bit}
-The metrics that characterize the productivity are related to the amount of activity registered and could be possible to find a correlation between them, specially with the number of edits and selections per minute, and the edit ratio. We did a correlation analysis involving these three metrics (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We find that the Edits/min and Selections/minute metrics have low correlation coefficients, which is the expected result as they explain two different kind of activities. The same happens between the Selections/minute and Edit ratio metrics with the data of both kind of traces, this time being a negative correlation which is also an expected value, as the Edit ratio should decrease when the Selections/minute increases. 
+The metrics that characterize the productivity are related to the amount of activity recorded. Thus there is a degree of correlation between them; we study this correlation to determine whether the metrics measure different aspects or not.  %weand could be possible to find a correlation between them, specially with the number of edits and selections per minute, and the edit ratio. 
 
-The Edit/minute and Edit ratio correlation coefficient is higher in both groups, but not high enough to not consider the latter, for it tells something different from the user activity. It is normal to see these two metrics with a moderate correlation coefficient given that the Edit ratio is the proportion of edition events in a minute.
+We did a correlation analysis (using Pearson's correlation coefficient) involving these three metrics (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We find that the Edits/min and Selections/minute metrics have a degree of correlation, but that it is relatively low, this is the expected result as they explain two different kind of activities. We do find that the correlation is higher in traces with interruptions. The same happens between the Selections/minute and Edit ratio metrics with the data of both kind of traces, this time being a negative correlation which is also an expected value, as the Edit ratio should decrease when the Selections/minute increases. 
+
+The Edit/minute and Edit ratio correlation coefficient is higher in both groups, but not high enough to discard the latter, for it tells something different from the user activity. It is normal to see these two metrics with a moderate correlation coefficient given that the Edit ratio is the proportion of edition events over all events in a minute.
 
 
 \begin{table}
@@ -1461,7 +1463,7 @@ In RQ3, we saw different patterns of activity around positive and negative inter
 
 The presence of this pattern and the important difference observed in Figure \ref{fig:box_recovery_effect_udc} led us to investigate the effect more closely. To this aim, we performed an exploratory study of the activities performed by programmers during the recovery time of an interruption. This is possible due to the high variety of events present in the UDC dataset, which can tell us a lot more about the type of activities that developers do than the Mylyn dataset can. Indeed, the UDC records individual commands that the developers issued in the IDE. The commands are very descriptive in the kind of activity that they represent. 
 
-The goal of the exploratory study then was to better understand whether the type of activities taken after an interruption were indicative of different types of activities for each type of session, and also whether these different kinds of activities supported our earlier hypotheses explaining why the two patterns of interruptions were present. Assuming that different commands represented different types of activity, the assumption was that the frequency of a given activity---as represented by the commands used to carry it---would vary between the different types of sessions.
+The goal of the exploratory study was to better understand whether the activity taken after an interruption were indicative of different types of behavior for each type of interruption (positive or negative), and also whether these different kinds of activities supported our earlier hypotheses explaining why the two patterns of interruptions were present. Assuming that different commands represented different types of activity, the assumption was that the frequency of a given activity---as represented by the commands used to carry it---would vary between the different types of sessions.
 
 A first challenge that we encountered was that, similarly to the earlier research questions, the high number of different commands made it hard to infer broader trends. We hence created an additional classification of the commands we encountered in the activity logs. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. Differently to the first classification, we did not limit ourselves to a restricted number of categories: rather, we let the classification emerge from the iterative process. We ended up with 11 categories, as described in Table \ref{tbl:new_events_udc}.
 
@@ -1481,12 +1483,12 @@ Category \emph{text-nav} regroups events related to text-level navigation, such 
 
 Category \emph{search} and \emph{find-replace} are both concerned with search activities, although there are subtle differences. \emph{search} regroups most kinds of search tools, such as text search, or searching code entities (types, packages, methods). As such, it is more to be seen as a high-level program navigation tool (the search results may span several files and are presented in a view that allows quick access to the entities---using such a view is classified in the \emph{high-nav} category). On the other hand, \emph{find-replace} concerns commands that are usually employed for text navigation and more particularly to perform editions (systematically replacing occurrences of a string with another). If the first category is related to program exploration, the second is more related to program edition. There is a caveat here, as it is possible to use \emph{find-replace} commands only to find elements, which is more indicative of program exploration; however, the UDC dataset does not allow us to distinguish these usages.
 
-Category \emph{perspective} deals with events related to perspective change in Eclipse, such as switching from the coding to the debugging perspective, or vice-versa. Eclipse allows the user to program in different environments, like enterprise, mobile and Web. It also supports activities regarding other kind of roles, like testing, design and database management. Each of this environments and roles might require to open a different perspective, so having events regarding a perspective change is an indicative of the different roles that a user has.
+Category \emph{perspective} deals with events related to perspective change in Eclipse, such as switching from the coding to the debugging perspective, or vice-versa. Eclipse allows the user to program in different environments, such as enterprise, mobile and Web. It also supports activities regarding other kind of roles, such as testing, design and database management. Each of this environments and roles might require to open a different perspective, so having events regarding a perspective change is an indicative of the different roles that a user has.
 As such, we have no expectation as to whether this kind of activity is more indicative of program understanding or program editing. % \RR{or do we?}
 
 Category \emph{control} contains events related to version control (commit code, update code, comparing differences, resolving conflicts). This is hence related to finishing tasks, rather than editing or understanding code. 
 
-Category \emph{refactoring} regroups usage of refactoring tools (rename, move methods, extract methods, etc). This is indicative of edition activities in the current piece of code, but it can also affect outer elements and require to verify the changes, implying low and high level navigation. Since automatic refactorings in the IDE are behavior-preserving, the need to verify the changes is lessened. As such, we consider these events to be more indicative of program editing than program comprehension.
+Category \emph{refactoring} regroups usage of refactoring tools (rename, move methods, extract methods, etc). This is indicative of edition activities in the current piece of code, but it can also affect outer elements and requires to verify the changes, implying low and high level navigation. Since automatic refactorings in the IDE are behavior-preserving, the need to verify the changes is lessened. As such, we consider these events to be more indicative of program editing than program comprehension.
 
 Category \emph{clean-build} regroup events related to build system usage (build the system, clean the build, run the build, the tests, etc). This is indicative of activities in which the programmer expects the program to be in a testable state, and not directly to program editing or understanding. This kind of events may also be automatically executed as part of a greater process. For example, when beginning a debugging session, the IDE might execute a clean and build action at first. 
 
@@ -1540,29 +1542,29 @@ We would then expect that certain types of interruptions would feature some even
 	\caption{New category of events. }
 	\label{tbl:new_events_udc}
 	\centering
-	\begin{tabular}{|p{2.5cm}|p{8 cm}| p{2cm} |}
+	\begin{tabular}{|p{2.5cm}|p{10 cm}| } %p{2cm} |}
 		\hline 
-		category & description & frequency \\  
+		category & description \\ %& frequency \\  
 		\hline 
 		\hline 
-		high-nav & High-level navigation through classes, windows and artifacts & 9.1 \\
-		file & Management of files (saving, closing, opening, etc.) &	8.9 \\
-		edit-text & Text edition events & 8.1 \\
-		debug & Events executed during debugging sessions & 3.3 \\
-		text-nav & Low-level text navigation & 3.1 \\
-		search & Text or code search & 0.6 \\
-		find-replace & Search and replacement of text or code entities & 0.6 \\
-		perspective & Change of perspectives in Eclipse & 0.5  \\
-		control & Source control events & 0.4 \\
-		refactoring & Refactoring events & 0.3\\
-		clean-build &  Events related to the build system (clean, build or run a project) & 0.2\\
+		high-nav & High-level navigation through classes, windows and artifacts \\ %& 9.1 \\
+		file & Management of files (saving, closing, opening, etc.) \\ %&	8.9 \\
+		edit-text & Text edition events \\ %& 8.1 \\
+		debug & Events executed during debugging sessions \\ %& 3.3 \\
+		text-nav & Low-level text navigation \\ %& 3.1 \\
+		search & Text or code search \\ %& 0.6 \\
+		find-replace & Search and replacement of text or code entities \\ %& 0.6 \\
+		perspective & Change of perspectives in Eclipse \\ %& 0.5  \\
+		control & Source control events \\ %& 0.4 \\
+		refactoring & Refactoring events \\ %& 0.3\\
+		clean-build &  Events related to the build system (clean, build or run a project) \\ %& 0.2\\
 		\hline
 	\end{tabular}
 \end{table}
 
-The first thing we noticed is that while some events are used by all users, some events are used heavily by a minority of users and not by others (this matches the observation of Murphy-Hill et al., and by ourselves, that many development tools are under-used \cite{MPB12}). For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them. As such, we calculated the frequency of event taking into account how commonly used they were.
+First, we noticed that while some events are used by all users, other events are used heavily by a minority of users and not by others; this matches the observation of Murphy-Hill et al. \cite{MBP12}, and by ourselves \cite{KubelkaBCGRRS15}, that many development tools are under-used. For example, the event \textit{copyLineDown} is more frequent than the \textit{rename} event, but the former is only used by 2.4\% of the users and the latest by 25.2\% of them. As such, we calculated the frequency of event taking into account how commonly used they were.
 
-We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is de frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. 
+We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is the frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. 
 
 To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. The Table \ref{tbl:stats_events} shows the results, and is explained below.
 
@@ -1605,9 +1607,9 @@ After a negative interruption, the \emph{debug}, \emph{search}, \emph{high-nav},
 
 Finally, the \emph{text-nav} and \emph{control} categories are less common in both positive and negative interruptions than in the average. We were somewhat surprised that \emph{text-nav} was less common in positive interruptions than the average, as we expected it to be associated with program edition behavior. We note that it is however more frequent in positive interruptions rather than negative interuptions. Additional exploration is necessary to understand the behavior of the \emph{control} category.
 
-Summing up, we can conclude that edition-related activities are indeed more frequent after a positive interruption, while comprehension-related activities are more frequent after a negative interruption.  These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking behavior: programmers would interrupt their IDE activities when encountering a roadblock, find the information elsewhere (from the internet, an expert, etc), and return to the IDE with an increased productivity. This also agrees with the literature \cite{PR11, LVD06}. The categories common after nagative interruptions  also agree with our hypothesis that negative interruptions are related to actual task switches where context needs to be rebuilt afterwards, an activity that involves program comprehension \cite{MMLK14, PR12}. %\RR{refs here}.
+Summing up, we can conclude that edition-related activities are indeed more frequent after a positive interruption, while comprehension-related activities are more frequent after a negative interruption.  These categories of events agree with our previous hypothesis that positive interruptions are related to information seeking behavior: programmers would interrupt their IDE activities when encountering a roadblock, find the information elsewhere (from the internet, an expert, etc), and return to the IDE with an increased productivity. This also agrees with the literature \cite{PR11, LVD06}. The categories common after negative interruptions  also agree with our hypothesis that negative interruptions are related to actual task switches where context needs to be rebuilt afterwards, an activity that involves program comprehension \cite{MMLK14, PR12}. %\RR{refs here}.
 
-After a positive interruption, we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation around perspectives. On the other hand the navigation around classes, find and replace, searches, debug and clean and build are actions more common after a negative one. The navigation in the code and control version activities are more common after the recovery time, having a lower frequency during a positive o negative interruption. 
+%After a positive interruption, we can see that the more common activities are text edition, refactoring, file management and, to a lesser extent, navigation around perspectives. On the other hand the navigation around classes, find and replace, searches, debug and clean and build are actions more common after a negative one. The navigation in the code and control version activities are more common after the recovery time, having a lower frequency during a positive o negative interruption. 
 
 Of course, this exploratory study does not allow us to confirm these hypotheses. However, the evidence we have discovered so far does not disprove them, and rather goes in the direction of our hypotheses, which means that our confidence in these hypotheses is higher as a consequence.
 
@@ -1617,27 +1619,38 @@ Of course, this exploratory study does not allow us to confirm these hypotheses.
 
 \section{Discussion}
 
-\paragraph{Discussion of the thresholds}
+\paragraph{Discussion of the thresholds.} We used several thresholds in this study; we regroup their motivations in the following. 
 
-Interruptions: at least 3 minutes
 
-Prolonged interruptions: at least12 minutes
+Perhaps the most important thresholds are the inactive time thresholds that delimit interruptions: a \emph{short interruption} is detected after an inactivity of 3 minutes, while a \emph{long interruption} is detected after 12 minutes. Both values come from the literature. More specifically, the work of Gonzalez and Mark \cite{GM04} found that interruptions lasted around 3 minutes, in a field study, while Kaptelinin and Nardi \cite{KaptelininN07} found that interruptions of more than 12 minutes were more likely to corespond to switching activity on a different project or topic.
 
-Num. of interruptions: 
+We classified sessions in groups based on the empirical distribution of the interruptions. In particular, to study the relationship between the number of interruptions and productivity, we split each dataset in four groups based on the quartiles and the median, in order to study the evolution as the number of interruptions grow. We used empirically-defined thresholds since we did not find similar thresholds in the literature. %In the absence of reference from the literature on this topic, basing ourselves on the distribution is the most reasonable choice we could make.
+
+We studied the impact of the duration of interruptions similarly, by computing the ratio of long interruptions over all interruptions, and creating groups based on whether the interruptions in a session were predominantly short or long, for a similar reason.
+
+The duration of the recovery time that we chose, 15 minutes, is the one mentioned by DeMarco and Lister in Peopleware \cite{demarco1999peopleware}. The division in 5 minutes chunks to study the recovery in more details is a compromise between the resolution of the analysis, and the amount of noise. On a related note, we filtered sessions so that they all have at least a duration of 30 minutes, so that sessions have enough data for the analysis to be meaningful; we argue that having less than twice the recovery time is simply not enough for a session to be meaningful. Similarly, in our local analysis, we filter sessions that have less than 30 minutes before or after an interruption so that we can study both the time during and after recovery, without having this period impacted by another interruption.
+
+
+%\textbf{
+%Interruptions: at least 3 minutes
+
+%Prolonged interruptions: at least12 minutes
+
+%Num. of interruptions: 
 %    -mylyn: none, [1-3], [4-5], [6-10], [>11] (minutes)
 %     -udc: none, [1-2], [3-4], [5-7], [>7] (minutes
 
-Proportion of prol. interruptions: 0.50
+%Proportion of prol. interruptions: 0.50
 
-Recovery time: 15 min, split into 5 minutes phases
+%Recovery time: 15 min, split into 5 minutes phases
 
-Before interruption: 10 minutes before the next interruption
+%Before interruption: 10 minutes before the next interruption
 
-Local analysis: 30 minutes around an interruption
+%Local analysis: 30 minutes around an interruption
 
-Filtering sessions: at least 30 minutes of duration
+%Filtering sessions: at least 30 minutes of duration
 
-Creo que la idea era argumentar (en la respuesta a las revisiones) que explorar otras posibilidades en estos thresholds implica mucho trabajo y experimentos, corrígeme si estoy equivocado.
+%Creo que la idea era argumentar (en la respuesta a las revisiones) que explorar otras posibilidades en estos thresholds implica mucho trabajo y experimentos, corrígeme si estoy equivocado.
 
 
 \paragraph{Comparison of the datasets}
@@ -1673,8 +1686,8 @@ The fact that all the observations go in the same direction lends us more confid
 \paragraph{The effects of multitasking}
 Certainly, work fragmentation is not a synonym of lower productivity rates. Multitasking can allow the worker to use dead periods of the project where there is a decrease of the required activities and do tasks related to other projects, increasing the efficiency and productivity \cite{ABV12}. At some level, switching between tasks can provide the needed arousal and alertness to improve the productivity, but higher levels of multitasking can be detrimental and cause a negative effect. Moreover, as the number of switches between tasks increases, the effectiveness degrades in a linear fashion \cite{AB12}. 
 
-Furthermore, the results indicate a clear diminish of productivity when facing interruptions, but with a high number of interruptions the change of productivity stops decreasing. This could be reflecting what observational studies tell us about multitasking, which is that with higher number of interruptions (increased multitasking) the productivity stops being affected and might increase. The latter actually occurs in the results but the effect is too subtle. 
-We intend to reflect the effects of work fragmentation by classifying the interruptions into negative or positive, and in the results we can see a difference in productivity and the kind of activities performed.
+Our results indicate a clear drop of productivity when facing interruptions, but with a high number of interruptions the change in productivity stops decreasing. This could be reflecting what observational studies tell us about multitasking, which is that with higher number of interruptions (increased multitasking) the productivity stops being affected and might increase. %The latter actually occurs in the results but the effect is too subtle. 
+We inspected  the effects of work fragmentation in more details by classifying the interruptions into negative or positive ones, and in the results we can see a difference in productivity and the kind of activities performed.
 
 \paragraph{Comparison with observational studies}
 Our theoretical foundations are based on observational studies performed on information workers' development environments \cite{MGH05, IH07, LVD06, PD10}. These findings helped us understand the response to work fragmentation according to the recorded user activity, and it was possible to made a relation between the user's data and the phenomena that occur on the working places described in the studies.
@@ -1695,7 +1708,7 @@ Another threat comes from the metrics we use. Our choices are limited by the dat
 As we mentioned before, the edit ratio has been used in previous work as an indicator of productivity, but it doesn't describe well the true level of productivity of a programmer. The edit ratio is the amount of coding activities that the programmer performed in comparison with the other activities, but a productive programmer may not solely code; he could have other important tasks like managing a database, Web design and testing, which are activities that are not reflected as edit events. This is a big problem in the UDC data, for this information was captured from people that could be Java developers, Web developers, mobile developers, students, etc., and from this roles the only one that could use well the edit ratio as an indicator of productivity is the Java developer, if his only task is to work in the IDE. The others are prone to spend time (maybe most of the time) using graphical tools like Web designers and simulators, and this events are mainly represented as selection events.
 %\RR{add a bit stuff about edit ratio to keep one reviewer happy}
 
-We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might significantly alter the results. 
+We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We explained our motivations for these and other thresholds in the discussion. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might alter the results. 
 
 We acknowledge that our separation of sessions in short and long interruptions is not perfect, as it is based on the presence of at least one long interruption, and nothing more. Other factors present in the group of sessions with at least one long interruption may contribute to the observed effect (for instance, these sessions may also have more interruptions overall).
 
@@ -1721,11 +1734,11 @@ The workbench activation and deactivation events were a particular issue, for th
 \section{Conclusions and Future Work}
 This paper presented an empirical study on the prevalence of work fragmentation in software evolution tasks, and its relationship to developer productivity. The study was based on the Mylyn dataset of software evolution tasks, where work fragmentation is indicated by gaps of activity (interruptions) in the IDE, and productivity is measured in terms of the number of edits, selections, and the edit ratio. It was then complemented with data coming from the Eclipse Usage Data Collector (UDC) dataset, which offered us to complement our previous findings by analysing a larger sample of users, with a finer-grained classification of events.
 
-We analyzed several thousands software evolution tasks, originating from several dozens of developers. Our global analysis found an inverse relationship between number and duration of interruptions and all three of our productivity indicators. These findings agree with the literature on information workers and software developers. 
+Based on the Mylyn dataset, we analyzed several thousands software evolution tasks, originating from several dozens of developers. Our global analysis found an inverse relationship between number and duration of interruptions and all three of our productivity indicators. These findings agree with the literature on information workers and software developers. 
 
-A subsequent local analysis around interruptions confirmed these results as the activity around interruptions was found to be lower than average. This analysis also found two well-defined patterns around interruptions: interruptions yielding a negative effects (consistent with a real-life interruption involving an expensive context switch), and interruptions with positive effects (consistent with information-seeking behavior). Further studies are necessary to expand on these findings.
+A subsequent local analysis around interruptions confirmed these results as the activity around interruptions was found to be lower than average. This analysis also found two well-defined patterns around interruptions: interruptions yielding a negative effects (consistent with a real-life interruption involving an expensive context switch), and interruptions with positive effects (consistent with information-seeking behavior). %Further studies are necessary to expand on these findings.
 
-With the Usage Data Collector dataset, we replicated our previous study to compare the results obtained with Mylyn. We found the same observations on the relationship of interruptions and productivity; even though the observed effects are less marked, we reach similar conclusions.
+With the Usage Data Collector dataset, we replicated our previous study to compare the results obtained with Mylyn. We found the same observations on the relationship of interruptions and productivity; even though the observed effects are less marked, we reached similar conclusions.
 
 The UDC data also allowed us to extend our study with two additional research questions related to the recovery time after an interruption, and the two patterns of interruptions we observed. 
 

@@ -249,6 +249,22 @@ P.~J. Rousseeuw, ``Silhouettes: a graphical aid to the interpretation and
 E.~J. Keogh, ``Exact indexing of dynamic time warping,'' \emph{Knowledge and
   Information Systems}, vol.~7, pp. 358--386, 2005.
 
+\bibitem{KubelkaBCGRRS15}
+\BIBentryALTinterwordspacing
+J.~Kubelka, A.~Bergel, A.~Chis, T.~G{\^{\i}}rba, S.~Reichhart, R.~Robbes, and
+  A.~Syrel, ``On understanding how developers use the spotter search tool,'' in
+  \emph{3rd {IEEE} Working Conference on Software Visualization, {VISSOFT}
+  2015, Bremen, Germany, September 27-28, 2015}, 2015, pp. 145--149. [Online].
+  Available: \url{http://dx.doi.org/10.1109/VISSOFT.2015.7332426}
+\BIBentrySTDinterwordspacing
+
+\bibitem{demarco1999peopleware}
+\BIBentryALTinterwordspacing
+T.~DeMarco and T.~Lister, \emph{Peopleware: Productive Projects and
+  Teams}.\hskip 1em plus 0.5em minus 0.4em\relax Dorset House Pub., 1999.
+  [Online]. Available: \url{https://books.google.cl/books?id=eA9PAAAAMAAJ}
+\BIBentrySTDinterwordspacing
+
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
   \emph{Autom. Softw. Eng.}, vol.~17, no.~2, pp. 181--212, 2010.
