@@ -670,11 +670,11 @@ We split the data in five groups: The first group contains all the sessions with
 	\item \textit{3rd quartile}: 10 for Mylyn and 7 for UDC
 \end{itemize}
 
-the results differ between Mylyn and UDC because in average there are more interruptions per session in the former. Then, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
+The thresholds slightly differ between the datasets because there are more interruptions per session (in average) in Mylyn. After setting the ranges, for each group, we display the distribution of events per minute and edit ratio via boxplots. We can see the results with Mylyn in Figure \ref{fig:box_int_events}), and for UDC in Figure \ref{fig:box_int_events_udc}.
 
 In the results with Mylyn, we observe a large difference between the sessions without interruptions and the ones who do. Further, we observe that the rate of events per minute decreases slightly when the session has more interruptions. Therefore, we can intuit that the relationship between number of interruptions and the productivity indicators that are edits and selections, tends to be inversely proportional. 
 
-With UDC, the results show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than with one or more interruptions, and as more interruptions occur this metrics gradually decrease. The difference between sessions with no interruptions and at least one is less marked in the edit per minute metric, but the selections per minute metric is more alike to the Mylyn results.
+With UDC, the results show a similar pattern in comparison with the results with Mylyn. When facing zero interruptions the editions and selections per minute are greater than in sessions with one or more interruptions, and as more interruptions occur this metrics gradually decrease. There is a big difference between sessions with no interruptions and at least one in the edit per minute metric, but compared to Mylyn the effect is smaller. The results with the selections per minute are more alike to the Mylyn results.
 
 
 %\begin{table}[ht!]
@@ -729,8 +729,8 @@ With UDC, the results show a similar pattern in comparison with the results with
 
 Beyond visual inspection, we also quantify the statistical and the practical significance of these observations. First, in the results with Mylyn, all the differences observed are statistically significant with very low p-values (see Table~\ref{tbl:p_value}) according to the Mann-Whitney U-test. This is not surprising, given the shape of the boxplots and the size of the samples.
 
-More importantly, we used \textit{Cohen's d} to measure the practical significance of these results in term of effect size % the effect size of the differences in means as standardized difference~
-\cite{C94}. \textit{Cohen's thresholds} are defined as follows: trivial ($<0.2$), small  ($\langle 0.2 - 0.5 ]$), moderate ($\langle 0.5 - 0.8 ]$) and large effect ($> 0.8$). As shown in Table \ref{tbl:p_value}, we note that the effect size of the interruptions over the number of edits by minute is (very) large. In selections, the effect is moderate for sessions having up three interruptions, and large to very large for sessions with over four interruptions. This reinforces our impressions that interruptions and user activity follow inverse relationships, and that they are quite pronounced.
+More importantly, we used \textit{Cliff's delta} to measure the practical significance of these results in term of effect size % the effect size of the differences in means as standardized difference~
+\cite{C94}. \textit{Cliff's delta thresholds} are defined as follows: negligible ($<0.147$), small  ($<0.33$), moderate ($<0.476$) and large effect otherwise. As shown in Table \ref{tbl:p_value}, we note that the effect size of the interruptions over the number of edits by minute is large. In selections, the effect is moderate for sessions having up three interruptions, and large for sessions with over four interruptions. This reinforces our impressions that interruptions and user activity follow inverse relationships, and that they are quite pronounced.
 
 On the other hand, with the results in UDC, an important difference is that the effect overall appears to be less pronounced in UDC and we can see it on the effect size tests shown in the Table \ref{tbl:p_value_udc}. Most of the observed effects are medium, while in the Mylyn dataset the effects were large. Note that despite the differences in effect sizes, the differences are still significant and it is possible to reach the same conclusions.
 
@@ -918,7 +918,7 @@ Since these results apply to both datasets, we can conclude that we observe a re
 
 
 
-We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. The groups with one to three interruptions have moderate size effects, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. The bold numbers are those with a significant effect size.
+We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. The groups with one to three interruptions have moderate size effects, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. 
 
 \begin{table}[ht!]
 	\tiny
@@ -931,23 +931,23 @@ We tested the statistical significance of this results and show the results in t
 		\hline
 		\multicolumn{8}{c}{\textbf{Edits}} \\
 		\hline
-		U-test (adjusted) & \textbf{5.6e-10} & \textbf{6.5e-07} & \textbf{2.9e-04} & 0.0074 & 0.0021 & 0.32 &  0.39\\
+		U-test (adjusted) & 5.6e-10 & 6.5e-07 & 2.9e-04 & 0.0074 & 0.0021 & 0.32 &  0.39\\
 		\hline
-		Cliff's delta & 0.36 & 0.26 & 0.23 & 0.16 & 0.26 & 0.08 & -0.09 \\
+		Cliff's delta & \textbf{0.36} & \textbf{0.26} & \textbf{0.23} & \textbf{0.16} & \textbf{0.26} & \textbf{0.08} & \textbf{-0.09} \\
 		\hline
 		
 		\multicolumn{8}{c}{\textbf{Selections}} \\
 		\hline 
 		U-test (adjusted) & 0.0004 & 0.0047 & 0.0072 & 0.003 & 0.7014 & 0.0520 & 0.1284 \\
 		\hline
-		Cliff's delta & 0.22 & 0.16 & 0.17 & 0.20 & 0.03 & 0.16 & 0.18  \\  
+		Cliff's delta & \textbf{0.22} & \textbf{0.16} & \textbf{0.17} & \textbf{0.20} & \textbf{0.03} & \textbf{0.16} & \textbf{0.18}  \\  
 		\hline
 		
 		\multicolumn{8}{c}{\textbf{Edit ratio}} \\
 		\hline 
-		U-test (adjusted) & \textbf{2.6e-06} & \textbf{5.7e-05} & 0.023 & \textbf{0.64} & 0.023 & 0.49 & 0.15 \\
+		U-test (adjusted) & 2.6e-06 & 5.7e-05 & 0.023 & 0.64 & 0.023 & 0.49 & 0.15 \\
 		\hline 
-		Cliff's delta & 0.28 & 0.23 & 0.15 & 0.03 & 0.20 & -0.06 & -0.17  \\
+		Cliff's delta & \textbf{0.28} & \textbf{0.23} & \textbf{0.15} & \textbf{0.03} & \textbf{0.20} & \textbf{-0.06} & \textbf{-0.17}  \\
 		\hline
 		
 	\end{tabular}
@@ -964,23 +964,23 @@ We tested the statistical significance of this results and show the results in t
 		\hline
 		\multicolumn{8}{c}{\textbf{Edits}} \\
 		\hline
-		U-test (adjusted) & \textbf{1.9e-20} & \textbf{4.0e-13} & 0.0011 & 0.027 & \textbf{7.2e-08} & 0.055 & 6.5e-06\\
+		U-test (adjusted) & 1.9e-20 & 4.0e-13 & 0.0011 & 0.027 & 7.2e-08 & 0.055 & 6.5e-06\\
 		\hline
-		Cliff's delta & 0.36 & 0.27 & 0.08 & 0.06 & 0.17 & 0.07 & 0.18 \\
+		Cliff's delta & \textbf{0.36} & \textbf{0.27} & \textbf{0.08} & \textbf{0.06} & \textbf{0.17} & \textbf{0.07} & \textbf{0.18} \\
 		\hline
 		
 		\multicolumn{8}{c}{\textbf{Selections}} \\
 		\hline 
-		U-test (adjusted) & \textbf{2.9e-07} & \textbf{2.3e-11} & 0.32 & 0.12 & 0.0043 & 0.45 & 0.12 \\
+		U-test (adjusted) & 2.9e-07 & 2.3e-11 & 0.32 & 0.12 & 0.0043 & 0.45 & 0.12 \\
 		\hline
-		Cliff's delta & 0.20 & 0.25 & 0.02 & 0.05 & 0.10 & 0.03 & 0.07 \\  
+		Cliff's delta & \textbf{0.20} & \textbf{0.25} & \textbf{0.02} & \textbf{0.05} & \textbf{0.10} & \textbf{0.03} & \textbf{0.07} \\  
 		\hline
 		
 		\multicolumn{8}{c}{\textbf{Edit ratio}} \\
 		\hline 
-		U-test (adjusted) & \textbf{3.5e-05} & 0.033 & 0.033 & 0.20 & 0.004 & 0.14 & 0.0059 \\
+		U-test (adjusted) & 3.5e-05 & 0.033 & 0.033 & 0.20 & 0.004 & 0.14 & 0.0059 \\
 		\hline 
-		Cliff's delta & 0.17 & 0.08 & 0.05 & 0.04 & 0.10 & 0.06 & 0.11  \\
+		Cliff's delta & \textbf{0.17} & \textbf{0.08} & \textbf{0.05} & \textbf{0.04} & \textbf{0.10} & \textbf{0.06} & \textbf{0.11}  \\
 		\hline
 		
 	\end{tabular}
@@ -1138,7 +1138,7 @@ We investigated whether the drop in activity local to interruptions was also acc
   U-test (adjusted) & $\hookrightarrow$ & \multicolumn{2}{c}{$<$ 2.2e-16}  \\
 
   \cline{3-4} 
-   Cliff's delta & $\hookrightarrow$	& \textbf{0.01} & \textbf{0.32}   \\
+   Cliff's delta & $\hookrightarrow$	& \textbf{-0.05} & \textbf{-0.03}   \\
   \hline
   
   
@@ -1148,7 +1148,7 @@ We investigated whether the drop in activity local to interruptions was also acc
    \cline{3-4} 
   U-test (adjusted) & $\hookrightarrow$ & 4.40e-16 & $<$ 5.67e-16 \\  
   \cline{3-4} 
-  Cliff's delta & $\hookrightarrow$	& \textbf{0.32} & \textbf{0.08}  \\  
+  Cliff's delta & $\hookrightarrow$	& \textbf{-0.03} & \textbf{-0.02}  \\  
 \end{tabular}
 \end{table}
 
@@ -1718,7 +1718,7 @@ We acknowledge that our separation of sessions in short and long interruptions i
 
 The study has threats to its statistical conclusion. In particular, correlation does not necessarily implies causation: the drop in productivity may not be due to work fragmentation but to other factors (such as task difficulty). The fact that our results agree with the existing literature does help in this respect. We note that our local analysis uncovered two well-defined patterns around gaps of inactivity: ones that we hypothesize are actual interruptions (negative effect post-interruptions), and the ones that we hypothesize are more likely information-seeking activities (positive effect post-interruption). This result points to two different effects and is in need of further study; the additional evidence uncovered in the UDC does support this hypothesis, since different activities appear to take place in both types of interruptions. As stated in the introduction, we were careful not to conclude that every gap of activity is an actual interruption.
 
-We used Cohen's $d$, a parametric effect size measure, as it has defined thresholds allowing easier interpretation of the results. Other effect size measures such as the common language effect size \cite{KMW92} or $A_{12}$ \cite{RRT12} may slightly alter the discussion.
+We used Cliff's delta, a non-parametric effect size measure, as it has defined thresholds allowing easier interpretation of the results. Other effect size measures such as the common language effect size \cite{KMW92} or $A_{12}$ \cite{RRT12} may slightly alter the discussion.
 
 This study also has threats to external validity. The gathered data corresponds to a limited group of programmers, which use both Mylyn and Eclipse regularly. The set of evolution tasks considered is a subset of the ones present on the Eclipse bug report website. It may be biased one way or another. One source of bias is the impact of Mylyn itself: Mylyn has been shown to facilitate task switching and to increase the edit ratio of its users compared to non-users. In the context of this study, we hypothesize that Mylyn could reduce the effect of work fragmentation: in other words, the observed effects may be larger for non-users. Additional studies may alleviate these threats and confirm or infirm the previous hypothesis. Our additional dataset (the UDC) comes from a much larger and more varied sample of users, and does show similar behavior, which raises confidence in our results.
 
