@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.13)  28 JUN 2016 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.13)  4 JUL 2016 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -841,7 +841,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 630.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_trace_duration-eps-converted-to.pdf, id=357, 451.6875pt x 225.8437
+<figures/udc_trace_duration-eps-converted-to.pdf, id=358, 451.6875pt x 225.8437
 5pt>
 File: figures/udc_trace_duration-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_trace_duration-eps-converted-to.pdf>
@@ -861,7 +861,7 @@ t-eps-converted-to.pdf figures/box_int_events_edit.eps>
 (epstopdf)             \includegraphics on input line 700.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_events_edit-eps-converted-to.pdf, id=368, 451.6875pt x 240.9pt
+<figures/box_int_events_edit-eps-converted-to.pdf, id=369, 451.6875pt x 240.9pt
 >
 File: figures/box_int_events_edit-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/box_int_events_edit-eps-converted-to.pdf>
@@ -880,7 +880,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 703.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_events_sel-eps-converted-to.pdf, id=370, 451.6875pt x 240.9pt>
+<figures/box_int_events_sel-eps-converted-to.pdf, id=371, 451.6875pt x 240.9pt>
 File: figures/box_int_events_sel-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/box_int_events_sel-eps-converted-to.pdf>
 Package pdftex.def Info: figures/box_int_events_sel-eps-converted-to.pdf used o
@@ -898,7 +898,7 @@ converted-to.pdf figures/box_int_ratio.eps>
 (epstopdf)             \includegraphics on input line 706.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_ratio-eps-converted-to.pdf, id=372, 451.6875pt x 248.93pt>
+<figures/box_int_ratio-eps-converted-to.pdf, id=373, 451.6875pt x 248.93pt>
 File: figures/box_int_ratio-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/box_int_ratio-eps-converted-to.pdf>
@@ -922,7 +922,7 @@ _edit-eps-converted-to.pdf figures/udc_box_int_events_edit.eps>
 (epstopdf)             \includegraphics on input line 717.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_edit-eps-converted-to.pdf, id=374, 451.6875pt x 244
+<figures/udc_box_int_events_edit-eps-converted-to.pdf, id=375, 451.6875pt x 244
 .915pt>
 File: figures/udc_box_int_events_edit-eps-converted-to.pdf Graphic file (type p
 df)
@@ -947,7 +947,7 @@ _sel-eps-converted-to.pdf figures/udc_box_int_events_sel.eps>
 (epstopdf)             \includegraphics on input line 720.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_sel-eps-converted-to.pdf, id=376, 451.6875pt x 244.
+<figures/udc_box_int_events_sel-eps-converted-to.pdf, id=377, 451.6875pt x 244.
 915pt>
 File: figures/udc_box_int_events_sel-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -972,7 +972,7 @@ _ratio-eps-converted-to.pdf figures/udc_box_int_events_ratio.eps>
 (epstopdf)             \includegraphics on input line 723.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_ratio-eps-converted-to.pdf, id=378, 451.6875pt x 24
+<figures/udc_box_int_events_ratio-eps-converted-to.pdf, id=379, 451.6875pt x 24
 4.915pt>
 File: figures/udc_box_int_events_ratio-eps-converted-to.pdf Graphic file (type 
 pdf)
@@ -1035,7 +1035,7 @@ in-eps-converted-to.pdf figures/mylyn_lines_dur_emin.eps>
 (epstopdf)             \includegraphics on input line 889.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_emin-eps-converted-to.pdf, id=462, 451.6875pt x 244.91
+<figures/mylyn_lines_dur_emin-eps-converted-to.pdf, id=465, 451.6875pt x 244.91
 5pt>
 File: figures/mylyn_lines_dur_emin-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1055,7 +1055,7 @@ in-eps-converted-to.pdf figures/mylyn_lines_dur_smin.eps>
 (epstopdf)             \includegraphics on input line 892.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_smin-eps-converted-to.pdf, id=464, 451.6875pt x 244.91
+<figures/mylyn_lines_dur_smin-eps-converted-to.pdf, id=467, 451.6875pt x 244.91
 5pt>
 File: figures/mylyn_lines_dur_smin-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1075,7 +1075,7 @@ atio-eps-converted-to.pdf figures/mylyn_lines_dur_eratio.eps>
 (epstopdf)             \includegraphics on input line 895.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_eratio-eps-converted-to.pdf, id=466, 451.6875pt x 244.
+<figures/mylyn_lines_dur_eratio-eps-converted-to.pdf, id=469, 451.6875pt x 244.
 915pt>
 File: figures/mylyn_lines_dur_eratio-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -1100,7 +1100,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 906.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_emin-eps-converted-to.pdf, id=468, 451.6875pt x 244.915p
+<figures/udc_lines_dur_emin-eps-converted-to.pdf, id=471, 451.6875pt x 244.915p
 t>
 File: figures/udc_lines_dur_emin-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_lines_dur_emin-eps-converted-to.pdf>
@@ -1124,7 +1124,7 @@ o.pdf>
 (epstopdf)             \includegraphics on input line 909.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_smin-eps-converted-to.pdf, id=470, 451.6875pt x 244.915p
+<figures/udc_lines_dur_smin-eps-converted-to.pdf, id=473, 451.6875pt x 244.915p
 t>
 File: figures/udc_lines_dur_smin-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_lines_dur_smin-eps-converted-to.pdf>
@@ -1148,7 +1148,7 @@ io-eps-converted-to.pdf figures/udc_lines_dur_eratio.eps>
 (epstopdf)             \includegraphics on input line 912.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_eratio-eps-converted-to.pdf, id=472, 451.6875pt x 244.91
+<figures/udc_lines_dur_eratio-eps-converted-to.pdf, id=475, 451.6875pt x 244.91
 5pt>
 File: figures/udc_lines_dur_eratio-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1182,7 +1182,7 @@ rted-to.pdf figures/all_ints.eps>
 (epstopdf)             \includegraphics on input line 1096.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/all_ints-eps-converted-to.pdf, id=540, 498.86375pt x 281.05pt>
+<figures/all_ints-eps-converted-to.pdf, id=543, 498.86375pt x 281.05pt>
 File: figures/all_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/all_ints-eps-converted-to.pdf>
@@ -1201,7 +1201,7 @@ f>
 (epstopdf)             \includegraphics on input line 1097.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_all_ints_2-eps-converted-to.pdf, id=542, 489.83pt x 279.0425pt>
+<figures/udc_all_ints_2-eps-converted-to.pdf, id=545, 489.83pt x 279.0425pt>
 File: figures/udc_all_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_all_ints_2-eps-converted-to.pdf>
@@ -1221,7 +1221,7 @@ erted-to.pdf figures/ratio_all.eps>
 (epstopdf)             \includegraphics on input line 1118.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/ratio_all-eps-converted-to.pdf, id=568, 526.96875pt x 262.9825pt>
+<figures/ratio_all-eps-converted-to.pdf, id=571, 526.96875pt x 262.9825pt>
 File: figures/ratio_all-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_all-eps-converted-to.pdf>
@@ -1239,7 +1239,7 @@ rted-to.pdf figures/neg_ints.eps>
 (epstopdf)             \includegraphics on input line 1192.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/neg_ints-eps-converted-to.pdf, id=574, 376.40625pt x 188.705pt>
+<figures/neg_ints-eps-converted-to.pdf, id=577, 376.40625pt x 188.705pt>
 File: figures/neg_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/neg_ints-eps-converted-to.pdf>
@@ -1258,7 +1258,7 @@ f>
 (epstopdf)             \includegraphics on input line 1193.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_neg_ints_2-eps-converted-to.pdf, id=575, 489.83pt x 270.00874pt>
+<figures/udc_neg_ints_2-eps-converted-to.pdf, id=578, 489.83pt x 270.00874pt>
 File: figures/udc_neg_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_neg_ints_2-eps-converted-to.pdf>
@@ -1276,7 +1276,7 @@ rted-to.pdf figures/pos_ints.eps>
 (epstopdf)             \includegraphics on input line 1195.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/pos_ints-eps-converted-to.pdf, id=576, 376.40625pt x 188.705pt>
+<figures/pos_ints-eps-converted-to.pdf, id=579, 376.40625pt x 188.705pt>
 File: figures/pos_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/pos_ints-eps-converted-to.pdf>
@@ -1295,7 +1295,7 @@ f>
 (epstopdf)             \includegraphics on input line 1196.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_pos_ints_2-eps-converted-to.pdf, id=577, 489.83pt x 270.00874pt>
+<figures/udc_pos_ints_2-eps-converted-to.pdf, id=580, 489.83pt x 270.00874pt>
 File: figures/udc_pos_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_pos_ints_2-eps-converted-to.pdf>
@@ -1313,7 +1313,7 @@ rted-to.pdf figures/neu_ints.eps>
 (epstopdf)             \includegraphics on input line 1198.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/neu_ints-eps-converted-to.pdf, id=578, 376.40625pt x 188.705pt>
+<figures/neu_ints-eps-converted-to.pdf, id=581, 376.40625pt x 188.705pt>
 File: figures/neu_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/neu_ints-eps-converted-to.pdf>
@@ -1332,7 +1332,7 @@ f>
 (epstopdf)             \includegraphics on input line 1199.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_neu_ints_2-eps-converted-to.pdf, id=579, 489.83pt x 270.00874pt>
+<figures/udc_neu_ints_2-eps-converted-to.pdf, id=582, 489.83pt x 270.00874pt>
 File: figures/udc_neu_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_neu_ints_2-eps-converted-to.pdf>
@@ -1356,7 +1356,7 @@ erted-to.pdf figures/ratio_pos.eps>
 (epstopdf)             \includegraphics on input line 1220.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/ratio_pos-eps-converted-to.pdf, id=600, 526.96875pt x 262.9825pt>
+<figures/ratio_pos-eps-converted-to.pdf, id=603, 526.96875pt x 262.9825pt>
 File: figures/ratio_pos-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_pos-eps-converted-to.pdf>
@@ -1378,7 +1378,7 @@ Package epstopdf Info: Source file: <figures/ratio_neg.eps>
 erted-to.pdf figures/ratio_neg.eps>
 (epstopdf)             \includegraphics on input line 1228.
 Package epstopdf Info: Output file is already uptodate.
-<figures/ratio_neg-eps-converted-to.pdf, id=602, 526.96875pt x 262.9825pt>
+<figures/ratio_neg-eps-converted-to.pdf, id=605, 526.96875pt x 262.9825pt>
 File: figures/ratio_neg-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_neg-eps-converted-to.pdf>
@@ -1411,7 +1411,7 @@ tion-eps-converted-to.pdf figures/udc_after_Interruption.eps>
 (epstopdf)             \includegraphics on input line 1407.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_after_Interruption-eps-converted-to.pdf, id=648, 761.84625pt x 166
+<figures/udc_after_Interruption-eps-converted-to.pdf, id=651, 761.84625pt x 166
 .6225pt>
 File: figures/udc_after_Interruption-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -1433,7 +1433,7 @@ dit-eps-converted-to.pdf figures/udc_box_recovery_edit.eps>
 (epstopdf)             \includegraphics on input line 1437.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=681, 451.6875pt x 240.9
+<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=684, 451.6875pt x 240.9
 pt>
 File: figures/udc_box_recovery_edit-eps-converted-to.pdf Graphic file (type pdf
 )
@@ -1458,7 +1458,7 @@ el-eps-converted-to.pdf figures/udc_box_recovery_sel.eps>
 (epstopdf)             \includegraphics on input line 1440.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=683, 451.6875pt x 240.9p
+<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=686, 451.6875pt x 240.9p
 t>
 File: figures/udc_box_recovery_sel-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1483,7 +1483,7 @@ atio-eps-converted-to.pdf figures/udc_box_recovery_ratio.eps>
 (epstopdf)             \includegraphics on input line 1443.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=685, 451.6875pt x 240.
+<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=688, 451.6875pt x 240.
 9pt>
 File: figures/udc_box_recovery_ratio-eps-converted-to.pdf Graphic file (type pd
 f)
@@ -1513,7 +1513,7 @@ os_ratio-eps-converted-to.pdf figures/udc_box_recovery_pos_ratio.eps>
 (epstopdf)             \includegraphics on input line 1457.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=688, 451.6875pt x 
+<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=691, 451.6875pt x 
 240.9pt>
 File: figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf Graphic file (typ
 e pdf)
@@ -1575,10 +1575,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_2.pdf (32 pages, 912185 bytes).
+Output written on paper_2.pdf (32 pages, 913254 bytes).
 PDF statistics:
- 907 PDF objects out of 1000 (max. 8388607)
- 751 compressed objects within 8 object streams
+ 910 PDF objects out of 1000 (max. 8388607)
+ 754 compressed objects within 8 object streams
  162 named destinations out of 1000 (max. 500000)
  584 words of extra memory for PDF output out of 10000 (max. 10000000)
 
