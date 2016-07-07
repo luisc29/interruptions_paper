@@ -265,6 +265,13 @@ T.~DeMarco and T.~Lister, \emph{Peopleware: Productive Projects and
   [Online]. Available: \url{https://books.google.cl/books?id=eA9PAAAAMAAJ}
 \BIBentrySTDinterwordspacing
 
+\bibitem{VBX16}
+B.~Vasilescu, K.~Blincoe, Q.~Xuan, C.~Casalnuovo, D.~Damian, P.~Devanbu, and
+  V.~Filkov, ``The sky is not the limit: multitasking across github projects,''
+  in \emph{Proceedings of the 38th International Conference on Software
+  Engineering}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2016, pp.
+  994--1005.
+
 \bibitem{RL10}
 R.~Robbes and M.~Lanza, ``Improving code completion with program history,''
   \emph{Autom. Softw. Eng.}, vol.~17, no.~2, pp. 181--212, 2010.
