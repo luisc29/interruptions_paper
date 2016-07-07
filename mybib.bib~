@@ -1,3 +1,12 @@
+@inproceedings{VBX16,
+  title={The sky is not the limit: multitasking across GitHub projects},
+  author={Vasilescu, Bogdan and Blincoe, Kelly and Xuan, Qi and Casalnuovo, Casey and Damian, Daniela and Devanbu, Premkumar and Filkov, Vladimir},
+  booktitle={Proceedings of the 38th International Conference on Software Engineering},
+  pages={994--1005},
+  year={2016},
+  organization={ACM}
+}
+
 @article{RHD12,
   title={Feature-based visual sentiment analysis of text document streams},
   author={Rohrdantz, Christian and Hao, Ming C and Dayal, Umeshwar and Haug, Lars-Erik and Keim, Daniel A},

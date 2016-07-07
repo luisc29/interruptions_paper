@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.13)  7 JUL 2016 12:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.1.13)  7 JUL 2016 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,7 +740,7 @@ Package epstopdf Info: Source file: <figures/hist_rejected.eps>
 (epstopdf)                    size: 6933 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/hist_rejected-eps-
 converted-to.pdf figures/hist_rejected.eps>
-(epstopdf)             \includegraphics on input line 314.
+(epstopdf)             \includegraphics on input line 316.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/hist_rejected-eps-converted-to.pdf, id=262, 427.5975pt x 239.89626pt>
@@ -748,7 +748,7 @@ File: figures/hist_rejected-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/hist_rejected-eps-converted-to.pdf>
 Package pdftex.def Info: figures/hist_rejected-eps-converted-to.pdf used on inp
-ut line 314.
+ut line 316.
 (pdftex.def)             Requested size: 204.0pt x 114.44972pt.
  [7]
 Package epstopdf Info: Source file: <figures/mass_event.eps>
@@ -759,7 +759,7 @@ Package epstopdf Info: Source file: <figures/mass_event.eps>
 (epstopdf)                    size: 18273 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mass_event-eps-con
 verted-to.pdf figures/mass_event.eps>
-(epstopdf)             \includegraphics on input line 336.
+(epstopdf)             \includegraphics on input line 338.
 Package epstopdf Info: Output file is already uptodate.
 
 <figures/mass_event-eps-converted-to.pdf, id=278, 244.915pt x 171.64125pt>
@@ -767,7 +767,7 @@ File: figures/mass_event-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/mass_event-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mass_event-eps-converted-to.pdf used on input 
-line 336.
+line 338.
 (pdftex.def)             Requested size: 204.0pt x 142.97028pt.
  [8 <./figures/hist_rejected-eps-converted-to.pdf> <./figures/mass_event-eps-co
 nverted-to.pdf>]
@@ -779,18 +779,18 @@ Package epstopdf Info: Source file: <figures/trans.eps>
 (epstopdf)                    size: 55176 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/trans-eps-converte
 d-to.pdf figures/trans.eps>
-(epstopdf)             \includegraphics on input line 414.
+(epstopdf)             \includegraphics on input line 416.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/trans-eps-converted-to.pdf, id=304, 354.32375pt x 163.61125pt>
+<figures/trans-eps-converted-to.pdf, id=305, 354.32375pt x 163.61125pt>
 File: figures/trans-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/trans-eps-converted-to.pdf>
 Package pdftex.def Info: figures/trans-eps-converted-to.pdf used on input line 
-414.
+416.
 (pdftex.def)             Requested size: 244.80249pt x 113.04166pt.
-
-Overfull \hbox (16.60974pt too wide) in paragraph at lines 429--444
+ [9]
+Overfull \hbox (16.60974pt too wide) in paragraph at lines 431--446
  [][] 
  []
 
@@ -803,30 +803,34 @@ Package epstopdf Info: Source file: <figures/mylyn_trace_duration.eps>
 (epstopdf)                    size: 6969 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mylyn_trace_durati
 on-eps-converted-to.pdf figures/mylyn_trace_duration.eps>
-(epstopdf)             \includegraphics on input line 447.
+(epstopdf)             \includegraphics on input line 449.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_trace_duration-eps-converted-to.pdf, id=307, 451.6875pt x 225.84
+<figures/mylyn_trace_duration-eps-converted-to.pdf, id=318, 451.6875pt x 225.84
 375pt>
 File: figures/mylyn_trace_duration-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/mylyn_trace_duration-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mylyn_trace_duration-eps-converted-to.pdf used
- on input line 447.
+ on input line 449.
 (pdftex.def)             Requested size: 195.84273pt x 97.92418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 454--456
+Underfull \hbox (badness 10000) in paragraph at lines 456--458
 
  []
 
-[9] [10 <./figures/trans-eps-converted-to.pdf> <./figures/mylyn_trace_duration-
-eps-converted-to.pdf>] [11] [12]
-Overfull \hbox (5.09813pt too wide) in paragraph at lines 603--603
+[10 <./figures/trans-eps-converted-to.pdf> <./figures/mylyn_trace_duration-eps-
+converted-to.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+[12]
+Overfull \hbox (5.09813pt too wide) in paragraph at lines 605--605
 []|\OT1/ptm/m/n/9.5 org.eclipse.team.sync.views.SynchronizeView| 
  []
 
 [13]
-Overfull \hbox (16.60974pt too wide) in paragraph at lines 622--637
+Overfull \hbox (16.60974pt too wide) in paragraph at lines 624--639
  [][] 
  []
 
@@ -839,16 +843,17 @@ o.pdf>
 (epstopdf)                    size: 6950 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_trace_duration
 -eps-converted-to.pdf figures/udc_trace_duration.eps>
-(epstopdf)             \includegraphics on input line 640.
+(epstopdf)             \includegraphics on input line 642.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_trace_duration-eps-converted-to.pdf, id=364, 451.6875pt x 225.8437
+<figures/udc_trace_duration-eps-converted-to.pdf, id=366, 451.6875pt x 225.8437
 5pt>
 File: figures/udc_trace_duration-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_trace_duration-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_trace_duration-eps-converted-to.pdf used o
-n input line 640.
+n input line 642.
 (pdftex.def)             Requested size: 195.84273pt x 97.92418pt.
+ [14 <./figures/udc_trace_duration-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/box_int_events_edit.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 17702 bytes
@@ -858,15 +863,15 @@ to.pdf>
 (epstopdf)                    size: 24082 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/box_int_events_edi
 t-eps-converted-to.pdf figures/box_int_events_edit.eps>
-(epstopdf)             \includegraphics on input line 710.
+(epstopdf)             \includegraphics on input line 712.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_events_edit-eps-converted-to.pdf, id=368, 451.6875pt x 240.9pt
+<figures/box_int_events_edit-eps-converted-to.pdf, id=384, 451.6875pt x 240.9pt
 >
 File: figures/box_int_events_edit-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/box_int_events_edit-eps-converted-to.pdf>
 Package pdftex.def Info: figures/box_int_events_edit-eps-converted-to.pdf used 
-on input line 710.
+on input line 712.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 Package epstopdf Info: Source file: <figures/box_int_events_sel.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -877,14 +882,14 @@ o.pdf>
 (epstopdf)                    size: 18854 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/box_int_events_sel
 -eps-converted-to.pdf figures/box_int_events_sel.eps>
-(epstopdf)             \includegraphics on input line 713.
+(epstopdf)             \includegraphics on input line 715.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_events_sel-eps-converted-to.pdf, id=370, 451.6875pt x 240.9pt>
+<figures/box_int_events_sel-eps-converted-to.pdf, id=386, 451.6875pt x 240.9pt>
 File: figures/box_int_events_sel-eps-converted-to.pdf Graphic file (type pdf)
 <use figures/box_int_events_sel-eps-converted-to.pdf>
 Package pdftex.def Info: figures/box_int_events_sel-eps-converted-to.pdf used o
-n input line 713.
+n input line 715.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 Package epstopdf Info: Source file: <figures/box_int_ratio.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -895,18 +900,18 @@ Package epstopdf Info: Source file: <figures/box_int_ratio.eps>
 (epstopdf)                    size: 17174 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/box_int_ratio-eps-
 converted-to.pdf figures/box_int_ratio.eps>
-(epstopdf)             \includegraphics on input line 716.
+(epstopdf)             \includegraphics on input line 718.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/box_int_ratio-eps-converted-to.pdf, id=372, 451.6875pt x 248.93pt>
+<figures/box_int_ratio-eps-converted-to.pdf, id=388, 451.6875pt x 248.93pt>
 File: figures/box_int_ratio-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/box_int_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/box_int_ratio-eps-converted-to.pdf used on inp
-ut line 716.
+ut line 718.
 (pdftex.def)             Requested size: 134.64075pt x 74.20097pt.
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 708--719
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 710--721
  [][] 
  []
 
@@ -919,19 +924,19 @@ ted-to.pdf>
 (epstopdf)                    size: 40783 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_int_events
 _edit-eps-converted-to.pdf figures/udc_box_int_events_edit.eps>
-(epstopdf)             \includegraphics on input line 727.
+(epstopdf)             \includegraphics on input line 729.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_edit-eps-converted-to.pdf, id=374, 451.6875pt x 244
+<figures/udc_box_int_events_edit-eps-converted-to.pdf, id=390, 451.6875pt x 244
 .915pt>
 File: figures/udc_box_int_events_edit-eps-converted-to.pdf Graphic file (type p
 df)
  <use figures/udc_box_int_events_edit-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_int_events_edit-eps-converted-to.pdf u
-sed on input line 727.
+sed on input line 729.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 727--728
+Underfull \hbox (badness 10000) in paragraph at lines 729--730
 
  []
 
@@ -944,19 +949,19 @@ ed-to.pdf>
 (epstopdf)                    size: 28921 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_int_events
 _sel-eps-converted-to.pdf figures/udc_box_int_events_sel.eps>
-(epstopdf)             \includegraphics on input line 730.
+(epstopdf)             \includegraphics on input line 732.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_sel-eps-converted-to.pdf, id=376, 451.6875pt x 244.
+<figures/udc_box_int_events_sel-eps-converted-to.pdf, id=392, 451.6875pt x 244.
 915pt>
 File: figures/udc_box_int_events_sel-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/udc_box_int_events_sel-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_int_events_sel-eps-converted-to.pdf us
-ed on input line 730.
+ed on input line 732.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
+Underfull \hbox (badness 10000) in paragraph at lines 732--733
 
  []
 
@@ -969,63 +974,62 @@ rted-to.pdf>
 (epstopdf)                    size: 7191 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_int_events
 _ratio-eps-converted-to.pdf figures/udc_box_int_events_ratio.eps>
-(epstopdf)             \includegraphics on input line 733.
+(epstopdf)             \includegraphics on input line 735.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_int_events_ratio-eps-converted-to.pdf, id=378, 451.6875pt x 24
+<figures/udc_box_int_events_ratio-eps-converted-to.pdf, id=394, 451.6875pt x 24
 4.915pt>
 File: figures/udc_box_int_events_ratio-eps-converted-to.pdf Graphic file (type 
 pdf)
  <use figures/udc_box_int_events_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_int_events_ratio-eps-converted-to.pdf 
-used on input line 733.
+used on input line 735.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 733--734
+Underfull \hbox (badness 10000) in paragraph at lines 735--736
 
  []
 
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 725--736
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 727--738
  [][] 
  []
 
-[14 <./figures/udc_trace_duration-eps-converted-to.pdf>]
-LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 755.
+LaTeX Font Info:    Calculating math sizes for size <6.5> on input line 757.
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 755.
+(Font)              size <6> substituted on input line 757.
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <6.5> not available
-(Font)              size <6> substituted on input line 755.
+(Font)              size <6> substituted on input line 757.
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.54997> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <3.25> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 755.
+(Font)              size <6> substituted on input line 757.
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <6.5> not available
-(Font)              size <6> substituted on input line 755.
+(Font)              size <6> substituted on input line 757.
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <4.54997> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Warning: Font shape `U/lasy/m/n' in size <3.25> not available
-(Font)              size <5> substituted on input line 755.
+(Font)              size <5> substituted on input line 757.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 759.
-
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 761.
+[15 <./figures/box_int_events_edit-eps-converted-to.pdf> <./figures/box_int_eve
+nts_sel-eps-converted-to.pdf> <./figures/box_int_ratio-eps-converted-to.pdf> <.
+/figures/udc_box_int_events_edit-eps-converted-to.pdf> <./figures/udc_box_int_e
+vents_sel-eps-converted-to.pdf> <./figures/udc_box_int_events_ratio-eps-convert
+ed-to.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [15 <./figures/box_int_events_edit-eps-converted-to.pdf> <./figures/box_int_ev
-ents_sel-eps-converted-to.pdf> <./figures/box_int_ratio-eps-converted-to.pdf> <
-./figures/udc_box_int_events_edit-eps-converted-to.pdf> <./figures/udc_box_int_
-events_sel-eps-converted-to.pdf> <./figures/udc_box_int_events_ratio-eps-conver
-ted-to.pdf>] [16]
+ [16]
 Package epstopdf Info: Source file: <figures/mylyn_lines_dur_emin.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 10322 bytes
@@ -1035,16 +1039,16 @@ Package epstopdf Info: Source file: <figures/mylyn_lines_dur_emin.eps>
 (epstopdf)                    size: 8120 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mylyn_lines_dur_em
 in-eps-converted-to.pdf figures/mylyn_lines_dur_emin.eps>
-(epstopdf)             \includegraphics on input line 911.
+(epstopdf)             \includegraphics on input line 913.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_emin-eps-converted-to.pdf, id=463, 451.6875pt x 244.91
+<figures/mylyn_lines_dur_emin-eps-converted-to.pdf, id=465, 451.6875pt x 244.91
 5pt>
 File: figures/mylyn_lines_dur_emin-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/mylyn_lines_dur_emin-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mylyn_lines_dur_emin-eps-converted-to.pdf used
- on input line 911.
+ on input line 913.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 Package epstopdf Info: Source file: <figures/mylyn_lines_dur_smin.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1055,16 +1059,16 @@ Package epstopdf Info: Source file: <figures/mylyn_lines_dur_smin.eps>
 (epstopdf)                    size: 8120 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mylyn_lines_dur_sm
 in-eps-converted-to.pdf figures/mylyn_lines_dur_smin.eps>
-(epstopdf)             \includegraphics on input line 914.
+(epstopdf)             \includegraphics on input line 916.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_smin-eps-converted-to.pdf, id=465, 451.6875pt x 244.91
+<figures/mylyn_lines_dur_smin-eps-converted-to.pdf, id=467, 451.6875pt x 244.91
 5pt>
 File: figures/mylyn_lines_dur_smin-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/mylyn_lines_dur_smin-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mylyn_lines_dur_smin-eps-converted-to.pdf used
- on input line 914.
+ on input line 916.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 Package epstopdf Info: Source file: <figures/mylyn_lines_dur_eratio.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1075,19 +1079,19 @@ ed-to.pdf>
 (epstopdf)                    size: 8089 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/mylyn_lines_dur_er
 atio-eps-converted-to.pdf figures/mylyn_lines_dur_eratio.eps>
-(epstopdf)             \includegraphics on input line 917.
+(epstopdf)             \includegraphics on input line 919.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/mylyn_lines_dur_eratio-eps-converted-to.pdf, id=467, 451.6875pt x 244.
+<figures/mylyn_lines_dur_eratio-eps-converted-to.pdf, id=469, 451.6875pt x 244.
 915pt>
 File: figures/mylyn_lines_dur_eratio-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/mylyn_lines_dur_eratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/mylyn_lines_dur_eratio-eps-converted-to.pdf us
-ed on input line 917.
+ed on input line 919.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 909--920
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 911--922
  [][] 
  []
 
@@ -1100,18 +1104,18 @@ o.pdf>
 (epstopdf)                    size: 8148 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_lines_dur_emin
 -eps-converted-to.pdf figures/udc_lines_dur_emin.eps>
-(epstopdf)             \includegraphics on input line 928.
+(epstopdf)             \includegraphics on input line 930.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_emin-eps-converted-to.pdf, id=469, 451.6875pt x 244.915p
+<figures/udc_lines_dur_emin-eps-converted-to.pdf, id=471, 451.6875pt x 244.915p
 t>
 File: figures/udc_lines_dur_emin-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_lines_dur_emin-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_lines_dur_emin-eps-converted-to.pdf used o
-n input line 928.
+n input line 930.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 928--929
+Underfull \hbox (badness 10000) in paragraph at lines 930--931
 
  []
 
@@ -1124,18 +1128,18 @@ o.pdf>
 (epstopdf)                    size: 8114 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_lines_dur_smin
 -eps-converted-to.pdf figures/udc_lines_dur_smin.eps>
-(epstopdf)             \includegraphics on input line 931.
+(epstopdf)             \includegraphics on input line 933.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_smin-eps-converted-to.pdf, id=471, 451.6875pt x 244.915p
+<figures/udc_lines_dur_smin-eps-converted-to.pdf, id=473, 451.6875pt x 244.915p
 t>
 File: figures/udc_lines_dur_smin-eps-converted-to.pdf Graphic file (type pdf)
  <use figures/udc_lines_dur_smin-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_lines_dur_smin-eps-converted-to.pdf used o
-n input line 931.
+n input line 933.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 931--932
+Underfull \hbox (badness 10000) in paragraph at lines 933--934
 
  []
 
@@ -1148,32 +1152,32 @@ Package epstopdf Info: Source file: <figures/udc_lines_dur_eratio.eps>
 (epstopdf)                    size: 8092 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_lines_dur_erat
 io-eps-converted-to.pdf figures/udc_lines_dur_eratio.eps>
-(epstopdf)             \includegraphics on input line 934.
+(epstopdf)             \includegraphics on input line 936.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_lines_dur_eratio-eps-converted-to.pdf, id=473, 451.6875pt x 244.91
+<figures/udc_lines_dur_eratio-eps-converted-to.pdf, id=475, 451.6875pt x 244.91
 5pt>
 File: figures/udc_lines_dur_eratio-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/udc_lines_dur_eratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_lines_dur_eratio-eps-converted-to.pdf used
- on input line 934.
+ on input line 936.
 (pdftex.def)             Requested size: 134.64075pt x 73.00418pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 934--935
+Underfull \hbox (badness 10000) in paragraph at lines 936--937
 
  []
 
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 926--937
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 928--939
  [][] 
  []
 
-[17 <./figures/mylyn_lines_dur_emin-eps-converted-to.pdf> <./figures/mylyn_line
-s_dur_smin-eps-converted-to.pdf> <./figures/mylyn_lines_dur_eratio-eps-converte
-d-to.pdf>] [18 <./figures/udc_lines_dur_emin-eps-converted-to.pdf> <./figures/u
+[17] [18 <./figures/mylyn_lines_dur_emin-eps-converted-to.pdf> <./figures/mylyn
+_lines_dur_smin-eps-converted-to.pdf> <./figures/mylyn_lines_dur_eratio-eps-con
+verted-to.pdf> <./figures/udc_lines_dur_emin-eps-converted-to.pdf> <./figures/u
 dc_lines_dur_smin-eps-converted-to.pdf> <./figures/udc_lines_dur_eratio-eps-con
-verted-to.pdf>]
+verted-to.pdf>] [19]
 Package epstopdf Info: Source file: <figures/all_ints.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 13408 bytes
@@ -1182,15 +1186,15 @@ Package epstopdf Info: Source file: <figures/all_ints.eps>
 (epstopdf)                    size: 13850 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/all_ints-eps-conve
 rted-to.pdf figures/all_ints.eps>
-(epstopdf)             \includegraphics on input line 1118.
+(epstopdf)             \includegraphics on input line 1046.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/all_ints-eps-converted-to.pdf, id=541, 498.86375pt x 281.05pt>
+<figures/all_ints-eps-converted-to.pdf, id=550, 498.86375pt x 281.05pt>
 File: figures/all_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/all_ints-eps-converted-to.pdf>
 Package pdftex.def Info: figures/all_ints-eps-converted-to.pdf used on input li
-ne 1118.
+ne 1046.
 (pdftex.def)             Requested size: 244.80249pt x 137.91725pt.
 Package epstopdf Info: Source file: <figures/udc_all_ints_2.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1201,15 +1205,15 @@ f>
 (epstopdf)                    size: 13426 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_all_ints_2-eps
 -converted-to.pdf figures/udc_all_ints_2.eps>
-(epstopdf)             \includegraphics on input line 1119.
+(epstopdf)             \includegraphics on input line 1047.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_all_ints_2-eps-converted-to.pdf, id=543, 489.83pt x 279.0425pt>
+<figures/udc_all_ints_2-eps-converted-to.pdf, id=552, 489.83pt x 279.0425pt>
 File: figures/udc_all_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_all_ints_2-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_all_ints_2-eps-converted-to.pdf used on in
-put line 1119.
+put line 1047.
 (pdftex.def)             Requested size: 244.80249pt x 139.45703pt.
 Package epstopdf Info: Source file: <figures/ratio_all.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1219,18 +1223,18 @@ Package epstopdf Info: Source file: <figures/ratio_all.eps>
 (epstopdf)                    size: 75669 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/ratio_all-eps-conv
 erted-to.pdf figures/ratio_all.eps>
-(epstopdf)             \includegraphics on input line 1140.
+(epstopdf)             \includegraphics on input line 1058.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/ratio_all-eps-converted-to.pdf, id=548, 526.96875pt x 262.9825pt>
+<figures/ratio_all-eps-converted-to.pdf, id=557, 526.96875pt x 262.9825pt>
 File: figures/ratio_all-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_all-eps-converted-to.pdf>
 Package pdftex.def Info: figures/ratio_all-eps-converted-to.pdf used on input l
-ine 1140.
+ine 1058.
 (pdftex.def)             Requested size: 204.0pt x 101.80835pt.
- [19] [20 <./figures/all_ints-eps-converted-to.pdf> <./figures/udc_all_ints_2-e
-ps-converted-to.pdf> <./figures/ratio_all-eps-converted-to.pdf>]
+ [20 <./figures/all_ints-eps-converted-to.pdf> <./figures/udc_all_ints_2-eps-co
+nverted-to.pdf> <./figures/ratio_all-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/neg_ints.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 10693 bytes
@@ -1239,15 +1243,15 @@ Package epstopdf Info: Source file: <figures/neg_ints.eps>
 (epstopdf)                    size: 13681 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/neg_ints-eps-conve
 rted-to.pdf figures/neg_ints.eps>
-(epstopdf)             \includegraphics on input line 1218.
+(epstopdf)             \includegraphics on input line 1116.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/neg_ints-eps-converted-to.pdf, id=592, 376.40625pt x 188.705pt>
+<figures/neg_ints-eps-converted-to.pdf, id=594, 376.40625pt x 188.705pt>
 File: figures/neg_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/neg_ints-eps-converted-to.pdf>
 Package pdftex.def Info: figures/neg_ints-eps-converted-to.pdf used on input li
-ne 1218.
+ne 1116.
 (pdftex.def)             Requested size: 376.40532pt x 188.70453pt.
 Package epstopdf Info: Source file: <figures/udc_neg_ints_2.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1258,15 +1262,15 @@ f>
 (epstopdf)                    size: 13319 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_neg_ints_2-eps
 -converted-to.pdf figures/udc_neg_ints_2.eps>
-(epstopdf)             \includegraphics on input line 1219.
+(epstopdf)             \includegraphics on input line 1117.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_neg_ints_2-eps-converted-to.pdf, id=593, 489.83pt x 270.00874pt>
+<figures/udc_neg_ints_2-eps-converted-to.pdf, id=595, 489.83pt x 270.00874pt>
 File: figures/udc_neg_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_neg_ints_2-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_neg_ints_2-eps-converted-to.pdf used on in
-put line 1219.
+put line 1117.
 (pdftex.def)             Requested size: 489.8288pt x 270.00807pt.
 Package epstopdf Info: Source file: <figures/pos_ints.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1276,15 +1280,15 @@ Package epstopdf Info: Source file: <figures/pos_ints.eps>
 (epstopdf)                    size: 13519 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/pos_ints-eps-conve
 rted-to.pdf figures/pos_ints.eps>
-(epstopdf)             \includegraphics on input line 1221.
+(epstopdf)             \includegraphics on input line 1119.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/pos_ints-eps-converted-to.pdf, id=594, 376.40625pt x 188.705pt>
+<figures/pos_ints-eps-converted-to.pdf, id=596, 376.40625pt x 188.705pt>
 File: figures/pos_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/pos_ints-eps-converted-to.pdf>
 Package pdftex.def Info: figures/pos_ints-eps-converted-to.pdf used on input li
-ne 1221.
+ne 1119.
 (pdftex.def)             Requested size: 376.40532pt x 188.70453pt.
 Package epstopdf Info: Source file: <figures/udc_pos_ints_2.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1295,15 +1299,15 @@ f>
 (epstopdf)                    size: 13110 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_pos_ints_2-eps
 -converted-to.pdf figures/udc_pos_ints_2.eps>
-(epstopdf)             \includegraphics on input line 1222.
+(epstopdf)             \includegraphics on input line 1120.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_pos_ints_2-eps-converted-to.pdf, id=595, 489.83pt x 270.00874pt>
+<figures/udc_pos_ints_2-eps-converted-to.pdf, id=597, 489.83pt x 270.00874pt>
 File: figures/udc_pos_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_pos_ints_2-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_pos_ints_2-eps-converted-to.pdf used on in
-put line 1222.
+put line 1120.
 (pdftex.def)             Requested size: 489.8288pt x 270.00807pt.
 Package epstopdf Info: Source file: <figures/neu_ints.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1313,15 +1317,15 @@ Package epstopdf Info: Source file: <figures/neu_ints.eps>
 (epstopdf)                    size: 13830 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/neu_ints-eps-conve
 rted-to.pdf figures/neu_ints.eps>
-(epstopdf)             \includegraphics on input line 1224.
+(epstopdf)             \includegraphics on input line 1122.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/neu_ints-eps-converted-to.pdf, id=596, 376.40625pt x 188.705pt>
+<figures/neu_ints-eps-converted-to.pdf, id=598, 376.40625pt x 188.705pt>
 File: figures/neu_ints-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/neu_ints-eps-converted-to.pdf>
 Package pdftex.def Info: figures/neu_ints-eps-converted-to.pdf used on input li
-ne 1224.
+ne 1122.
 (pdftex.def)             Requested size: 376.40532pt x 188.70453pt.
 Package epstopdf Info: Source file: <figures/udc_neu_ints_2.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1332,21 +1336,25 @@ f>
 (epstopdf)                    size: 13474 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_neu_ints_2-eps
 -converted-to.pdf figures/udc_neu_ints_2.eps>
-(epstopdf)             \includegraphics on input line 1225.
+(epstopdf)             \includegraphics on input line 1123.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_neu_ints_2-eps-converted-to.pdf, id=597, 489.83pt x 270.00874pt>
+<figures/udc_neu_ints_2-eps-converted-to.pdf, id=599, 489.83pt x 270.00874pt>
 File: figures/udc_neu_ints_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/udc_neu_ints_2-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_neu_ints_2-eps-converted-to.pdf used on in
-put line 1225.
+put line 1123.
 (pdftex.def)             Requested size: 489.8288pt x 270.00807pt.
 
-Overfull \hbox (1.5481pt too wide) in paragraph at lines 1214--1227
+Overfull \hbox (1.5481pt too wide) in paragraph at lines 1112--1125
  [][] 
  []
 
+[21 <./figures/neg_ints-eps-converted-to.pdf> <./figures/udc_neg_ints_2-eps-con
+verted-to.pdf> <./figures/pos_ints-eps-converted-to.pdf> <./figures/udc_pos_int
+s_2-eps-converted-to.pdf> <./figures/neu_ints-eps-converted-to.pdf> <./figures/
+udc_neu_ints_2-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <figures/ratio_pos.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 29380 bytes
@@ -1355,17 +1363,18 @@ Package epstopdf Info: Source file: <figures/ratio_pos.eps>
 (epstopdf)                    size: 37949 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/ratio_pos-eps-conv
 erted-to.pdf figures/ratio_pos.eps>
-(epstopdf)             \includegraphics on input line 1246.
+(epstopdf)             \includegraphics on input line 1144.
 Package epstopdf Info: Output file is already uptodate.
-<figures/ratio_pos-eps-converted-to.pdf, id=599, 526.96875pt x 262.9825pt>
+
+<figures/ratio_pos-eps-converted-to.pdf, id=645, 526.96875pt x 262.9825pt>
 File: figures/ratio_pos-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_pos-eps-converted-to.pdf>
 Package pdftex.def Info: figures/ratio_pos-eps-converted-to.pdf used on input l
-ine 1246.
+ine 1144.
 (pdftex.def)             Requested size: 204.0pt x 101.80835pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1246--1247
+Underfull \hbox (badness 10000) in paragraph at lines 1144--1145
 
  []
 
@@ -1377,30 +1386,27 @@ Package epstopdf Info: Source file: <figures/ratio_neg.eps>
 (epstopdf)                    size: 40799 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/ratio_neg-eps-conv
 erted-to.pdf figures/ratio_neg.eps>
-(epstopdf)             \includegraphics on input line 1254.
+(epstopdf)             \includegraphics on input line 1152.
 Package epstopdf Info: Output file is already uptodate.
-<figures/ratio_neg-eps-converted-to.pdf, id=601, 526.96875pt x 262.9825pt>
+<figures/ratio_neg-eps-converted-to.pdf, id=647, 526.96875pt x 262.9825pt>
 File: figures/ratio_neg-eps-converted-to.pdf Graphic file (type pdf)
 
 <use figures/ratio_neg-eps-converted-to.pdf>
 Package pdftex.def Info: figures/ratio_neg-eps-converted-to.pdf used on input l
-ine 1254.
+ine 1152.
 (pdftex.def)             Requested size: 204.0pt x 101.80835pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1254--1255
+Underfull \hbox (badness 10000) in paragraph at lines 1152--1153
 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1241--1257
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1139--1155
  [][] 
  []
 
-[21 <./figures/neg_ints-eps-converted-to.pdf> <./figures/udc_neg_ints_2-eps-con
-verted-to.pdf> <./figures/pos_ints-eps-converted-to.pdf> <./figures/udc_pos_int
-s_2-eps-converted-to.pdf> <./figures/neu_ints-eps-converted-to.pdf> <./figures/
-udc_neu_ints_2-eps-converted-to.pdf>] [22 <./figures/ratio_pos-eps-converted-to
-.pdf> <./figures/ratio_neg-eps-converted-to.pdf>]
+[22 <./figures/ratio_pos-eps-converted-to.pdf> <./figures/ratio_neg-eps-convert
+ed-to.pdf>]
 Package epstopdf Info: Source file: <figures/udc_after_Interruption.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
 (epstopdf)                    size: 97414 bytes
@@ -1410,16 +1416,16 @@ ed-to.pdf>
 (epstopdf)                    size: 71010 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_after_Interrup
 tion-eps-converted-to.pdf figures/udc_after_Interruption.eps>
-(epstopdf)             \includegraphics on input line 1433.
+(epstopdf)             \includegraphics on input line 1194.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_after_Interruption-eps-converted-to.pdf, id=671, 761.84625pt x 166
+<figures/udc_after_Interruption-eps-converted-to.pdf, id=673, 761.84625pt x 166
 .6225pt>
 File: figures/udc_after_Interruption-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/udc_after_Interruption-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_after_Interruption-eps-converted-to.pdf us
-ed on input line 1433.
+ed on input line 1194.
 (pdftex.def)             Requested size: 367.19751pt x 80.3084pt.
 Package epstopdf Info: Source file: <figures/udc_box_recovery_edit.eps>
 (epstopdf)                    date: 2016-06-27 11:49:48
@@ -1430,19 +1436,19 @@ d-to.pdf>
 (epstopdf)                    size: 20449 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_recovery_e
 dit-eps-converted-to.pdf figures/udc_box_recovery_edit.eps>
-(epstopdf)             \includegraphics on input line 1463.
+(epstopdf)             \includegraphics on input line 1224.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=674, 451.6875pt x 240.9
+<figures/udc_box_recovery_edit-eps-converted-to.pdf, id=676, 451.6875pt x 240.9
 pt>
 File: figures/udc_box_recovery_edit-eps-converted-to.pdf Graphic file (type pdf
 )
  <use figures/udc_box_recovery_edit-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_edit-eps-converted-to.pdf use
-d on input line 1463.
+d on input line 1224.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1463--1464
+Underfull \hbox (badness 10000) in paragraph at lines 1224--1225
 
  []
 
@@ -1455,19 +1461,19 @@ Package epstopdf Info: Source file: <figures/udc_box_recovery_sel.eps>
 (epstopdf)                    size: 22792 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_recovery_s
 el-eps-converted-to.pdf figures/udc_box_recovery_sel.eps>
-(epstopdf)             \includegraphics on input line 1466.
+(epstopdf)             \includegraphics on input line 1227.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=676, 451.6875pt x 240.9p
+<figures/udc_box_recovery_sel-eps-converted-to.pdf, id=678, 451.6875pt x 240.9p
 t>
 File: figures/udc_box_recovery_sel-eps-converted-to.pdf Graphic file (type pdf)
 
  <use figures/udc_box_recovery_sel-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_sel-eps-converted-to.pdf used
- on input line 1466.
+ on input line 1227.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1466--1467
+Underfull \hbox (badness 10000) in paragraph at lines 1227--1228
 
  []
 
@@ -1480,24 +1486,24 @@ ed-to.pdf>
 (epstopdf)                    size: 7165 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_recovery_r
 atio-eps-converted-to.pdf figures/udc_box_recovery_ratio.eps>
-(epstopdf)             \includegraphics on input line 1469.
+(epstopdf)             \includegraphics on input line 1230.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=678, 451.6875pt x 240.
+<figures/udc_box_recovery_ratio-eps-converted-to.pdf, id=680, 451.6875pt x 240.
 9pt>
 File: figures/udc_box_recovery_ratio-eps-converted-to.pdf Graphic file (type pd
 f)
  <use figures/udc_box_recovery_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_ratio-eps-converted-to.pdf us
-ed on input line 1469.
+ed on input line 1230.
 (pdftex.def)             Requested size: 134.64075pt x 71.80739pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1469--1470
+Underfull \hbox (badness 10000) in paragraph at lines 1230--1231
 
  []
 
 
-Overfull \hbox (7.92224pt too wide) in paragraph at lines 1461--1472
+Overfull \hbox (7.92224pt too wide) in paragraph at lines 1222--1233
  [][] 
  []
 
@@ -1510,28 +1516,31 @@ verted-to.pdf>
 (epstopdf)                    size: 6962 bytes
 (epstopdf)             Command: <repstopdf --outfile=figures/udc_box_recovery_p
 os_ratio-eps-converted-to.pdf figures/udc_box_recovery_pos_ratio.eps>
-(epstopdf)             \includegraphics on input line 1483.
+(epstopdf)             \includegraphics on input line 1244.
 Package epstopdf Info: Output file is already uptodate.
 
-<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=681, 451.6875pt x 
+<figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf, id=683, 451.6875pt x 
 240.9pt>
 File: figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf Graphic file (typ
 e pdf)
  <use figures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>
 Package pdftex.def Info: figures/udc_box_recovery_pos_ratio-eps-converted-to.pd
-f used on input line 1483.
+f used on input line 1244.
 (pdftex.def)             Requested size: 204.0pt x 108.80098pt.
- [23 <./figures/udc_after_Interruption-eps-converted-to.pdf> <./figures/udc_box
-_recovery_edit-eps-converted-to.pdf> <./figures/udc_box_recovery_sel-eps-conver
-ted-to.pdf> <./figures/udc_box_recovery_ratio-eps-converted-to.pdf>] [24 <./fig
+ [23 <./figures/udc_after_Interruption-eps-converted-to.pdf>] [24 <./figures/ud
+c_box_recovery_edit-eps-converted-to.pdf> <./figures/udc_box_recovery_sel-eps-c
+onverted-to.pdf> <./figures/udc_box_recovery_ratio-eps-converted-to.pdf> <./fig
 ures/udc_box_recovery_pos_ratio-eps-converted-to.pdf>] [25]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9.5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1609.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1370.
  [26]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [27]
-[28] [29]
+[28]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
@@ -1544,25 +1553,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1783.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1544.
 
 [33]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1783.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1544.
  (./paper_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1783.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1783.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1544.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1544.
 
 Package rerunfilecheck Info: File `paper_2.out' has not changed.
 (rerunfilecheck)             Checksum: 22D0D114B1E2B7C07D9ECD147877D0A6;2324.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.75pt have occurred.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1783.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1544.
  ) 
 Here is how much of TeX's memory you used:
- 9443 strings out of 493085
- 145521 string characters out of 6136917
- 344610 words of memory out of 5000000
- 12470 multiletter control sequences out of 15000+600000
+ 9445 strings out of 493085
+ 145538 string characters out of 6136917
+ 346638 words of memory out of 5000000
+ 12471 multiletter control sequences out of 15000+600000
  41800 words of font info for 110 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  43i,16n,75p,1842b,532s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1584,10 +1593,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_2.pdf (33 pages, 914729 bytes).
+Output written on paper_2.pdf (33 pages, 914915 bytes).
 PDF statistics:
- 917 PDF objects out of 1000 (max. 8388607)
- 760 compressed objects within 8 object streams
- 164 named destinations out of 1000 (max. 500000)
+ 919 PDF objects out of 1000 (max. 8388607)
+ 762 compressed objects within 8 object streams
+ 165 named destinations out of 1000 (max. 500000)
  584 words of extra memory for PDF output out of 10000 (max. 10000000)
 
