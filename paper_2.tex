@@ -475,7 +475,7 @@ We measure the effects on productivity using mainly the edit and selection event
 %\RR{is this common? didn't we filter these out?}
 %We filtered these out only in the recovery time analysis
 
-An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded with selections events and are common activities after an interruption, according to observational studies \cite{PR11}. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
+An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded with selections events and are common activities after an interruption, according to observational studies \cite{PR11,PD10}. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
 
 \paragraph{Correlation analysis of the metrics}
 %\RR{perhaps expand a bit}
@@ -944,12 +944,12 @@ Since these results apply to both datasets, we can conclude that we observe a re
 
 
 
-We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. The groups with one to three interruptions have moderate size effects, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. 
+We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. The groups with one or two interruptions have moderate size effects, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. 
 
 \begin{table}[ht!]
 	\tiny
 	\renewcommand{\arraystretch}{1.3}
-	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in Mylyn} %, and editions and selections.}
+	\caption{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in Mylyn} %, and editions and selections.}
 	\label{tbl:effect_size_dur_mylyn}
 	\centering
 	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
@@ -982,7 +982,7 @@ We tested the statistical significance of this results and show the results in t
 \begin{table}[ht!]
 	\tiny
 	\renewcommand{\arraystretch}{1.3}
-	\caption{Effect size and statistical significance of the relationships between edits and selection per minute, edit ratio, and duration of interruptions in UDC} %, and editions and selections.}
+	\caption{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in UDC} %, and editions and selections.}
 	\label{tbl:effect_size_dur_udc}
 	\centering
 	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
@@ -1217,7 +1217,7 @@ The duration of the peak varies among the phases between interruptions. On avera
 %Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it is common to have a reduction of both editions and selections per minute. Therefore, the \textit{After Recovery Time} time was split into two phases as well: one that takes the time where the metrics drop which happens 10 minutes before the next interruption (labeled as  \textit{Before Interruption}), and the time before that, which is the peak of the session after the Recovery Time. The duration of the phase \textit{Before Interruption} was chosen with the conclusions after the local analysis around the interruptions. 
 
 We can see in the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through
-the phases. The three metrics show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is the highest.
+the phases. The edits per minute and edit ratio show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is the highest.
 
 \begin{figure}[!ht]
 \centering
@@ -1238,7 +1238,7 @@ the phases. The three metrics show a tendency to increase and reach a maximum be
 
 \section{RQ5: Common events during Recovery Time}
 
-In RQ3, we saw different patterns of activity around positive and negative interruptions. In particular, we observed that the edits per minute were higher after a positive interruption; on the contrary they were lower after a negative interruption. The effect is even more marked in the immediate minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
+In RQ3, we saw different patterns of activity around positive and negative interruptions. In particular, we observed that the edits per minute were higher after a positive interruption; on the contrary they were lower after a negative interruption. The effect is even more marked in the first 5 minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
 
 \begin{figure}[!ht]
 	\centering
@@ -1407,6 +1407,15 @@ Of course, this exploratory study does not allow us to confirm these hypotheses.
 %It is noticeable the relation between type of events. For example, it is natural to think that if there are many debugging events there are also a lot of clean and build events, as they are necessary to begin a debugging session and in most cases it is automatically performed by the IDE. There is also a link between high level navigation and debugging because navigating into a method may take the programmer to another class.
 
 \section{Discussion}
+The results presented in this work indicate the existence of evidence of the effect of work fragmentation in interaction data, in accordance to what observational studies had concluded before. So, we begin by comparing quantities (number and length of interruptions) and working patterns. The related work to this approach suggests that as a consequence to interruptions there is a recovery time that demands extra time to resume the task, so we expected to see a decrease in the metrics as the number of interruptions increases \cite{MGH05,IH07,CHW04}.
+
+The first research question had the purpose of finding a relationship between the number of interruptions and productivity metrics from user activity, for which we found an inverse relationship between this two variables with both datasets agreeing with the work cited before. This effect seems to be more clear when comparing groups of sessions with a low number of interruptions and the difference is more slight after the fourth or fifth interruption. Also, we observed in the second research question the same inverse relationship when we add the length of interruptions as a third variable, groping the sessions by the proportion of long interruptions.
+
+After this, we not only found evidence of the effect documented in related work, but also gained and reassured the confidence on the metrics we used as indicators of productivity and proceed to look with more detail this effect. So, in the third research question we investigated the productivity 30 minutes around the interruptions, finding a decrease below the median approximately 10 (UDC) to 20 (Mylyn) minutes before and after an interruption. The decrease after an interruption corresponds to the already documented recovery time or resumption time, which could last around to 15 minutes \cite{IH07, SBV98}. 
+
+We found interesting the similar decrease before the interruption occurs, about 15 minutes before it, that could be due to preparations before the interruption \cite{LVD06} (e.g. taking notes or leaving cues in the code) and/or the programmer's effort when trying to solve the problem that could have caused the interruption \cite{PD10}, which involves reading code, navigating around classes, debugging and more activities. We can see again this results in the fourth research question, and also a peak of productivity after the recovery time and several minutes before the next interruption.
+
+In the third research question we identified three patterns of interruptions: positive, negative and neutral. We look closer to the activities performed during negative and positive interruptions in the fifth research question, where we set 11 categories of events and calculated the frequency of them after a each type of interruption. We found that assertive activities (e.g. editing, refactoring and saving changes) are more common after a positive interruption, and the comprehension activities (e.g. debugging and navigating around classes) are more common after a negative interruption. The second group of interruptions seems to be more disruptive as they require more time to reach the average productivity, and the activities are a reflection of the tasks performed during the recovery time ad mentioned by Parnin \cite{PR11}.
 
 \paragraph{Discussion of the thresholds.} We used several thresholds in this study; we regroup their motivations in the following. 
 
