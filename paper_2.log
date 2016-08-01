@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.15)  22 JUL 2016 13:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.7.15)  22 JUL 2016 14:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1556,19 +1556,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [33])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1531.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1533.
 
 [34]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1531.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1533.
  (./paper_2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1531.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1531.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1533.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1533.
 
 Package rerunfilecheck Info: File `paper_2.out' has not changed.
 (rerunfilecheck)             Checksum: 22D0D114B1E2B7C07D9ECD147877D0A6;2324.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.75pt have occurred.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1531.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1533.
  ) 
 Here is how much of TeX's memory you used:
  9472 strings out of 493029
@@ -1596,10 +1596,10 @@ type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/hel
 vetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/
 texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper_2.pdf (34 pages, 918929 bytes).
+Output written on paper_2.pdf (34 pages, 919471 bytes).
 PDF statistics:
- 932 PDF objects out of 1000 (max. 8388607)
- 774 compressed objects within 8 object streams
+ 934 PDF objects out of 1000 (max. 8388607)
+ 776 compressed objects within 8 object streams
  166 named destinations out of 1000 (max. 500000)
  584 words of extra memory for PDF output out of 10000 (max. 10000000)
 
