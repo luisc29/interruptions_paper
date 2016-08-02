@@ -16,9 +16,43 @@
 \usepackage[export]{adjustbox}
 \usepackage{multirow}
 \usepackage{bigstrut}
-
-
 \usepackage{array}
+
+\newboolean{showchangedforreviewer}
+
+\setboolean{showchangedforreviewer}{true} % toggle to show or hide sentences and paragraphs requested by the reviewers.
+
+
+
+\ifthenelse{\boolean{showchangedforreviewer}} {
+	
+	\newcommand{\changedforreviewer}[1]{\textcolor{blue}{#1}}
+	
+	
+	
+	\newenvironment{changedforreviewerlong}%
+	{\begin{color}{blue}}%
+		
+		{\end{color}}
+
+}{
+
+\newcommand{\changedforreviewer}[1]{#1}
+
+
+
+\newenvironment{changedforreviewerlong}%
+
+{}
+
+{}
+
+}
+
+
+
+
+
 \newcommand\RR[1]{\textbf{Romain #1}}
 
 \def\volumeyear{2016}
@@ -27,7 +61,11 @@
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 
+
+
 \begin{document}
+	
+	
 %
 \runningheads{L. Cruz, H. Sanchez, V. Gonzalez, R. Robbes}{Work Fragmentation in Developer Interaction Data}
 
@@ -54,6 +92,7 @@ R. Robbes is supported by FONDECYT project \#1151195}
 
 
 \begin{abstract}
+		
 %\boldmath
 Information workers and software developers are exposed to work fragmentation, an interleaving of activities and interruptions during their normal work day. Small-scale observational studies have shown that this can be detrimental to their work. In this paper, we perform a large-scale study of this phenomenon for the particular case of software developers performing software evolution tasks. Our study is based on several thousands interaction traces collected by Mylyn and the Eclipse Usage Data Collector. We observe that work fragmentation is correlated to lower observed productivity at both the macro level (for entire sessions), and at the micro level (around markers of work fragmentation); further, longer activity switches seem to strengthen the effect. These observations give ground for subsequent studies investigating the phenomenon of work fragmentation.
 \end{abstract}
@@ -102,8 +141,8 @@ This work is an extension to a published paper in the 22nd IEEE International Co
 \item \textbf{RQ5:} What events are more common during recovery time? The pattern of activities during the recovery time might change in comparison with other phases; in this research question we investigate if there is such a difference by an exploratory study of a subset of our data. 
 \end{itemize}
 
+\begin{changedforreviewerlong}
 From these research questions, we got the following findings and conclusions:
-So, in short these are our findings and conclusions:
 \begin{itemize}
 	\item We found an inverse relationship between the number of interruptions and our productivity metrics.
 	\item A high proportion of prolonged interruptions is more detrimental to productivity than short interruptions.
@@ -113,7 +152,7 @@ So, in short these are our findings and conclusions:
 	\item There is a difference between the activities performed after an interruption, depending if it was positive or negative.
 \end{itemize}
 %\RR{For each research question, add a sentence explaining why we look into it}
-
+\end{changedforreviewerlong}
 
 \emph{A note on terminology}: in this paper we (ab)use the word \emph{interruption} to refer to a \emph{gap of activity} observed in IDE activity. We do not presume that all of these activity gaps are actual interruptions (indeed our results lead us to believe otherwise); rather, we assume that they are indicators of work fragmentation in general (that is, a programmer switching contexts to perform other activities while developing, such as answering email, looking for the solution of a problem on the Internet, etc). 
 There are also actions taking place outside of the computer, such as taking phone calls, interacting with people or leaving one's desk for, e.g., a meeting. 
@@ -286,8 +325,10 @@ For example, massive events are produced when we select an entire group of class
 After exploring a sample of traces, we noticed that a long interruption of activity implicitly splits a trace into two sub-traces.  Moreover,  we have realized that many long events happen around this border. That is, they began before the interruption and finished immediately after the interruption, which confirms the observation above (resumption of a task after a long downtime). However this has the side effect of hiding the gaps of activity in the sequence of events if care is not taken. Consequently, the duration of these events is overstated; however, finding their actual duration is not trivial. 
 %was extended beyond the significant real time, since it implicitly encapsulated  an interruption in its execution interval. 
 
+\begin{changedforreviewerlong}
 \textbf{Selection events. } Mylyn's selection feature is tied to high-level selection events in the Package Explorer. It does not include events such as switching tabs or navigation within and between documents via structured navigation (e.g., goto definition).
-
+\end{changedforreviewerlong}
+	
 \subsection{Selection}
 We used the phases of the process \textit{Knowledge Discovery in Databases (KDD~\cite{FPP96})} to discover useful knowledge from our collection of data: we first select data, then preprocess it, before transforming it to time series.
 
@@ -372,7 +413,9 @@ Creating time series is a useful way of representing temporal data because they 
 
 %\RR{motivate more the time series stuff}
 
+\begin{changedforreviewerlong}
 Mylyn data has another characteristic which is unusual for time series: the time of occurrence of the events is not periodic (see column \textit{StartTime} in Table \ref{tbl:sample_event}). That is to say, events occur with non-equidistant separation gaps between them. However, in a time series, the values must be evenly spaced and chronologically sorted. For this reason, we compressed the size of the multivariate time series, pulling apart all the interruptions as a new time series variable. Then, each time series value represents the interruption duration in this minute (Figure \ref{fig:trans}). This transformation to a time series is similar to the Codealike's focus metric, who creates a time series with the quantification of the user's activity per minute, but without the decay and smoothing functions \cite{CLQ15}.
+\end{changedforreviewerlong}
 
 
 Consequently, the temporal component represents the \textit{real working time} of a programming task, excluding inactivity. This allows us to compute our activity indicators (number of edits, selections, edit ratio) independently of the amount of inactivity in a session.
@@ -440,7 +483,7 @@ After the transformation phase, we had the sessions in a proper format to carry 
 				mean & 48.91 min \\
 				3rd Qu. & 62 min \\
 				max. & 535 min\\
-				sd & 102.36 min\\
+				\changedforreviewer{sd} & 102.36 min\\
 				\hline
 				
 			\end{tabular}
@@ -476,15 +519,19 @@ We measure the effects on productivity using mainly the edit and selection event
 %\RR{is this common? didn't we filter these out?}
 %We filtered these out only in the recovery time analysis
 
+\begin{changedforreviewerlong} 
 An important reason to consider the edit ratio is that having an interruption requires doing activities that might increase the execution of selection events, reducing the edit events. For example reading the code, navigating around files and starting a debugging sessions are activities heavily loaded with selections events and are common activities after an interruption, according to observational studies \cite{PR11,PD10}. The edit ratio can tell us when there is a reduction of edit events due to (mainly) selection events.
+\end{changedforreviewerlong}
 
 \paragraph{Correlation analysis of the metrics}
 %\RR{perhaps expand a bit}
+\begin{changedforreviewerlong}
 The metrics that characterize the productivity are related to the amount of activity recorded. Thus there is a degree of correlation between them; we study this correlation to determine whether the metrics measure different aspects or not.  %weand could be possible to find a correlation between them, specially with the number of edits and selections per minute, and the edit ratio. 
-
 We did a correlation analysis (using Pearson's correlation coefficient) involving these three metrics (Table \ref{tbl:corr_analysis}, classifying the data between traces with or without interruptions. We found that the Edits/min and Selections/minute metrics have a degree of correlation ($r=0.25$ and $r=0.35$), but that it is relatively low; this is the expected result as they explain two different kinds of activities. We do find that the correlation is higher in traces with interruptions. The same happens between the Selections/minute and Edit ratio metrics with the data of both kind of traces ($r=-0.38$ and $r=-0.32$), this time being a negative correlation which is also an expected value, as the Edit ratio should decrease when the Selections/minute increases. 
 
 The Edit/minute and Edit ratio correlation coefficient is higher in both groups ($r=0.65$ and $r=0.60$), but not high enough to discard the latter, for it tells something different from the user activity. It is normal to see these two metrics with a moderate correlation coefficient given that the Edit ratio is the proportion of edition events over all events in a minute.
+
+\end{changedforreviewerlong}
 
 
 \begin{table}
@@ -556,9 +603,11 @@ It was also required to fill the description for the events that indicate the ac
 %With Mylyn we have information about the end time of an event. The UDC dataset doesn't have an attribute to show this information, so we added an interval time in seconds that depends on the next event executed. This is important to identify those events that represent an interruption or the end of a session. 
 
 \subsection{Classification of events}
+\begin{changedforreviewerlong}
 Mylyn events belong to two main categories: edition and selection. The UDC data do not have this, so in order to match the classification of Mylyn we inferred the type of every event manually. So, we do not base our classification on previous work and we are aware that a change or misinterpretation could affect the final results. However, the attributes of the events offer enough information to make an accurate inference in most of the cases.
 
 Note that we reuse the same term of selection in the following text, as it was used in Mylyn data. Strictly speaking, the word "navigation" would be better suited to the variety of events present in the UDC data, but we keep the old term for consistency.
+\end{changedforreviewerlong}
 %To select the event type, we made a thorough analysis of the different events to classify them where they better fit. In comparison with Mylyn we didn't have a classification by default but the attributes can give us a very good approximation.
 
 We took into consideration the attributes \textit{what}, \textit{kind} and \textit{description} to choose the best classification for every event. Starting by the kind attribute, some events are labeled as \textit{view} which are precisely those that open, activate or close a view such as the console, the package explorer or the variables view. Therefore, the events of the kind \textit{view} were classified as selection-type events.
@@ -636,7 +685,7 @@ At this point, we had the same format of sessions with both datasets. In the Fig
 			mean & 35.87 min \\
 			3rd Qu. & 47 min \\
 			max. & 1,345 min\\
-			sd & 43.95 min\\
+			\changedforreviewer{sd} & 43.95 min\\
 			\hline
 			
 		\end{tabular}
@@ -743,7 +792,9 @@ With UDC, the results show a similar pattern in comparison with the results with
 	\label{fig:box_int_events_udc}
 \end{figure}
 
+\begin{changedforreviewerlong}
 Beyond visual inspection, we also quantify the statistical and the practical significance of these observations. First, in the results with Mylyn, all the differences observed are statistically significant with very low p-values (see Table~\ref{tbl:p_value}) according to the Mann-Whitney U-test. This is not surprising, given the shape of the boxplots and the size of the samples. It is important to mention that the values from the effect size Tables (\ref{tbl:p_value} and \ref{tbl:p_value_udc}) are obtained by comparing the \textit{none} group with the rest of the groups.
+\end{changedforreviewerlong}
 
 More importantly, we used \textit{Cliff's delta} to measure the practical significance of these results in term of effect size % the effect size of the differences in means as standardized difference~
 \cite{C94}. \textit{Cliff's delta thresholds} are defined as follows: negligible ($<0.147$), small  ($<0.33$), moderate ($<0.476$) and large effect otherwise. As shown in Table \ref{tbl:p_value}, we note that the effect size of the interruptions over the number of edits per minute is large. In selections, the effect is moderate for sessions having up three interruptions, and large for sessions with over four interruptions. This reinforces our impressions that interruptions and user activity follow inverse relationships, and that they are quite pronounced.
@@ -751,6 +802,7 @@ More importantly, we used \textit{Cliff's delta} to measure the practical signif
 On the other hand, with the results in UDC, an important difference is that the effect overall appears to be less pronounced in UDC and we can see it on the effect size tests shown in the Table \ref{tbl:p_value_udc}. Most of the observed effects are medium, while in the Mylyn dataset the effects were large. Note that despite the differences in effect sizes, the differences are still significant and it is possible to reach the same conclusions.
 
 %We conclude that the user productivity could be adversely affected by increased interruptions.
+
 
 \begin{table}[ht!]
 \tiny
@@ -764,7 +816,7 @@ On the other hand, with the results in UDC, an important difference is that the 
   \hline
   \multicolumn{6}{c}{\textbf{Edits}} \\
   \hline
-  median & 6.56 & 1 & 0.67 & 0.65 & 0.6	 \\
+  \changedforreviewer{median} & 6.56 & 1 & 0.67 & 0.65 & 0.6	 \\
   \cline{2-6} 
   mean & 6.29 &	2.59 & 1.55 & 1.29 & 0.91  \\ 
   % \cline{3-6} 
@@ -778,7 +830,7 @@ On the other hand, with the results in UDC, an important difference is that the 
   
   \multicolumn{6}{c}{\textbf{Selections}} \\
   \hline 
-  median & 4.56 & 2.08 & 1.71 & 1.42 & 1.28 \\
+  \changedforreviewer{median} & 4.56 & 2.08 & 1.71 & 1.42 & 1.28 \\
   \cline{2-6} 
   mean & 4.73 &	2.93 & 2.26 & 1.79 & 1.54  \\ 
     % \cline{3-6} 
@@ -793,7 +845,7 @@ On the other hand, with the results in UDC, an important difference is that the 
 
   \multicolumn{6}{c}{\textbf{Edit ratio}} \\
   \hline 
-  median & 0.56 & 0.36 & 0.30 & 0.32 & 0.33 \\
+  \changedforreviewer{median} & 0.56 & 0.36 & 0.30 & 0.32 & 0.33 \\
   \cline{2-6} 
   mean & 0.55 & 0.39 & 0.33 & 0.34 & 0.33 \\ 
   \cline{3-6} 
@@ -820,7 +872,7 @@ On the other hand, with the results in UDC, an important difference is that the 
 		\hline
 		\multicolumn{6}{c}{\textbf{Edits}} \\
 		\hline
-		median & 3.58 & 1.5 & 1.23 & 1.15 & 1.18 \\
+		\changedforreviewer{median} & 3.58 & 1.5 & 1.23 & 1.15 & 1.18 \\
 		\cline{2-6} 
 		mean & 3.97 &	2.18 & 1.82 & 1.70 & 1.59 \\ 
 		% \cline{3-6} 
@@ -834,7 +886,7 @@ On the other hand, with the results in UDC, an important difference is that the 
 		\hline
 		\multicolumn{6}{c}{\textbf{Selections}} \\
 		\hline 
-		median & 2.54 & 1.66 & 1.5 & 1.5 & 1.4 \\
+		\changedforreviewer{median} & 2.54 & 1.66 & 1.5 & 1.5 & 1.4 \\
 		\cline{2-6} 
 		mean & 3.10 &	2.93 & 1.80 & 1.77 & 1.63  \\ 
 		% \cline{3-6} 
@@ -847,7 +899,7 @@ On the other hand, with the results in UDC, an important difference is that the 
 		
 		\multicolumn{6}{c}{\textbf{Edit ratio}} \\
 		\hline 
-		median & 0.57 & 0.49 & 0.45 & 0.43 & 0.44 \\
+		\changedforreviewer{median} & 0.57 & 0.49 & 0.45 & 0.43 & 0.44 \\
 		\cline{2-6} 
 		mean & 0.68 & 0.56 & 0.55 & 0.54 & 0.57 \\ 
 		\cline{3-6} 
@@ -946,12 +998,12 @@ Since these results apply to both datasets, we can conclude that we observe a re
 
 
 
-We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. The groups with one or two interruptions have moderate size effects, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. 
+We tested the statistical significance of this results and show the results in the Table \ref{tbl:effect_size_dur_mylyn} for Mylyn, and Table \ref{tbl:effect_size_dur_udc} for UDC. For every group according to the number of interruptions, we measured the effect between the low and high groups of sessions, with the Cliff's delta test and U-test. \changedforreviewer{The groups with one or two interruptions have moderate size effects}, in comparison with the other groups with more interruptions that have lower size effects; this matches our observations via visual inspection on a more defined difference between the low and high groups when having a small number of interruptions. Starting from (approximately) three interruptions, the distributions of the metrics are very alike, except in some cases like the edit ratio with seven interruptions in Mylyn, where the median is almost the same but the distribution of the values are different enough to have a medium effect size. 
 
 \begin{table}[ht!]
 	\tiny
 	\renewcommand{\arraystretch}{1.3}
-	\caption{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in Mylyn} %, and editions and selections.}
+	\caption{\changedforreviewer{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in Mylyn}}
 	\label{tbl:effect_size_dur_mylyn}
 	\centering
 	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
@@ -984,7 +1036,7 @@ We tested the statistical significance of this results and show the results in t
 \begin{table}[ht!]
 	\tiny
 	\renewcommand{\arraystretch}{1.3}
-	\caption{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in UDC} %, and editions and selections.}
+	\caption{\changedforreviewer{Effect size and statistical significance of the relationships between the groups of sessions by proportion of prolonged interruptions and the number of interruptions in UDC}}
 	\label{tbl:effect_size_dur_udc}
 	\centering
 	\begin{tabular}{l | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm} | p{1cm}} 
@@ -1106,7 +1158,10 @@ Given the overall activity pattern we noticed in the local analysis, we hypothes
 We hence looked for patterns in the interruptions.  After applying clustering techniques over all the subsequences, we always found the formation of three recurrent patterns that show different effects of the interruption: neutral, positive and negative. The clustering was performed with the  K-Mediods~\cite{AMP97} technique, the Silhouette metric~\cite{RP87} to interpret and evaluate the results, the Dynamic Time Warping~\cite{KE05} as distance measure, and feature extraction techniques to reduce the dimensionality.  For this reason, we classified empirically each interruption by its local effect. 
 
 We did so by computing Cohen's $d$ on the quantity of edits before and after the interruption. To obtain a significant effect, we need the presence of activity both before and after the interruption. Not all the interruptions meet this criteria however: some are located close to the start or the end of a session, or too close to another interruption.  In total, 53\% of the interruptions had 30 minutes before and after the interruption and were selected for the analysis.  The remaining 47\% of the interruptions can not be used on this analysis due to the lack of time around them. %We used the Algorithm \ref{alg:local_effect} for the classification, and the 
+
+\begin{changedforreviewerlong}
 Table \ref{tbl:local_effect} shows the applied thresholds and the results, accompanied with a typical example of an interruption in each category. This local analysis shows that there are indeed three well-defined groups of interruptions, with the two largest of them having clear effects on the activity in the session. The 45\% of the interruptions are positive in Mylyn, and the 44\% in UDC. The negative interruptions constitute the 44\% in Mylyn and UDC as well. And the neutral interruptions are the 11\% for Mylyn and 12\% for UDC.
+\end{changedforreviewerlong}
 
 
 \begin{table}[ht!]
@@ -1218,8 +1273,10 @@ The duration of the peak varies among the phases between interruptions. On avera
 
 %Considering the results obtained on the local analysis of an interruption, we can conclude that before an interruption it is common to have a reduction of both editions and selections per minute. Therefore, the \textit{After Recovery Time} time was split into two phases as well: one that takes the time where the metrics drop which happens 10 minutes before the next interruption (labeled as  \textit{Before Interruption}), and the time before that, which is the peak of the session after the Recovery Time. The duration of the phase \textit{Before Interruption} was chosen with the conclusions after the local analysis around the interruptions. 
 
+\begin{changedforreviewerlong}
 We can see in the Figure \ref{fig:box_recovery_udc} the evolution of the metrics through
 the phases. The edits per minute and edit ratio show a tendency to increase and reach a maximum between the last phase of the recovery time and the peak of the session. Moreover, the fall of the productivity on the last minutes before the next interruptions agrees with the observations on the local analysis of the time around an interruption. From this we can conclude that the first five minutes after an interruption and the moment before the next one are the are the phases where productivity is more affected, while the phases around the peak are where the productivity is the highest.
+\end{changedforreviewerlong}
 
 \begin{figure}[!ht]
 \centering
@@ -1240,7 +1297,7 @@ the phases. The edits per minute and edit ratio show a tendency to increase and 
 
 \section{RQ5: Common events during Recovery Time}
 
-In RQ3, we saw different patterns of activity around positive and negative interruptions. In particular, we observed that the edits per minute were higher after a positive interruption; on the contrary they were lower after a negative interruption. The effect is even more marked in the first 5 minutes after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
+In RQ3, we saw different patterns of activity around positive and negative interruptions. In particular, we observed that the edits per minute were higher after a positive interruption; on the contrary they were lower after a negative interruption. The effect is even more marked in the \changedforreviewer{first 5 minutes} after the interruption, as can be seen in the Figure \ref{fig:box_recovery_effect_udc}.
 
 \begin{figure}[!ht]
 	\centering
@@ -1256,7 +1313,9 @@ The presence of this pattern and the important difference observed in Figure \re
 
 The goal of the exploratory study was to better understand whether the activity taken after an interruption were indicative of different types of behavior for each type of interruption (positive or negative), and also whether these different kinds of activities supported our earlier hypotheses explaining why the two patterns of interruptions were present. Assuming that different commands represented different types of activity, the assumption was that the frequency of a given activity---as represented by the commands used to carry it---would vary between the different types of sessions.
 
+\begin{changedforreviewerlong}
 A first challenge that we encountered was that, similarly to the earlier research questions, the high number of different commands made it hard to infer broader trends. We hence created an additional classification of the commands we encountered in the activity logs. In a similar manner to the first classification, we followed an iterative process involving two of the authors to classify the events in these categories. Differently to the first classification, we did not limit ourselves to a restricted number of categories: rather, we let the classification emerge from the iterative process. We ended up with 11 categories, as described in Table \ref{tbl:new_events_udc}. We assigned the label and description that better suited the events grouped on that category and the associated type that reflects the majority of those events.
+\end{changedforreviewerlong}
 
 %To better understand the reasons of the difference between positive and negative interruptions, we did an analysis of the common events during recovery time, depending on the nature of the interruption. For this we created a new classification of events on a lower level that takes into consideration what kind of activity is performed by the programmer. The new classification contains the categories described in the Table \ref{tbl:new_events_udc}. This table also contains the frequency per minute of the more frequent event on that category. 
 
@@ -1308,7 +1367,7 @@ We would then expect that certain types of interruptions would feature some even
 	\centering
 	\begin{tabular}{|p{2.5cm}|p{9 cm}| p{2cm} |}
 		\hline 
-		category & description & type \\  
+		category & description & \changedforreviewer{type} \\  
 		\hline 
 		\hline 
 		high-nav & High-level navigation through classes, windows and artifacts & navigation \\
@@ -1342,14 +1401,14 @@ To get a baseline, the same frequency calculation was made for the entire datase
   \hline 
 category & positive & negative & all \\  
   \hline 
-\multicolumn{4}{c}{\textit{Categories that are more frequent after a positive interruption}} \\
+\multicolumn{4}{c}{\textit{\changedforreviewer{Categories that are more frequent after a positive interruption}}} \\
     \hline 
 edit-text &  \textbf{34.75} & 22.35 & 26.62 \\
 file &  \textbf{10.56} & 9.53 & 10.01\\
 refactoring & \textbf{1.29} & 0.84 & 1.01 \\
 perspective & \textbf{0.38} & 0.30 & 0.35  \\
     \hline 
-\multicolumn{4}{c}{\textit{Categories that are more frequent after a negative interruption}} \\
+\multicolumn{4}{c}{\textit{\changedforreviewer{Categories that are more frequent after a negative interruption}}} \\
     \hline 
 high-nav & 7.84 & \textbf{10.14} & 8.74  \\
 find-replace & 1.26 & \textbf{1.47} & 1.11 \\
@@ -1357,7 +1416,7 @@ debug & 3.08 & \textbf{7.81} & 6.35  \\
 search & 0.57 & \textbf{0.96} & 0.73 \\
 clean-build & 0.42 & \textbf{0.62} & 0.56  \\
     \hline 
-\multicolumn{4}{c}{\textit{Categories that are less frequent during the recovery time}} \\
+\multicolumn{4}{c}{\textit{\changedforreviewer{Categories that are less frequent during the recovery time}}} \\
     \hline 
 text-nav & 14.20 & 12.89 & \textbf{16.13} \\
 control & 1.21 & 1.75 & \textbf{1.82} \\
@@ -1382,6 +1441,7 @@ Of course, this exploratory study does not allow us to confirm these hypotheses.
 %It is noticeable the relation between type of events. For example, it is natural to think that if there are many debugging events there are also a lot of clean and build events, as they are necessary to begin a debugging session and in most cases it is automatically performed by the IDE. There is also a link between high level navigation and debugging because navigating into a method may take the programmer to another class.
 
 \section{Discussion}
+\begin{changedforreviewerlong}
 The results presented in this work indicate the existence of evidence of the effect of work fragmentation in interaction data, in accordance to what observational studies had concluded before. So, we begin by comparing quantities (number and length of interruptions) and working patterns. The related work to this approach suggests that as a consequence to interruptions there is a recovery time that demands extra time to resume the task, so we expected to see a decrease in the metrics as the number of interruptions increases \cite{MGH05,IH07,CHW04}.
 
 The first research question had the purpose of finding a relationship between the number of interruptions and productivity metrics from user activity, for which we found an inverse relationship between this two variables with both datasets agreeing with the work cited before. This effect seems to be more clear when comparing groups of sessions with a low number of interruptions and the difference is more slight after the fourth or fifth interruption. Also, we observed in the second research question the same inverse relationship when we add the length of interruptions as a third variable, groping the sessions by the proportion of long interruptions.
@@ -1393,6 +1453,7 @@ We found interesting the similar decrease before the interruption occurs, about 
 In the third research question we identified three patterns of interruptions: positive, negative and neutral. We look closer to the activities performed during negative and positive interruptions in the fifth research question, where we set 11 categories of events and calculated the frequency of them after a each type of interruption. We found that assertive activities (e.g. editing, refactoring and saving changes) are more common after a positive interruption, and the comprehension activities (e.g. debugging and navigating around classes) are more common after a negative interruption. We relate the first group of interruptions (in part) to the \textit{bug investigation} workflow described by LaToza et al. \cite{LVD06} and performed by programmers: after they found a problem and are unable to solve it, they consult teammates, documents, emails or artifacts to find a possible solution and then apply it. That would explain the assertive activities.
 
 The second group of interruptions seems to be more disruptive as they require more time to reach the average productivity, and the activities are a reflection of the tasks performed during the recovery time as mentioned by Parnin \cite{PR11}, and they can be matched to the categories high-nav, debug and search, which are the common categories after a negative interruption.
+\end{changedforreviewerlong}
 
 \paragraph{Discussion of the thresholds.} We used several thresholds in this study; we regroup their motivations in the following. 
 
@@ -1459,9 +1520,11 @@ The fact that all the observations go in the same direction lends us more confid
 \end{itemize}
 
 \paragraph{The effects of multitasking}
+\begin{changedforreviewerlong}
 Certainly, work fragmentation is not a synonym of lower productivity rates. Multitasking can allow the worker to use dead periods of the project where there is a decrease of the required activities and do tasks related to other projects, increasing the efficiency and productivity \cite{ABV12}. At some level, switching between tasks can provide the needed arousal and alertness to improve the productivity, but higher levels of multitasking can be detrimental and cause a negative effect. Moreover, as the number of switches between tasks increases, the effectiveness degrades in a linear fashion \cite{AB12}. Also, it was observed that switching between projects might as well degrade the productivity levels of the programmer due to the context switches, so developers that work on many projects per day have lower productivity \cite{VBX16}.
 
 Our results indicate a clear drop of productivity when facing interruptions: when we increase the number of interruptions, the productivity metrics tend to decrease. This agrees with the observational studies cited before.
+\end{changedforreviewerlong}
 %Our results indicate a clear drop of productivity when facing interruptions, but with a high number of interruptions the change in productivity stops decreasing. This could be reflecting what observational studies tell us about multitasking, which is that with higher number of interruptions (increased multitasking) the productivity stops being affected and might increase. %The latter actually occurs in the results but the effect is too subtle. 
 %We inspected the effects of work fragmentation in more detail by classifying the interruptions into negative or positive ones, and in the results we can see a difference in productivity and the kind of activities performed.
 
@@ -1496,7 +1559,9 @@ The study has threats to its statistical conclusion. In particular, correlation 
 
 We used Cliff's delta, a non-parametric effect size measure, as it has defined thresholds allowing easier interpretation of the results. Other effect size measures such as the common language effect size \cite{KMW92} or $A_{12}$ \cite{RRT12} may slightly alter the discussion.
 
+\begin{changedforreviewerlong}
 This study also has threats to external validity. The gathered data corresponds to a limited group of programmers, which use both Mylyn and Eclipse regularly, and perform bug tracking activities. The set of evolution tasks considered is a subset of the ones present on the Eclipse bug report website. It may be biased one way or another. One source of bias is the impact of Mylyn itself: Mylyn has been shown to facilitate task switching and to increase the edit ratio of its users compared to non-users. In the context of this study, we hypothesize that Mylyn could reduce the effect of work fragmentation: in other words, the observed effects may be larger for non-users. Additional studies may alleviate these threats and confirm or infirm the previous hypothesis. Our additional dataset (the UDC) comes from a much larger and more varied sample of users, and does show similar behavior, which raises confidence in our results.
+\end{changedforreviewerlong}
 
 %which adapted their development tasks to the platform features: Eclipse IDE $+$ Mylyn Tool. However, the bug reports did not all have associated traces and the programmers did not all submit a trace. Moreover, we used approximate measures over a sample of these data that could be analyzed. Another threat regarding data are detailed in \cite{YR11}.  The biased information that we have analyzed also is a threat to our research results. 
 
@@ -1504,7 +1569,9 @@ The same threats about the metrics, implications and statistical conclusions app
 
 The workbench activation and deactivation events were a particular issue, for they can be executed under many circumstances. We performed live test to understand how these events work and gain confidence about their precise behavior. For instance, we found that they were reliable markers of when the user leaves and returns to Eclipse---and we used this fact to accurately detect interruptions---but we had more uncertainty on other scenarios. Therefore, we decided not count them as ``system'' events, and thus only use them to define an interruption or the end of a session.
 
+\begin{changedforreviewerlong}
 When analyzing the recovery time after an interruption, we filter out the interruptions with less than 30 minutes of activity after it. This means we only use 5\% of the interruptions. We understand that the small sample may put at risk the validity of the results but not all the interruptions are suited for this kind of analysis, as we are looking to a particular case. Also, when we look the activities during the recovery time after an interruption according to the effect (positive or negative), we calculate the frequency of activities (per type) to define when is more frequent. We understand that there could be other interpretations or explanations for this values and the changes, but we back our conclusions with observational studies.
+\begin{changedforreviewerlong}
 %Another threat is the random selection of users to get their data. Although a posterior filter allows us to manage with only valid sessions, we understand that this kind of data selection might be irresponsible. For future work we'll have another approach and be more selective on the information we work.
 
 
@@ -1531,5 +1598,43 @@ In addition, we found that after a positive interruption the most common events 
 
 % that's all folks
 \end{document}
+
+\newboolean{showchangedforreviewer}
+
+\setboolean{showchangedforreviewer}{true} % toggle to show or hide sentences and paragraphs requested by the reviewers.
+
+
+
+\ifthenelse{\boolean{showchangedforreviewer}} {
+	
+	\newcommand{\changedforreviewer}[1]{\textcolor{blue}{#1}}
+	
+	
+	
+	\newenvironment{changedforreviewerlong}%
+	
+	{\begin{color}{blue}}%
+		
+		{\end{color}}
+	
+}{
+
+\newcommand{\changedforreviewer}[1]{#1}
+
+
+
+\newenvironment{changedforreviewerlong}%
+
+{}%
+
+{}
+
+}
+
+
+
+
+
+
 
 
