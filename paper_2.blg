@@ -16,45 +16,45 @@ Warning--empty journal in BK16
 Warning--empty year in BK16
 
 Done.
-You've used 54 entries,
+You've used 55 entries,
             4039 wiz_defined-function locations,
-            1556 strings with 24085 characters,
-and the built_in function-call counts, 43626 in all, are:
-= -- 3468
-> -- 1000
-< -- 390
-+ -- 548
-- -- 159
-* -- 2062
-:= -- 6283
-add.period$ -- 120
-call.type$ -- 54
-change.case$ -- 52
-chr.to.int$ -- 945
-cite$ -- 56
-duplicate$ -- 3087
-empty$ -- 3745
-format.name$ -- 208
-if$ -- 10218
+            1563 strings with 24296 characters,
+and the built_in function-call counts, 44553 in all, are:
+= -- 3546
+> -- 1012
+< -- 401
++ -- 556
+- -- 160
+* -- 2106
+:= -- 6418
+add.period$ -- 123
+call.type$ -- 55
+change.case$ -- 53
+chr.to.int$ -- 969
+cite$ -- 57
+duplicate$ -- 3151
+empty$ -- 3826
+format.name$ -- 209
+if$ -- 10438
 int.to.chr$ -- 0
-int.to.str$ -- 54
-missing$ -- 520
-newline$ -- 191
-num.names$ -- 54
-pop$ -- 1257
+int.to.str$ -- 55
+missing$ -- 530
+newline$ -- 194
+num.names$ -- 55
+pop$ -- 1274
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 3427
+skip$ -- 3502
 stack$ -- 0
-substring$ -- 2267
-swap$ -- 2500
-text.length$ -- 75
+substring$ -- 2324
+swap$ -- 2557
+text.length$ -- 78
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 54
+type$ -- 55
 warning$ -- 2
-while$ -- 230
-width$ -- 56
-write$ -- 536
+while$ -- 235
+width$ -- 57
+write$ -- 547
 (There were 2 warnings)
