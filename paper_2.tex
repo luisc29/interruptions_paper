@@ -340,7 +340,7 @@ Our purpose is the analysis of work fragmentation and interruptions in software 
 
 First, we have kept only the edit and selection events that are associated to a program element. These type of events are distributed in 8058 traces. On the other hand, edit-type events also occur when the programmer double clicks on a file. In these events the starting time and ending time are the same~\cite{LJD11}. We consider that the double-clicking actions form part of the user navigation, therefore these events are transformed into selection events.  
 
-Second, we have kept all traces without aggregate information. Unfortunately, we cannot know the distribution in time of the actions that have been aggregated in a single event: without additional information, an aggregation of 15 events over one hour is as likely every 4 minutes as it is to have 10 events in the first 5 minutes and 5 more in the last 10 minutes. Therefore, designing a correct disaggregation task to handle these traces traces is very difficult, if not impossible.
+Second, we have kept all traces without aggregate information. Unfortunately, we cannot know the distribution in time of the actions that have been aggregated in a single event: without additional information, an aggregation of 15 events over one hour is as likely every 4 minutes as it is to have 10 events in the first 5 minutes and 5 more in the last 10 minutes. Therefore, designing a correct disaggregation task to handle these traces is very difficult, if not impossible.
 
 In order to keep as many traces as possible, we have also kept a small group of traces with aggregate information where the aggregate events have a maximum duration time of five minutes (to minimize uncertainty) or have only two aggregate actions (since the actual event timestamps are known in this case). Thus, we were left with 6260 traces.
 
@@ -667,7 +667,7 @@ To identify and mark the interruptions in every session, we considered the same 
 At this point, we had the same format of sessions with both datasets. In the Figure \ref{fig:udc_sessions_stats} we can see statistics about the sessions (left) and a histogram (right) of the duration of the sessions in UDC, which ignores outliers by setting a threshold of three times the standard deviation. In this dataset, the sessions tend to last for less time than in Mylyn, as we observe that the median in UDC is of 23 minutes while in Mylyn is 35 min. Also, the distribution of duration is heavily concentrated around the median in UDC, and in Mylyn the duration of sessions has more variety.
 
 \begin{changedforreviewerlong}
-To ensure that a small subset of users do not dominate our dataset, we counted the number of sessions attributed to each UDC user. The third quartile was 5 sessions, the median 15, and the third quartile 38; the minimum was 1, and the maximum 270. These figures tell us that if some users have more sessions than others (which is to be expected), there is no major bias due to a small number of users concentrating the vast majority of the sessions.
+To ensure that a small subset of users do not dominate our dataset, we counted the number of sessions attributed to each UDC user. The first quartile was 5 sessions, the median 15, and the third quartile 38; the minimum was 1, and the maximum 270. These figures tell us that if some users have more sessions than others (which is to be expected), there is no major bias due to a small number of users concentrating the vast majority of the sessions.
 \end{changedforreviewerlong}
 
 \begin{figure}
@@ -951,7 +951,7 @@ For every session, we calculated the proportion of prolonged interruptions as th
 \end{itemize} 
 
 Following the conclusions on RQ1, the number of interruptions has an impact on the metrics and should not be ignored. Further, as the number of interruptions increases the difference between the groups minimizes.  %we believe that having   more distinctive groups instead of groups created by ranges is also valid.
- Thus we want to compare the proportions of prolonged interruptions among sessions that have the \emph{same} number of interruptions. We hence split the \emph{low} and \emph{high} groups in subgroups of sessions which have the same number of interruptions. We consider groups of up to seven sessions, as larger groups are small. We finally compare pairs of \emph{low} and \emph{high} groups that have the same number of interruptions, expecting higher productivity indicators in the \emph{low} groups.
+ Thus we want to compare the proportions of prolonged interruptions among sessions that have the \emph{same} number of interruptions. We hence split the \emph{low} and \emph{high} groups in subgroups of sessions which have the same number of interruptions. We consider groups of up to seven sessions, as larger groups are in small amount. We finally compare pairs of \emph{low} and \emph{high} groups that have the same number of interruptions, expecting higher productivity indicators in the \emph{low} groups.
 
 %We split every group in accordance to the number of interruptions: this time, instead of taking the quantiles of the distribution to create groups we created a group for every number of interruptions up to seven. Since the results in RQ1 show that as the number of interruptions increases the difference between the groups minimizes, we believe that having more distinctive groups instead of groups created by ranges is also valid. Thus, for the three metrics, we created the groups of sessions according to the number on interruptions, between one and seven, and then we split every group in low and high, according to the proportion of prolonged interruptions.
 
@@ -1104,7 +1104,7 @@ Below we describe some observations:
 \includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/all_ints} \\
 \includegraphics[width=0.6\linewidth,clip=, angle=0]{figures/udc_all_ints_2} 
 \end{tabular}
-\caption{Local effect of an interruption in the user activity for Mylyn (top) and UDC (bottom)}
+\caption{Local effect of an interruption in the user activity.}
 \label{fig:all_ints}
 \end{figure}
 
@@ -1364,7 +1364,7 @@ We would then expect that certain types of interruptions would feature some even
 \begin{table}[ht!]
 	\small
 	\renewcommand{\arraystretch}{1.3}
-	\caption{New category of events. }
+	\caption{New classification of events that reflects in detail the nature of each event. }
 	\label{tbl:new_events_udc}
 	\centering
 	\begin{tabular}{|p{2.5cm}|p{9 cm}| p{2cm} |}
@@ -1391,7 +1391,7 @@ First, we noticed that while some events are used by all users, other events are
 
 We calculated the weighted average of every event based on the frequency of execution during the first phase of recovery time after a positive or negative interruption, and the percentage of users that make use of that event (so that events that are used by very few users do not distort the results). The weighted average was calculated as: $$\bar{x} = \frac{\sum_{i=1}^{n}w_ix_i}{\sum_{i=1}^{n}w_i} $$where $x_i$ is the frequency of execution of the event $i$ and $w_i$ is the percentage of users that uses the event. This balances the average of execution for events used by a small number of users. 
 
-To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. The Table \ref{tbl:stats_events} shows the results, and is explained below.
+To get a baseline, the same frequency calculation was made for the entire dataset, without distinction of the location of events in the session. We then compared the weighted average changes to have evidence of what kind of events are more often executed after a positive or a negative interruption. The Table \ref{tbl:stats_events} shows the results, and it is explained below.
 
 \begin{table}[ht!]
 \small
@@ -1444,7 +1444,7 @@ Of course, this exploratory study does not allow us to confirm these hypotheses.
 
 \section{Discussion}
 
-The results presented in this work provides of evidence of the effect of work fragmentation observed in interaction data that is in accordance to what observational studies had concluded before. We began by comparing quantities (number and length of interruptions) and working patterns. The related work to this approach suggests that as a consequence to interruptions there is a recovery time that demands extra time to resume the task, so we expected to see a decrease in the metrics as the number of interruptions increases \cite{MGH05,IH07,CHW04}.
+The results presented in this work provides some evidence of the effect of work fragmentation observed in interaction data that is in accordance to what observational studies had concluded before. We began by comparing quantities (number and length of interruptions) and working patterns. The related work to this approach suggests that as a consequence to interruptions there is a recovery time that demands extra time to resume the task, so we expected to see a decrease in the metrics as the number of interruptions increases \cite{MGH05,IH07,CHW04}.
 
 The first research question had the purpose of finding a relationship between the number of interruptions and productivity metrics from user activity, for which we found an inverse relationship between this two variables with both datasets agreeing with the work cited before. This effect seems to be more clear when comparing groups of sessions with a low number of interruptions and the difference is less pronounced for sessions having more than four or five interruptions. Also, we observed in the second research question the same inverse relationship when we add the length of interruptions as a third variable, grouping the sessions by the proportion of long interruptions. Again, the relationship was less pronounced with a greater number of interruptions. This suggests the presence of a non-linear association in both cases.
 
@@ -1535,7 +1535,7 @@ Our results indicate a clear drop of productivity when facing interruptions: whe
 %We inspected the effects of work fragmentation in more detail by classifying the interruptions into negative or positive ones, and in the results we can see a difference in productivity and the kind of activities performed.
 
 \paragraph{Comparison with observational studies}
-Our theoretical foundations are based on observational studies performed on information workers' development environments \cite{MGH05, IH07, LVD06, PD10}. These findings helped us understand the response to work fragmentation according to the recorded user activity, and it was possible to made a relation between the user's data and the phenomena that occur on the working places described in the studies.
+Our theoretical foundations are based on observational studies performed on information workers' development environments \cite{MGH05, IH07, LVD06, PD10}. These findings helped us understand the response to work fragmentation according to the recorded user activity, and it was possible to make a relation between the user's data and the phenomena that occur on the working places described in the studies.
 
 Observing the user activity throughout a working session might be the best way to understand the effect of events that occur on the working place, like work fragmentation. However, implementing a study of this kind can be very expensive, for the time and material needed. For example, to have the same amount of information we have with UDC it would require to monitor the user activity for a year or two and have a record of all the activities performed, like the number and duration of the interruptions. Moreover, this kind of research require on-site studies, exhaustive monitoring and interviews, which in some cases could be expensive or difficult to perform.
 
@@ -1573,7 +1573,7 @@ This study also has threats to external validity. The gathered data corresponds 
 
 The same threats about the metrics, implications and statistical conclusions apply on the results observed with the UDC.  Additionally, our classification of events is a possible threat, as it was based on our own criteria of what should be an Edition and Selection event. We took this liberty due to the lack of an actual pre-classification, and on the other hand the extra information available on UDC events compared to Mylyn. We took special care when establishing the classification, using an iterative process involving two authors of this paper. We also ran tests of what kind of data was recorded for specific usage scenarios of the IDE in order to better understand the nature of the dataset when particular events were unclear.  %However, the classification still depends on the definition on what an Edition or Selection event is, for it is a factor that can alter the final results. However, we had a very clear boundary between both types and were consistent on our judgments. 
 
-The workbench activation and deactivation events were a particular issue, for they can be executed under many circumstances. We performed live test to understand how these events work and gain confidence about their precise behavior. For instance, we found that they were reliable markers of when the user leaves and returns to Eclipse---and we used this fact to accurately detect interruptions---but we had more uncertainty on other scenarios. Therefore, we decided not count them as ``system'' events, and thus only use them to define an interruption or the end of a session.
+The workbench activation and deactivation events were a particular issue, for they can be executed under many circumstances. We performed live test to understand how these events work and gain confidence about their precise behavior. For instance, we found that they were reliable markers of when the user leaves and returns to Eclipse---and we used this fact to accurately detect interruptions---but we had more uncertainty on other scenarios. Therefore, we decided not to count them as ``system'' events, and thus only use them to define an interruption or the end of a session.
 
 
 When analyzing the recovery time after an interruption, we filter out the interruptions with less than 30 minutes of activity after it. This means we only use 5\% of the interruptions. We understand that the small sample may put at risk the validity of the results but not all the interruptions are suited for this kind of analysis, as we are looking for the specific case of isolated interruptions to better measure their effect. Also, when we look at the activities during the recovery time after an interruption according to the effect (positive or negative), we calculate the frequency of activities (per type) to define when an activity is more frequent. We understand that there could be other interpretations or explanations for these values and the changes, hence we back our conclusions with observational studies.
