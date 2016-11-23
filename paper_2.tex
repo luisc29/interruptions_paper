@@ -764,13 +764,13 @@ With UDC, the results show a similar pattern in comparison with the results with
 \centering
 \begin{tabular}{c}
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_edit}  
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_edit_2}  
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_sel}  
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_events_sel_2}  
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_ratio} 
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/box_int_ratio_2} 
 \endminipage\hfill
 \end{tabular}
 \caption{Boxplots showing the relation between the number of edits and selection events per minute, the edit ratio, and the number of interruptions in Mylyn. }
@@ -781,13 +781,13 @@ With UDC, the results show a similar pattern in comparison with the results with
 	\centering
 	\begin{tabular}{c}
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_edit}  \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_edit_2}  \\
 		\endminipage\hfill
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_sel}  \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_sel_2}  \\
 		\endminipage\hfil
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_ratio} \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_box_int_events_ratio_2} \\
 		\endminipage\hfill
 	\end{tabular}
 	\caption{Boxplots showing the relation between the number of editions and selections per minute, the edit ratio, and the number of interruptions in UDC. }
@@ -968,13 +968,13 @@ Since these results apply to both datasets, we can conclude that we observe a re
 \centering
 \begin{tabular}{c}
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_emin}  
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_emin_2}  
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_smin}  
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_smin_2}  
 \endminipage\hfill
 \minipage{0.33\textwidth}
-\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_eratio} 
+\includegraphics[width=\linewidth,clip=, angle=0]{figures/mylyn_lines_dur_eratio_2} 
 \endminipage\hfill
 \end{tabular}
 \caption{Median values of edits and selection events per minute, and the edit ratio according to the number of interruptions and proportion of prolonged interruptions in Mylyn. }
@@ -985,13 +985,13 @@ Since these results apply to both datasets, we can conclude that we observe a re
 	\centering
 	\begin{tabular}{c}
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_emin}  \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_emin_2}  \\
 		\endminipage\hfill
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_smin}  \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_smin_2}  \\
 		\endminipage\hfil
 		\minipage{0.33\textwidth}
-		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_eratio} \\
+		\includegraphics[width=\linewidth,clip=, angle=0]{figures/udc_lines_dur_eratio_2} \\
 		\endminipage\hfill
 	\end{tabular}
 	\caption{Median values of edits and selection events per minute, and the edit ratio according to the number of interruptions and proportion of prolonged interruptions in UDC. }
@@ -1553,7 +1553,7 @@ Another threat comes from the metrics we use. Our choices are limited by the dat
 As we mentioned before, the edit ratio has been used in previous work as an indicator of productivity, but it do not describe well the true level of productivity of a programmer. The edit ratio is the amount of coding activities that the programmer performed in comparison with the other activities, but a productive programmer may not solely code; he could have other important tasks like managing a database, Web design and testing, which are activities that are not reflected as edit events. This is a big problem in the UDC data, for this information was captured from people that could be Java developers, Web developers, mobile developers, students, etc., and from this roles the only one that could use well the edit ratio as an indicator of productivity is the Java developer, if his only task is to work in the IDE. The others are prone to spend time (maybe most of the time) using graphical tools like Web designers and simulators, and this events are mainly represented as selection events.
 %\RR{add a bit stuff about edit ratio to keep one reviewer happy}
 
-We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We explained our motivations for these and other thresholds in the discussion. We also tested with other close values and obtained similar results. However, a large variation of these thresholds might alter the results. 
+We defined several thresholds empirically: 8 hours of inactivity to split a session in sub-sessions, 30 minutes as the minimum duration for a session, 3 minutes for the minimum duration of a interruption and  $\geq$ 12 minutes for prolonged interruptions. We explained our motivations for these and other thresholds in the discussion. We also tested with other close values and obtained similar results. A large variation of these thresholds might alter the results, but would be important to consider if they correspond with thresholds derived from new empirical studies
 
 %We acknowledge that our separation of sessions in short and long interruptions is not perfect, as it is based on the presence of at least one long interruption, and nothing more. Other factors present in the group of sessions with at least one long interruption may contribute to the observed effect (for instance, these sessions may also have more interruptions overall).
 
